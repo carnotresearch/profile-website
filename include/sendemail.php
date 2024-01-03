@@ -18,8 +18,8 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
         $botcheck = $_POST['template-contactform-botcheck'];
 
-        $toemail = 'username@email.com'; // Your Email Address
-        $toname = 'Your Name'; // Your Name
+        $toemail = 'contact@carnotresearch.com'; // Your Email Address
+        $toname = 'contact'; // Your Name
 
         if( $botcheck == '' ) {
 
