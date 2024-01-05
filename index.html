@@ -718,10 +718,10 @@
 							</div>
 
 							<div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
+                            
+                            <form class="nobottommargin" id="template-contactform" name="template-contactform" action="https://formspree.io/f/mvoeovvg" method="POST">
 
-                            <form class="nobottommargin" id="template-contactform" name="template-contactform" action="post" data-netlify="true">
-
-<!--							<form class="nobottommargin" id="template-contactform" name="template-contactform" action="https://formspree.io/f/mvoeovvg" method="post">-->
+<!--							<form class="nobottommargin" id="template-contactform" name="template-contactform" action="https://formspree.io/f/mvoeovvg" method="POST">-->
 
 							<div class="form-process"></div>
 
@@ -772,6 +772,29 @@
 							</div>
 
 						</form>
+
+<!--
+						<script type="text/javascript">
+
+							$("#template-contactform").validate({
+								submitHandler: function(form) {
+									$('.form-process').fadeIn();
+									$(form).ajaxSubmit({
+										target: '#contact-form-result',
+										success: function() {
+											$('.form-process').fadeOut();
+											$('#template-contactform').find('.sm-form-control').val('');
+											$('#contact-form-result').attr('data-notify-msg', $('#contact-form-result').html()).html('');
+											SEMICOLON.widget.notifications($('#contact-form-result'));
+										}
+									});
+								}
+							});
+
+						</script>
+-->
+
+						</div><!-- Contact Form End -->
 						<!-- Google Map
 						============================================= -->
 						<div class="col_half col_last">
