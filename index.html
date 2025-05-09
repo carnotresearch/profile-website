@@ -802,7 +802,7 @@
 							</div>
 
 							<div class="col_one_third col_last">
-								<label for="template-contactform-phone">Phone</label>
+								<label for="template-contactform-phone">Phone <small>*</small></label>
 								<input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control" />
 							</div>
 
@@ -851,6 +851,15 @@
 								const form = event.target;
 								const formData = new FormData(form);
 								const formObject = Object.fromEntries(formData.entries());
+
+								if(!formObject['template-contactform-email'] || !formObject['template-contactform-message'] || !formObject['template-contactform-name'] || !formObject['template-contactform-phone'] || !formObject['template-contactform-subject']){
+									alert('Kindly fill all the mandatory fields!');
+									return;
+								}
+								if(!formObject['g-recaptcha-response']){
+									alert('Captcha verification failed!');
+									return;
+								}
 					
 								try {
 									const response = await fetch('https://izwz05lqn1.execute-api.ap-south-1.amazonaws.com/default/sendMail', {
@@ -862,8 +871,9 @@
 									});
 					
 									if (response.ok) {
-										alert('Form submitted successfully');
+										alert('Thank you for contacting us!\nYour details have been submitted successfully.');
 										form.reset(); // Clear the form fields
+										window.scrollTo(0, 0); // Scroll to top of the page
 									} else {
 										const errorData = await response.json();
 										alert('Form submission failed: ' + errorData.message);
