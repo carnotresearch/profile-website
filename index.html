@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
 	<link rel="stylesheet" href="css/animate.css" type="text/css" />
 	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -374,7 +375,7 @@
 										<span style="color: #2c3e50; font-size: 1.2rem; font-weight: 500;">Stay Updated</span>
 									</div>
 									<div style="height: 30px; width: 1px; background: #e0e0e0;"></div>
-									<a href="https://www.linkedin.com/posts/7229065147212832768" target="_blank" 
+									<a href="https://www.linkedin.com/company/carnot-research-pvt-ltd/posts/?feedView=all" target="_blank" 
 									   style="display: inline-flex; align-items: center; text-decoration: none; color: #0a66c2; font-weight: 500; font-size: 1.1rem; padding: 8px 16px; background: rgba(10, 102, 194, 0.1); border-radius: 6px; transition: all 0.3s ease;">
 										View Latest Updates
 									</a>
@@ -868,10 +869,11 @@
 							<div class="social-links">
 							  <h4>Connect With Us</h4>
 							  <div class="social-icons">
-								<a href="#" class="social-icon"><i class="icon-linkedin2"></i></a>
-								<a href="#" class="social-icon"><i class="icon-twitter"></i></a>
-								<a href="https://www.youtube.com/channel/UCj1T9bEj2CrG_gGYVQP3e-A" class="social-icon"><i class="icon-youtube"></i></a>
-								<a href="https://carnotresearch.medium.com/" class="social-icon"><i class="icon-medium"></i></a>
+								<a href="https://www.linkedin.com/company/carnot-research-pvt-ltd/posts/?feedView=all" class="social-icon"><i class="icon-linkedin2"></i></a>
+								<a href="https://www.youtube.com/@CarnotResearch" class="social-icon"><i class="icon-youtube"></i></a>
+								<a href="https://carnotresearch.medium.com/" class="social-icon" target="_blank" rel="noopener noreferrer">
+									<i class="fab fa-medium-m"></i>
+								  </a>
 							  </div>
 							</div>
 						  </div>
@@ -946,7 +948,6 @@
 					/* Contact Section Styling */
 					#section-contact {
 					  position: relative;
-					  padding: 120px 0;
 					  background-color: #f8faff;
 					  overflow: hidden;
 					}
@@ -1005,13 +1006,14 @@
 				  
 					.section-subtitle {
 					  display: inline-block;
-					  font-size: 16px;
+					  font-size: 25px;
 					  font-weight: 600;
 					  text-transform: uppercase;
 					  color: #1abc9c;
 					  letter-spacing: 1.5px;
 					  margin-bottom: 15px;
 					  position: relative;
+					  padding-top: 20px;
 					}
 				  
 					.section-title {
@@ -1544,6 +1546,42 @@
 	<!-- Footer Scripts
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
+
+	<!-- Google Maps API and Initialization -->
+	<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyASAdjXqw6M1mOLNQYOi8tm6Vqd_dJkoCY"></script>
+	<script type="text/javascript" src="js/jquery.gmap.js"></script>
+	
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			if($('#google-map').length > 0) {
+				$('#google-map').gMap({
+					address: '371 SFS DDA Flats, Hauz Khas, New Delhi, India',
+					maptype: 'ROADMAP',
+					zoom: 15,
+					markers: [
+						{
+							address: "371 SFS DDA Flats, Hauz Khas, New Delhi, India",
+							html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hi, we\'re <span>Carnot Research</span></h4><p class="nobottommargin">We are a team of professors, scientists, and engineers from the top IITs in the country. We share a passion for conducting deployable research and innovating deep-tech products in the area of machine learning and deep learning.</p></div>',
+							icon: {
+								image: "images/icons/map-icon-red.png",
+								iconsize: [32, 39],
+								iconanchor: [16, 39]
+							}
+						}
+					],
+					doubleclickzoom: false,
+					controls: {
+						panControl: true,
+						zoomControl: true,
+						mapTypeControl: true,
+						scaleControl: false,
+						streetViewControl: false,
+						overviewMapControl: false
+					}
+				});
+			}
+		});
+	</script>
 
 </body>
 </html>
