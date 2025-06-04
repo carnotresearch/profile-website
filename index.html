@@ -866,11 +866,6 @@
 									  <span class="checkbox-text">Research Consulting</span>
 									</label>
 									<label class="checkbox-item">
-									  <input type="checkbox" name="template-contactform-service[]" value="Intellectual Property" />
-									  <span class="checkmark"></span>
-									  <span class="checkbox-text">Intellectual Property</span>
-									</label>
-									<label class="checkbox-item">
 									  <input type="checkbox" name="template-contactform-service[]" value="Industry Skilling" />
 									  <span class="checkmark"></span>
 									  <span class="checkbox-text">Industry Skilling</span>
@@ -1229,9 +1224,9 @@
 
 		.checkbox-grid {
 			display: grid;
-			grid-template-columns: repeat(4, 1fr);
-			gap: 12px;
-			padding: 20px;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 15px;
+			padding: 18px;
 			background: #f9f9f9;
 			border: 1px solid #e0e0e0;
 			border-radius: 8px;
@@ -1248,10 +1243,12 @@
 			display: flex;
 			align-items: center;
 			cursor: pointer;
-			padding: 10px 12px;
+			padding: 12px;
 			transition: all 0.3s ease;
 			position: relative;
 			border-radius: 6px;
+			text-align: center;
+			justify-content: center;
 		}
 
 		.checkbox-item:hover {
@@ -1295,11 +1292,12 @@
 		}
 
 		.checkbox-text {
-			font-size: 15px;
+			font-size: 16px;
 			color: #555;
 			transition: color 0.3s ease;
 			line-height: 1.4;
 			font-weight: 500;
+			text-align: left;
 		}
 
 		.checkbox-item input[type="checkbox"]:checked ~ .checkbox-text {
@@ -1476,9 +1474,9 @@
 		/* Responsive adjustments for service selection */
 		@media (max-width: 992px) {
 			.checkbox-grid {
-				grid-template-columns: repeat(2, 1fr);
-				gap: 10px;
-				padding: 18px;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 12px;
+				padding: 16px;
 			}
 		}
 
@@ -1486,16 +1484,16 @@
 			.checkbox-grid {
 				grid-template-columns: 1fr;
 				padding: 15px;
-				gap: 8px;
+				gap: 10px;
 			}
 			
 			.service-label {
-				font-size: 13px;
-				margin-bottom: 10px;
+				font-size: 14px;
+				margin-bottom: 12px;
 			}
 			
 			.checkbox-text {
-				font-size: 14px;
+				font-size: 15px;
 			}
 			
 			.checkmark {
@@ -1505,7 +1503,9 @@
 			}
 			
 			.checkbox-item {
-				padding: 8px 10px;
+				padding: 10px;
+				text-align: left;
+				justify-content: flex-start;
 			}
 		}
 
@@ -1520,7 +1520,7 @@
 			}
 			
 			.checkbox-text {
-				font-size: 13px;
+				font-size: 14px;
 			}
 		}
 
