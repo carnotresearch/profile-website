@@ -899,14 +899,11 @@
 						</div>
 
 						<div style="margin-bottom: 20px;">
-							<label style="display: block; width: 100%; padding: 15px; border: 2px dashed #ddd; border-radius: 8px; text-align: center; cursor: pointer; transition: all 0.3s ease; background: #fafafa;" onmouseover="this.style.borderColor='#1abc9c'; this.style.background='rgba(26, 188, 156, 0.05)'" onmouseout="this.style.borderColor='#ddd'; this.style.background='#fafafa'">
-								<input type="file" id="resume-upload" accept=".pdf,.doc,.docx" required style="display: none;" onchange="document.getElementById('fileName').textContent = this.files[0] ? this.files[0].name : ''; document.getElementById('fileName').style.display = this.files[0] ? 'block' : 'none'" />
-								<span style="display: flex; align-items: center; justify-content: center; gap: 10px; color: #666; font-weight: 500;">
-									<i class="icon-upload" style="font-size: 18px; color: #1abc9c;"></i>
-									Upload Resume/CV (PDF, DOC, DOCX)*
-								</span>
-							</label>
-							<div id="fileName" style="margin-top: 10px; padding: 8px 12px; background: rgba(26, 188, 156, 0.1); border-radius: 6px; color: #1abc9c; font-size: 14px; font-weight: 500; display: none;"></div>
+							<input type="url" id="resume-drive-link" placeholder="Google Drive Link to Resume/CV*" required style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; color: #555; background: #f9f9f9; transition: all 0.3s ease;" onfocus="this.style.borderColor='#1abc9c'; this.style.boxShadow='0 0 0 3px rgba(26, 188, 156, 0.1)'; this.style.background='white'" onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'; this.style.background='#f9f9f9'" />
+							<div style="margin-top: 8px; font-size: 12px; color: #7f8c8d; line-height: 1.4;">
+								<i class="icon-info" style="color: #1abc9c; margin-right: 5px;"></i>
+								Upload your resume to Google Drive, make it shareable, and paste the link here
+							</div>
 						</div>
 
 						<!-- reCAPTCHA Widget -->
@@ -2253,10 +2250,6 @@
 					modal.style.display = 'none';
 					document.body.style.overflow = 'auto';
 					document.getElementById('application-form').reset();
-					const fileName = document.getElementById('fileName');
-					if (fileName) {
-						fileName.style.display = 'none';
-					}
 					// Reset reCAPTCHA when closing modal
 					if (window.grecaptcha) {
 						grecaptcha.reset();
@@ -2281,6 +2274,21 @@
 				document.head.appendChild(recaptchaScript);
 			}
 
+			// Google Drive link validation function
+			function isValidGoogleDriveLink(url) {
+				if (!url) return false;
+				
+				// Check for common Google Drive URL patterns
+				const drivePatterns = [
+					/^https:\/\/drive\.google\.com\/file\/d\/[a-zA-Z0-9_-]+/,
+					/^https:\/\/docs\.google\.com\/document\/d\/[a-zA-Z0-9_-]+/,
+					/^https:\/\/docs\.google\.com\/spreadsheets\/d\/[a-zA-Z0-9_-]+/,
+					/^https:\/\/docs\.google\.com\/presentation\/d\/[a-zA-Z0-9_-]+/
+				];
+				
+				return drivePatterns.some(pattern => pattern.test(url));
+			}
+
 			// Enhanced form submission handler with reCAPTCHA
 			document.getElementById('application-form').addEventListener('submit', async function(event) {
 				event.preventDefault();
@@ -2303,14 +2311,20 @@
 					email: document.getElementById('applicant-email').value.trim(),
 					experience: document.getElementById('experience-level').value,
 					coverLetter: document.getElementById('cover-letter').value.trim(),
-					resume: document.getElementById('resume-upload').files[0]
+					resumeLink: document.getElementById('resume-drive-link').value.trim()
 				};
 				
 				console.log('Form data:', requiredFields); // Debug log
 				
 				// Check if required fields are filled
-				if (!requiredFields.name || !requiredFields.email || !requiredFields.experience || !requiredFields.coverLetter || !requiredFields.resume) {
-					showNotification('Please fill all required fields and upload your resume.', 'error');
+				if (!requiredFields.name || !requiredFields.email || !requiredFields.experience || !requiredFields.coverLetter || !requiredFields.resumeLink) {
+					showNotification('Please fill all required fields and provide your resume Google Drive link.', 'error');
+					return;
+				}
+				
+				// Validate Google Drive link format
+				if (!isValidGoogleDriveLink(requiredFields.resumeLink)) {
+					showNotification('Please provide a valid Google Drive link to your resume.', 'error');
 					return;
 				}
 				
@@ -2325,7 +2339,7 @@
 					experience: requiredFields.experience,
 					coverLetter: requiredFields.coverLetter,
 					positionType: document.getElementById('modalTitle').textContent.includes('Job') ? 'Job Position' : 'Internship',
-					resumeFile: requiredFields.resume.name
+					resumeLink: requiredFields.resumeLink
 				};
 
 				console.log('Application data prepared:', applicationData); // Debug log
@@ -2342,7 +2356,7 @@ Experience Level: ${applicationData.experience}
 Cover Letter:
 ${applicationData.coverLetter}
 
-Resume: ${applicationData.resumeFile}`;
+Resume Google Drive Link: ${applicationData.resumeLink}`;
 
 				// Include reCAPTCHA response in request data
 				const requestData = {
