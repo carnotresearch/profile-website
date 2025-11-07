@@ -28,6 +28,9 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/plugins.js"></script>
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<!-- i18next for Internationalization -->
+	<script src="https://cdn.jsdelivr.net/npm/i18next@23.7.6/dist/umd/i18next.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@7.2.0/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
 
 	<!-- Document Title
 	============================================= -->
@@ -93,17 +96,27 @@
 					<nav id="primary-menu">
 
 						<ul class="one-page-menu" data-easing="easeInOutExpo" data-speed="1500">
-							<li><a href="#" data-href="#home"><div>Home</div></a></li>
-							<li><a href="#" data-href="#section-about"><div>About</div></a></li>	
-							<li><a href="#" data-href="#section-products"><div>Products</div></a></li>
-							<li><a href="#" data-href="#section-services"><div>Services</div></a></li>
-							<li><a href="#" data-href="#section-research-areas"><div>Research Areas</div></a></li>
-                            <li><a href="https://playground.carnotresearch.com/" target="_blank"><div>Demos</div></a></li>
-							<li><a href="https://carnotresearch.medium.com/" target="_blank"><div>Blog</div></a></li>
-                            <li><a href="https://cr-vision.carnotresearch.com/" target="_blank"><div>Open Source</div></a></li>
-							<li><a href="#" data-href="#section-career"><div>Careers</div></a></li>
-							<li><a href="#" data-href="#section-contact"><div>Contact</div></a></li>
-                            <li><a href="https://www.youtube.com/channel/UCj1T9bEj2CrG_gGYVQP3e-A" target="_blank"><i class="icon-youtube-play"></i></a></li>
+							<li><a href="#" data-href="#home"><div data-i18n="nav.home">Home</div></a></li>
+							<li><a href="#" data-href="#section-about"><div data-i18n="nav.about">About</div></a></li>	
+							<li><a href="#" data-href="#section-products"><div data-i18n="nav.products">Products</div></a></li>
+							<li><a href="#" data-href="#section-services"><div data-i18n="nav.services">Services</div></a></li>
+							<li><a href="#" data-href="#section-research-areas"><div data-i18n="nav.researchAreas">Research Areas</div></a></li>
+							<li><a href="https://playground.carnotresearch.com/" target="_blank"><div data-i18n="nav.demos">Demos</div></a></li>
+							<li><a href="https://carnotresearch.medium.com/" target="_blank"><div data-i18n="nav.blog">Blog</div></a></li>
+							<li><a href="https://cr-vision.carnotresearch.com/" target="_blank"><div data-i18n="nav.openSource">Open Source</div></a></li>
+							<li><a href="#" data-href="#section-career"><div data-i18n="nav.careers">Careers</div></a></li>
+							<li><a href="#" data-href="#section-contact"><div data-i18n="nav.contact">Contact</div></a></li>
+							<li><a href="https://www.youtube.com/@CarnotResearch" target="_blank"><i class="icon-youtube-play"></i></a></li>
+							<li class="language-switcher" style="position: relative;">
+								<a href="#" id="lang-switcher" style="display: flex; align-items: center; gap: 5px; padding: 10px 15px;">
+									<span id="current-lang" style="font-weight: 600;">EN</span>
+									<i class="icon-globe"></i>
+								</a>
+								<ul id="lang-dropdown" style="display: none; position: absolute; top: 100%; right: 0; background: white; min-width: 120px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; padding: 0; margin: 0; list-style: none; border-radius: 4px; overflow: hidden;">
+									<li><a href="#" data-lang="en" style="display: block; padding: 10px 15px; color: #333; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">English</a></li>
+									<li><a href="#" data-lang="hi" style="display: block; padding: 10px 15px; color: #333; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">हिंदी</a></li>
+								</ul>
+							</li>
 						</ul>
 
 						
@@ -132,8 +145,8 @@
 					<div class="swiper-slide dark" style="background-image: url('images/slider/swiper/1.jpg');">
 						<div class="container clearfix">
 							<div class="slider-caption slider-caption-center">
-								<h2 data-caption-animate="fadeInUp">Welcome to Carnot Research</h2>
-								<p data-caption-animate="fadeInUp" data-caption-delay="200">Empowering individuals and organizations to leverage cutting edge research and enable innovation.</p>
+								<h2 data-caption-animate="fadeInUp" data-i18n="slider.welcome">Welcome to Carnot Research</h2>
+								<p data-caption-animate="fadeInUp" data-caption-delay="200" data-i18n="slider.welcomeDesc">Empowering individuals and organizations to leverage cutting edge research and enable innovation.</p>
 							</div>
 						</div>
 					</div>
@@ -142,8 +155,8 @@
 						<div class="container clearfix">
                             <div class="slider-caption">
 <!--							<div class="slider-caption slider-caption-center">-->
-								<h2 data-caption-animate="fadeInUp">The Carnot Difference</h2>
-								<p data-caption-animate="fadeInUp" data-caption-delay="200">Right mix of academics and industry professionals, Key differentiator is our ability to provide managed research for serving your innovation needs.</p>
+								<h2 data-caption-animate="fadeInUp" data-i18n="slider.difference">The Carnot Difference</h2>
+								<p data-caption-animate="fadeInUp" data-caption-delay="200" data-i18n="slider.differenceDesc">Right mix of academics and industry professionals, Key differentiator is our ability to provide managed research for serving your innovation needs.</p>
 							</div>
 						</div>
 						<div class="video-wrap">
@@ -159,9 +172,9 @@
 						<div class="container clearfix">
 							<div class="slider-caption">
 <!--								<h2 data-caption-animate="fadeInUp">The Carnot Vision</h2>-->
-                                <h2 data-caption-animate="fadeInUp">Research Areas</h2>
+                                <h2 data-caption-animate="fadeInUp" data-i18n="slider.researchAreas">Research Areas</h2>
 <!--								<p data-caption-animate="fadeInUp" data-caption-delay="200">Carnot Research envisions to propel technology innovation by delivering predictable &amp; measurable research solutions.</p>-->
-                                <p data-caption-animate="fadeInUp" data-caption-delay="200">Active in a wide variety of research areas with major focus on Computer Vision and NLP.</p>
+                                <p data-caption-animate="fadeInUp" data-caption-delay="200" data-i18n="slider.researchAreasDesc">Active in a wide variety of research areas with major focus on Computer Vision and NLP.</p>
 							</div>
 						</div>
 					</div>
@@ -259,20 +272,20 @@
 					<div class="container clearfix">
                         
                         <div class="heading-block center">
-							<h2>We are <span>Carnot Research</span></h2>
-							<span>Everything About Us</span>
+							<h2 data-i18n="about.title">We are <span>Carnot Research</span></h2>
+							<span data-i18n="about.subtitle">Everything About Us</span>
 						</div>
 
                         <div class="col_one_third">
 
                             <div class="heading-block fancy-title nobottomborder title-bottom-border">
-                                <h4>Who We <span>Are</span>.</h4>
+                                <h4 data-i18n="about.whoWeAre">Who We <span>Are</span>.</h4>
                             </div>
 
-                            <p style="text-align: justify; line-height: 1.7; margin-bottom: 20px;">We are Carnot Research, a deep-tech AI company founded by professors, scientists, and engineers from top IITs, driven by a common mission: to bridge cutting-edge research with real-world deployment. Our team brings together over 120 years of collective experience in AI, NLP, and systems engineering, backed by multiple patents and top-tier publications.
+                            <p style="text-align: justify; line-height: 1.7; margin-bottom: 20px;" data-i18n="about.whoWeAreDesc">We are Carnot Research, a deep-tech AI company founded by professors, scientists, and engineers from top IITs, driven by a common mission: to bridge cutting-edge research with real-world deployment. Our team brings together over 120 years of collective experience in AI, NLP, and systems engineering, backed by multiple patents and top-tier publications.
                             </p>
-                            <p style="text-align: justify; line-height: 1.7; margin-bottom: 20px;">We specialize in building trustworthy, secure, and high-impact AI systems — particularly for high-stakes sectors such as government, enterprise, and regulated industries.</p>
-                            <br><h3 style="margin-bottom: 0.5rem;">Founders</h3>
+                            <p style="text-align: justify; line-height: 1.7; margin-bottom: 20px;" data-i18n="about.whoWeAreDesc2">We specialize in building trustworthy, secure, and high-impact AI systems — particularly for high-stakes sectors such as government, enterprise, and regulated industries.</p>
+                            <br><h3 style="margin-bottom: 0.5rem;" data-i18n="about.founders">Founders</h3>
 							<ul style="margin-top: 0; padding-left: 20px; line-height: 1.7;">
 							  <li>Prof. Brejesh Lall, IIT Delhi</li>
 							  <li>Dr. Amit Oberoi, IIT Delhi</li>
@@ -282,30 +295,30 @@
                         <div class="col_one_third">
 
                             <div class="heading-block fancy-title nobottomborder title-bottom-border">
-                                <h4>What we <span>Do</span>.</h4>
+                                <h4 data-i18n="about.whatWeDo">What we <span>Do</span>.</h4>
                             </div>
 
-                            <p style="text-align: justify; line-height: 1.7; margin-bottom: 15px;">At Carnot, we build and deploy secure, on-premise GenAI systems with a strong focus on:</p>
+                            <p style="text-align: justify; line-height: 1.7; margin-bottom: 15px;" data-i18n="about.whatWeDoDesc">At Carnot, we build and deploy secure, on-premise GenAI systems with a strong focus on:</p>
                             <ul style="margin: 15px 0; padding-left: 20px; line-height: 1.7;">
-                                <li style="margin-bottom: 8px;">Multimodal data ingestion (PDFs, web, YouTube, scanned docs)</li>
-                                <li style="margin-bottom: 8px;">LLM-based Retrieval-Augmented Generation (RAG) with verifiable citations</li>
-                                <li style="margin-bottom: 8px;">Conversational AI with agentic workflows for governance and enterprises</li>
-                                <li style="margin-bottom: 8px;">Custom NLP and document intelligence solutions</li>
-                                <li style="margin-bottom: 8px;">LLM + VLM integration for visual reasoning and OCR-based tasks</li>
-                                <li style="margin-bottom: 8px;">Tech skilling and AI capability development for industry and public sector</li>
+                                <li style="margin-bottom: 8px;" data-i18n="about.whatWeDoItem1">Multimodal data ingestion (PDFs, web, YouTube, scanned docs)</li>
+                                <li style="margin-bottom: 8px;" data-i18n="about.whatWeDoItem2">LLM-based Retrieval-Augmented Generation (RAG) with verifiable citations</li>
+                                <li style="margin-bottom: 8px;" data-i18n="about.whatWeDoItem3">Conversational AI with agentic workflows for governance and enterprises</li>
+                                <li style="margin-bottom: 8px;" data-i18n="about.whatWeDoItem4">Custom NLP and document intelligence solutions</li>
+                                <li style="margin-bottom: 8px;" data-i18n="about.whatWeDoItem5">LLM + VLM integration for visual reasoning and OCR-based tasks</li>
+                                <li style="margin-bottom: 8px;" data-i18n="about.whatWeDoItem6">Tech skilling and AI capability development for industry and public sector</li>
                             </ul>
-                            <p style="text-align: justify; line-height: 1.7; margin-top: 20px;">Our ability to conduct managed, deployable research sets us apart. We partner with organizations to convert deep-tech research into scalable tools, applications, and IP that directly serve strategic or operational needs.</p>
+                            <p style="text-align: justify; line-height: 1.7; margin-top: 20px;" data-i18n="about.whatWeDoDesc2">Our ability to conduct managed, deployable research sets us apart. We partner with organizations to convert deep-tech research into scalable tools, applications, and IP that directly serve strategic or operational needs.</p>
 
                         </div>
 
                         <div class="col_one_third col_last">
 
                             <div class="heading-block fancy-title nobottomborder title-bottom-border">
-                                <h4>Our <span>Mission</span>.</h4>
+                                <h4 data-i18n="about.ourMission">Our <span>Mission</span>.</h4>
                             </div>
 
-                            <p style="text-align: justify; line-height: 1.7; margin-bottom: 20px;">Our mission is to enable responsible, domain-specific AI adoption across industries and governments. Whether it's powering public-facing governance chatbots, automating knowledge from policy documents, or deploying enterprise RAG systems — we deliver AI that works on-ground, at-scale, and in-context.</p>
-                            <p style="text-align: justify; line-height: 1.7; margin-bottom: 20px;">Our core strengths lie in NLP, Vision-Language models, and agentic systems, with seamless linkages to IoT, Cybersecurity, and Blockchain where required. From startups to Fortune 500s to ministries, we are building the infrastructure for India's next leap in AI-driven transformation.</p>
+                            <p style="text-align: justify; line-height: 1.7; margin-bottom: 20px;" data-i18n="about.missionDesc">Our mission is to enable responsible, domain-specific AI adoption across industries and governments. Whether it's powering public-facing governance chatbots, automating knowledge from policy documents, or deploying enterprise RAG systems — we deliver AI that works on-ground, at-scale, and in-context.</p>
+                            <p style="text-align: justify; line-height: 1.7; margin-bottom: 20px;" data-i18n="about.missionDesc2">Our core strengths lie in NLP, Vision-Language models, and agentic systems, with seamless linkages to IoT, Cybersecurity, and Blockchain where required. From startups to Fortune 500s to ministries, we are building the infrastructure for India's next leap in AI-driven transformation.</p>
 
                         </div>
 <!--                        <div class="line"></div>-->
@@ -317,18 +330,17 @@
 						<div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
 							<!-- Products Header -->
 							<div class="products-header" style="text-align: center; margin-bottom: 80px;">
-								<div class="section-label" style="font-size: 25px; color: #1abc9c; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-family: inherit; font-weight: normal;">
+								<div class="section-label" style="font-size: 25px; color: #1abc9c; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-family: inherit; font-weight: normal;" data-i18n="products.label">
 									Deep-Tech Solutions
 								</div>
 								<h2 style="font-size: 3rem; color: #2c3e50; line-height: 1.3; max-width: 800px; margin: 0 auto 25px; 
-								   font-family: 'Inter', system-ui, sans-serif; font-weight: 600;">
+								   font-family: 'Inter', system-ui, sans-serif; font-weight: 600;" data-i18n="products.title">
 									Engineered Intelligence Platforms
 								</h2>
-								<p style="font-size: 2rem; color: #7f8c8d; line-height: 1.6; max-width: 600px; margin: 0 auto;">
+								<p style="font-size: 2rem; color: #7f8c8d; line-height: 1.6; max-width: 600px; margin: 0 auto;" data-i18n="products.subtitle">
 									Enterprise-grade AI systems powering intelligent decision-making across industries
 								</p>
 							</div>
-					
 							<!-- Products Grid -->
 							<div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin: 60px 0;">
 										<!-- Product 1 -->
@@ -341,12 +353,12 @@
 												</div>
 												<h3 style="font-size: 2.5rem; color: black; margin: 0;">icarKno<span style="vertical-align: super; font-size: 1.5rem; top: -0.2rem; position: relative;color: black;">TM</span></h3>
 											</div>
-											<p style="color: #7f8c8d; line-height: 1.6; margin-bottom: 30px; font-size: 1.5rem; flex-grow: 1;">
+											<p style="color: #7f8c8d; line-height: 1.6; margin-bottom: 30px; font-size: 1.5rem; flex-grow: 1;" data-i18n="products.p1_desc">
 												Context-aware conversational AI with multi-domain expertise integration
 											</p>
 											<a href="https://iknow.carnotresearch.com/" target="_blank" 
 											   style="display: inline-flex; align-items: center; text-decoration: none; color: #1abc9c; font-weight: 500; transition: all 0.3s ease; font-size: 2rem; margin-top: auto;">
-												Explore Platform
+												<span data-i18n="products.p1_cta">Explore Platform</span>
 												<svg style="margin-left: 8px; width: 18px; height: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
 												</svg>
@@ -363,12 +375,12 @@
 												</div>
 												<h3 style="font-size: 2.5rem; color: black; margin: 0;">BharGati<span style="vertical-align: super; font-size: 1.5rem; top: -0.2rem; position: relative; color: black;">TM</span> AI</h3>
 											</div>
-											<p style="color: #7f8c8d; line-height: 1.6; margin-bottom: 30px; font-size: 1.5rem; flex-grow: 1;">
+											<p style="color: #7f8c8d; line-height: 1.6; margin-bottom: 30px; font-size: 1.5rem; flex-grow: 1;" data-i18n="products.p2_desc">
 												Elevate athletic performance with the world's most comprehensive, AI-driven movement analysis tool.
 											</p>
 											<a href="https://bhargati.ai/" target="_blank" 
 											   style="display: inline-flex; align-items: center; text-decoration: none; color: #1abc9c; font-weight: 500; transition: all 0.3s ease; font-size: 2rem; margin-top: auto;">
-												Discover Solution
+												<span data-i18n="products.p2_cta">Discover Solution</span>
 												<svg style="margin-left: 8px; width: 18px; height: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
 												</svg>
@@ -385,19 +397,66 @@
 												</div>
 												<h3 style="font-size: 2.5rem; color: black; margin: 0;">SAATHI<span style="vertical-align: super; font-size: 1.5rem; top: -0.2rem; position: relative; color: black;">TM</span></h3>
 											</div>
-											<p style="color: #7f8c8d; line-height: 1.6; margin-bottom: 30px; font-size: 1.5rem; flex-grow: 1;">
+											<p style="color: #7f8c8d; line-height: 1.6; margin-bottom: 30px; font-size: 1.5rem; flex-grow: 1;" data-i18n="products.p3_desc">
 												Conversational travel assistant for Delhi: routes, places, tips — instantly.
 											</p>
 											<a href="https://www.bot.carnotresearch.com/" target="_blank" 
 											   style="display: inline-flex; align-items: center; text-decoration: none; color: #e74c3c; font-weight: 500; transition: all 0.3s ease; font-size: 2rem; margin-top: auto;">
-												Explore Delhi Bot
+												<span data-i18n="products.p3_cta">Explore Delhi Bot</span>
 												<svg style="margin-left: 8px; width: 18px; height: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
 												</svg>
 											</a>
 										</div>
 							</div>
-					
+
+				<!-- Products Categories -->
+				<!-- Products Categories -->
+<div class="product-categories" style="background: rgba(26, 188, 156, 0.08); border-radius: 16px; padding: 40px 30px; margin: 40px 0 0;">
+	<div style="text-align: center; max-width: 780px; margin: 0 auto 35px;">
+		<p style="font-size: 2rem; color: #2c3e50; font-weight: 600; margin-bottom: 8px;" data-i18n="products.gemTitle">
+			Listed on Government e-Marketplace (GeM)
+		  </p>
+	  <p style="font-size: 2rem; color: #1abc9c; line-height: 1.6; margin-bottom: 10px; font-weight: 600;" data-i18n="products.gemSub">
+		Business Intelligence and Data Analysis Software (V2)
+	  </p>
+	  <p style="font-size: 1.6rem; color: #5d6d7e; line-height: 1.6; margin: 0;" data-i18n="products.gemDesc">
+		Explore our suite of intelligent solutions for meetings, communication, and analytics—helping enterprises transform data into action.
+	  </p>
+	</div>
+  
+	<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px;">
+	  
+	  <div style="background: white; border-radius: 12px; padding: 28px 24px; box-shadow: 0 12px 35px rgba(44, 62, 80, 0.08); border: 1px solid rgba(26, 188, 156, 0.12); transition: transform 0.3s ease;">
+		<h3 style="font-size: 2rem; color: #1abc9c; margin-bottom: 15px; font-weight: 600;" data-i18n="products.cat1_title">Meeting Summarizer</h3>
+		<p style="font-size: 1.5rem; color: #5d6d7e; line-height: 1.6; margin: 0;" data-i18n="products.cat1_desc">
+		  Automatically captures and summarizes key meeting insights with AI-powered transcription and context tagging.
+		</p>
+	  </div>
+  
+	  <div style="background: white; border-radius: 12px; padding: 28px 24px; box-shadow: 0 12px 35px rgba(44, 62, 80, 0.08); border: 1px solid rgba(26, 188, 156, 0.12); transition: transform 0.3s ease;">
+		<h3 style="font-size: 2rem; color: #1abc9c; margin-bottom: 15px; font-weight: 600;" data-i18n="products.cat2_title">On-Premise Knowledge Agent</h3>
+		<p style="font-size: 1.5rem; color: #5d6d7e; line-height: 1.6; margin: 0;" data-i18n="products.cat2_desc">
+		  A secure on-premise AI agent designed to organize enterprise knowledge and answer complex data queries instantly.
+		</p>
+	  </div>
+  
+	  <div style="background: white; border-radius: 12px; padding: 28px 24px; box-shadow: 0 12px 35px rgba(44, 62, 80, 0.08); border: 1px solid rgba(26, 188, 156, 0.12); transition: transform 0.3s ease;">
+		<h3 style="font-size: 2rem; color: #1abc9c; margin-bottom: 15px; font-weight: 600;" data-i18n="products.cat3_title">Multilingual Chatbot</h3>
+		<p style="font-size: 1.5rem; color: #5d6d7e; line-height: 1.6; margin: 0;" data-i18n="products.cat3_desc">
+		  Engage users across languages with an AI chatbot that supports natural multilingual conversations and sentiment analysis.
+		</p>
+	  </div>
+  
+	  <div style="background: white; border-radius: 12px; padding: 28px 24px; box-shadow: 0 12px 35px rgba(44, 62, 80, 0.08); border: 1px solid rgba(26, 188, 156, 0.12); transition: transform 0.3s ease;">
+		<h3 style="font-size: 2rem; color: #1abc9c; margin-bottom: 15px; font-weight: 600;" data-i18n="products.cat4_title">Generative AI Conversational Agent</h3>
+		<p style="font-size: 1.5rem; color: #5d6d7e; line-height: 1.6; margin: 0;" data-i18n="products.cat4_desc">
+		  A next-gen conversational AI that crafts human-like responses, enabling smart automation for business interactions.
+		</p>
+	  </div>
+  
+	</div>
+  </div>
 							</div>
 						</div>
 					</section>
@@ -408,8 +467,8 @@
 				<section id="section-services" class="page-section topmargin-lg">
 
 					<div class="heading-block center bottommargin-lg">
-						<h2>Services</h2>
-						<span>We provide research consultancy, industry skilling and IP development services across industries.</span>
+						<h2 data-i18n="services.title">Services</h2>
+						<span data-i18n="services.subtitle">We provide research consultancy, industry skilling and IP development services across industries.</span>
 					</div>
 
 					<div class="container clearfix">
@@ -419,7 +478,7 @@
 								<div class="fbox-icon">
 									<a href="#"><i class="icon-bulb"></i></a>
 								</div>
-								<h3>AI Research Consulting</h3>
+								<h3 data-i18n="services.s1">AI Research Consulting</h3>
 							</div>
 						</div>
 
@@ -428,7 +487,7 @@
 								<div class="fbox-icon">
 									<a href="#"><i class="material-icons">settings</i></a>
 								</div>
-								<h3>Managed Innovation-as-a-Service</h3>
+								<h3 data-i18n="services.s2">Managed Innovation-as-a-Service</h3>
 							</div>
 						</div>
 
@@ -437,7 +496,7 @@
 								<div class="fbox-icon">
 									<a href="#"><i class="material-icons">smart_toy</i></a>
 								</div>
-								<h3>Custom LLM & Gen AI Development</h3>
+								<h3 data-i18n="services.s3">Custom LLM & Gen AI Development</h3>
 							</div>
 						</div>
 
@@ -448,7 +507,7 @@
 								<div class="fbox-icon">
 									<a href="#"><i class="icon-folder-open"></i></a>
 								</div>
-								<h3>Multimodal Data Processing & Ingestion</h3>
+								<h3 data-i18n="services.s4">Multimodal Data Processing & Ingestion</h3>
 							</div>
 						</div>
 
@@ -457,7 +516,7 @@
 								<div class="fbox-icon">
 									<a href="#"><i class="material-icons">chat</i></a>
 								</div>
-								<h3>Conversational AI & Agentic Systems</h3>
+								<h3 data-i18n="services.s5">Conversational AI & Agentic Systems</h3>
 							</div>
 						</div>
 
@@ -466,7 +525,7 @@
 								<div class="fbox-icon">
 									<a href="#"><i class="icon-eye"></i></a>
 								</div>
-								<h3>Computer Vision Solutions</h3>
+								<h3 data-i18n="services.s6">Computer Vision Solutions</h3>
 							</div>
 						</div>
 
@@ -477,7 +536,7 @@
 								<div class="fbox-icon">
 									<a href="#"><i class="material-icons">description</i></a>
 								</div>
-								<h3>NLP & Document Intelligence</h3>
+								<h3 data-i18n="services.s7">NLP & Document Intelligence</h3>
 							</div>
 						</div>
 
@@ -486,7 +545,7 @@
 								<div class="fbox-icon">
 									<a href="#"><i class="icon-line-signal"></i></a>
 								</div>
-								<h3>Edge AI & IoT Integration</h3>
+								<h3 data-i18n="services.s8">Edge AI & IoT Integration</h3>
 							</div>
 						</div>
 
@@ -495,7 +554,7 @@
 								<div class="fbox-icon">
 									<a href="#"><i class="icon-connection-full"></i></a>
 								</div>
-								<h3>Tech Skilling & Capability Building</h3>
+								<h3 data-i18n="services.s9">Tech Skilling & Capability Building</h3>
 							</div>
 						</div>
 
@@ -507,11 +566,14 @@
 									<div class="fbox-icon">
 										<a href="#"><i class="material-icons">account_balance</i></a>
 									</div>
-									<h3>R&D for Public Sector and e-Governance</h3>
+									<h3 data-i18n="services.s10">R&D for Public Sector and e-Governance</h3>
 								</div>
 							</div>
 						</div>
-					</div>
+
+						<div class="clear"></div>
+
+					</section>
 
 					<div class="clear"></div>
 
@@ -519,16 +581,16 @@
 				<div class="divider divider-short divider-center topmargin-lg"><i class="icon-star3"></i></div>
 
                 <section id="section-research-areas" class="page-section" style="margin-top: 50px;">
-                    <div class="heading-block center bottommargin-lg">
-						<h2>Research Areas</h2>
-						<span>We conduct research in primarily 2 areas.</span>
+                   <div class="heading-block center bottommargin-lg">
+						<h2 data-i18n="research.title">Research Areas</h2>
+						<span data-i18n="research.subtitle">We conduct research in primarily 2 areas.</span>
 					</div>
                     
                     <div class="container clearfix">
 <!--                        <div class="col_two_third topmargin-sm bottommargin">-->
 
                         <div class="col_two_fifth topmargin-sm bottommargin-lg">
-                            <h3>Natural Language Processing</h3>
+                            <h3 data-i18n="research.nlp_title">Natural Language Processing</h3>
 
 <!--
                             <div class="heading-block topmargin">
@@ -537,9 +599,9 @@
                             </div>
 -->
 
-                            <p>At Carnot Research, our NLP work focuses on building deployable, domain-specific language models that extract intelligence from unstructured, multilingual, and multimodal data — such as documents, web pages, audio, video, and scanned PDFs. Our goal is to make machines truly understand, reason with, and generate human language in contextually grounded, verifiable ways.</p>
+                            <p data-i18n="research.nlp_p1">At Carnot Research, our NLP work focuses on building deployable, domain-specific language models that extract intelligence from unstructured, multilingual, and multimodal data — such as documents, web pages, audio, video, and scanned PDFs. Our goal is to make machines truly understand, reason with, and generate human language in contextually grounded, verifiable ways.</p>
 
-                            <p>We help organizations unlock insights from complex data — including policy documents, regulations, citizen queries, support tickets, contracts, feedback forms, and media content — powering more responsive, intelligent, and scalable systems.</p>
+                            <p data-i18n="research.nlp_p2">We help organizations unlock insights from complex data — including policy documents, regulations, citizen queries, support tickets, contracts, feedback forms, and media content — powering more responsive, intelligent, and scalable systems.</p>
 
                             
 
@@ -562,8 +624,8 @@
                                 <div class="fbox-icon">
                                     <a href="#"><i class="material-icons">question_answer</i></a>
                                 </div>
-                                <h3>Question Answering</h3>
-                                <p>Answer domain-specific queries with citations from trusted documents.</p>
+                                <h3 data-i18n="research.nlp_qna_title">Question Answering</h3>
+                                <p data-i18n="research.nlp_qna_desc">Answer domain-specific queries with citations from trusted documents.</p>
                             </div>
                         </div>
 
@@ -572,8 +634,8 @@
                                 <div class="fbox-icon">
                                     <a href="#"><i class="material-icons">description</i></a>
                                 </div>
-                                <h3>Summarization & Briefing</h3>
-                                <p>Generate concise, actionable summaries from long reports or policies.</p>
+                                <h3 data-i18n="research.nlp_sum_title">Summarization & Briefing</h3>
+                                <p data-i18n="research.nlp_sum_desc">Generate concise, actionable summaries from long reports or policies.</p>
                             </div>
                         </div>
 
@@ -582,8 +644,8 @@
                                 <div class="fbox-icon">
                                     <a href="#"><i class="material-icons">record_voice_over</i></a>
                                 </div>
-                                <h3>Speech-to-Text</h3>
-                                <p>Convert audio content (meetings, calls, citizen voices) into searchable transcripts.</p>
+                                <h3 data-i18n="research.nlp_stt_title">Speech-to-Text</h3>
+                                <p data-i18n="research.nlp_stt_desc">Convert audio content (meetings, calls, citizen voices) into searchable transcripts.</p>
                             </div>
                         </div>
 
@@ -594,8 +656,8 @@
                                 <div class="fbox-icon">
                                     <a href="#"><i class="material-icons">chrome_reader_mode</i></a>
                                 </div>
-                                <h3>OCR & Visual Reasoning</h3>
-                                <p>Digitize and understand scanned or handwritten documents using OCR + VLMs.</p>
+                                <h3 data-i18n="research.nlp_ocr_title">OCR & Visual Reasoning</h3>
+                                <p data-i18n="research.nlp_ocr_desc">Digitize and understand scanned or handwritten documents using OCR + VLMs.</p>
                             </div>
                         </div>
 
@@ -604,8 +666,8 @@
                                 <div class="fbox-icon">
                                     <a href="#"><i class="material-icons">label</i></a>
                                 </div>
-                                <h3>Named Entity Recognition (NER)</h3>
-                                <p>Extract structured information like names, locations, and policies from text.</p>
+                                <h3 data-i18n="research.nlp_ner_title">Named Entity Recognition (NER)</h3>
+                                <p data-i18n="research.nlp_ner_desc">Extract structured information like names, locations, and policies from text.</p>
                             </div>
                         </div>
 
@@ -614,8 +676,8 @@
                                 <div class="fbox-icon">
                                     <a href="#"><i class="material-icons">category</i></a>
                                 </div>
-                                <h3>Document Classification</h3>
-                                <p>Automatically tag and route documents based on content and intent.</p>
+                                <h3 data-i18n="research.nlp_class_title">Document Classification</h3>
+                                <p data-i18n="research.nlp_class_desc">Automatically tag and route documents based on content and intent.</p>
                             </div>
                         </div>
 
@@ -626,8 +688,8 @@
                                 <div class="fbox-icon">
                                     <a href="#"><i class="material-icons">psychology</i></a>
                                 </div>
-                                <h3>Intent Detection</h3>
-                                <p>Understand user goals in conversations for accurate routing and response.</p>
+                                <h3 data-i18n="research.nlp_intent_title">Intent Detection</h3>
+                                <p data-i18n="research.nlp_intent_desc">Understand user goals in conversations for accurate routing and response.</p>
                             </div>
                         </div>
 
@@ -636,8 +698,8 @@
                                 <div class="fbox-icon">
                                     <a href="#"><i class="material-icons">merge_type</i></a>
                                 </div>
-                                <h3>Multimodal Data Fusion</h3>
-                                <p>Integrate text, image, speech, and video for richer AI-driven insights.</p>
+                                <h3 data-i18n="research.nlp_multimodal_title">Multimodal Data Fusion</h3>
+                                <p data-i18n="research.nlp_multimodal_desc">Integrate text, image, speech, and video for richer AI-driven insights.</p>
                             </div>
                         </div>
 
@@ -646,8 +708,8 @@
                                 <div class="fbox-icon">
                                     <a href="#"><i class="material-icons">emoji_emotions</i></a>
                                 </div>
-                                <h3>Sentiment & Feedback Analysis</h3>
-                                <p>Extract opinions and trends from social, internal, and public feedback data.</p>
+                                <h3 data-i18n="research.nlp_sentiment_title">Sentiment & Feedback Analysis</h3>
+                                <p data-i18n="research.nlp_sentiment_desc">Extract opinions and trends from social, internal, and public feedback data.</p>
                             </div>
                         </div>
                         
@@ -690,7 +752,7 @@
                         
 <!--                        <div class="col_one_third topmargin-sm bottommargin-lg col_last">-->
                         <div class="col_two_fifth topmargin-sm bottommargin-lg col_last">
-                            <h3>Computer Vision</h3>
+                            <h3 data-i18n="research.cv_title">Computer Vision</h3>
 <!--                            <span>Emulating Human Vision &amp; Beyond.</span>-->
 
 <!--
@@ -700,7 +762,7 @@
                             </div>
 -->
 
-                            <p>We use state of art approaches in computer vision and deep learning to help organizations extract, analyze and understand information from images &amp; videos. By integrating computer vision technology into existing systems, organizations can automate and improve speed of various mechanical processes and also reduce operational costs. Our R&amp;D team is constantly evaluating and testing latest approaches, taking on new client challenges in different areas.</p>
+                            <p data-i18n="research.cv_desc">We use state of art approaches in computer vision and deep learning to help organizations extract, analyze and understand information from images &amp; videos. By integrating computer vision technology into existing systems, organizations can automate and improve speed of various mechanical processes and also reduce operational costs. Our R&amp;D team is constantly evaluating and testing latest approaches, taking on new client challenges in different areas.</p>
 
                             
 
@@ -725,8 +787,8 @@
 <!--                                    <a href="#"><i class="icon-phone2"></i></a>-->
                                     <a href="#"><i class="material-icons">picture_in_picture_alt</i></a>
                                 </div>
-                                <h3>Object Detection</h3>
-                                <p>Pedestrian Detection, Medical Imaging, Image Search, Automatic Image Annotation, Object Counting. </p>
+                                <h3 data-i18n="research.cv_obj_det_title">Object Detection</h3>
+                                <p data-i18n="research.cv_obj_det_desc">Pedestrian Detection, Medical Imaging, Image Search, Automatic Image Annotation, Object Counting. </p>
                             </div>
                         </div>
 
@@ -736,8 +798,8 @@
 <!--                                    <a href="#"><i class="icon-eye"></i></a>-->
                                     <a href="#"><i class="material-icons">face</i></a>
                                 </div>
-                                <h3>Face Recognition</h3>
-                                <p>Retail Crime Prevention, Smarter Advertising, Facial Biometrics, Automated Attendance.</p>
+                                <h3 data-i18n="research.cv_face_title">Face Recognition</h3>
+                                <p data-i18n="research.cv_face_desc">Retail Crime Prevention, Smarter Advertising, Facial Biometrics, Automated Attendance.</p>
                             </div>
                         </div>
 
@@ -747,8 +809,8 @@
 <!--                                    <a href="#"><i class="icon-star2"></i></a>-->
                                     <a href="#"><i class="material-icons">dvr</i></a>
                                 </div>
-                                <h3>Video Analytics</h3>
-                                <p>Patient Monitoring, Predictive Maintenance, Store Heatmap, Surveillance, Autonomous Vehicles.</p>
+                                <h3 data-i18n="research.cv_video_title">Video Analytics</h3>
+                                <p data-i18n="research.cv_video_desc">Patient Monitoring, Predictive Maintenance, Store Heatmap, Surveillance, Autonomous Vehicles.</p>
                             </div>
                         </div>
 
@@ -761,8 +823,8 @@
                                     <a href="#"><i class="material-icons">emoji_people</i></a>
                                     
                                 </div>
-                                <h3>Activity Recognition</h3>
-                                <p>Security &amp; Surveillance, Fitness Tracking, Fall Detection, Elderly Care, Event Detection.</p>
+                                <h3 data-i18n="research.cv_activity_title">Activity Recognition</h3>
+                                <p data-i18n="research.cv_activity_desc">Security &amp; Surveillance, Fitness Tracking, Fall Detection, Elderly Care, Event Detection.</p>
                             </div>
                         </div>
 
@@ -772,8 +834,8 @@
 <!--                                    <a href="#"><i class="icon-params"></i></a>-->
                                     <a href="#"><i class="material-icons">mood</i></a>
                                 </div>
-                                <h3>Emotion Recognition</h3>
-                                <p>Market Research, e-Learning, Remote Elderly Care, Couselling, Driver Fatigue Monitoring.</p>
+                                <h3 data-i18n="research.cv_emotion_title">Emotion Recognition</h3>
+                                <p data-i18n="research.cv_emotion_desc">Market Research, e-Learning, Remote Elderly Care, Couselling, Driver Fatigue Monitoring.</p>
                             </div>
                         </div>
 
@@ -783,8 +845,8 @@
 <!--                                    <a href="#"><i class="icon-fire"></i></a>-->
                                     <a href="#"><i class="material-icons">accessibility_new</i></a>
                                 </div>
-                                <h3>Pose Estimation</h3>
-                                <p>Gait/Posture Analysis, Animation, Gaming, Virtual/Augmented Reality, Surveillance.</p>
+                                <h3 data-i18n="research.cv_pose_title">Pose Estimation</h3>
+                                <p data-i18n="research.cv_pose_desc">Gait/Posture Analysis, Animation, Gaming, Virtual/Augmented Reality, Surveillance.</p>
                             </div>
                         </div>
                         
@@ -796,8 +858,8 @@
                                     <a href="#"><i class="icon-video"></i></a>
 <!--                                    <a href="#"><i class="material-icons">sports_handball</i></a>-->
                                 </div>
-                                <h3>Depth Estimation</h3>
-                                <p>Robotics &amp; Trajectory Estimation, Augmented Reality, Haze &amp; Fog Removal.</p>
+                                <h3 data-i18n="research.cv_depth_title">Depth Estimation</h3>
+                                <p data-i18n="research.cv_depth_desc">Robotics &amp; Trajectory Estimation, Augmented Reality, Haze &amp; Fog Removal.</p>
                             </div>
                         </div>
 
@@ -807,8 +869,8 @@
 <!--                                    <a href="#"><i class="icon-params"></i></a>-->
                                     <a href="#"><i class="material-icons">broken_image</i></a>
                                 </div>
-                                <h3>Semantic Segmentation</h3>
-                                <p>Bio-medical Image Diagnosis, Autonomous Driving, Satellite Image Processing, Precision Agriculture.</p>
+                                <h3 data-i18n="research.cv_seg_title">Semantic Segmentation</h3>
+                                <p data-i18n="research.cv_seg_desc">Bio-medical Image Diagnosis, Autonomous Driving, Satellite Image Processing, Precision Agriculture.</p>
                             </div>
                         </div>
 
@@ -818,8 +880,8 @@
 <!--                                    <a href="#"><i class="icon-fire"></i></a>-->
                                     <a href="#"><i class="material-icons">directions_run</i></a>
                                 </div>
-                                <h3>Object Tracking</h3>
-                                <p>Sports Analytics, Human-Computer Interaction, Autonomous Driving, Surveillance.</p>
+                                <h3 data-i18n="research.cv_tracking_title">Object Tracking</h3>
+                                <p data-i18n="research.cv_tracking_desc">Sports Analytics, Human-Computer Interaction, Autonomous Driving, Surveillance.</p>
                             </div>
                         </div>
                 
@@ -836,13 +898,13 @@
 		<section id="section-career" class="page-section" style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); padding: 40px 0;">
 			<div class="container">
 				<div class="career-header" style="text-align: center; margin-bottom: 80px;">
-					<div style="color: #1abc9c; font-size: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;">
+					<div style="color: #1abc9c; font-size: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;" data-i18n="career.label">
 						Join Our Team
 					</div>
-					<h2 style="color: white; font-size: 32px; font-weight: 700; margin-bottom: 20px; line-height: 1.2;">
+					<h2 style="color: white; font-size: 32px; font-weight: 700; margin-bottom: 20px; line-height: 1.2;" data-i18n="career.title">
 						Work With Us
 					</h2>
-					<p style="color: #bdc3c7; font-size: 18px; line-height: 1.6; max-width: 600px; margin: 0 auto;">
+					<p style="color: #bdc3c7; font-size: 18px; line-height: 1.6; max-width: 600px; margin: 0 auto;" data-i18n="career.desc">
 						Join our team of AI researchers and engineers. Contribute to cutting-edge projects while advancing your career.
 					</p>
 				</div>
@@ -853,12 +915,10 @@
 						<div style="width: 80px; height: 80px; background: linear-gradient(135deg, #1abc9c, #3498db); border-radius: 50%; margin: 0 auto 25px; display: flex; align-items: center; justify-content: center;">
 							<i class="icon-briefcase" style="font-size: 32px; color: white;"></i>
 						</div>
-						<h3 style="color: white; font-size: 28px; font-weight: 600; margin-bottom: 15px;">Job</h3>
-						<p style="color: #bdc3c7; font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
-							If you have the fire in your belly to make a difference in the world while leveraging <strong style="color: #1abc9c;">Deep Tech</strong>, and want to be part of a fine team, please reach out to us!
-						</p>
+						<h3 style="color: white; font-size: 28px; font-weight: 600; margin-bottom: 15px;" data-i18n="career.job_title">Job</h3>
+						<p style="color: #bdc3c7; font-size: 16px; line-height: 1.6; margin-bottom: 30px;" data-i18n="career.job_desc">If you have the fire in your belly to make a difference in the world while leveraging <strong style="color: #1abc9c;">Deep Tech</strong>, and want to be part of a fine team, please reach out to us!</p>
 						<button class="apply-btn" data-type="job" style="background: linear-gradient(to right, #1abc9c, #3498db); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; width: 100%;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(26, 188, 156, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-							Apply for Job
+							<span data-i18n="career.job_button">Apply for Job</span>
 						</button>
 					</div>
 
@@ -869,12 +929,10 @@
 			<path d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V8A2,2 0 0,1 4,6H8V4A2,2 0 0,1 10,2M14,6V4H10V6H14M4,8V19H20V8H4Z"/>
 		</svg>
 	</div>
-	<h3 style="color: white; font-size: 28px; font-weight: 600; margin-bottom: 15px;">Internship</h3>
-	<p style="color: #bdc3c7; font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
-		If you're a passionate student eager to dive into the world of <strong style="color: #e74c3c;">Deep Tech</strong> and gain hands-on experience with cutting-edge AI research, we'd love to have you on our team!
-	</p>
+	<h3 style="color: white; font-size: 28px; font-weight: 600; margin-bottom: 15px;" data-i18n="career.internship_title">Internship</h3>
+	<p style="color: #bdc3c7; font-size: 16px; line-height: 1.6; margin-bottom: 30px;" data-i18n="career.internship_desc">If you're a passionate student eager to dive into the world of <strong style="color: #e74c3c;">Deep Tech</strong> and gain hands-on experience with cutting-edge AI research, we'd love to have you on our team!</p>
 	<button class="apply-btn" data-type="internship" style="background: linear-gradient(to right, #e74c3c, #f39c12); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; width: 100%;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(231, 76, 60, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-		Apply for Internship
+		<span data-i18n="career.internship_button">Apply for Internship</span>
 	</button>
 </div>
 				</div>
@@ -885,45 +943,45 @@
 		<div id="applicationModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px);">
 			<div style="background-color: white; margin: 2% auto; padding: 0; border-radius: 15px; width: 90%; max-width: 600px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);">
 				<div style="padding: 25px 30px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
-					<h3 id="modalTitle" style="margin: 0; color: #2c3e50; font-size: 24px; font-weight: 700;">Apply for Position</h3>
+					<h3 id="modalTitle" style="margin: 0; color: #2c3e50; font-size: 24px; font-weight: 700;" data-i18n="career.modal_title">Apply for Position</h3>
 					<span class="close" style="color: #999; font-size: 28px; font-weight: bold; cursor: pointer; transition: color 0.3s ease;" onmouseover="this.style.color='#e74c3c'" onmouseout="this.style.color='#999'">&times;</span>
 				</div>
 				<div style="padding: 30px;">
 					<form id="application-form">
 						<div style="display: flex; gap: 15px; margin-bottom: 15px;">
 							<div style="flex: 1;">
-								<input type="text" id="applicant-name" placeholder="Full Name*" required style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; color: #555; background: #f9f9f9; transition: all 0.3s ease;" onfocus="this.style.borderColor='#1abc9c'; this.style.boxShadow='0 0 0 3px rgba(26, 188, 156, 0.1)'; this.style.background='white'" onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'; this.style.background='#f9f9f9'" />
+								<input type="text" id="applicant-name" data-i18n-placeholder="career.form_name" placeholder="Full Name*" required style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; color: #555; background: #f9f9f9; transition: all 0.3s ease;" onfocus="this.style.borderColor='#1abc9c'; this.style.boxShadow='0 0 0 3px rgba(26, 188, 156, 0.1)'; this.style.background='white'" onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'; this.style.background='#f9f9f9'" />
 							</div>
 							<div style="flex: 1;">
-								<input type="email" id="applicant-email" placeholder="Email Address*" required style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; color: #555; background: #f9f9f9; transition: all 0.3s ease;" onfocus="this.style.borderColor='#1abc9c'; this.style.boxShadow='0 0 0 3px rgba(26, 188, 156, 0.1)'; this.style.background='white'" onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'; this.style.background='#f9f9f9'" />
+								<input type="email" id="applicant-email" data-i18n-placeholder="career.form_email" placeholder="Email Address*" required style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; color: #555; background: #f9f9f9; transition: all 0.3s ease;" onfocus="this.style.borderColor='#1abc9c'; this.style.boxShadow='0 0 0 3px rgba(26, 188, 156, 0.1)'; this.style.background='white'" onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'; this.style.background='#f9f9f9'" />
 							</div>
 						</div>
 
 						<div style="display: flex; gap: 15px; margin-bottom: 15px;">
 							<div style="flex: 1;">
-								<input type="text" id="applicant-phone" placeholder="Phone Number" style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; color: #555; background: #f9f9f9; transition: all 0.3s ease;" onfocus="this.style.borderColor='#1abc9c'; this.style.boxShadow='0 0 0 3px rgba(26, 188, 156, 0.1)'; this.style.background='white'" onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'; this.style.background='#f9f9f9'" />
+								<input type="text" id="applicant-phone" data-i18n-placeholder="career.form_phone" placeholder="Phone Number" style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; color: #555; background: #f9f9f9; transition: all 0.3s ease;" onfocus="this.style.borderColor='#1abc9c'; this.style.boxShadow='0 0 0 3px rgba(26, 188, 156, 0.1)'; this.style.background='white'" onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'; this.style.background='#f9f9f9'" />
 							</div>
 							<div style="flex: 1;">
 								<select id="experience-level" required style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; color: #555; background: #f9f9f9; transition: all 0.3s ease;" onfocus="this.style.borderColor='#1abc9c'; this.style.boxShadow='0 0 0 3px rgba(26, 188, 156, 0.1)'; this.style.background='white'" onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'; this.style.background='#f9f9f9'">
-									<option value="">Experience Level*</option>
-									<option value="0-1 years">0-1 years</option>
-									<option value="1-3 years">1-3 years</option>
-									<option value="3-5 years">3-5 years</option>
-									<option value="5-10 years">5-10 years</option>
-									<option value="10+ years">10+ years</option>
+									<option value="" data-i18n="career.form_experience">Experience Level*</option>
+									<option value="0-1 years" data-i18n="career.form_experience_0">0-1 years</option>
+									<option value="1-3 years" data-i18n="career.form_experience_1">1-3 years</option>
+									<option value="3-5 years" data-i18n="career.form_experience_2">3-5 years</option>
+									<option value="5-10 years" data-i18n="career.form_experience_3">5-10 years</option>
+									<option value="10+ years" data-i18n="career.form_experience_4">10+ years</option>
 								</select>
 							</div>
 						</div>
 
 						<div style="margin-bottom: 15px;">
-							<textarea id="cover-letter" rows="4" placeholder="Tell us why you're interested and what makes you a great fit*" required style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; color: #555; background: #f9f9f9; transition: all 0.3s ease; resize: vertical;" onfocus="this.style.borderColor='#1abc9c'; this.style.boxShadow='0 0 0 3px rgba(26, 188, 156, 0.1)'; this.style.background='white'" onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'; this.style.background='#f9f9f9'"></textarea>
+							<textarea id="cover-letter" rows="4" data-i18n-placeholder="career.form_cover" placeholder="Tell us why you're interested and what makes you a great fit*" required style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; color: #555; background: #f9f9f9; transition: all 0.3s ease; resize: vertical;" onfocus="this.style.borderColor='#1abc9c'; this.style.boxShadow='0 0 0 3px rgba(26, 188, 156, 0.1)'; this.style.background='white'" onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'; this.style.background='#f9f9f9'"></textarea>
 						</div>
 
 						<div style="margin-bottom: 20px;">
-							<input type="url" id="resume-drive-link" placeholder="Google Drive Link to Resume/CV*" required style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; color: #555; background: #f9f9f9; transition: all 0.3s ease;" onfocus="this.style.borderColor='#1abc9c'; this.style.boxShadow='0 0 0 3px rgba(26, 188, 156, 0.1)'; this.style.background='white'" onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'; this.style.background='#f9f9f9'" />
+							<input type="url" id="resume-drive-link" data-i18n-placeholder="career.form_resume" placeholder="Google Drive Link to Resume/CV*" required style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; color: #555; background: #f9f9f9; transition: all 0.3s ease;" onfocus="this.style.borderColor='#1abc9c'; this.style.boxShadow='0 0 0 3px rgba(26, 188, 156, 0.1)'; this.style.background='white'" onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'; this.style.background='#f9f9f9'" />
 							<div style="margin-top: 8px; font-size: 12px; color: #7f8c8d; line-height: 1.4;">
 								<i class="icon-info" style="color: #1abc9c; margin-right: 5px;"></i>
-								Upload your resume to Google Drive, make it shareable, and paste the link here
+								<span data-i18n="career.form_resume_help">Upload your resume to Google Drive, make it shareable, and paste the link here</span>
 							</div>
 						</div>
 
@@ -934,7 +992,7 @@
 
 						<div style="margin-bottom: 25px;">
 							<button type="submit" style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 250px; margin: 0 auto; padding: 14px 30px; border: none; border-radius: 8px; background: linear-gradient(to right, #1abc9c, #3498db); color: white; font-size: 16px; font-weight: 600; letter-spacing: 0.5px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='linear-gradient(to right, #16a085, #2980b9)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(26, 188, 156, 0.3)'" onmouseout="this.style.background='linear-gradient(to right, #1abc9c, #3498db)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-								<span>Submit Application</span>
+								<span data-i18n="career.form_submit">Submit Application</span>
 								<i class="icon-arrow-right" style="margin-left: 10px; transition: transform 0.3s ease;"></i>
 							</button>
 						</div>
@@ -951,9 +1009,9 @@
 					<!-- Left Column: Just the Header -->
 					<div class="contact-left-column" data-aos="fade-right">
 						<div class="contact-header">
-							<span class="section-subtitle">Get in Touch</span>
-							<h2 class="section-title">Let's Start a Conversation</h2>
-							<p class="section-description">Have a question about our research or services? We're here to help and answer any questions you might have.</p>
+							<span class="section-subtitle" data-i18n="contact.subtitle">Get in Touch</span>
+							<h2 class="section-title" data-i18n="contact.title">Let's Start a Conversation</h2>
+							<p class="section-description" data-i18n="contact.desc">Have a question about our research or services? We're here to help and answer any questions you might have.</p>
 							
 			
 						</div>
@@ -962,51 +1020,51 @@
 					<!-- Right Column: Contact Form -->
 					<div class="contact-right-column" data-aos="fade-left" data-aos-delay="200">
 						<div class="form-card">
-							<h3>Send us a message</h3>
+							<h3 data-i18n="contact.form_title">Send us a message</h3>
 							<form id="template-contactform" name="template-contactform" method="POST">
 								<div class="form-process"></div>
 
 								<div class="form-row">
 									<div class="form-group">
-										<input type="text" id="template-contactform-name" name="template-contactform-name" class="form-control" placeholder="Your Name*" required />
+										<input type="text" id="template-contactform-name" name="template-contactform-name" class="form-control" data-i18n-placeholder="contact.form_name" placeholder="Your Name*" required />
 									</div>
 									<div class="form-group">
-										<input type="email" id="template-contactform-email" name="template-contactform-email" class="form-control" placeholder="Your Email*" required />
+										<input type="email" id="template-contactform-email" name="template-contactform-email" class="form-control" data-i18n-placeholder="contact.form_email" placeholder="Your Email*" required />
 									</div>
 								</div>
 
 								<div class="form-row">
 									<div class="form-group">
-										<input type="text" id="template-contactform-phone" name="template-contactform-phone" class="form-control" placeholder="Your Phone" />
+										<input type="text" id="template-contactform-phone" name="template-contactform-phone" class="form-control" data-i18n-placeholder="contact.form_phone" placeholder="Your Phone" />
 									</div>
 									<div class="form-group">
-										<input type="text" id="template-contactform-subject" name="template-contactform-subject" class="form-control" placeholder="Subject*" required />
+										<input type="text" id="template-contactform-subject" name="template-contactform-subject" class="form-control" data-i18n-placeholder="contact.form_subject" placeholder="Subject*" required />
 									</div>
 								</div>
 
 								<div class="form-group">
 									<div class="service-selection">
-										<label class="service-label">Services of Interest</label>
+										<label class="service-label" data-i18n="contact.services_label">Services of Interest</label>
 										<div class="checkbox-grid">
 											<label class="checkbox-item">
 												<input type="checkbox" name="template-contactform-service[]" value="Product Development" />
 												<span class="checkmark"></span>
-												<span class="checkbox-text">Product Development</span>
+												<span class="checkbox-text" data-i18n="contact.service1">Product Development</span>
 											</label>
 											<label class="checkbox-item">
 												<input type="checkbox" name="template-contactform-service[]" value="Research Consulting" />
 												<span class="checkmark"></span>
-												<span class="checkbox-text">Research Consulting</span>
+												<span class="checkbox-text" data-i18n="contact.service2">Research Consulting</span>
 											</label>
 											<label class="checkbox-item">
 												<input type="checkbox" name="template-contactform-service[]" value="Industry Skilling" />
 												<span class="checkmark"></span>
-												<span class="checkbox-text">Industry Skilling</span>
+												<span class="checkbox-text" data-i18n="contact.service3">Industry Skilling</span>
 											</label>
 										</div>
 									</div>
 									<div class="product-selection">
-										<label class="product-label">Products of Interest</label>
+										<label class="product-label" data-i18n="contact.products_label">Products of Interest</label>
 										<div class="checkbox-grid">
 											<label class="checkbox-item">
 												<input type="checkbox" name="template-contactform-product[]" value="icarKno™" />
@@ -1023,7 +1081,7 @@
 								</div>
 
 								<div class="form-group">
-									<textarea id="template-contactform-message" name="template-contactform-message" class="form-control" rows="3" placeholder="Your Message*" required></textarea>
+									<textarea id="template-contactform-message" name="template-contactform-message" class="form-control" rows="3" data-i18n-placeholder="contact.form_message" placeholder="Your Message*" required></textarea>
 								</div>
 
 								<div class="form-group recaptcha-container">
@@ -1032,7 +1090,7 @@
 
 								<div class="form-group">
 									<button type="submit" id="template-contactform-submit" name="template-contactform-submit" class="submit-btn">
-										<span>Send Message</span>
+										<span data-i18n="contact.form_submit">Send Message</span>
 										<i class="icon-arrow-right"></i>
 									</button>
 								</div>
@@ -1054,8 +1112,8 @@
 								<i class="icon-map-marker2"></i>
 							</div>
 							<div class="info-content">
-								<h4>Visit Us</h4>
-								<p>2-B-4A, Research and Innovation Park, IIT Delhi, Hauz Khas<br>New Delhi, India</p>
+								<h4 data-i18n="contact.visit_title">Visit Us</h4>
+								<p data-i18n="contact.visit_address">2-B-4A, Research and Innovation Park, IIT Delhi, Hauz Khas<br>New Delhi, India</p>
 							</div>
 						</div>
 						<div class="info-card">
@@ -1063,7 +1121,7 @@
 								<i class="icon-email3"></i>
 							</div>
 							<div class="info-content">
-								<h4>Email Us</h4>
+								<h4 data-i18n="contact.email_title">Email Us</h4>
 								<p>contact@carnotresearch.com</p>
 							</div>
 						</div>
@@ -1072,14 +1130,14 @@
 								<i class="icon-phone3"></i>
 							</div>
 							<div class="info-content">
-								<h4>Call Us</h4>
+								<h4 data-i18n="contact.call_title">Call Us</h4>
 								<p>+91 8449710411</p>
 							</div>
 						</div>
 						
 						<!-- Social Media Links -->
 						<div class="social-links">
-							<h4>Connect With Us</h4>
+							<h4 data-i18n="contact.social_title">Connect With Us</h4>
 							<div class="social-icons">
 								<a href="https://www.linkedin.com/company/carnot-research-pvt-ltd/posts/?feedView=all" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
 								<a href="https://www.youtube.com/@CarnotResearch" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
@@ -1109,8 +1167,8 @@
 				<div class="container clearfix">
 
 					<div class="col_half">
-						Copyrights &copy; 2023 All Rights Reserved by Carnot Research Pvt. Ltd.<br>
-						<div class="copyright-links"><a href="terms.html">Terms of Use</a> / <a href="privacy.html">Privacy Policy</a> / <a href="refund.html">Refund Policy</a> / <a href="dataDeletion.html">Data Deletion Policy</a> </div>
+						<span data-i18n="footer.copyright">Copyrights &copy; 2023 All Rights Reserved by Carnot Research Pvt. Ltd.</span><br>
+						<div class="copyright-links"><a href="terms.html" data-i18n="footer.terms">Terms of Use</a> / <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a> / <a href="refund.html" data-i18n="footer.refund">Refund Policy</a> / <a href="dataDeletion.html" data-i18n="footer.dataDeletion">Data Deletion Policy</a> </div>
 					</div>
 
 					<div class="col_half col_last tright">
@@ -2440,7 +2498,7 @@ Resume Google Drive Link: ${applicationData.resumeLink}`;
 					
 					if (response.ok) {
 						console.log('Success!'); // Debug log
-						showNotification('Application submitted successfully! We will get back to you soon.', 'success');
+						showNotification(i18next.t('career.success_msg'), 'success');
 						closeModal();
 						grecaptcha.reset(); // Reset reCAPTCHA
 					} else {
@@ -2472,5 +2530,167 @@ Resume Google Drive Link: ${applicationData.resumeLink}`;
 		document.head.appendChild(style);
 	</script>
 
+	<!-- i18next Internationalization Script -->
+	<script>
+		// Initialize i18next
+		i18next
+			.use(i18nextBrowserLanguageDetector)
+			.init({
+				fallbackLng: 'en',
+				lng: localStorage.getItem('i18nextLng') || 'en',
+				resources: {
+					en: {
+						translation: {}
+					},
+					hi: {
+						translation: {}
+					}
+				},
+				interpolation: {
+					escapeValue: false
+				}
+			}, function(err, t) {
+				if (err) {
+					console.error('i18next initialization error:', err);
+				}
+				// Load translations from JSON files
+				loadTranslations();
+			});
+
+		// Load translation files
+		async function loadTranslations() {
+			try {
+				const [enTranslations, hiTranslations] = await Promise.all([
+					fetch('locales/en.json').then(res => {
+						if (!res.ok) throw new Error('Failed to load English translations');
+						return res.json();
+					}),
+					fetch('locales/hi.json').then(res => {
+						if (!res.ok) throw new Error('Failed to load Hindi translations');
+						return res.json();
+					})
+				]);
+				
+				// Add translations to i18next
+				i18next.addResourceBundle('en', 'translation', enTranslations.translation, true, true);
+				i18next.addResourceBundle('hi', 'translation', hiTranslations.translation, true, true);
+				
+				// Update content
+				updateContent();
+			} catch (error) {
+				console.error('Error loading translations:', error);
+			}
+		}
+
+		// Update page content with translations
+		function updateContent() {
+			// Update all elements with data-i18n attribute
+			document.querySelectorAll('[data-i18n]').forEach(element => {
+				const key = element.getAttribute('data-i18n');
+				const translatedText = i18next.t(key);
+				
+				// Handle HTML content (for elements with <span> tags)
+				if (translatedText.includes('<span>') || translatedText.includes('<br>')) {
+					element.innerHTML = translatedText;
+				} else {
+					element.textContent = translatedText;
+				}
+			});
+			
+			// Update placeholders with data-i18n-placeholder attribute
+			document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+				const key = element.getAttribute('data-i18n-placeholder');
+				element.placeholder = i18next.t(key);
+			});
+			
+			// Update option elements with data-i18n attribute
+			document.querySelectorAll('option[data-i18n]').forEach(option => {
+				const key = option.getAttribute('data-i18n');
+				option.textContent = i18next.t(key);
+			});
+			
+			// Update HTML lang attribute
+			document.documentElement.lang = i18next.language;
+			// Keep direction as ltr for now (Hindi can work with ltr)
+			document.documentElement.dir = 'ltr';
+			
+			// Update current language display
+			const currentLangEl = document.getElementById('current-lang');
+			if (currentLangEl) {
+				currentLangEl.textContent = i18next.language.toUpperCase();
+			}
+		}
+
+		// Language switcher functionality
+		document.addEventListener('DOMContentLoaded', function() {
+			const langSwitcher = document.getElementById('lang-switcher');
+			const langDropdown = document.getElementById('lang-dropdown');
+			const langContainer = document.querySelector('.language-switcher');
+			
+			if (!langSwitcher || !langDropdown || !langContainer) {
+				return;
+			}
+			
+			let isDropdownOpen = false;
+			
+			// Toggle dropdown on switcher click
+			langSwitcher.addEventListener('click', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				isDropdownOpen = !isDropdownOpen;
+				langDropdown.style.display = isDropdownOpen ? 'block' : 'none';
+			});
+			
+			// Handle language selection - use event delegation on the dropdown
+			langDropdown.addEventListener('click', function(e) {
+				e.stopPropagation(); // Prevent event from bubbling to document
+				
+				const langLink = e.target.closest('[data-lang]');
+				if (!langLink) return;
+				
+				e.preventDefault();
+				const lang = langLink.getAttribute('data-lang');
+				
+				if (lang && (lang === 'en' || lang === 'hi')) {
+					i18next.changeLanguage(lang, function(err, t) {
+						if (err) {
+							console.error('Error changing language:', err);
+							return;
+						}
+						updateContent();
+						// Save language preference
+						localStorage.setItem('i18nextLng', lang);
+						// Close dropdown
+						isDropdownOpen = false;
+						langDropdown.style.display = 'none';
+					});
+				}
+			});
+			
+			// Close dropdown when clicking outside - use capture phase to check before other handlers
+			document.addEventListener('click', function(e) {
+				// Check if click is outside the language switcher container
+				if (!langContainer.contains(e.target)) {
+					isDropdownOpen = false;
+					langDropdown.style.display = 'none';
+				}
+			}, true); // Use capture phase
+			
+			// Load saved language preference on page load
+			const savedLang = localStorage.getItem('i18nextLng');
+			if (savedLang && (savedLang === 'en' || savedLang === 'hi')) {
+				// Wait for i18next to be ready
+				setTimeout(() => {
+					i18next.changeLanguage(savedLang, function(err, t) {
+						if (!err) {
+							updateContent();
+						}
+					});
+				}, 100);
+			}
+		});
+	</script>
+	
 </body>
 </html>
+
