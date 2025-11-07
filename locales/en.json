@@ -1,5 +1,8 @@
 {
   "translation": {
+    "scroller": {
+      "text": "Checkout our new launch: <b>icarKno<sup style=\"font-size: 1rem;\">TM</sup>-chat</b> Query any document with ease in your own language"
+    },
     "slider": {
       "welcome": "Welcome to Carnot Research",
       "welcomeDesc": "Empowering individuals and organizations to leverage cutting edge research and enable innovation.",

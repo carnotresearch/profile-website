@@ -56,7 +56,7 @@
 				display: inline-block;
 				padding-left: 50%;
 				animation: marquee 18s linear infinite;
-			">
+			" data-i18n="scroller.text">
 				Checkout our new launch: <b>icarKno<sup style="font-size: 1rem;">TM</sup>-chat</b> Query any document with ease in your own language
 			</span>
 		</p>
@@ -2589,8 +2589,8 @@ Resume Google Drive Link: ${applicationData.resumeLink}`;
 				const key = element.getAttribute('data-i18n');
 				const translatedText = i18next.t(key);
 				
-				// Handle HTML content (for elements with <span> tags)
-				if (translatedText.includes('<span>') || translatedText.includes('<br>')) {
+				// Handle HTML content (for elements with HTML tags like <span>, <br>, <b>, <sup>, etc.)
+				if (translatedText.includes('<') && translatedText.includes('>')) {
 					element.innerHTML = translatedText;
 				} else {
 					element.textContent = translatedText;
