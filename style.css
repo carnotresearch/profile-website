@@ -10763,8 +10763,7 @@ label.error { display: none !important; }
 /* Heading Block - with Subtitle
 -----------------------------------------------------------------*/
 
-.heading-block { margin-bottom: 5px;
-margin-top: 20px; }
+.heading-block { margin-bottom: 5px; }
 
 .heading-block h1,
 .heading-block h2,
