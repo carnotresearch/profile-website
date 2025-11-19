@@ -27,26 +27,192 @@
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
 
 	<style>
-		.service-detail-page { min-height: 100vh; display: flex; flex-direction: column; }
-		.service-header { background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); color: white; padding: 60px 0; text-align: center; }
-		.service-content { flex: 1; padding: 60px 0; background: #f8f9fa; }
-		.back-button { position: absolute; top: 20px; left: 20px; background: rgba(255, 255, 255, 0.2); color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; font-weight: 500; backdrop-filter: blur(10px); }
-		.back-button:hover { background: rgba(255, 255, 255, 0.3); transform: translateX(-5px); color: white; }
-		.service-header h1 { font-size: 3rem; margin-bottom: 20px; font-weight: 700; }
-		.service-header p { font-size: 1.3rem; opacity: 0.95; max-width: 800px; margin: 0 auto; }
-		.service-body { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-		.service-section { background: white; border-radius: 12px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); }
-		.service-section h2 { color: #9b59b6; font-size: 2rem; margin-bottom: 20px; font-weight: 600; }
-		.service-section p { font-size: 1.1rem; line-height: 1.8; color: #555; margin-bottom: 15px; }
-		.service-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
-		.feature-item { background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #9b59b6; }
-		.feature-item h3 { color: #9b59b6; font-size: 1.3rem; margin-bottom: 10px; }
-		.feature-item p { font-size: 1rem; color: #666; margin: 0; }
+		.service-detail-page {
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.service-header {
+			background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
+			padding: 20px 0 18px;
+			color: #ffffff;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+		}
+
+		.service-header .container {
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0;
+		}
+
+		.service-title-block h1 {
+			font-size: 36px;
+			margin: 0;
+			font-weight: 700;
+			color: #ffffff;
+		}
+
+		.service-title-block p {
+			font-size: 20px;
+			color: #11302c;
+			margin: 6px 0 0 0;
+			max-width: 520px;
+			line-height: 1.6;
+		}
+
+		.back-button {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			font-size: 13px;
+			font-weight: 600;
+			color: #ffffff;
+			border: 1px solid rgba(255,255,255,0.5);
+			padding: 10px 16px;
+			border-radius: 999px;
+			text-decoration: none;
+			transition: all 0.2s ease;
+		}
+
+		.back-button:hover {
+			background: rgba(255,255,255,0.15);
+		}
+
+		.service-content {
+			flex: 1;
+			padding: 40px 0 60px;
+			background: #fff;
+		}
+
+		.service-body {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		.section-column {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr);
+			gap: 24px;
+		}
+
+		.service-section {
+			border: 1px solid rgba(0,0,0,0.08);
+			border-radius: 12px;
+			padding: 28px;
+			background: #fff;
+			box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+			margin-bottom: 24px;
+		}
+
+		.service-section h2 {
+			font-size: 24px;
+			margin: 0 0 10px 0;
+			color: #2c3e50;
+			font-weight: 600;
+		}
+
+		.service-section p {
+			font-size: 14px;
+			color: #5d6d7e;
+			line-height: 1.7;
+			margin-bottom: 16px;
+		}
+
+		.service-section p:last-child {
+			margin-bottom: 0;
+		}
+
+		.feature-list {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+			margin-top: 12px;
+		}
+
+		.feature-row {
+			display: flex;
+			gap: 12px;
+			align-items: flex-start;
+		}
+
+		.feature-row i {
+			color: #1abc9c;
+			font-size: 16px;
+			margin-top: 4px;
+		}
+
+		.feature-row div {
+			flex: 1;
+		}
+
+		.feature-row h3 {
+			font-size: 16px;
+			margin: 0 0 6px 0;
+			color: #2c3e50;
+			font-weight: 600;
+		}
+
+		.feature-row p {
+			margin: 0;
+			color: #5d6d7e;
+		}
+
+		.cta-card {
+			border-radius: 12px;
+			padding: 32px;
+			text-align: center;
+			background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
+			color: #ffffff;
+			margin-top: 24px;
+		}
+
+		.cta-card h3 {
+			font-size: 20px;
+			margin: 0 0 10px 0;
+			color: #ffffff;
+		}
+
+		.cta-card p {
+			font-size: 14px;
+			color: rgba(255, 255, 255, 0.9);
+			margin: 0 0 16px 0;
+		}
+
+		.cta-card a {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			background: #ffffff;
+			color: #1abc9c;
+			padding: 10px 22px;
+			border-radius: 6px;
+			font-size: 13px;
+			font-weight: 600;
+			text-decoration: none;
+			transition: transform .2s ease;
+		}
+
+		.cta-card a:hover {
+			transform: translateY(-2px);
+		}
+
 		@media (max-width: 768px) {
-			.service-header h1 { font-size: 2rem; }
-			.service-header p { font-size: 1.1rem; }
-			.service-section { padding: 25px; }
-			.back-button { top: 10px; left: 10px; padding: 10px 20px; font-size: 0.9rem; }
+			.service-header .container {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+
+		.section-column {
+				grid-template-columns: 1fr;
+			}
+
+			.service-section {
+				padding: 24px;
+			}
 		}
 	</style>
 </head>
@@ -69,7 +235,7 @@
 				<i class="icon-angle-left"></i>
 				<span data-i18n="service.back">Back to Services</span>
 			</a>
-			<div class="container">
+			<div class="container service-title-block">
 				<h1 data-i18n="services.s3">Custom LLM & Gen-AI Development</h1>
 				<p data-i18n="service.llm.tagline">Build LLMs tailored to your domain, data, and workflows.</p>
 			</div>
@@ -77,43 +243,61 @@
 
 		<section class="service-content">
 			<div class="service-body">
-				<div class="service-section">
-					<h2 data-i18n="service.llm.overview_title">Overview</h2>
-					<p data-i18n="service.llm.overview_desc">We design and deploy custom Large Language Models and Gen-AI systems that understand your business language, improve productivity, and automate complex workflows. Whether you need a domain-specific LLM, RAG system, or fine-tuned foundation model, we provide end-to-end development.</p>
-					<p data-i18n="service.llm.overview_desc2">Our solutions deliver higher accuracy, reduced hallucinations, and tighter security compared to generic AI tools.</p>
+				<div class="section-column">
+					<div class="service-section">
+						<h2 data-i18n="service.llm.overview_title">Overview</h2>
+						<p data-i18n="service.llm.overview_desc">We design and deploy custom Large Language Models and Gen-AI systems that understand your business language, improve productivity, and automate complex workflows. Whether you need a domain-specific LLM, RAG system, or fine-tuned foundation model, we provide end-to-end development.</p>
+						<p data-i18n="service.llm.overview_desc2">Our solutions deliver higher accuracy, reduced hallucinations, and tighter security compared to generic AI tools.</p>
+					</div>
 				</div>
 
 				<div class="service-section">
 					<h2 data-i18n="service.llm.services_title">Key Offerings</h2>
-					<div class="service-features">
-						<div class="feature-item">
-							<h3 data-i18n="service.llm.feature1_title">Custom LLM Training & Fine-tuning</h3>
-							<p data-i18n="service.llm.feature1_desc">Train and fine-tune language models specific to your domain and use cases.</p>
+					<div class="feature-list">
+						<div class="feature-row">
+							<i class="icon-line-lightbulb"></i>
+							<div>
+								<h3 data-i18n="service.llm.feature1_title">Custom LLM Training & Fine-tuning</h3>
+								<p data-i18n="service.llm.feature1_desc">Train and fine-tune language models specific to your domain and use cases.</p>
+							</div>
 						</div>
-						<div class="feature-item">
-							<h3 data-i18n="service.llm.feature2_title">RAG Pipelines & Knowledge-base Systems</h3>
-							<p data-i18n="service.llm.feature2_desc">Build retrieval-augmented generation systems with your enterprise knowledge base.</p>
+						<div class="feature-row">
+							<i class="icon-database"></i>
+							<div>
+								<h3 data-i18n="service.llm.feature2_title">RAG Pipelines & Knowledge-base Systems</h3>
+								<p data-i18n="service.llm.feature2_desc">Build retrieval-augmented generation systems with your enterprise knowledge base.</p>
+							</div>
 						</div>
-						<div class="feature-item">
-							<h3 data-i18n="service.llm.feature3_title">Enterprise-grade Model Deployment</h3>
-							<p data-i18n="service.llm.feature3_desc">Deploy models at scale with high availability and performance optimization.</p>
+						<div class="feature-row">
+							<i class="icon-line-server"></i>
+							<div>
+								<h3 data-i18n="service.llm.feature3_title">Enterprise-grade Model Deployment</h3>
+								<p data-i18n="service.llm.feature3_desc">Deploy models at scale with high availability and performance optimization.</p>
+							</div>
 						</div>
-						<div class="feature-item">
-							<h3 data-i18n="service.llm.feature4_title">Prompt Engineering & Optimisation</h3>
-							<p data-i18n="service.llm.feature4_desc">Optimize prompts for maximum accuracy and efficiency in your applications.</p>
+						<div class="feature-row">
+							<i class="icon-pencil"></i>
+							<div>
+								<h3 data-i18n="service.llm.feature4_title">Prompt Engineering & Optimisation</h3>
+								<p data-i18n="service.llm.feature4_desc">Optimize prompts for maximum accuracy and efficiency in your applications.</p>
+							</div>
 						</div>
-						<div class="feature-item">
-							<h3 data-i18n="service.llm.feature5_title">On-prem, Private Cloud & Hybrid Setups</h3>
-							<p data-i18n="service.llm.feature5_desc">Flexible deployment options to meet your security and compliance requirements.</p>
+						<div class="feature-row">
+							<i class="icon-cloud"></i>
+							<div>
+								<h3 data-i18n="service.llm.feature5_title">On-prem, Private Cloud & Hybrid Setups</h3>
+								<p data-i18n="service.llm.feature5_desc">Flexible deployment options to meet your security and compliance requirements.</p>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="service-section" style="text-align: center; background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); color: white;">
-					<h2 style="color: white;" data-i18n="service.contact_title">Ready to Build Your Custom LLM?</h2>
-					<p style="color: white; opacity: 0.95;" data-i18n="service.contact_desc">Let's discuss how our Custom LLM & Gen-AI Development services can transform your workflows.</p>
-					<a href="index.html#section-contact" class="button button-large button-rounded" style="background: white; color: #9b59b6; margin-top: 20px;">
+				<div class="cta-card">
+					<h3 data-i18n="service.contact_title">Ready to Build Your Custom LLM?</h3>
+					<p data-i18n="service.contact_desc">Let's discuss how our Custom LLM & Gen-AI Development services can transform your workflows.</p>
+					<a href="index.html#section-contact">
 						<span data-i18n="service.contact_button">Contact Us</span>
+						<i class="icon-angle-right"></i>
 					</a>
 				</div>
 			</div>
