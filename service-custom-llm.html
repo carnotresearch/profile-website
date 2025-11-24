@@ -35,9 +35,10 @@
 
 		.service-header {
 			background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
-			padding: 20px 0 18px;
+			padding: 32px 0 28px;
 			color: #ffffff;
 			border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+			position: relative;
 		}
 
 		.service-header .container {
@@ -45,7 +46,8 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			gap: 0;
+			gap: 8px;
+			margin: 0 auto;
 		}
 
 		.service-title-block h1 {
@@ -79,6 +81,13 @@
 
 		.back-button:hover {
 			background: rgba(255,255,255,0.15);
+		}
+
+		.service-header .back-button {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			z-index: 2;
 		}
 
 		.service-content {
@@ -201,12 +210,23 @@
 		}
 
 		@media (max-width: 768px) {
+			.service-header {
+				padding: 80px 0 28px;
+			}
+
+			.service-header .back-button {
+				position: static;
+				margin-bottom: 12px;
+			}
+
 			.service-header .container {
 				flex-direction: column;
 				align-items: flex-start;
+				text-align: left;
+				gap: 12px;
 			}
 
-		.section-column {
+			.section-column {
 				grid-template-columns: 1fr;
 			}
 
@@ -230,7 +250,7 @@
 			</div>
 		</header>
 
-		<section class="service-header" style="position: relative;">
+		<section class="service-header">
 			<a href="index.html#section-services" class="back-button">
 				<i class="icon-angle-left"></i>
 				<span data-i18n="service.back">Back to Services</span>

@@ -107,15 +107,15 @@
 							<li><a href="#" data-href="#section-career"><div data-i18n="nav.careers">Careers</div></a></li>
 							<li><a href="#" data-href="#section-contact"><div data-i18n="nav.contact">Contact</div></a></li>
 							<li><a href="https://www.youtube.com/@CarnotResearch" target="_blank"><i class="icon-youtube-play"></i></a></li>
-							<li class="language-switcher" style="position: relative;">
+							<li class="language-switcher">
 								<a href="#" id="lang-switcher" style="display: flex; align-items: center; gap: 5px; padding: 10px 15px;">
 									<span id="current-lang" style="font-weight: 600;">EN</span>
 									<i class="material-icons" style="font-size: 18px; vertical-align: middle;">translate</i>
 								</a>
-								<ul id="lang-dropdown" style="display: none; position: absolute; top: 100%; right: 0; background: white; min-width: 120px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; padding: 0; margin: 0; list-style: none; border-radius: 4px; overflow: hidden;">
-									<li><a href="#" data-lang="en" style="display: block; padding: 10px 15px; color: #333; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">English</a></li>
-									<li><a href="#" data-lang="hi" style="display: block; padding: 10px 15px; color: #333; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">हिंदी</a></li>
-									<li><a href="#" data-lang="es" style="display: block; padding: 10px 15px; color: #333; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">Español</a></li>
+								<ul id="lang-dropdown">
+									<li><a href="#" data-lang="en">English</a></li>
+									<li><a href="#" data-lang="hi">हिंदी</a></li>
+									<li><a href="#" data-lang="es">Español</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -1490,6 +1490,60 @@
 
 	<!-- Contact Section Styles -->
 	<style>
+			/* Language Switcher Dropdown - Proper Fix */
+			.language-switcher {
+				position: relative;
+				z-index: 10000;
+			}
+			
+			#lang-dropdown {
+				display: none;
+				position: absolute;
+				top: 100%;
+				right: 0;
+				background: #ffffff;
+				min-width: 140px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+				z-index: 10001;
+				padding: 4px 0;
+				margin: 0;
+				list-style: none;
+				border-radius: 6px;
+				border: 1px solid rgba(0, 0, 0, 0.1);
+				overflow: visible;
+			}
+			
+			#lang-dropdown li {
+				display: block;
+				margin: 0;
+				padding: 0;
+			}
+			
+			#lang-dropdown li a {
+				display: block;
+				padding: 12px 16px;
+				color: #333;
+				text-decoration: none;
+				transition: background-color 0.2s ease;
+				background-color: #ffffff;
+			}
+			
+			#lang-dropdown li a:hover {
+				background-color: #f5f5f5;
+			}
+			
+			#primary-menu > ul > li.language-switcher {
+				overflow: visible;
+			}
+			
+			#primary-menu > ul {
+				overflow: visible;
+			}
+			
+			#header-wrap {
+				overflow: visible;
+			}
+			
 			/* Global responsive safeguards */
 			html, body {
 				overflow-x: hidden;
@@ -2829,26 +2883,31 @@
 			
 			#section-products .products-header {
 				margin-bottom: 40px !important;
-				flex-direction: row !important;
-				justify-content: space-between !important;
+				flex-direction: column !important;
 				align-items: center !important;
-				gap: 15px !important;
+				gap: 20px !important;
 			}
 			
-			.products-header-logo-left,
 			.products-header-logo-right {
-				min-width: 70px !important;
-				flex: 0 0 70px !important;
+				display: none !important;
 			}
 			
-			.products-header-logo-left img,
-			.products-header-logo-right img {
-				max-width: 70px !important;
+			.products-header-logo-left {
+				order: 1;
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				margin-bottom: 10px;
+			}
+			
+			.products-header-logo-left img {
+				max-width: 120px !important;
 			}
 			
 			.products-header-content {
-				flex: 1 1 auto !important;
-				min-width: 0 !important;
+				order: 2;
+				width: 100%;
+				text-align: center;
 			}
 			
 			#section-products .section-label {
@@ -2888,26 +2947,31 @@
 			}
 			
 			#section-products .products-header {
-				flex-direction: row !important;
-				justify-content: space-between !important;
-				align-items: flex-start !important;
-				gap: 10px !important;
+				flex-direction: column !important;
+				align-items: center !important;
+				gap: 15px !important;
 			}
 			
-			.products-header-logo-left,
 			.products-header-logo-right {
-				min-width: 60px !important;
-				flex: 0 0 60px !important;
+				display: none !important;
 			}
 			
-			.products-header-logo-left img,
-			.products-header-logo-right img {
-				max-width: 60px !important;
+			.products-header-logo-left {
+				order: 1;
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				margin-bottom: 5px;
+			}
+			
+			.products-header-logo-left img {
+				max-width: 100px !important;
 			}
 			
 			.products-header-content {
-				flex: 1 1 auto !important;
-				min-width: 0 !important;
+				order: 2;
+				width: 100%;
+				text-align: center;
 				padding: 0 5px !important;
 			}
 			
