@@ -337,6 +337,21 @@
         "feature5_title": "Project-based Learning Modules",
         "feature5_desc": "Learn by doing with real-world projects and case studies."
       }
+    },
+    "partners": {
+      "title": "Our Clients & Partnerships",
+      "intro": "We work alongside leading public-sector institutions and global organizations to accelerate AI-driven governance, co-developing solutions that are secure, scalable, and citizen-first."
+    },
+    "certifications": {
+      "title": "Our Certifications",
+      "intro": "Our delivery is backed by globally recognised certifications and process maturity, assuring quality, security, and reliability for mission-critical deployments."
+    },
+    "awards": {
+      "title": "Awards won",
+      "subtitle": "Recognizing Excellence in Innovation",
+      "badge": "Award Winner",
+      "challenge_title": "Transport Stack Open Innovation Challenge",
+      "description": "Carnot Research won the Transport Stack Open Innovation Challenge hosted by Japan International Cooperation Agency (JICA), Boston Consulting Group (BCG) and FITT IIT Delhi for their pitch for project SAATHI, a hyper personalized Multilingual AI agent."
     }
   }
 }
