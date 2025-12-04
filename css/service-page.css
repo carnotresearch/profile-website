@@ -1,0 +1,258 @@
+/* Shared CSS for Service Pages */
+.service-detail-page {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Remove global template padding so page starts higher */
+#wrapper.service-detail-page {
+	padding-top: 0 !important;
+}
+
+.service-header {
+	background: #f5faf9;
+	padding: 26px 0 18px;
+	color: #111827;
+	border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+	position: relative;
+}
+
+/* Hide global navbar on service pages */
+#header {
+	display: none;
+}
+
+.service-header .container {
+	max-width: 1040px;
+	margin: 0 auto;
+	padding: 0 24px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+}
+
+.service-icon-wrapper {
+	width: 60px;
+	height: 60px;
+	border-radius: 18px;
+	background: linear-gradient(135deg, #10b981, #06b6d4);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #ecfdf5;
+	box-shadow: 0 18px 40px rgba(16, 185, 129, 0.35);
+}
+
+.service-icon-wrapper i {
+	font-size: 36px;
+}
+
+.service-chip {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 6px 16px;
+	border-radius: 999px;
+	background: #e0f7f4;
+	color: #047857;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.service-title-block h1 {
+	font-size: 32px;
+	margin: 4px 0 2px;
+	font-weight: 700;
+	color: #0f172a;
+}
+
+.service-title-block h1 span {
+	color: #059669;
+}
+
+.service-title-block p {
+	font-size: 16px;
+	color: #6b7280;
+	margin: 0;
+	max-width: 760px;
+	line-height: 1.7;
+}
+
+.back-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #4b5563;
+	border: 1px solid rgba(156, 163, 175, 0.5);
+	padding: 10px 16px;
+	border-radius: 999px;
+	text-decoration: none;
+	transition: all 0.2s ease;
+}
+
+.back-button:hover {
+	background: rgba(255,255,255,0.15);
+}
+
+.service-header .back-button {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	z-index: 2;
+}
+
+.service-content {
+	flex: 1;
+	padding: 18px 0 40px;
+	background: #f3f4f6;
+}
+
+.service-body {
+	max-width: 1120px;
+	margin: 0 auto;
+	padding: 0 24px;
+}
+
+.service-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 20px;
+	align-items: stretch;
+}
+
+.service-card {
+	background: #ffffff;
+	border-radius: 18px;
+	padding: 22px 22px 20px;
+	box-shadow: 0 14px 32px rgba(15, 23, 42, 0.06);
+	border: 1px solid rgba(226, 232, 240, 0.9);
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.service-card-icon {
+	width: 40px;
+	height: 40px;
+	border-radius: 14px;
+	background: #e0f7f4;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #059669;
+	margin-bottom: 4px;
+}
+
+.service-card-icon i {
+	font-size: 18px;
+}
+
+.service-card-title {
+	font-size: 16px;
+	font-weight: 600;
+	color: #111827;
+}
+
+.service-card-text {
+	font-size: 13px;
+	color: #6b7280;
+	line-height: 1.6;
+}
+
+.service-card-cta {
+	background: linear-gradient(135deg, #06b6d4, #059669);
+	color: #ecfdf5;
+	align-items: flex-start;
+}
+
+.service-card-cta .service-card-icon {
+	background: rgba(255, 255, 255, 0.2);
+	color: #ecfdf5;
+}
+
+.service-card-cta .service-card-title {
+	color: #ecfdf5;
+}
+
+.service-card-cta .service-card-text {
+	color: rgba(240, 253, 250, 0.92);
+}
+
+.service-card-cta .cta-button {
+	margin-top: auto;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 10px 18px;
+	border-radius: 999px;
+	background: #ffffff;
+	color: #059669;
+	font-size: 13px;
+	font-weight: 600;
+	text-decoration: none;
+	transition: transform 0.18s ease, box-shadow 0.18s ease;
+	box-shadow: 0 10px 24px rgba(15, 23, 42, 0.25);
+}
+
+.service-card-cta .cta-button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 14px 30px rgba(15, 23, 42, 0.32);
+}
+
+.service-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 28px;
+}
+
+.service-tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 8px 14px;
+	border-radius: 999px;
+	background: #ecfeff;
+	color: #0369a1;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.service-tag i {
+	color: #22c55e;
+	font-size: 14px;
+}
+
+@media (max-width: 992px) {
+	.service-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 768px) {
+	.service-header {
+		padding: 56px 0 32px;
+	}
+
+	.service-header .back-button {
+		position: static;
+		margin-bottom: 16px;
+		align-self: flex-start;
+	}
+
+	.service-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.service-body {
+		padding: 0 18px;
+	}
+}
+

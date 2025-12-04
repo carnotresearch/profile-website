@@ -3,6 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="author" content="SemiColonWeb" />
+
+	<!-- Stylesheets
+	============================================= -->
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 	<link rel="stylesheet" href="style.css" type="text/css" />
@@ -13,224 +16,31 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="css/service-page.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- External JavaScripts
+	============================================= -->
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/plugins.js"></script>
+	<!-- i18next for Internationalization -->
 	<script src="https://cdn.jsdelivr.net/npm/i18next@23.7.6/dist/umd/i18next.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@7.2.0/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
-	<title data-i18n="services.s4">Multimodal Data Processing & Ingestion | Carnot Research</title>
+
+	<!-- Document Title
+	============================================= -->
+	<title id="page-title">Service | Carnot Research</title>
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
-	<style>
-		.service-detail-page {
-			min-height: 100vh;
-			display: flex;
-			flex-direction: column;
-		}
-
-		.service-header {
-			background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
-			padding: 32px 0 28px;
-			color: #ffffff;
-			border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-			position: relative;
-		}
-
-		.service-header .container {
-			text-align: center;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			gap: 8px;
-			margin: 0 auto;
-		}
-
-		.service-title-block h1 {
-			font-size: 36px;
-			margin: 0;
-			font-weight: 700;
-			color: #ffffff;
-		}
-
-		.service-title-block p {
-			font-size: 20px;
-			color: #11302c;
-			margin: 6px 0 0 0;
-			max-width: 520px;
-			line-height: 1.6;
-		}
-
-		.back-button {
-			display: inline-flex;
-			align-items: center;
-			gap: 8px;
-			font-size: 13px;
-			font-weight: 600;
-			color: #ffffff;
-			border: 1px solid rgba(255,255,255,0.5);
-			padding: 10px 16px;
-			border-radius: 999px;
-			text-decoration: none;
-			transition: all 0.2s ease;
-		}
-
-		.back-button:hover {
-			background: rgba(255,255,255,0.15);
-		}
-
-		.service-header .back-button {
-			position: absolute;
-			top: 20px;
-			left: 20px;
-			z-index: 2;
-		}
-
-		.service-content {
-			flex: 1;
-			padding: 40px 0 60px;
-			background: #fff;
-		}
-
-		.service-body {
-			max-width: 1000px;
-			margin: 0 auto;
-			padding: 0 20px;
-		}
-
-		.section-column {
-			display: grid;
-			grid-template-columns: minmax(0, 1fr);
-			gap: 24px;
-		}
-
-		.service-section {
-			border: 1px solid rgba(0,0,0,0.08);
-			border-radius: 12px;
-			padding: 28px;
-			background: #fff;
-			box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-			margin-bottom: 24px;
-		}
-
-		.service-section h2 {
-			font-size: 24px;
-			margin: 0 0 10px 0;
-			color: #2c3e50;
-			font-weight: 600;
-		}
-
-		.service-section p {
-			font-size: 14px;
-			color: #5d6d7e;
-			line-height: 1.7;
-			margin-bottom: 16px;
-		}
-
-		.service-section p:last-child {
-			margin-bottom: 0;
-		}
-
-		.feature-list {
-			display: flex;
-			flex-direction: column;
-			gap: 16px;
-			margin-top: 12px;
-		}
-
-		.feature-row {
-			display: flex;
-			gap: 12px;
-			align-items: flex-start;
-		}
-
-		.feature-row i {
-			color: #1abc9c;
-			font-size: 16px;
-			margin-top: 4px;
-		}
-
-		.feature-row div {
-			flex: 1;
-		}
-
-		.feature-row h3 {
-			font-size: 16px;
-			margin: 0 0 6px 0;
-			color: #2c3e50;
-			font-weight: 600;
-		}
-
-		.feature-row p {
-			margin: 0;
-			color: #5d6d7e;
-		}
-
-		.cta-card {
-			border-radius: 12px;
-			padding: 32px;
-			text-align: center;
-			background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
-			color: #ffffff;
-			margin-top: 24px;
-		}
-
-		.cta-card h3 {
-			font-size: 20px;
-			margin: 0 0 10px 0;
-			color: #ffffff;
-		}
-
-		.cta-card p {
-			font-size: 14px;
-			color: rgba(255, 255, 255, 0.9);
-			margin: 0 0 16px 0;
-		}
-
-		.cta-card a {
-			display: inline-flex;
-			align-items: center;
-			gap: 6px;
-			background: #ffffff;
-			color: #1abc9c;
-			padding: 10px 22px;
-			border-radius: 6px;
-			font-size: 13px;
-			font-weight: 600;
-			text-decoration: none;
-			transition: transform .2s ease;
-		}
-
-		.cta-card a:hover {
-			transform: translateY(-2px);
-		}
-
-		@media (max-width: 768px) {
-			.service-header {
-				padding: 28px 0 24px;
-			}
-
-			.service-header .back-button {
-				position: static;
-				margin-bottom: 16px;
-				align-self: flex-start;
-			}
-
-			.service-header .container {
-				flex-direction: column;
-				align-items: center;
-			}
-
-		.section-column {
-				grid-template-columns: 1fr;
-			}
-
-			.service-section {
-				padding: 24px;
-			}
-		}
-	</style>
 </head>
+
 <body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
 	<div id="wrapper" class="clearfix service-detail-page">
+
+		<!-- Header
+		============================================= -->
 		<header id="header" class="full-header transparent-header">
 			<div id="header-wrap">
 				<div class="container clearfix">
@@ -241,103 +51,116 @@
 				</div>
 			</div>
 		</header>
+
+		<!-- Service Header Section
+		============================================= -->
 		<section class="service-header" style="position: relative;">
 			<a href="index.html#section-services" class="back-button">
 				<i class="icon-angle-left"></i>
 				<span data-i18n="service.back">Back to Services</span>
 			</a>
 			<div class="container service-title-block">
-				<h1 data-i18n="services.s4">Multimodal Data Processing & Ingestion</h1>
-				<p data-i18n="service.multimodal.tagline">Unify text, images, audio, and video into structured insights.</p>
+				<div class="service-icon-wrapper" id="service-icon">
+					<i class="icon-lightbulb"></i>
+				</div>
+				<div class="service-chip" id="service-chip">Consulting Services</div>
+				<h1 id="service-title">
+					<span id="service-title-main">AI Research</span>
+					<span id="service-title-accent">Consulting</span>
+				</h1>
+				<p id="service-tagline">Transform cutting-edge AI research into real business impact with expert consulting services.</p>
 			</div>
 		</section>
+
+		<!-- Service Content Section
+		============================================= -->
 		<section class="service-content">
 			<div class="service-body">
-				<div class="section-column">
-					<div class="service-section">
-						<h2 data-i18n="service.multimodal.overview_title">Overview</h2>
-						<p data-i18n="service.multimodal.overview_desc">Modern businesses deal with multiple data formats. We build multimodal data ingestion pipelines that clean, structure, and process all types of data—text documents, PDFs, videos, images, speech, and logs—into AI-ready formats.</p>
-						<p data-i18n="service.multimodal.overview_desc2">Our workflows ensure high-accuracy extraction, metadata tagging, and indexing for powerful analytics and Gen-AI applications.</p>
-					</div>
+				<div class="service-grid" id="service-grid">
+					<!-- Service cards will be dynamically inserted here -->
 				</div>
 
-				<div class="service-section">
-					<h2 data-i18n="service.multimodal.services_title">Key Offerings</h2>
-					<div class="feature-list">
-						<div class="feature-row">
-							<i class="icon-picture"></i>
-							<div>
-								<h3 data-i18n="service.multimodal.feature1_title">OCR, Image AI & Video Processing</h3>
-								<p data-i18n="service.multimodal.feature1_desc">Extract text and insights from images, videos, and scanned documents.</p>
-							</div>
-						</div>
-						<div class="feature-row">
-							<i class="icon-microphone"></i>
-							<div>
-								<h3 data-i18n="service.multimodal.feature2_title">Audio Transcription & Speech Recognition</h3>
-								<p data-i18n="service.multimodal.feature2_desc">Convert audio content into searchable, structured text formats.</p>
-							</div>
-						</div>
-						<div class="feature-row">
-							<i class="icon-list"></i>
-							<div>
-								<h3 data-i18n="service.multimodal.feature3_title">Metadata Extraction & Enrichment</h3>
-								<p data-i18n="service.multimodal.feature3_desc">Extract and enrich metadata for better organization and searchability.</p>
-							</div>
-						</div>
-						<div class="feature-row">
-							<i class="icon-docs"></i>
-							<div>
-								<h3 data-i18n="service.multimodal.feature4_title">Document Parsing at Scale</h3>
-								<p data-i18n="service.multimodal.feature4_desc">Process large volumes of documents efficiently and accurately.</p>
-							</div>
-						</div>
-						<div class="feature-row">
-							<i class="icon-vector"></i>
-							<div>
-								<h3 data-i18n="service.multimodal.feature5_title">Vectorisation & Semantic Indexing</h3>
-								<p data-i18n="service.multimodal.feature5_desc">Transform data into vector embeddings for semantic search and AI applications.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="cta-card">
-					<h3 data-i18n="service.contact_title">Ready to Process Your Multimodal Data?</h3>
-					<p data-i18n="service.contact_desc">Let's discuss how our Multimodal Data Processing services can unlock insights from your data.</p>
-					<a href="index.html#section-contact">
-						<span data-i18n="service.contact_button">Contact Us</span>
-						<i class="icon-angle-right"></i>
-					</a>
+				<div class="service-tags" id="service-tags">
+					<!-- Tags will be dynamically inserted here -->
 				</div>
 			</div>
 		</section>
-	</div>
+
+	</div><!-- #wrapper end -->
+
+	<!-- Footer Scripts
+	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
+	<script type="text/javascript" src="js/service-loader.js"></script>
+
+	<!-- i18next Initialization -->
 	<script type="text/javascript">
-		i18next.use(i18nextBrowserLanguageDetector).init({ fallbackLng: 'en', resources: { en: { translation: {} }, hi: { translation: {} }, es: { translation: {} } } }, function(err, t) {
-			Promise.all([fetch('locales/en.json').then(res => res.json()), fetch('locales/hi.json').then(res => res.json()), fetch('locales/es.json').then(res => res.json())]).then(([enData, hiData, esData]) => {
-				i18next.addResourceBundle('en', 'translation', enData.translation, true, true);
-				i18next.addResourceBundle('hi', 'translation', hiData.translation, true, true);
-				i18next.addResourceBundle('es', 'translation', esData.translation, true, true);
-				updateContent();
-			}).catch(err => { console.error('Error loading translation files:', err); updateContent(); });
-		});
+		// Initialize i18next
+		i18next
+			.use(i18nextBrowserLanguageDetector)
+			.init({
+				fallbackLng: 'en',
+				resources: {
+					en: {
+						translation: {}
+					},
+					hi: {
+						translation: {}
+					},
+					es: {
+						translation: {}
+					}
+				}
+			}, function(err, t) {
+				// Load translation files
+				Promise.all([
+					fetch('locales/en.json').then(res => res.json()),
+					fetch('locales/hi.json').then(res => res.json()),
+					fetch('locales/es.json').then(res => res.json())
+				]).then(([enData, hiData, esData]) => {
+					i18next.addResourceBundle('en', 'translation', enData.translation, true, true);
+					i18next.addResourceBundle('hi', 'translation', hiData.translation, true, true);
+					i18next.addResourceBundle('es', 'translation', esData.translation, true, true);
+					updateContent();
+				}).catch(err => {
+					console.error('Error loading translation files:', err);
+					updateContent();
+				});
+			});
+
 		function updateContent() {
 			document.querySelectorAll('[data-i18n]').forEach(element => {
 				const key = element.getAttribute('data-i18n');
 				const translatedText = i18next.t(key);
-				if (translatedText.includes('<') && translatedText.includes('>')) { element.innerHTML = translatedText; } else { element.textContent = translatedText; }
+				if (translatedText && translatedText !== key) {
+					if (translatedText.includes('<') && translatedText.includes('>')) {
+						element.innerHTML = translatedText;
+					} else {
+						element.textContent = translatedText;
+					}
+				}
+			});
+			document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+				const key = element.getAttribute('data-i18n-placeholder');
+				element.placeholder = i18next.t(key);
 			});
 			document.documentElement.lang = i18next.language;
 		}
+
+		// Load saved language preference
 		document.addEventListener('DOMContentLoaded', function() {
 			const savedLang = localStorage.getItem('i18nextLng');
 			if (savedLang && (savedLang === 'en' || savedLang === 'hi' || savedLang === 'es')) {
-				setTimeout(() => { i18next.changeLanguage(savedLang, function(err, t) { if (!err) { updateContent(); } }); }, 100);
+				setTimeout(() => {
+					i18next.changeLanguage(savedLang, function(err, t) {
+						if (!err) {
+							updateContent();
+						}
+					});
+				}, 100);
 			}
 		});
 	</script>
+
 </body>
 </html>
-

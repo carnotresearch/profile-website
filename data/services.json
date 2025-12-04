@@ -1,0 +1,475 @@
+{
+  "services": {
+    "ai-research-consulting": {
+      "id": "ai-research-consulting",
+      "slug": "service-ai-research-consulting",
+      "title": "AI Research Consulting",
+      "titleMain": "AI Research",
+      "titleAccent": "Consulting",
+      "chip": "Consulting Services",
+      "icon": "icon-lightbulb",
+      "tagline": "Transform cutting-edge AI research into real business impact with expert consulting services.",
+      "features": [
+        {
+          "title": "AI Readiness Assessment",
+          "description": "Evaluate readiness and identify opportunities",
+          "icon": "icon-line-search"
+        },
+        {
+          "title": "Feasibility Studies",
+          "description": "Validate concepts with rapid prototypes",
+          "icon": "icon-line2-rocket"
+        },
+        {
+          "title": "Research-to-Production",
+          "description": "Transform research into solutions",
+          "icon": "icon-cog"
+        },
+        {
+          "title": "AI Roadmap Creation",
+          "description": "Strategic roadmaps for your business",
+          "icon": "icon-map"
+        },
+        {
+          "title": "Model Auditing",
+          "description": "Optimize AI models for performance",
+          "icon": "icon-line2-graph"
+        }
+      ],
+      "cta": {
+        "title": "Ready to start?",
+        "description": "Work with our research and engineering experts to turn your AI ideas into practical solutions.",
+        "icon": "icon-email"
+      },
+      "tags": [
+        "Academic Research",
+        "Practical Engineering",
+        "Future-Proof Solutions"
+      ]
+    },
+    "managed-innovation": {
+      "id": "managed-innovation",
+      "slug": "service-managed-innovation",
+      "title": "Managed Innovation-as-a-Service",
+      "titleMain": "Managed Innovation-as-a-Service",
+      "titleAccent": "",
+      "chip": "Innovation Services",
+      "icon": "icon-line2-layers",
+      "tagline": "Continuous innovation delivered as an on-demand, always-on partner.",
+      "features": [
+        {
+          "title": "Monthly Research Sprints",
+          "description": "Regular research sprints to explore new technologies and quickly test ideas",
+          "icon": "icon-line-search"
+        },
+        {
+          "title": "POCs & Prototypes",
+          "description": "Rapid proof-of-concepts and product prototypes to validate innovation bets",
+          "icon": "icon-line2-rocket"
+        },
+        {
+          "title": "AI/ML Experiment Tracking",
+          "description": "Structured tracking and validation of AI/ML experiments across use cases",
+          "icon": "icon-line2-layers"
+        },
+        {
+          "title": "Technology Scouting",
+          "description": "Continuous scouting of emerging technologies and strategic opportunities",
+          "icon": "icon-map"
+        },
+        {
+          "title": "Dedicated Innovation Team",
+          "description": "Access a cross-functional innovation team on a flexible subscription",
+          "icon": "icon-users"
+        }
+      ],
+      "cta": {
+        "title": "Ready to Transform Innovation?",
+        "description": "Partner with us to build an always-on innovation engine for your organisation.",
+        "icon": "icon-email"
+      },
+      "tags": [
+        "Continuous Discovery",
+        "Faster Prototypes",
+        "Always-On Innovation"
+      ]
+    },
+    "custom-llm": {
+      "id": "custom-llm",
+      "slug": "service-custom-llm",
+      "title": "Custom LLM & Gen AI Development",
+      "titleMain": "Custom LLM & Gen AI",
+      "titleAccent": "Development",
+      "chip": "AI Development",
+      "icon": "icon-line2-graduation",
+      "tagline": "Build LLMs tailored to your domain, data, and workflows.",
+      "features": [
+        {
+          "title": "Custom LLM Training",
+          "description": "Train and fine-tune language models specific to your domain",
+          "icon": "icon-line2-graduation"
+        },
+        {
+          "title": "RAG Pipelines",
+          "description": "Build retrieval-augmented generation systems with your knowledge base",
+          "icon": "icon-book-open"
+        },
+        {
+          "title": "Enterprise Deployment",
+          "description": "Deploy models at scale with high availability and performance",
+          "icon": "icon-line2-layers"
+        },
+        {
+          "title": "Prompt Engineering",
+          "description": "Optimize prompts for maximum accuracy and efficiency",
+          "icon": "icon-cog"
+        },
+        {
+          "title": "On-prem & Hybrid Setups",
+          "description": "Flexible deployment options for security and compliance",
+          "icon": "icon-server"
+        }
+      ],
+      "cta": {
+        "title": "Ready to Build Your LLM?",
+        "description": "Let's discuss how custom LLMs can transform your workflows and productivity.",
+        "icon": "icon-email"
+      },
+      "tags": [
+        "Domain-Specific",
+        "Enterprise-Grade",
+        "Secure Deployment"
+      ]
+    },
+    "multimodal-data": {
+      "id": "multimodal-data",
+      "slug": "service-multimodal-data",
+      "title": "Multimodal Data Processing & Ingestion",
+      "titleMain": "Multimodal Data",
+      "titleAccent": "Processing",
+      "chip": "Data Services",
+      "icon": "icon-folder-open",
+      "tagline": "Unify text, images, audio, and video into structured insights.",
+      "features": [
+        {
+          "title": "OCR & Image Processing",
+          "description": "Extract text and insights from images, videos, and scanned documents",
+          "icon": "icon-picture"
+        },
+        {
+          "title": "Audio Transcription",
+          "description": "Convert audio content into searchable, structured text formats",
+          "icon": "icon-volume-up"
+        },
+        {
+          "title": "Metadata Extraction",
+          "description": "Extract and enrich metadata for better organization and searchability",
+          "icon": "icon-tag"
+        },
+        {
+          "title": "Document Parsing",
+          "description": "Process large volumes of documents efficiently and accurately",
+          "icon": "icon-docs"
+        },
+        {
+          "title": "Vectorisation & Indexing",
+          "description": "Transform data into vector embeddings for semantic search",
+          "icon": "icon-line2-graph"
+        }
+      ],
+      "cta": {
+        "title": "Ready to Process Your Data?",
+        "description": "Let's discuss how multimodal processing can unlock insights from all your data sources.",
+        "icon": "icon-email"
+      },
+      "tags": [
+        "Multi-Format Support",
+        "High Accuracy",
+        "Scalable Processing"
+      ]
+    },
+    "conversational-ai": {
+      "id": "conversational-ai",
+      "slug": "service-conversational-ai",
+      "title": "Conversational AI & Agentic Systems",
+      "titleMain": "Conversational AI",
+      "titleAccent": "& Agentic Systems",
+      "chip": "AI Agents",
+      "icon": "icon-comments",
+      "tagline": "AI agents that understand, reason, and take actions for you.",
+      "features": [
+        {
+          "title": "AI Chatbots & Assistants",
+          "description": "Build intelligent chatbots and virtual assistants for support and operations",
+          "icon": "icon-comments"
+        },
+        {
+          "title": "Autonomous Agent Systems",
+          "description": "Develop autonomous AI agents that make decisions and take actions",
+          "icon": "icon-line2-rocket"
+        },
+        {
+          "title": "Workflow Integration",
+          "description": "Integrate AI agents with your existing workflows and CRM systems",
+          "icon": "icon-cog"
+        },
+        {
+          "title": "Multi-agent Collaboration",
+          "description": "Build systems where multiple AI agents work together",
+          "icon": "icon-users"
+        },
+        {
+          "title": "Enterprise Deployment",
+          "description": "Deploy conversational AI with enterprise-grade security and compliance",
+          "icon": "icon-shield"
+        }
+      ],
+      "cta": {
+        "title": "Ready to Build AI Agents?",
+        "description": "Let's discuss how conversational AI can automate your workflows and enhance customer experience.",
+        "icon": "icon-email"
+      },
+      "tags": [
+        "Natural Dialogue",
+        "Autonomous Actions",
+        "Enterprise Security"
+      ]
+    },
+    "computer-vision": {
+      "id": "computer-vision",
+      "slug": "service-computer-vision",
+      "title": "Computer Vision Solutions",
+      "titleMain": "Computer Vision",
+      "titleAccent": "Solutions",
+      "chip": "Vision AI",
+      "icon": "icon-eye",
+      "tagline": "Transform visual data into actionable intelligence.",
+      "features": [
+        {
+          "title": "Object & Face Detection",
+          "description": "Detect and identify objects and faces in images and videos with high accuracy",
+          "icon": "icon-eye"
+        },
+        {
+          "title": "Image Classification",
+          "description": "Classify images and perform semantic segmentation for detailed analysis",
+          "icon": "icon-picture"
+        },
+        {
+          "title": "Video Analytics",
+          "description": "Analyze video streams to recognize activities and detect events in real-time",
+          "icon": "icon-video"
+        },
+        {
+          "title": "OCR & Document Vision",
+          "description": "Extract text and information from documents, forms, and images using OCR",
+          "icon": "icon-docs"
+        },
+        {
+          "title": "Edge-deployed CV",
+          "description": "Deploy computer vision models on edge devices for real-time processing",
+          "icon": "icon-chip"
+        }
+      ],
+      "cta": {
+        "title": "Ready to Transform Visual Data?",
+        "description": "Let's discuss how computer vision can unlock insights from your images and videos.",
+        "icon": "icon-email"
+      },
+      "tags": [
+        "Real-time Processing",
+        "High Accuracy",
+        "Edge Deployment"
+      ]
+    },
+    "nlp-document": {
+      "id": "nlp-document",
+      "slug": "service-nlp-document",
+      "title": "NLP & Document Intelligence",
+      "titleMain": "NLP & Document",
+      "titleAccent": "Intelligence",
+      "chip": "NLP Services",
+      "icon": "icon-doc-text-inv",
+      "tagline": "Extract intelligence from unstructured text with precision.",
+      "features": [
+        {
+          "title": "Intelligent Document Processing",
+          "description": "Automatically process and extract information from documents with high accuracy",
+          "icon": "icon-doc-text-inv"
+        },
+        {
+          "title": "Summarisation & Extraction",
+          "description": "Summarize documents and extract key entities, relationships, and insights",
+          "icon": "icon-book-open"
+        },
+        {
+          "title": "Contract Analysis",
+          "description": "Analyze contracts and documents for compliance, risk, and key terms",
+          "icon": "icon-briefcase"
+        },
+        {
+          "title": "Semantic Search",
+          "description": "Enable semantic search and automatic classification of documents and text",
+          "icon": "icon-search"
+        },
+        {
+          "title": "Domain-specific Training",
+          "description": "Train custom NLP models tailored to your specific domain and use cases",
+          "icon": "icon-line2-graduation"
+        }
+      ],
+      "cta": {
+        "title": "Ready to Extract Intelligence?",
+        "description": "Let's discuss how NLP & Document Intelligence can automate your document processing.",
+        "icon": "icon-email"
+      },
+      "tags": [
+        "High Accuracy",
+        "Domain-Specific",
+        "Automated Processing"
+      ]
+    },
+    "edge-ai": {
+      "id": "edge-ai",
+      "slug": "service-edge-ai",
+      "title": "Edge AI & IoT Integration",
+      "titleMain": "Edge AI",
+      "titleAccent": "& IoT Integration",
+      "chip": "Edge Services",
+      "icon": "icon-chip",
+      "tagline": "Deploy real-time AI where latency and bandwidth matter.",
+      "features": [
+        {
+          "title": "Edge Model Optimisation",
+          "description": "Optimize and quantize AI models for efficient deployment on edge devices",
+          "icon": "icon-chip"
+        },
+        {
+          "title": "IoT Sensor Processing",
+          "description": "Process and analyze data from IoT sensors in real-time at the edge",
+          "icon": "icon-line-graph"
+        },
+        {
+          "title": "Embedded CV & NLP",
+          "description": "Deploy computer vision and NLP models directly on embedded devices",
+          "icon": "icon-eye"
+        },
+        {
+          "title": "Real-time Anomaly Detection",
+          "description": "Detect anomalies and issues in real-time without cloud connectivity",
+          "icon": "icon-warning"
+        },
+        {
+          "title": "Hybrid Architecture",
+          "description": "Build hybrid architectures that combine edge processing with cloud intelligence",
+          "icon": "icon-server"
+        }
+      ],
+      "cta": {
+        "title": "Ready to Deploy Edge AI?",
+        "description": "Let's discuss how edge AI can reduce latency and improve real-time decision-making.",
+        "icon": "icon-email"
+      },
+      "tags": [
+        "Low Latency",
+        "Real-time Processing",
+        "Hybrid Architecture"
+      ]
+    },
+    "tech-skilling": {
+      "id": "tech-skilling",
+      "slug": "service-tech-skilling",
+      "title": "Tech Skilling & Capability Building",
+      "titleMain": "Tech Skilling",
+      "titleAccent": "& Capability Building",
+      "chip": "Training Services",
+      "icon": "icon-line2-graduation",
+      "tagline": "Upskill teams to adopt and build AI-driven products.",
+      "features": [
+        {
+          "title": "AI/ML Training Programs",
+          "description": "Comprehensive training programs covering AI and machine learning fundamentals",
+          "icon": "icon-line2-graduation"
+        },
+        {
+          "title": "LLM & Gen-AI Tracks",
+          "description": "Specialized training on Large Language Models and Generative AI technologies",
+          "icon": "icon-brain"
+        },
+        {
+          "title": "Workshops on CV, NLP, MLOps",
+          "description": "Hands-on workshops on Computer Vision, NLP, and MLOps practices",
+          "icon": "icon-line-bar-graph"
+        },
+        {
+          "title": "Corporate Training",
+          "description": "Intensive bootcamp-style training programs tailored for corporate teams",
+          "icon": "icon-users"
+        },
+        {
+          "title": "Project-based Learning",
+          "description": "Learn by doing with real-world projects and case studies",
+          "icon": "icon-briefcase"
+        }
+      ],
+      "cta": {
+        "title": "Ready to Upskill Your Team?",
+        "description": "Let's discuss how our training programs can transform your team's AI capabilities.",
+        "icon": "icon-email"
+      },
+      "tags": [
+        "Hands-on Learning",
+        "Industry Experts",
+        "Customized Programs"
+      ]
+    },
+    "public-sector": {
+      "id": "public-sector",
+      "slug": "service-public-sector",
+      "title": "R&D for Public Sector and e-Governance",
+      "titleMain": "Public Sector",
+      "titleAccent": "& e-Governance",
+      "chip": "Government Services",
+      "icon": "icon-building",
+      "tagline": "AI-powered solutions for citizen-centric governance and public services.",
+      "features": [
+        {
+          "title": "Predictive Analytics",
+          "description": "Monitor policy effectiveness and program outcomes with real-time analytics",
+          "icon": "icon-chart-line"
+        },
+        {
+          "title": "Citizen Service Chatbots",
+          "description": "Intelligent multilingual chatbots for 24/7 citizen support across languages",
+          "icon": "icon-bubble"
+        },
+        {
+          "title": "Document Automation",
+          "description": "Automated document processing and intelligent knowledge management systems",
+          "icon": "icon-docs"
+        },
+        {
+          "title": "Workflow Optimization",
+          "description": "AI-driven workflow optimization to enhance departmental efficiency",
+          "icon": "icon-cogs"
+        },
+        {
+          "title": "Training & Capacity Building",
+          "description": "Comprehensive training programs to upskill government teams in AI",
+          "icon": "icon-graduation-cap"
+        }
+      ],
+      "cta": {
+        "title": "Ready to Transform Governance?",
+        "description": "Let's discuss how our R&D services can help leverage AI for better governance.",
+        "icon": "icon-email"
+      },
+      "tags": [
+        "Citizen-Centric",
+        "Secure & Compliant",
+        "Scalable Solutions"
+      ]
+    }
+  }
+}
+
