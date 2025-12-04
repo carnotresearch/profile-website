@@ -46,6 +46,20 @@ dl, dt, dd, ol, ul, li {
 :active,
 :focus { outline: none !important; }
 
+/* ----------------------------------------------------------------
+	Fixed Header Anchor Scroll Offset
+	This is dynamically updated by JavaScript based on actual header height
+-----------------------------------------------------------------*/
+html {
+	scroll-padding-top: 100px; /* Default header height - updated dynamically by JS */
+}
+
+/* Responsive fallback */
+@media (max-width: 991px) {
+	html {
+		scroll-padding-top: 60px;
+	}
+}
 
 /* ----------------------------------------------------------------
 	Typography

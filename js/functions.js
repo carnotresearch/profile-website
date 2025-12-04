@@ -661,19 +661,43 @@ var SEMICOLON = SEMICOLON || {};
 
 		topScrollOffset: function() {
 			var topOffsetScroll = 0;
+			var $headerWrap = $('#header-wrap');
+			var headerHeight = 0;
+
+			// Get actual header height dynamically
+			if( $headerWrap.length ) {
+				headerHeight = $headerWrap.outerHeight() || 0;
+			}
+			if( !headerHeight && $header.length ) {
+				headerHeight = $header.outerHeight() || 0;
+			}
 
 			if( ( $body.hasClass('device-lg') || $body.hasClass('device-md') ) && !SEMICOLON.isMobile.any() ) {
 				if( $header.hasClass('sticky-header') ) {
-					if( $pagemenu.hasClass('dots-menu') ) { topOffsetScroll = 100; } else { topOffsetScroll = 144; }
+					// Use actual header height if available, otherwise fallback to defaults
+					if( headerHeight > 0 ) {
+						topOffsetScroll = headerHeight;
+					} else {
+						if( $pagemenu.hasClass('dots-menu') ) { topOffsetScroll = 100; } else { topOffsetScroll = 144; }
+					}
 				} else {
-					if( $pagemenu.hasClass('dots-menu') ) { topOffsetScroll = 140; } else { topOffsetScroll = 184; }
+					if( headerHeight > 0 ) {
+						topOffsetScroll = headerHeight + 40; // Add extra margin for non-sticky
+					} else {
+						if( $pagemenu.hasClass('dots-menu') ) { topOffsetScroll = 140; } else { topOffsetScroll = 184; }
+					}
 				}
 
 				if( !$pagemenu.length ) {
-					if( $header.hasClass('sticky-header') ) { topOffsetScroll = 100; } else { topOffsetScroll = 140; }
+					if( $header.hasClass('sticky-header') ) {
+						topOffsetScroll = headerHeight > 0 ? headerHeight : 100;
+					} else {
+						topOffsetScroll = headerHeight > 0 ? headerHeight + 40 : 140;
+					}
 				}
 			} else {
-				topOffsetScroll = 40;
+				// Mobile: use actual header height or fallback
+				topOffsetScroll = headerHeight > 0 ? headerHeight : 40;
 			}
 
 			return topOffsetScroll;
@@ -2582,5 +2606,151 @@ var SEMICOLON = SEMICOLON || {};
 	$(document).ready( SEMICOLON.documentOnReady.init );
 	$window.load( SEMICOLON.documentOnLoad.init );
 	$window.on( 'resize', SEMICOLON.documentOnResize.init );
+
+	// ============================================================
+	// Fixed Header Anchor Scroll Offset Fix
+	// ============================================================
+	
+	/**
+	 * Get the actual height of the fixed header dynamically
+	 * @returns {number} Header height in pixels
+	 */
+	function getHeaderHeight() {
+		var $header = $('#header');
+		var $headerWrap = $('#header-wrap');
+		
+		// Check if header is sticky and fixed
+		if ($header.hasClass('sticky-header')) {
+			var position = $headerWrap.css('position');
+			if (position === 'fixed' || position === 'absolute') {
+				var height = $headerWrap.outerHeight();
+				return height > 0 ? height : 60; // Fallback to 60px for sticky
+			}
+		}
+		
+		// Regular header height
+		var height = $headerWrap.outerHeight() || $header.outerHeight();
+		return height > 0 ? height : 100; // Fallback to 100px
+	}
+	
+	/**
+	 * Update CSS scroll-padding-top based on current header height
+	 */
+	function updateScrollPadding() {
+		var headerHeight = getHeaderHeight();
+		if (headerHeight > 0) {
+			document.documentElement.style.scrollPaddingTop = headerHeight + 'px';
+		}
+	}
+	
+	/**
+	 * Smooth scroll to anchor with proper offset
+	 * @param {string} hash - The anchor hash (e.g., '#section-services')
+	 * @param {boolean} smooth - Whether to use smooth scrolling
+	 */
+	function scrollToAnchor(hash, smooth) {
+		if (!hash) return;
+		
+		var $target = $(hash);
+		if ($target.length === 0) return;
+		
+		var headerHeight = getHeaderHeight();
+		var targetOffset = $target.offset().top - headerHeight;
+		
+		if (smooth) {
+			$('html, body').stop(true).animate({
+				scrollTop: targetOffset
+			}, 800, 'swing');
+		} else {
+			// Use window.scrollTo for immediate scroll on page load
+			if (window.scrollTo) {
+				window.scrollTo({
+					top: targetOffset,
+					behavior: 'auto'
+				});
+			} else {
+				// Fallback for older browsers
+				$('html, body').scrollTop(targetOffset);
+			}
+		}
+	}
+	
+	// Initialize on document ready
+	$(document).ready(function() {
+		// Update scroll padding immediately
+		updateScrollPadding();
+		
+		// Handle page load with hash in URL
+		if (window.location.hash) {
+			// Wait for all scripts and DOM to be ready
+			setTimeout(function() {
+				scrollToAnchor(window.location.hash, false);
+			}, 200);
+		}
+	});
+	
+	// Update on window resize (header height may change on mobile/desktop switch)
+	$window.on('resize', debounce(function() {
+		updateScrollPadding();
+	}, 250));
+	
+	// Update when header becomes sticky/unsticky (on scroll)
+	var lastHeaderState = null;
+	$window.on('scroll', debounce(function() {
+		var $header = $('#header');
+		var currentState = $header.hasClass('sticky-header') ? 'sticky' : 'normal';
+		if (currentState !== lastHeaderState) {
+			lastHeaderState = currentState;
+			updateScrollPadding();
+		}
+	}, 100));
+	
+	// Intercept anchor link clicks (only for regular href links, not data-href)
+	$(document).on('click', 'a[href^="#"]', function(e) {
+		var $link = $(this);
+		var href = $link.attr('href');
+		
+		// Skip if it's just "#" or empty
+		if (!href || href === '#' || href.length <= 1) {
+			return;
+		}
+		
+		// Skip if target doesn't exist
+		var $target = $(href);
+		if ($target.length === 0) {
+			return;
+		}
+		
+		// Skip if it has data-href (let existing onePageScroll handler take over)
+		// The existing handler uses data-href, so we only handle regular href
+		var dataHref = $link.attr('data-href');
+		if (dataHref) {
+			// This is handled by onePageScroll, but we can still update the offset calculation
+			// The existing code will use topScrollOffset(), which should work
+			return;
+		}
+		
+		// Prevent default anchor behavior for regular href links
+		e.preventDefault();
+		
+		// Scroll to target with offset
+		scrollToAnchor(href, true);
+		
+		// Update URL hash
+		if (history.pushState) {
+			history.pushState(null, null, href);
+		} else {
+			window.location.hash = href;
+		}
+	});
+	
+	// Handle hash change events (browser back/forward buttons)
+	$window.on('hashchange', function() {
+		if (window.location.hash) {
+			setTimeout(function() {
+				scrollToAnchor(window.location.hash, true);
+			}, 50);
+		}
+	});
 
 })(jQuery);
