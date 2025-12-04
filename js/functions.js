@@ -678,13 +678,13 @@ var SEMICOLON = SEMICOLON || {};
 					if( headerHeight > 0 ) {
 						topOffsetScroll = headerHeight;
 					} else {
-						if( $pagemenu.hasClass('dots-menu') ) { topOffsetScroll = 100; } else { topOffsetScroll = 144; }
+					if( $pagemenu.hasClass('dots-menu') ) { topOffsetScroll = 100; } else { topOffsetScroll = 144; }
 					}
 				} else {
 					if( headerHeight > 0 ) {
 						topOffsetScroll = headerHeight + 40; // Add extra margin for non-sticky
-					} else {
-						if( $pagemenu.hasClass('dots-menu') ) { topOffsetScroll = 140; } else { topOffsetScroll = 184; }
+				} else {
+					if( $pagemenu.hasClass('dots-menu') ) { topOffsetScroll = 140; } else { topOffsetScroll = 184; }
 					}
 				}
 

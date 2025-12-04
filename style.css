@@ -62,6 +62,20 @@ html {
 }
 
 /* ----------------------------------------------------------------
+	Page Section Spacing
+	Provides top padding for sections when scrolled to via anchor links
+-----------------------------------------------------------------*/
+.page-section {
+	padding-top: 60px;
+}
+
+@media (max-width: 991px) {
+	.page-section {
+		padding-top: 40px;
+	}
+}
+
+/* ----------------------------------------------------------------
 	Typography
 -----------------------------------------------------------------*/
 
