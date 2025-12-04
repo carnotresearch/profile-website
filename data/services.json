@@ -112,7 +112,7 @@
         {
           "title": "RAG Pipelines",
           "description": "Build retrieval-augmented generation systems with your knowledge base",
-          "icon": "icon-book-open"
+          "icon": "material-icons:menu_book"
         },
         {
           "title": "Enterprise Deployment",
@@ -127,7 +127,7 @@
         {
           "title": "On-prem & Hybrid Setups",
           "description": "Flexible deployment options for security and compliance",
-          "icon": "icon-server"
+          "icon": "material-icons:dns"
         }
       ],
       "cta": {
@@ -169,7 +169,7 @@
         {
           "title": "Document Parsing",
           "description": "Process large volumes of documents efficiently and accurately",
-          "icon": "icon-docs"
+          "icon": "material-icons:description"
         },
         {
           "title": "Vectorisation & Indexing",
@@ -263,12 +263,12 @@
         {
           "title": "OCR & Document Vision",
           "description": "Extract text and information from documents, forms, and images using OCR",
-          "icon": "icon-docs"
+          "icon": "material-icons:description"
         },
         {
           "title": "Edge-deployed CV",
           "description": "Deploy computer vision models on edge devices for real-time processing",
-          "icon": "icon-chip"
+          "icon": "material-icons:memory"
         }
       ],
       "cta": {
@@ -289,18 +289,18 @@
       "titleMain": "NLP & Document",
       "titleAccent": "Intelligence",
       "chip": "NLP Services",
-      "icon": "icon-doc-text-inv",
+      "icon": "material-icons:article",
       "tagline": "Extract intelligence from unstructured text with precision.",
       "features": [
         {
           "title": "Intelligent Document Processing",
           "description": "Automatically process and extract information from documents with high accuracy",
-          "icon": "icon-doc-text-inv"
+          "icon": "material-icons:article"
         },
         {
           "title": "Summarisation & Extraction",
           "description": "Summarize documents and extract key entities, relationships, and insights",
-          "icon": "icon-book-open"
+          "icon": "material-icons:menu_book"
         },
         {
           "title": "Contract Analysis",
@@ -336,18 +336,18 @@
       "titleMain": "Edge AI",
       "titleAccent": "& IoT Integration",
       "chip": "Edge Services",
-      "icon": "icon-chip",
+      "icon": "material-icons:memory",
       "tagline": "Deploy real-time AI where latency and bandwidth matter.",
       "features": [
         {
           "title": "Edge Model Optimisation",
           "description": "Optimize and quantize AI models for efficient deployment on edge devices",
-          "icon": "icon-chip"
+          "icon": "material-icons:memory"
         },
         {
           "title": "IoT Sensor Processing",
           "description": "Process and analyze data from IoT sensors in real-time at the edge",
-          "icon": "icon-line-graph"
+          "icon": "material-icons:sensors"
         },
         {
           "title": "Embedded CV & NLP",
@@ -357,12 +357,12 @@
         {
           "title": "Real-time Anomaly Detection",
           "description": "Detect anomalies and issues in real-time without cloud connectivity",
-          "icon": "icon-warning"
+          "icon": "material-icons:warning"
         },
         {
           "title": "Hybrid Architecture",
           "description": "Build hybrid architectures that combine edge processing with cloud intelligence",
-          "icon": "icon-server"
+          "icon": "material-icons:dns"
         }
       ],
       "cta": {
@@ -394,7 +394,7 @@
         {
           "title": "LLM & Gen-AI Tracks",
           "description": "Specialized training on Large Language Models and Generative AI technologies",
-          "icon": "icon-brain"
+          "icon": "material-icons:psychology"
         },
         {
           "title": "Workshops on CV, NLP, MLOps",
@@ -436,7 +436,7 @@
         {
           "title": "Predictive Analytics",
           "description": "Monitor policy effectiveness and program outcomes with real-time analytics",
-          "icon": "icon-chart-line"
+          "icon": "material-icons:show_chart"
         },
         {
           "title": "Citizen Service Chatbots",
@@ -446,7 +446,7 @@
         {
           "title": "Document Automation",
           "description": "Automated document processing and intelligent knowledge management systems",
-          "icon": "icon-docs"
+          "icon": "material-icons:description"
         },
         {
           "title": "Workflow Optimization",
@@ -456,7 +456,7 @@
         {
           "title": "Training & Capacity Building",
           "description": "Comprehensive training programs to upskill government teams in AI",
-          "icon": "icon-graduation-cap"
+          "icon": "material-icons:school"
         }
       ],
       "cta": {

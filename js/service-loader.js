@@ -66,7 +66,15 @@
 		// Update header section
 		const iconWrapper = document.getElementById('service-icon');
 		if (iconWrapper) {
-			iconWrapper.innerHTML = `<i class="${serviceData.icon}"></i>`;
+			// Handle Material Icons vs font-icons
+			let iconHtml = '';
+			if (serviceData.icon && serviceData.icon.startsWith('material-icons:')) {
+				const iconName = serviceData.icon.replace('material-icons:', '');
+				iconHtml = `<i class="material-icons">${escapeHtml(iconName)}</i>`;
+			} else {
+				iconHtml = `<i class="${escapeHtml(serviceData.icon || 'icon-star3')}"></i>`;
+			}
+			iconWrapper.innerHTML = iconHtml;
 		}
 
 		const chip = document.getElementById('service-chip');
@@ -99,9 +107,21 @@
 			serviceData.features.forEach(feature => {
 				const card = document.createElement('div');
 				card.className = 'service-card';
+				
+				// Handle Material Icons vs font-icons
+				let iconHtml = '';
+				if (feature.icon && feature.icon.startsWith('material-icons:')) {
+					// Material Icon format: "material-icons:icon_name"
+					const iconName = feature.icon.replace('material-icons:', '');
+					iconHtml = `<i class="material-icons">${escapeHtml(iconName)}</i>`;
+				} else {
+					// Regular icon class
+					iconHtml = `<i class="${escapeHtml(feature.icon || 'icon-star3')}"></i>`;
+				}
+				
 				card.innerHTML = `
 					<div class="service-card-icon">
-						<i class="${feature.icon}"></i>
+						${iconHtml}
 					</div>
 					<div class="service-card-title">${escapeHtml(feature.title)}</div>
 					<div class="service-card-text">${escapeHtml(feature.description)}</div>
@@ -113,9 +133,19 @@
 			if (serviceData.cta) {
 				const ctaCard = document.createElement('div');
 				ctaCard.className = 'service-card service-card-cta';
+				
+				// Handle Material Icons vs font-icons for CTA
+				let ctaIconHtml = '';
+				if (serviceData.cta.icon && serviceData.cta.icon.startsWith('material-icons:')) {
+					const iconName = serviceData.cta.icon.replace('material-icons:', '');
+					ctaIconHtml = `<i class="material-icons">${escapeHtml(iconName)}</i>`;
+				} else {
+					ctaIconHtml = `<i class="${escapeHtml(serviceData.cta.icon || 'icon-email')}"></i>`;
+				}
+				
 				ctaCard.innerHTML = `
 					<div class="service-card-icon">
-						<i class="${serviceData.cta.icon}"></i>
+						${ctaIconHtml}
 					</div>
 					<div class="service-card-title">${escapeHtml(serviceData.cta.title)}</div>
 					<div class="service-card-text">${escapeHtml(serviceData.cta.description)}</div>
