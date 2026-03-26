@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="Carnot Research" />
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
+	<link rel="stylesheet" href="css/service-page.css" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Multilingual AI Chatbot | Carnot Research</title>
+	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
+	<style>
+		.product-hero {
+			background: linear-gradient(135deg, #0f172a 0%, #064e3b 100%);
+			padding: 60px 0 50px;
+			color: #fff;
+			position: relative;
+		}
+		.product-hero .back-button {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			color: rgba(255,255,255,0.8);
+			border-color: rgba(255,255,255,0.25);
+		}
+		.product-hero .back-button:hover { background: rgba(255,255,255,0.1); color: #fff; }
+		.product-hero-inner {
+			max-width: 1040px;
+			margin: 0 auto;
+			padding: 0 24px;
+			text-align: center;
+		}
+		.product-chip {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			padding: 6px 16px;
+			border-radius: 999px;
+			background: rgba(16,185,129,0.18);
+			color: #6ee7b7;
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			margin-bottom: 18px;
+		}
+		.product-hero h1 {
+			font-size: 40px;
+			font-weight: 700;
+			margin: 0 0 14px;
+			line-height: 1.2;
+			color: #fff;
+		}
+		.product-hero h1 span { color: #34d399; }
+		.product-hero p {
+			font-size: 17px;
+			color: rgba(255,255,255,0.72);
+			max-width: 680px;
+			margin: 0 auto 32px;
+			line-height: 1.7;
+		}
+		.download-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			padding: 14px 28px;
+			border-radius: 999px;
+			background: linear-gradient(135deg, #10b981, #06b6d4);
+			color: #fff;
+			font-size: 15px;
+			font-weight: 700;
+			text-decoration: none;
+			box-shadow: 0 8px 24px rgba(16,185,129,0.35);
+			transition: transform 0.2s, box-shadow 0.2s;
+		}
+		.download-btn:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 14px 36px rgba(16,185,129,0.45);
+			color: #fff;
+		}
+		.stats-strip {
+			background: #fff;
+			border-bottom: 1px solid #e5e7eb;
+			padding: 28px 0;
+		}
+		.stats-inner {
+			max-width: 1040px;
+			margin: 0 auto;
+			padding: 0 24px;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			gap: 20px;
+		}
+		.stat-item {
+			flex: 1;
+			text-align: center;
+		}
+		.stat-item .stat-number {
+			font-size: 28px;
+			font-weight: 700;
+			color: #059669;
+			line-height: 1;
+		}
+		.stat-item .stat-label {
+			font-size: 13px;
+			color: #6b7280;
+			margin-top: 4px;
+		}
+		.product-body {
+			max-width: 1040px;
+			margin: 0 auto;
+			padding: 48px 24px;
+		}
+		.section-title {
+			font-size: 22px;
+			font-weight: 700;
+			color: #111827;
+			margin-bottom: 24px;
+		}
+		.section-title span { color: #059669; }
+		.features-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 20px;
+			margin-bottom: 48px;
+		}
+		.feature-card {
+			background: #fff;
+			border-radius: 16px;
+			padding: 24px;
+			box-shadow: 0 4px 20px rgba(15,23,42,0.06);
+			border: 1px solid #e5e7eb;
+		}
+		.feature-card .fc-icon {
+			width: 44px;
+			height: 44px;
+			border-radius: 12px;
+			background: #ecfdf5;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #059669;
+			font-size: 20px;
+			margin-bottom: 14px;
+		}
+		.feature-card h3 {
+			font-size: 15px;
+			font-weight: 700;
+			color: #111827;
+			margin: 0 0 8px;
+		}
+		.feature-card p {
+			font-size: 13px;
+			color: #6b7280;
+			line-height: 1.65;
+			margin: 0;
+		}
+		.usecases-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 20px;
+			margin-bottom: 48px;
+		}
+		.usecase-card {
+			background: #fff;
+			border-radius: 16px;
+			padding: 28px;
+			box-shadow: 0 4px 20px rgba(15,23,42,0.06);
+			border-left: 4px solid #10b981;
+		}
+		.usecase-card h3 {
+			font-size: 16px;
+			font-weight: 700;
+			color: #111827;
+			margin: 0 0 10px;
+		}
+		.usecase-card ul {
+			margin: 0;
+			padding-left: 18px;
+		}
+		.usecase-card ul li {
+			font-size: 13px;
+			color: #4b5563;
+			line-height: 1.7;
+			margin-bottom: 4px;
+		}
+		.tech-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 16px;
+			margin-bottom: 48px;
+		}
+		.tech-row {
+			background: #fff;
+			border-radius: 12px;
+			padding: 16px 20px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			box-shadow: 0 2px 12px rgba(15,23,42,0.05);
+			border: 1px solid #e5e7eb;
+		}
+		.tech-row .tech-key {
+			font-size: 13px;
+			color: #6b7280;
+			font-weight: 500;
+		}
+		.tech-row .tech-val {
+			font-size: 13px;
+			color: #111827;
+			font-weight: 700;
+		}
+		.cta-section {
+			background: linear-gradient(135deg, #064e3b, #0f172a);
+			border-radius: 20px;
+			padding: 40px 36px;
+			text-align: center;
+			color: #fff;
+		}
+		.cta-section h2 { font-size: 24px; font-weight: 700; color: #fff; margin: 0 0 12px; }
+		.cta-section p { font-size: 15px; color: rgba(255,255,255,0.7); margin: 0; }
+		@media (max-width: 768px) {
+			.features-grid { grid-template-columns: 1fr; }
+			.usecases-grid { grid-template-columns: 1fr; }
+			.tech-grid { grid-template-columns: 1fr; }
+			.stats-inner { flex-wrap: wrap; }
+			.stat-item { flex: 0 0 calc(50% - 10px); }
+			.product-hero h1 { font-size: 28px; }
+		}
+	</style>
+</head>
+<body class="stretched">
+<div id="wrapper" class="clearfix">
+
+	<!-- Hero -->
+	<section class="product-hero">
+		<a href="index.html" class="back-button">
+			<i class="icon-angle-left"></i> Back
+		</a>
+		<div class="product-hero-inner">
+			<div class="product-chip"><i class="fas fa-comments"></i> Conversational AI</div>
+			<h1>Multilingual <span>AI Chatbot</span></h1>
+			<p>Enterprise-grade 24/7 automated conversational AI with multilingual NLP capabilities — built for banking, financial services, and government institutions.</p>
+			<a href="images/gem/Multilingual_AI_Chatbot_Brochure-1 (1).pdf" download class="download-btn">
+				<i class="fas fa-download"></i> Download Brochure
+			</a>
+		</div>
+	</section>
+
+	<!-- Stats -->
+	<div class="stats-strip">
+		<div class="stats-inner">
+			<div class="stat-item">
+				<div class="stat-number">1,317+</div>
+				<div class="stat-label">Conversations / Day</div>
+			</div>
+			<div class="stat-item">
+				<div class="stat-number">93.2%</div>
+				<div class="stat-label">Response Accuracy</div>
+			</div>
+			<div class="stat-item">
+				<div class="stat-number">15+</div>
+				<div class="stat-label">Languages Supported</div>
+			</div>
+			<div class="stat-item">
+				<div class="stat-number">30%</div>
+				<div class="stat-label">Reduction in Support Costs</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Body -->
+	<div style="background: #f3f4f6; padding-bottom: 60px;">
+		<div class="product-body">
+
+			<!-- Features -->
+			<h2 class="section-title">Key <span>Features</span></h2>
+			<div class="features-grid">
+				<div class="feature-card">
+					<div class="fc-icon"><i class="fas fa-clock"></i></div>
+					<h3>24/7 Automated Support</h3>
+					<p>Always-on handling of routine queries — reduces response times and call center load. Proven to automate 80% of Tier-1 questions.</p>
+				</div>
+				<div class="feature-card">
+					<div class="fc-icon"><i class="fas fa-language"></i></div>
+					<h3>Multilingual NLP Engine</h3>
+					<p>Supports 15+ languages including English, Hindi, Telugu, Arabic, and French — ensuring inclusive access for all users with high-accuracy NLP.</p>
+				</div>
+				<div class="feature-card">
+					<div class="fc-icon"><i class="fas fa-book"></i></div>
+					<h3>Advanced Knowledge Base</h3>
+					<p>1,247+ policy documents indexed with 5,832+ Q&A pairs. Context-aware answers with 93%+ accuracy across banking regulations and policy documents.</p>
+				</div>
+				<div class="feature-card">
+					<div class="fc-icon"><i class="fas fa-chart-bar"></i></div>
+					<h3>Analytics Dashboard</h3>
+					<p>Built-in reports tracking user volume, intent trends, satisfaction scores, and performance metrics — turning conversation data into actionable insights.</p>
+				</div>
+				<div class="feature-card">
+					<div class="fc-icon"><i class="fas fa-microphone"></i></div>
+					<h3>Voice Integration</h3>
+					<p>Speech-to-Text via Google Cloud Speech API and Text-to-Speech via Neural TTS. Handles 2,847+ voice requests daily with 48kHz audio and background noise filtering.</p>
+				</div>
+				<div class="feature-card">
+					<div class="fc-icon"><i class="fas fa-shield-alt"></i></div>
+					<h3>Security & Compliance</h3>
+					<p>SOC 2 Type II certified, GDPR compliant. End-to-end encryption, HTTPS/TLS, Role-Based Access Control, and regular security audits for banking and government.</p>
+				</div>
+				<div class="feature-card">
+					<div class="fc-icon"><i class="fas fa-plug"></i></div>
+					<h3>Enterprise Integrations</h3>
+					<p>RESTful APIs, webhooks, and function calls. Connects with Salesforce, SAP, Oracle, Microsoft Dynamics, ERP/CRM systems, and custom government portals.</p>
+				</div>
+				<div class="feature-card">
+					<div class="fc-icon"><i class="fas fa-mobile-alt"></i></div>
+					<h3>Multi-Channel Support</h3>
+					<p>Supports phone systems, web chat, mobile apps, and voice assistants through a modular architecture that enables easy addition of new channels.</p>
+				</div>
+				<div class="feature-card">
+					<div class="fc-icon"><i class="fas fa-cogs"></i></div>
+					<h3>Modular Architecture</h3>
+					<p>Four core components — Multilingual NLP Engine, Knowledge Base & Memory, Secure API Connectors, and Analytics & Monitoring — work seamlessly together.</p>
+				</div>
+			</div>
+
+			<!-- Use Cases -->
+			<h2 class="section-title">Sector <span>Applications</span></h2>
+			<div class="usecases-grid">
+				<div class="usecase-card">
+					<h3>Banking & Financial Services</h3>
+					<ul>
+						<li>Automates balance inquiries, transaction history, and fund transfers</li>
+						<li>24/7 fraud alert delivery and customer service</li>
+						<li>80% automation of Tier-1 support questions</li>
+						<li>30% reduction in operational costs</li>
+					</ul>
+				</div>
+				<div class="usecase-card">
+					<h3>Government & Public Services</h3>
+					<ul>
+						<li>Unified communication channel for corporate stakeholders</li>
+						<li>Answers compliance queries and filing procedures anytime</li>
+						<li>Citizens access critical information in their preferred language</li>
+						<li>Improves regulatory compliance across ministries</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Tech Specs -->
+			<h2 class="section-title">Technical <span>Specifications</span></h2>
+			<div class="tech-grid">
+				<div class="tech-row">
+					<span class="tech-key">Speech-to-Text</span>
+					<span class="tech-val">Google Cloud Speech API</span>
+				</div>
+				<div class="tech-row">
+					<span class="tech-key">Text-to-Speech</span>
+					<span class="tech-val">Neural TTS API</span>
+				</div>
+				<div class="tech-row">
+					<span class="tech-key">Audio Quality</span>
+					<span class="tech-val">High (48kHz)</span>
+				</div>
+				<div class="tech-row">
+					<span class="tech-key">Documents Indexed</span>
+					<span class="tech-val">1,247+</span>
+				</div>
+				<div class="tech-row">
+					<span class="tech-key">Q&A Pairs</span>
+					<span class="tech-val">5,832+</span>
+				</div>
+				<div class="tech-row">
+					<span class="tech-key">Response Accuracy</span>
+					<span class="tech-val">93%+</span>
+				</div>
+				<div class="tech-row">
+					<span class="tech-key">Security</span>
+					<span class="tech-val">SOC 2 Type II, GDPR</span>
+				</div>
+				<div class="tech-row">
+					<span class="tech-key">Languages</span>
+					<span class="tech-val">15+</span>
+				</div>
+			</div>
+
+			<!-- CTA -->
+			<div class="cta-section">
+				<h2>Ready to transform your customer support?</h2>
+				<p>Get in touch with our team — contact@carnotresearch.com &nbsp;|&nbsp; +91 8449710411</p>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+</body>
+</html>
