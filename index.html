@@ -446,33 +446,75 @@
 		</div>
 	</div>
   
-	<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px;">
+	<style>
+		.gem-products-grid {
+			display: grid;
+			grid-template-columns: repeat(6, minmax(0, 1fr));
+			gap: 25px;
+		}
+		.gem-product-card {
+			grid-column: span 2;
+			background: white;
+			border-radius: 12px;
+			padding: 28px 24px;
+			box-shadow: 0 12px 35px rgba(44, 62, 80, 0.08);
+			border: 1px solid rgba(26, 188, 156, 0.12);
+		}
+		.gem-product-card--link {
+			text-decoration: none;
+			display: block;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+		.gem-product-card--row2-left { grid-column: 2 / span 2; }
+		.gem-product-card--row2-right { grid-column: 4 / span 2; }
+		@media (max-width: 991px) {
+			.gem-products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+			.gem-product-card,
+			.gem-product-card--row2-left,
+			.gem-product-card--row2-right { grid-column: span 1; }
+		}
+		@media (max-width: 640px) {
+			.gem-products-grid { grid-template-columns: 1fr; }
+			.gem-product-card,
+			.gem-product-card--row2-left,
+			.gem-product-card--row2-right { grid-column: span 1; }
+		}
+	</style>
+
+	<div class="gem-products-grid">
 	  
-	  <div style="background: white; border-radius: 12px; padding: 28px 24px; box-shadow: 0 12px 35px rgba(44, 62, 80, 0.08); border: 1px solid rgba(26, 188, 156, 0.12); transition: transform 0.3s ease;">
+	  <div class="gem-product-card">
 		<h3 style="font-size: 2rem; color: #1abc9c; margin-bottom: 15px; font-weight: 600;" data-i18n="products.cat1_title">Meeting Summarizer</h3>
 		<p style="font-size: 1.5rem; color: #5d6d7e; line-height: 1.6; margin: 0;" data-i18n="products.cat1_desc">
 		  Automatically captures and summarizes key meeting insights with AI-powered transcription and context tagging.
 		</p>
 	  </div>
   
-	  <a href="products/gem#onpremise-knowledge-agent" style="text-decoration: none; display: block; background: white; border-radius: 12px; padding: 28px 24px; box-shadow: 0 12px 35px rgba(44, 62, 80, 0.08); border: 1px solid rgba(26, 188, 156, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 45px rgba(44,62,80,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow='0 12px 35px rgba(44,62,80,0.08)'">
+	  <a href="products/gem/onpremise-knowledge-agent.html" class="gem-product-card gem-product-card--link" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 45px rgba(44,62,80,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow='0 12px 35px rgba(44,62,80,0.08)'">
 		<h3 style="font-size: 2rem; color: #1abc9c; margin-bottom: 15px; font-weight: 600;" data-i18n="products.cat2_title">On-Premise Knowledge Agent</h3>
 		<p style="font-size: 1.5rem; color: #5d6d7e; line-height: 1.6; margin: 0;" data-i18n="products.cat2_desc">
 		  A secure on-premise AI agent designed to organize enterprise knowledge and answer complex data queries instantly.
 		</p>
 	  </a>
 
-	  <a href="products/gem#multilingual-chatbot" style="text-decoration: none; display: block; background: white; border-radius: 12px; padding: 28px 24px; box-shadow: 0 12px 35px rgba(44, 62, 80, 0.08); border: 1px solid rgba(26, 188, 156, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 45px rgba(44,62,80,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow='0 12px 35px rgba(44,62,80,0.08)'">
+	  <a href="products/gem/multilingual-chatbot.html" class="gem-product-card gem-product-card--link" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 45px rgba(44,62,80,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow='0 12px 35px rgba(44,62,80,0.08)'">
 		<h3 style="font-size: 2rem; color: #1abc9c; margin-bottom: 15px; font-weight: 600;" data-i18n="products.cat3_title">Multilingual Chatbot</h3>
 		<p style="font-size: 1.5rem; color: #5d6d7e; line-height: 1.6; margin: 0;" data-i18n="products.cat3_desc">
 		  Engage users across languages with an AI chatbot that supports natural multilingual conversations and sentiment analysis.
 		</p>
 	  </a>
 
-	  <a href="products/gem#genai-conversational-agent" style="text-decoration: none; display: block; background: white; border-radius: 12px; padding: 28px 24px; box-shadow: 0 12px 35px rgba(44, 62, 80, 0.08); border: 1px solid rgba(26, 188, 156, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 45px rgba(44,62,80,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow='0 12px 35px rgba(44,62,80,0.08)'">
+	  <a href="products/gem/genai-conversational-agent.html" class="gem-product-card gem-product-card--link gem-product-card--row2-left" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 45px rgba(44,62,80,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow='0 12px 35px rgba(44,62,80,0.08)'">
 		<h3 style="font-size: 2rem; color: #1abc9c; margin-bottom: 15px; font-weight: 600;" data-i18n="products.cat4_title">Generative AI Conversational Agent</h3>
 		<p style="font-size: 1.5rem; color: #5d6d7e; line-height: 1.6; margin: 0;" data-i18n="products.cat4_desc">
 		  A next-gen conversational AI that crafts human-like responses, enabling smart automation for business interactions.
+		</p>
+	  </a>
+
+	  <a href="products/gem/lms-platform.html" class="gem-product-card gem-product-card--link gem-product-card--row2-right" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 45px rgba(44,62,80,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow='0 12px 35px rgba(44,62,80,0.08)'">
+		<h3 style="font-size: 2rem; color: #1abc9c; margin-bottom: 15px; font-weight: 600;">LMS Platform</h3>
+		<p style="font-size: 1.5rem; color: #5d6d7e; line-height: 1.6; margin: 0;">
+		  AI-powered learning management system for structured training, assessments, certifications, and progress analytics.
 		</p>
 	  </a>
   

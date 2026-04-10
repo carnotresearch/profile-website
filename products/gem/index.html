@@ -2,44 +2,35 @@
 <html dir="ltr" lang="en-US">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="author" content="Carnot Research" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>GeM Listed Products | Carnot Research</title>
+	<title>GeM Products | Carnot Research</title>
 	<style>
-		/* Minimal wrapper: the actual product content lives in the existing gem-* pages. */
-		body { margin: 0; background: #fff; }
-		.gem-product-section iframe {
-			width: 100%;
-			border: 0;
+		body { margin: 0; padding: 32px 20px; font-family: Arial, sans-serif; background: #f5f7fa; }
+		.wrap { max-width: 1080px; margin: 0 auto; }
+		h1 { margin: 0 0 18px; color: #1f2937; font-size: 28px; }
+		.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+		.card {
 			display: block;
-			/* Prevent layout jumps while the iframe loads. Adjust if needed later. */
-			min-height: 1200px;
+			background: #fff;
+			border: 1px solid #d1fae5;
+			border-radius: 12px;
+			padding: 18px;
+			text-decoration: none;
+			color: #0f172a;
 		}
+		.card:hover { box-shadow: 0 10px 26px rgba(15, 23, 42, 0.12); transform: translateY(-2px); }
+		@media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
 	</style>
 </head>
-<body class="stretched">
-	<section id="onpremise-knowledge-agent" class="gem-product-section">
-		<iframe
-			src="../../gem-onpremise-knowledge-agent.html"
-			title="On-Premise Knowledge Agent"
-			loading="lazy"
-		></iframe>
-	</section>
-
-	<section id="multilingual-chatbot" class="gem-product-section">
-		<iframe
-			src="../../gem-multilingual-chatbot.html"
-			title="Multilingual AI Chatbot"
-			loading="lazy"
-		></iframe>
-	</section>
-
-	<section id="genai-conversational-agent" class="gem-product-section">
-		<iframe
-			src="../../gem-genai-conversational-agent.html"
-			title="Generative AI Conversational Agent"
-			loading="lazy"
-		></iframe>
-	</section>
+<body>
+	<div class="wrap">
+		<h1>GeM Listed Products</h1>
+		<div class="grid">
+			<a class="card" href="onpremise-knowledge-agent.html">On-Premise Knowledge Agent</a>
+			<a class="card" href="multilingual-chatbot.html">Multilingual AI Chatbot</a>
+			<a class="card" href="genai-conversational-agent.html">Generative AI Conversational Agent</a>
+			<a class="card" href="lms-platform.html">LMS Platform</a>
+		</div>
+	</div>
 </body>
 </html>
