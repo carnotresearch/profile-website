@@ -243,7 +243,7 @@ export function HeroSection() {
   const line1Text = "Knowledge AI built for"
   const line2LeadText = "India's toughest"
   const line2AccentText = " environments."
-  const subText = "100% on-premise AI for Government, Defense & Enterprise. Zero cloud dependency. Full data sovereignty."
+  const subText = "100% on-premise AI. Zero cloud dependency. Full data sovereignty."
 
   // Letter animations use a stagger; keep group timings continuous, then reveal logo/buttons after copy completes.
   const line1Start = 0.35
