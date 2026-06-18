@@ -9,7 +9,7 @@ import { TrustSection }                   from "@/components/home/trust-section"
 import { StayConnectedSection }           from "@/components/home/stay-connected-section"
 
 export const metadata: Metadata = {
-  title: "icarKno™ | On-Premise AI for Government, Defense & Enterprise",
+  title: "icarKno™ | Knowledge AI built for India's toughest environments.",
   description:
     "icarKno™ builds secure, on-premise AI for India's government, defense, and enterprise — knowledge management, computer vision, sports analytics, and NLP. Founded at IIT Delhi. CMMI Level 3 certified.",
   keywords: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "air-gap AI deployment",
   ],
   openGraph: {
-    title: "icarKno™ | On-Premise AI for Government & Enterprise",
+    title: "icarKno™ | Knowledge AI built for India's toughest environments.",
     description:
       "Secure AI that runs 100% on your own servers — knowledge management, computer vision, sports analytics, and NLP. Built at IIT Delhi.",
     url: "https://carnotresearch.com",
