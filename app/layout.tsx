@@ -12,8 +12,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "icarKno™ | Enterprise AI & Secure On-Premise GenAI Solutions",
-    template: "%s | icarKno™ - Enterprise AI Platform",
+    default: "icarKno™ | Knowledge AI built for India's toughest environments.",
+    template: "%s | icarKno™ - Knowledge AI Platform",
   },
   description:
     "icarKno™ delivers production-grade on-premise generative AI, NLP, and computer vision solutions for government and enterprise. Secure, scalable AI infrastructure built by IIT researchers.",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://carnotresearch.com",
     siteName: "icarKno™",
-    title: "icarKno™ | Enterprise AI & Secure On-Premise GenAI Solutions",
+    title: "icarKno™ | Knowledge AI built for India's toughest environments.",
     description:
       "Production-grade on-premise generative AI, NLP, and computer vision solutions for government and enterprise in India.",
     images: [
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "icarKno™ | Enterprise AI & Secure On-Premise GenAI",
+    title: "icarKno™ | Knowledge AI built for India's toughest environments.",
     description: "Secure, scalable AI infrastructure for government and enterprise.",
     creator: "@CarnotResearch",
     images: ["https://carnotresearch.com/og-image.png"],
