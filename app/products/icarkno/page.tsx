@@ -328,7 +328,7 @@ export default function IcarKnoPage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button size="lg" asChild className="bg-primary hover:bg-primary/90">
                   <a href="https://iknow.carnotresearch.com/" target="_blank" rel="noopener noreferrer">
-                    Request a Demo
+                    Try Product
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
@@ -578,7 +578,7 @@ export default function IcarKnoPage() {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button size="lg" asChild>
               <a href="https://iknow.carnotresearch.com/" target="_blank" rel="noopener noreferrer">
-                Request a Demo
+                Try Product
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>
