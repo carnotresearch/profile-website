@@ -41,6 +41,9 @@ const MIN_A     = 0.1   // --particle-min-alpha: 0.1
 const MAX_A     = 1.0   // --particle-max-alpha: 1.0
 const COLOR     = "navy" // --particle-color: navy
 
+// Alpha buckets for batched arc drawing — reduces canvas API calls ~10×
+const ALPHA_BUCKETS = 16
+
 function AntigravityCanvas({ startDelay = 0 }: { startDelay?: number }) {
   const ref = useRef<HTMLCanvasElement>(null)
 
@@ -62,14 +65,10 @@ function AntigravityCanvas({ startDelay = 0 }: { startDelay?: number }) {
     }
     resize()
 
-    // Ring state
-    let ringX   = 0, ringY   = 0   // current center (lerped)
-    let targetX = 0, targetY = 0   // mouse target
+    let ringX = 0, ringY = 0
+    let targetX = 0, targetY = 0
 
-    const onInit = () => {
-      ringX = targetX = W / 2
-      ringY = targetY = H / 2
-    }
+    const onInit = () => { ringX = targetX = W / 2; ringY = targetY = H / 2 }
     onInit()
 
     const onMove = (e: MouseEvent) => {
@@ -77,103 +76,95 @@ function AntigravityCanvas({ startDelay = 0 }: { startDelay?: number }) {
       targetX = e.clientX - r.left
       targetY = e.clientY - r.top
     }
-    const onLeave = () => {
-      targetX = W / 2
-      targetY = H / 2
-    }
+    const onLeave = () => { targetX = W / 2; targetY = H / 2 }
     window.addEventListener("mousemove", onMove)
     window.addEventListener("mouseleave", onLeave)
 
     const ro = new ResizeObserver(() => { resize(); onInit() })
     ro.observe(canvas)
 
-    const startAt = performance.now() + Math.max(0, startDelay) * 1000
+    // Pre-allocated typed arrays — zero GC pressure per frame
+    const MAX_PTS = ROWS * PER_ROW
+    const bX = Array.from({ length: ALPHA_BUCKETS }, () => new Float32Array(MAX_PTS))
+    const bY = Array.from({ length: ALPHA_BUCKETS }, () => new Float32Array(MAX_PTS))
+    const bN = new Int32Array(ALPHA_BUCKETS)
+
     let raf: number
+    let startAt = 0
 
     const draw = () => {
-      const now = performance.now()
+      const elapsed = (performance.now() - startAt) / 1000
+      const tick    = (elapsed % 6) / 6
+      const ringRad = 200 - 50 * Math.cos((elapsed / 6) * Math.PI)
 
-      // Keep the canvas idle until the hero copy/CTA reveal completes.
-      if (now < startAt) {
-        ctx.clearRect(0, 0, W, H)
-        raf = requestAnimationFrame(draw)
-        return
-      }
-
-      const elapsed = (now - startAt) / 1000  // seconds
-
-      // Animation tick: 0→1 over 6 s, linear repeating (matches CSS ripple)
-      const tick = (elapsed % 6) / 6
-
-      // Ring radius: 150→250 over 6 s, ease-in-out + alternate.
-      // Cosine gives the same smooth in/out profile as CSS ease-in-out.
-      const ringRad = 200 - 50 * Math.cos((elapsed / 6) * Math.PI) // 150↔250
-
-      // Smooth center follow — lerp ≈ 3 s ease (CSS transition: --ring-x 3s ease)
       ringX += (targetX - ringX) * 0.012
       ringY += (targetY - ringY) * 0.012
 
       ctx.clearRect(0, 0, W, H)
       ctx.fillStyle = COLOR
 
-      const C  = tick * Math.PI * 2          // animation tick as angle
-      const outerR = ringRad + THICKNESS     // outermost possible radius
+      const C     = tick * Math.PI * 2
+      const outerR = ringRad + THICKNESS
       const halfT  = THICKNESS / 2
 
-      for (let row = 0; row < ROWS; row++) {
-        // Base radius for this concentric ring
-        const baseR = ringRad + (ROWS > 1 ? row / (ROWS - 1) : 0) * THICKNESS
+      // Reset bucket counts
+      bN.fill(0)
 
+      for (let row = 0; row < ROWS; row++) {
+        const baseR = ringRad + (ROWS > 1 ? row / (ROWS - 1) : 0) * THICKNESS
         for (let p = 0; p < PER_ROW; p++) {
           const angle = (p / PER_ROW) * Math.PI * 2
-
-          // Layered sine waves — exact formula from worklet source
           const sineSum =
-            Math.sin(angle * M  + C * IF * S)  +
-            Math.sin(angle * Z  + C * (-S))     +
+            Math.sin(angle * M  + C * IF * S) +
+            Math.sin(angle * Z  + C * (-S))   +
             Math.sin(row   * P  + C)
-
-          // Normalise to [0,1] with power curve (worklet: pow(max(0,(s+3)/6), 1.5))
           const norm  = Math.pow(Math.max(0, (sineSum + 3) / 6), 1.5)
-
-          ctx.fillStyle = COLOR
-
-          // Alpha interpolation
-          let alpha = MIN_A + norm * (MAX_A - MIN_A)
-
-          // Particle actual radius (base + sine displacement)
-          const pRad = baseR + sineSum * V
-
-          // Fade particles near inner / outer edge of ring band
+          let alpha   = MIN_A + norm * (MAX_A - MIN_A)
+          const pRad  = baseR + sineSum * V
           const edgeDist = Math.min(pRad - ringRad, outerR - pRad) / halfT
           alpha *= Math.max(0, Math.min(1, edgeDist))
-
           if (alpha < 0.015) continue
-
           const px = ringX + Math.cos(angle) * pRad
           const py = ringY + Math.sin(angle) * pRad
-
-          // Skip particles outside the canvas (saves fillRect ops)
           if (px < -10 || px > W + 10 || py < -10 || py > H + 10) continue
-
-          ctx.globalAlpha = alpha
-          ctx.beginPath()
-          ctx.arc(px, py, PX_SIZE, 0, Math.PI * 2)
-          ctx.fill()
+          const b = Math.min(ALPHA_BUCKETS - 1, Math.floor(alpha * ALPHA_BUCKETS))
+          const i = bN[b]++
+          bX[b][i] = px
+          bY[b][i] = py
         }
+      }
+
+      // One beginPath+fill per alpha bucket instead of one per particle
+      for (let b = 0; b < ALPHA_BUCKETS; b++) {
+        const count = bN[b]
+        if (count === 0) continue
+        ctx.globalAlpha = (b + 0.5) / ALPHA_BUCKETS
+        ctx.beginPath()
+        for (let i = 0; i < count; i++) {
+          ctx.moveTo(bX[b][i] + PX_SIZE, bY[b][i])
+          ctx.arc(bX[b][i], bY[b][i], PX_SIZE, 0, Math.PI * 2)
+        }
+        ctx.fill()
       }
 
       raf = requestAnimationFrame(draw)
     }
-    draw()
+
+    // Use setTimeout so we never burn rAF frames while idle
+    const preWarm = Math.max(0, startDelay - 0.3) * 1000
+    const timer = setTimeout(() => {
+      startAt = performance.now()
+      raf = requestAnimationFrame(draw)
+    }, preWarm)
 
     return () => {
+      clearTimeout(timer)
       cancelAnimationFrame(raf)
       window.removeEventListener("mousemove", onMove)
       window.removeEventListener("mouseleave", onLeave)
       ro.disconnect()
     }
-  }, [])
+  }, [startDelay])
 
   return (
     <canvas
@@ -189,8 +180,8 @@ function AntigravityCanvas({ startDelay = 0 }: { startDelay?: number }) {
 }
 
 // ─── Word-by-word reveal ───────────────────────────────────────────────────────
-const CHAR_STAGGER = 0.03
-const LETTER_REVEAL_DURATION = 0.55
+const CHAR_STAGGER = 0.015
+const LETTER_REVEAL_DURATION = 0.45
 
 function Words({ text, color, delay = 0 }: { text: string; color?: string; delay?: number }) {
   const letters = Array.from(text)
@@ -246,14 +237,14 @@ export function HeroSection() {
   const subText = "100% on-premise AI. Zero cloud dependency. Full data sovereignty."
 
   // Letter animations use a stagger; keep group timings continuous, then reveal logo/buttons after copy completes.
-  const line1Start = 0.35
+  const line1Start = 0.1
   const line2LeadStart = line1Start + line1Text.length * CHAR_STAGGER
   const line2AccentStart = line2LeadStart + line2LeadText.length * CHAR_STAGGER
   const subStart = line2AccentStart + line2AccentText.length * CHAR_STAGGER
 
-  const btnDelay = subStart + subText.length * CHAR_STAGGER + LETTER_REVEAL_DURATION + 0.35
+  const btnDelay = subStart + subText.length * CHAR_STAGGER + LETTER_REVEAL_DURATION + 0.1
   const logoDelay = btnDelay
-  const bgDelay = btnDelay + 0.15
+  const bgDelay = btnDelay
 
   return (
     <section
