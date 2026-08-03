@@ -1,0 +1,11 @@
+# dependencies
+node_modules
+
+# next.js dev cache & auto-generated files
+.next/
+next-env.d.ts
+tsconfig.tsbuildinfo
+
+# misc
+.DS_Store
+*.md
