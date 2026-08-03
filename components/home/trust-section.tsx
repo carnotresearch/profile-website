@@ -91,7 +91,7 @@ function CurvedCarousel() {
           const abs     = Math.abs(d)
           const isActive = d === 0
 
-          if (abs > 3) return null   // hide cards 4+ slots away
+          if (abs > 2) return null   // show only active + 2 neighbors per side
 
           return (
             <motion.div
@@ -111,7 +111,7 @@ function CurvedCarousel() {
                 x:       d * STEP_X,
                 rotateY: d * ROTATE_Y,
                 scale:   1 - abs * SCALE_D,
-                opacity: abs === 3 ? 0.5 : 1,
+                opacity: abs === 2 ? 0.6 : 1,
               }}
               transition={{ type: "spring", stiffness: 380, damping: 38 }}
               onClick={() => !isActive && setActive(i)}
