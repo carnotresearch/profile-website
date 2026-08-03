@@ -60,7 +60,7 @@ export function AboutSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-background pt-20 pb-8 lg:pt-28 lg:pb-10"
+      className="bg-background pt-14 pb-8 sm:pt-20 sm:pb-8 lg:pt-28 lg:pb-10"
       style={
         visible
           ? { animation: "fadeUpIn 0.65s ease both" }
@@ -68,7 +68,7 @@ export function AboutSection() {
       }
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
+        <div className="grid gap-8 lg:gap-14 lg:grid-cols-2 lg:items-center">
 
           {/* Left — image slideshow */}
           <div className="relative order-2 lg:order-1">
@@ -105,7 +105,7 @@ export function AboutSection() {
 
           {/* Right — text */}
           <div className="order-1 lg:order-2">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-teal-700">
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-700">
               Our Story
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
@@ -113,12 +113,12 @@ export function AboutSection() {
               <span className="text-teal-700">real-world AI deployment</span>
             </h2>
 
-            <p className="mt-5 text-base leading-relaxed text-gray-600">
+            <p className="mt-5 text-sm sm:text-base leading-relaxed text-gray-600">
               icarKno™ was founded by IIT Delhi professors and scientists who saw a critical
               gap: India&apos;s government, defense, and enterprise organizations needed AI that
               worked entirely inside their own walls: secure, offline, and fully under their control.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-gray-600">
+            <p className="mt-4 text-sm sm:text-base leading-relaxed text-gray-600">
               We don&apos;t just advise. We build and ship. Our products are operational
               today: icarKno™ runs inside government networks, BharGati™ AI coaches
               elite athletes, and SAATHI guides Delhi commuters in 22+ languages.
@@ -127,11 +127,11 @@ export function AboutSection() {
             {/* Differentiator pillars */}
             <div className="mt-6 flex flex-col divide-y divide-gray-100">
               {pillars.map(({ icon: Icon, title, desc, iconColor }) => (
-                <div key={title} className="flex items-start gap-3 py-3">
+                <div key={title} className="flex items-start gap-3 py-3.5">
                   <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${iconColor}`} />
                   <div>
                     <p className="text-sm font-semibold text-slate-800">{title}</p>
-                    <p className="text-xs leading-relaxed text-gray-500">{desc}</p>
+                    <p className="mt-0.5 text-sm leading-relaxed text-gray-600">{desc}</p>
                   </div>
                 </div>
               ))}

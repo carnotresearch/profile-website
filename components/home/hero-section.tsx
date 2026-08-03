@@ -248,19 +248,20 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative flex flex-col items-center justify-center overflow-hidden"
-      style={{ background: "#ffffff", height: "calc(100vh - 3.75rem)" }}
+      className="relative flex flex-col items-center justify-center overflow-hidden hero-section-height"
+      style={{ background: "#ffffff" }}
     >
       {/* ── Ring-particles canvas ── */}
       <AntigravityCanvas startDelay={bgDelay} />
 
       {/* ── Centred hero content — antigravity.google layout ── */}
       <div
-        className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6"
+        className="relative z-10 flex flex-col items-center text-center px-5 sm:px-6"
         style={{ maxWidth: 860, width: "100%" }}
       >
         {/* Wordmark stays on top, but reveals together with the CTA buttons */}
         <div
+          className="hero-wordmark"
           style={{
             display: "inline-flex",
             alignItems: "center",
@@ -277,9 +278,10 @@ export function HeroSection() {
             width={64}
             height={64}
             priority
-            style={{ width: 64, height: 64, objectFit: "contain" }}
+            className="hero-wordmark-logo"
+            style={{ objectFit: "contain" }}
           />
-          <span style={{ fontSize: 22, fontWeight: 600, color: "#0f172a", letterSpacing: "-0.01em" }}>
+          <span className="hero-wordmark-text" style={{ fontWeight: 600, color: "#0f172a", letterSpacing: "-0.01em" }}>
             icarKno™
           </span>
         </div>
@@ -287,7 +289,7 @@ export function HeroSection() {
         {/* Headline — matches the codepen <p> at 4.5 em / weight 500 */}
         <p
           style={{
-            fontSize: "clamp(2.4rem, 7vw, 4.5rem)",
+            fontSize: "clamp(2rem, 7vw, 4.5rem)",
             fontWeight: 500,
             lineHeight: 1.1,
             letterSpacing: "-0.025em",
@@ -329,10 +331,8 @@ export function HeroSection() {
 
         {/* CTA buttons appear after text reveal */}
         <div
-          className="flex flex-col sm:flex-row flex-wrap items-center justify-center"
+          className="hero-cta-group flex flex-col sm:flex-row flex-wrap items-center justify-center"
           style={{
-            gap: "0.3em",
-            width: "90%",
             margin: "0 auto",
             opacity: 0,
             animation: `wordReveal 0.55s cubic-bezier(0.22,1,0.36,1) ${btnDelay.toFixed(2)}s both`,
@@ -341,16 +341,17 @@ export function HeroSection() {
           {/* Primary — dark fill */}
           <Link
             href="/products/icarkno"
-            className="inline-flex items-center gap-2 transition-all duration-150 hover:opacity-90 active:scale-[.97]"
+            className="hero-cta-btn inline-flex items-center justify-center gap-2 transition-all duration-150 hover:opacity-90 active:scale-[.97]"
             style={{
               background: "#0f172a",
               color: "#fff",
               borderRadius: 9999,
               padding: "0.6em 1.5em",
-              fontSize: "1.15em",
+              fontSize: "1.05em",
               fontWeight: 500,
               letterSpacing: "0.01em",
               whiteSpace: "nowrap",
+              border: "1.5px solid transparent",
               boxShadow: "0 2px 14px rgba(15,23,42,0.20)",
             }}
           >
@@ -360,13 +361,13 @@ export function HeroSection() {
           {/* Secondary — teal outline */}
           <Link
             href="/contact"
-            className="inline-flex items-center gap-1.5 transition-all duration-150 hover:bg-teal-50 active:scale-[.97]"
+            className="hero-cta-btn inline-flex items-center justify-center gap-1.5 transition-all duration-150 hover:bg-teal-50 active:scale-[.97]"
             style={{
               background: "transparent",
               color: "#0d9488",
               borderRadius: 9999,
               padding: "0.6em 1.5em",
-              fontSize: "1.15em",
+              fontSize: "1.05em",
               fontWeight: 500,
               letterSpacing: "0.01em",
               border: "1.5px solid #0d9488",
@@ -378,9 +379,9 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll cue */}
+      {/* Scroll cue — hidden on mobile to avoid collision with WhatsApp button */}
       <div
-        className="absolute bottom-7 left-1/2 -translate-x-1/2"
+        className="absolute bottom-7 left-1/2 -translate-x-1/2 hidden sm:block"
         style={{ zIndex: 10, opacity: 0.22 }}
       >
         <svg width="14" height="22" viewBox="0 0 14 22" fill="none">

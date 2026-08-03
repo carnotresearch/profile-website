@@ -146,10 +146,10 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-muted-foreground text-center md:text-left">
             © {currentYear} Carnot Research Pvt. Ltd. All rights reserved.
           </p>
-          <nav className="flex items-center gap-6">
+          <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
             <Link
               href="/privacy"
               className="text-xs text-muted-foreground hover:text-primary transition-colors duration-200"

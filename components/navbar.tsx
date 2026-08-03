@@ -89,7 +89,7 @@ function MobileAccordion({ item, onClose }: { item: typeof mobileNav[0]; onClose
     <div>
       <button
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between rounded-md px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+        className="flex min-h-[44px] w-full items-center justify-between rounded-md px-3 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
       >
         {item.name}
         <ChevronDown
@@ -105,20 +105,20 @@ function MobileAccordion({ item, onClose }: { item: typeof mobileNav[0]; onClose
               target="_blank"
               rel="noopener noreferrer"
               onClick={onClose}
-              className="block rounded-md px-2.5 py-2 transition-colors hover:bg-gray-50"
+              className="block rounded-md px-2.5 py-2.5 min-h-[44px] transition-colors hover:bg-gray-50"
             >
               <span className="text-sm font-medium text-gray-800">{sub.name}</span>
-              {sub.sub && <span className="mt-0.5 block text-xs text-gray-400">{sub.sub}</span>}
+              {sub.sub && <span className="mt-0.5 block text-xs text-gray-500">{sub.sub}</span>}
             </a>
           ) : (
             <Link
               key={sub.name}
               href={sub.href}
               onClick={onClose}
-              className="block rounded-md px-2.5 py-2 transition-colors hover:bg-gray-50"
+              className="block rounded-md px-2.5 py-2.5 min-h-[44px] transition-colors hover:bg-gray-50"
             >
               <span className="text-sm font-medium text-gray-800">{sub.name}</span>
-              {sub.sub && <span className="mt-0.5 block text-xs text-gray-400">{sub.sub}</span>}
+              {sub.sub && <span className="mt-0.5 block text-xs text-gray-500">{sub.sub}</span>}
             </Link>
           ))}
         </div>
@@ -133,7 +133,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full px-4 pt-3 pb-0">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-xl border border-gray-200 bg-white px-4 h-12 shadow-sm lg:px-5">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-xl border border-gray-200 bg-white px-4 h-14 lg:h-12 shadow-sm lg:px-5">
 
         {/* ── Logo ── */}
         <Link href="/" className="flex items-center gap-2 flex-shrink-0" onClick={close}>
@@ -358,7 +358,7 @@ export function Navbar() {
         {/* ── Mobile Menu Button ── */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="rounded-md p-1.5 text-gray-500 hover:bg-gray-100 transition-colors lg:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-md text-gray-600 hover:bg-gray-100 transition-colors lg:hidden -mr-2"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
         >
@@ -392,14 +392,14 @@ export function Navbar() {
               <Link
                 href="/contact"
                 onClick={close}
-                className="block rounded-md px-3 py-2 text-center text-sm font-medium text-gray-600 hover:bg-gray-50"
+                className="flex min-h-[44px] items-center justify-center rounded-md px-3 text-sm font-medium text-gray-700 hover:bg-gray-50"
               >
                 Discover the solution
               </Link>
               <Link
                 href="/products"
                 onClick={close}
-                className="flex items-center justify-center gap-1.5 rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white hover:bg-gray-800"
+                className="flex min-h-[44px] items-center justify-center gap-1.5 rounded-md bg-gray-900 px-3 text-sm font-medium text-white hover:bg-gray-800"
               >
                 Get Started
                 <ArrowRight className="h-3.5 w-3.5" />

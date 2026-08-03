@@ -56,24 +56,23 @@ const capabilities = [
 
 export function SolutionsSection() {
   return (
-    <section className="bg-secondary/30 py-20 lg:py-28">
+    <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-teal-700">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-700">
             What We Build
           </p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
             Deployable AI Systems
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-sm sm:text-base leading-relaxed text-muted-foreground">
             Our products are just three examples of what we build. icarKno™ creates
-            deployable AI systems across multiple domains, for organizations that need something
-            built from the ground up.
+            deployable AI systems across multiple domains, built from the ground up.
           </p>
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto mt-10 sm:mt-12 grid max-w-5xl gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {capabilities.map((c) => (
             <Link
               key={c.title}

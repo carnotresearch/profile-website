@@ -248,14 +248,14 @@ export function TrustSection() {
             <p className="mb-8 text-center text-[10px] font-semibold uppercase tracking-widest text-gray-400">
               Certifications &amp; Compliance
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-4">
+            <div className="mx-auto flex max-w-xs flex-col gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
               {certifications.map((cert) => (
                 <div
                   key={cert.title}
-                  className={`group flex items-center gap-3 rounded-xl border ${cert.border} bg-white px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg`}
+                  className={`group flex w-full items-center gap-3 rounded-xl border ${cert.border} bg-white px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:w-auto`}
                 >
-                  <div className={`flex h-9 w-9 items-center justify-center rounded-lg ${cert.iconBg} transition-transform duration-300 group-hover:scale-110`}>
-                    <cert.icon className={`h-4 w-4 ${cert.iconColor}`} />
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                    <cert.icon className={`h-5 w-5 ${cert.iconColor}`} />
                   </div>
                   <div>
                     <p className="text-sm font-semibold leading-tight text-gray-900">{cert.title}</p>

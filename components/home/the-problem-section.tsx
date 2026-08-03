@@ -116,14 +116,14 @@ const sectors = [
 
 export function TheProblemSection() {
   return (
-    <section className="bg-background py-16 lg:py-24">
+    <section className="bg-background py-14 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* Eyebrow */}
         <FadeUp>
-          <div className="mb-10 flex items-center gap-2">
+          <div className="mb-8 sm:mb-10 flex items-center gap-2">
             <AlertTriangle className="h-4 w-4 text-amber-500" />
-            <span className="text-xs font-semibold uppercase tracking-widest text-amber-600">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-600">
               The problem
             </span>
           </div>
@@ -134,10 +134,10 @@ export function TheProblemSection() {
           {/* ── Left: problem statement + cards ── */}
           <div>
             <FadeUp delay={60}>
-              <h2 className="text-[1.85rem] font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl">
-                Teams everywhere struggle to access trusted intelligence that works{" "}
+              <h2 className="text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl">
+                Teams struggle to access trusted intelligence that works{" "}
                 <span className="text-teal-700">securely, reliably,</span>{" "}
-                and in their context.
+                and in context.
               </h2>
             </FadeUp>
 
@@ -145,8 +145,8 @@ export function TheProblemSection() {
               {problems.map((p, i) => (
                 <FadeUp key={p.title} delay={120 + i * 70}>
                   <div className="flex gap-4 rounded-xl border border-border bg-card px-5 py-4 transition-shadow hover:shadow-sm">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center">
-                      <p.icon className={`h-4 w-4 ${p.iconColor}`} />
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center">
+                      <p.icon className={`h-5 w-5 ${p.iconColor}`} />
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-foreground">{p.title}</p>
@@ -173,11 +173,11 @@ export function TheProblemSection() {
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-semibold text-foreground">{s.title}</p>
                     <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{s.orgs}</p>
-                    <div className="mt-1.5 flex flex-wrap gap-1 sm:hidden">
+                    <div className="mt-2 flex flex-wrap gap-1.5 sm:hidden">
                       {s.useCases.map((uc) => (
                         <span
                           key={uc}
-                          className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600"
+                          className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-medium text-slate-600"
                         >
                           {uc}
                         </span>
