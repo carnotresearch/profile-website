@@ -74,7 +74,7 @@ export default function ContactPage() {
       />
 
       {/* ── Section 1: Form ── */}
-      <section className="min-h-[calc(100vh-3.75rem)] flex items-center px-4 py-8 sm:px-6 lg:px-8">
+      <section className="min-h-hero-page flex items-center px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:items-center">
 
@@ -103,7 +103,7 @@ export default function ContactPage() {
       </section>
 
       {/* ── Section 2: Info + Map ── */}
-      <section className="min-h-[calc(100vh-3.75rem)] flex items-center px-4 py-8 sm:px-6 lg:px-8">
+      <section className="min-h-hero-page flex items-center px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl">
 
           {/* Section heading */}

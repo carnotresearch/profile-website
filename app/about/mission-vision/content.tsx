@@ -284,7 +284,7 @@ export function MissionVisionContent() {
   return (
     <>
       {/* ── Hero ──────────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-background min-h-[calc(100vh-4rem)] flex flex-col justify-center pt-14 pb-28">
+      <section className="relative overflow-hidden bg-background min-h-hero-page-lg flex flex-col justify-center pt-14 pb-28">
         <div className="pointer-events-none absolute -top-40 -right-20 h-[500px] w-[500px] rounded-full bg-primary/6 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-40 -left-20 h-[500px] w-[500px] rounded-full bg-accent/6 blur-3xl" />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
@@ -312,7 +312,7 @@ export function MissionVisionContent() {
       </section>
 
       {/* ── Opening ───────────────────────────────────────────────────────────── */}
-      <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-secondary/30 py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
             {/* Left — text */}
@@ -345,7 +345,7 @@ export function MissionVisionContent() {
       </section>
 
       {/* ── Our Vision ────────────────────────────────────────────────────────── */}
-      <section className="bg-background py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-background py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
             {/* Left — image slideshow */}
@@ -387,7 +387,7 @@ export function MissionVisionContent() {
       </section>
 
       {/* ── Our Mission ───────────────────────────────────────────────────────── */}
-      <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-secondary/30 py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
             {/* Left — text */}
@@ -422,7 +422,7 @@ export function MissionVisionContent() {
       </section>
 
       {/* ── Innovation & Research ─────────────────────────────────────────────── */}
-      <section className="bg-background py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-background py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeUp>
             <div className="mx-auto max-w-2xl text-center mb-14">

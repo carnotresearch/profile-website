@@ -74,7 +74,7 @@ export default function GenAIConversationalAgentPage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative overflow-hidden bg-background min-h-[calc(100vh-3.75rem)] flex items-center">
+      <section className="relative overflow-hidden bg-background min-h-hero-page flex items-center">
         <div
           className="pointer-events-none absolute inset-0"
           style={{

@@ -175,7 +175,7 @@ export default function ResearchPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-background min-h-[calc(100vh-4rem)] flex flex-col justify-center pt-16 pb-[7.5rem]">
+      <section className="bg-background min-h-hero-page-lg flex flex-col justify-center pt-16 pb-[7.5rem]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-medium tracking-wider text-accent uppercase">

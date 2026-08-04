@@ -44,7 +44,7 @@ const icarKnoFeatures = [
 // ── icarKno spotlight ─────────────────────────────────────────────────────────
 export function IcarKnoShowcase() {
   return (
-    <section className="relative overflow-hidden bg-slate-50 py-14 lg:py-20">
+    <section className="cv-auto relative overflow-hidden bg-slate-50 py-14 lg:py-20">
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
 
@@ -175,7 +175,7 @@ const imageProducts = [
 
 export function MoreProducts() {
   return (
-    <section className="bg-background pb-20 lg:pb-28">
+    <section className="cv-auto bg-background pb-20 lg:pb-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* Divider header */}

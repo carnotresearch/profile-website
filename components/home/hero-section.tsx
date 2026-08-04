@@ -33,10 +33,14 @@ const P  = 0.5    // row frequency     randomFloat(0.2,0.8)
 const V  = 12     // displacement mag  randomInt(8,20)
 
 // Visual parameters matching the codepen CSS variables
-const ROWS      = 25    // --particle-rows: 25
-const PER_ROW   = 80    // --particle-count: 80
-const THICKNESS = 600   // --ring-thickness: 600
-const PX_SIZE   = 2     // --particle-size: 2
+const ROWS_DESKTOP    = 25   // --particle-rows: 25
+const PER_ROW_DESKTOP = 80   // --particle-count: 80
+// Mobile: ~⅓ the particles, ~2× the size — same visual density, ~4× cheaper.
+const ROWS_MOBILE     = 15
+const PER_ROW_MOBILE  = 45
+const THICKNESS       = 600  // --ring-thickness: 600
+const PX_SIZE_DESKTOP = 2    // --particle-size: 2
+const PX_SIZE_MOBILE  = 3    // slightly larger dots compensate for fewer of them
 const MIN_A     = 0.1   // --particle-min-alpha: 0.1
 const MAX_A     = 1.0   // --particle-max-alpha: 1.0
 const COLOR     = "navy" // --particle-color: navy
@@ -53,7 +57,18 @@ function AntigravityCanvas({ startDelay = 0 }: { startDelay?: number }) {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    const dpr = window.devicePixelRatio || 1
+    // Mobile GPUs choke on a full-DPR canvas with 2000 particles at 60fps and
+    // that main-thread cost was competing with scroll composition.
+    // Detect touch (pointer: coarse) once and pick a lighter budget:
+    //   - DPR capped at 1.5 (vs 3+ on high-end phones) → ~4× fewer pixels
+    //   - fewer, slightly larger particles (visually identical density)
+    //   - throttle rAF to ~30fps (skip every other frame)
+    const isTouch = typeof matchMedia !== "undefined" && matchMedia("(pointer: coarse)").matches
+    const ROWS    = isTouch ? ROWS_MOBILE    : ROWS_DESKTOP
+    const PER_ROW = isTouch ? PER_ROW_MOBILE : PER_ROW_DESKTOP
+    const PX_SIZE = isTouch ? PX_SIZE_MOBILE : PX_SIZE_DESKTOP
+    const dpr = Math.min(window.devicePixelRatio || 1, isTouch ? 1.5 : 3)
+    const FRAME_INTERVAL = isTouch ? 1000 / 30 : 0   // 30fps cap on touch, uncapped on desktop
     let W = 0, H = 0
 
     const resize = () => {
@@ -61,6 +76,7 @@ function AntigravityCanvas({ startDelay = 0 }: { startDelay?: number }) {
       H = canvas.offsetHeight
       canvas.width  = W * dpr
       canvas.height = H * dpr
+      ctx.setTransform(1, 0, 0, 1, 0, 0)
       ctx.scale(dpr, dpr)
     }
     resize()
@@ -78,15 +94,33 @@ function AntigravityCanvas({ startDelay = 0 }: { startDelay?: number }) {
     }
     const onLeave = () => { targetX = W / 2; targetY = H / 2 }
 
-    // Mousemove is desktop-only (mobile has no pointer that tracks the canvas).
-    // Skipping it on touch devices avoids a global window listener firing during scroll.
-    const isTouch = typeof matchMedia !== "undefined" && matchMedia("(pointer: coarse)").matches
+    // Mousemove is desktop-only (touch devices have no hovering pointer).
     if (!isTouch) {
       window.addEventListener("mousemove", onMove)
       window.addEventListener("mouseleave", onLeave)
     }
 
-    const ro = new ResizeObserver(() => { resize(); onInit() })
+    // Suppress trivial height-only resizes (Chrome mobile URL-bar toggle
+    // typically shifts height by 50–100px). Re-allocating the canvas backing
+    // buffer during a scroll → composite conflict → visible jank. Only fully
+    // reallocate when width changes or height changes substantially (e.g.
+    // orientation change, real window resize).
+    let lastW = W, lastH = H
+    const ro = new ResizeObserver(() => {
+      const newW = canvas.offsetWidth
+      const newH = canvas.offsetHeight
+      const dW = Math.abs(newW - lastW)
+      const dH = Math.abs(newH - lastH)
+      if (dW < 2 && dH < 120) {
+        // Trivial delta (bar toggle). Update logical size only, don't touch
+        // canvas.width/height — that would reallocate the GPU-backed buffer.
+        W = newW; H = newH
+        lastW = newW; lastH = newH
+        return
+      }
+      resize(); onInit()
+      lastW = newW; lastH = newH
+    })
     ro.observe(canvas)
 
     // Pre-allocated typed arrays — zero GC pressure per frame
@@ -99,9 +133,20 @@ function AntigravityCanvas({ startDelay = 0 }: { startDelay?: number }) {
     let startAt = 0
     let visible = true
     let running = false
+    let lastPaint = 0
 
     const draw = () => {
-      const elapsed = (performance.now() - startAt) / 1000
+      const now = performance.now()
+      // Frame-rate cap: on touch devices, skip rAF ticks so we render at ~30fps.
+      // Cuts per-second particle work in half without any visual change since
+      // this is a slow, continuous background animation.
+      if (FRAME_INTERVAL > 0 && now - lastPaint < FRAME_INTERVAL) {
+        if (visible) raf = requestAnimationFrame(draw)
+        else running = false
+        return
+      }
+      lastPaint = now
+      const elapsed = (now - startAt) / 1000
       const tick    = (elapsed % 6) / 6
       const ringRad = 200 - 50 * Math.cos((elapsed / 6) * Math.PI)
 

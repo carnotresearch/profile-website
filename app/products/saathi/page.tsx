@@ -255,7 +255,7 @@ export default function SaathiPage() {
       </section>
 
       {/* ── Capabilities ── */}
-      <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-secondary/30 py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-semibold uppercase tracking-wider text-[#2563eb]">Capabilities</p>
@@ -287,7 +287,7 @@ export default function SaathiPage() {
       </section>
 
       {/* ── Quick Questions ── */}
-      <section className="bg-background py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-background py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#bfdbfe] bg-[#eff6ff] px-3.5 py-1.5">
@@ -330,7 +330,7 @@ export default function SaathiPage() {
       </section>
 
       {/* ── Award & Recognition ── */}
-      <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-secondary/30 py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="overflow-hidden rounded-2xl border border-amber-200 bg-amber-50">
             <div className="grid lg:grid-cols-2">

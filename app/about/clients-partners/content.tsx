@@ -300,7 +300,7 @@ export function ClientsPartnersContent() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative overflow-hidden bg-white min-h-[calc(100vh-4rem)] flex flex-col justify-center pt-16 pb-[7.5rem]">
+      <section className="relative overflow-hidden bg-white min-h-hero-page-lg flex flex-col justify-center pt-16 pb-[7.5rem]">
         <div className="pointer-events-none absolute -top-40 -right-20 h-96 w-96 rounded-full bg-blue-50 blur-3xl opacity-60" />
         <div className="pointer-events-none absolute -bottom-40 -left-20 h-96 w-96 rounded-full bg-cyan-50 blur-3xl opacity-60" />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">

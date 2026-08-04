@@ -56,7 +56,7 @@ const capabilities = [
 
 export function SolutionsSection() {
   return (
-    <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
+    <section className="cv-auto bg-secondary/30 py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         <div className="mx-auto max-w-3xl text-center">

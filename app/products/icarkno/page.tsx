@@ -347,7 +347,7 @@ export default function IcarKnoPage() {
       </section>
 
       {/* ─── What is icarKno ─────────────────────────────────────────────────── */}
-      <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-secondary/30 py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             What is icarKno™?
@@ -398,7 +398,7 @@ export default function IcarKnoPage() {
       </section>
 
       {/* ─── The Problem icarKno Solves ──────────────────────────────────────── */}
-      <section className="bg-background py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-background py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             The Problem icarKno™ Solves
@@ -433,7 +433,7 @@ export default function IcarKnoPage() {
       </section>
 
       {/* ─── Core Capabilities (2x3 Grid) ────────────────────────────────────── */}
-      <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-secondary/30 py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Core Capabilities
@@ -458,7 +458,7 @@ export default function IcarKnoPage() {
       </section>
 
       {/* ─── Use Cases (Alternating Blocks) ──────────────────────────────────── */}
-      <section className="bg-background py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-background py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Use Cases
@@ -511,7 +511,7 @@ export default function IcarKnoPage() {
       </section>
 
       {/* ─── The icarKno Difference (Comparison Table) ───────────────────────── */}
-      <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-secondary/30 py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             The icarKno™ Difference
@@ -545,7 +545,7 @@ export default function IcarKnoPage() {
       </section>
 
       {/* ─── FAQ Section ────────────────────────────────────────────────────── */}
-      <section className="bg-background py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-background py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-3xl px-6 lg:px-8">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Frequently Asked Questions
@@ -566,7 +566,7 @@ export default function IcarKnoPage() {
       </section>
 
       {/* ─── CTA ────────────────────────────────────────────────────────────── */}
-      <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-secondary/30 py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
           <h2 className="text-balance text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Ready to deploy icarKno™?

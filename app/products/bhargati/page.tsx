@@ -424,7 +424,7 @@ export default function BharGatiPage() {
       </section>
 
       {/* What is BharGati */}
-      <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-secondary/30 py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             What is BharGati™?
@@ -469,7 +469,7 @@ export default function BharGatiPage() {
       </section>
 
       {/* Problem BharGati solves */}
-      <section className="bg-background py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-background py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             The Problem BharGati™ Solves
@@ -507,7 +507,7 @@ export default function BharGatiPage() {
       </section>
 
       {/* Core capabilities (2x3 grid) */}
-      <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-secondary/30 py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Core Capabilities
@@ -532,7 +532,7 @@ export default function BharGatiPage() {
       </section>
 
       {/* Difference table */}
-      <section className="bg-background py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-background py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             What Sets BharGati™ Apart
@@ -566,7 +566,7 @@ export default function BharGatiPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-secondary/30 py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-3xl px-6 lg:px-8">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             FAQ

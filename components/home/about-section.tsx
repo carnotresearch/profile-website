@@ -66,7 +66,7 @@ export function AboutSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-background pt-14 pb-8 sm:pt-20 sm:pb-8 lg:pt-28 lg:pb-10"
+      className="cv-auto bg-background pt-14 pb-8 sm:pt-20 sm:pb-8 lg:pt-28 lg:pb-10"
       style={
         visible
           ? { animation: "fadeUpIn 0.65s ease both" }
@@ -78,7 +78,7 @@ export function AboutSection() {
 
           {/* Left — image slideshow */}
           <div className="relative order-2 lg:order-1">
-            <div className="pointer-events-none absolute -inset-4 rounded-3xl bg-blue-50/50 blur-2xl hidden sm:block" />
+            <div className="pointer-events-none absolute -inset-4 rounded-3xl bg-blue-50/50 blur-2xl" />
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 shadow-xl">
               {images.map((img, i) => (
                 // eslint-disable-next-line @next/next/no-img-element

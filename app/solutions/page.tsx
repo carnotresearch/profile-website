@@ -299,7 +299,7 @@ export default function SolutionsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {/* Hero */}
-      <section className="bg-background min-h-[calc(100vh-4rem)] flex flex-col justify-center pt-14 pb-28">
+      <section className="bg-background min-h-hero-page-lg flex flex-col justify-center pt-14 pb-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-medium tracking-wider text-accent uppercase">
@@ -331,7 +331,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* AI Challenges */}
-      <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-secondary/30 py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
@@ -425,7 +425,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* AI Capabilities & Specialized Services */}
-      <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-secondary/30 py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
@@ -464,7 +464,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* Implementation framework */}
-      <section className="bg-background py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-background py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
@@ -508,7 +508,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* Industries */}
-      <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-secondary/30 py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
@@ -539,7 +539,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-background py-14 sm:py-20 lg:py-28">
+      <section className="cv-auto bg-background py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-3xl px-6 lg:px-8">
           <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl text-center">
             FAQ

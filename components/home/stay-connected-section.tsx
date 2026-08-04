@@ -22,7 +22,7 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export function StayConnectedSection() {
   return (
-    <section className="bg-background py-10 sm:py-14">
+    <section className="cv-auto bg-background py-10 sm:py-14">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <FadeUp>
           <div className="text-center">

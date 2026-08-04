@@ -93,18 +93,16 @@
   }
 }
 
-/* Note: previously animated `filter: blur(3px → 0)` which forced per-frame
-   re-rasterization of every animated char/element — expensive on mobile GPUs
-   and jank-prone if the user scrolls during hero reveal. Opacity + transform
-   are composited on the GPU and run without touching layout/paint. */
 @keyframes wordReveal {
   from {
     opacity: 0;
     transform: translateY(20px);
+    filter: blur(3px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0px);
   }
 }
 
@@ -216,10 +214,26 @@
   100% { background-position: 200% 0; }
 }
 
-/* Hero section — dvh for iOS Safari, responsive wordmark, CTA gap */
+/* Perf: let the browser skip rendering/layout for off-screen sections until they
+   approach the viewport. Chromium honors this and it eliminates a big chunk of
+   main-thread work during scroll on long landing pages. Safari currently
+   ignores it (safe fallback — no visual change either way). We deliberately
+   *don't* apply this to <section> globally, only tag it via a utility class so
+   we can control which sections opt in. First-viewport sections (hero, we-are)
+   should NOT use this or the initial paint will jitter. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
+/* Hero section — svh so hero doesn't resize when Chrome/Edge mobile URL bar
+   toggles. dvh would resize on every bar animation, which re-allocates the
+   canvas backing buffer mid-scroll → visible jank exactly when the bar toggles.
+   svh = the "small" viewport (bars visible height), stable across scroll.
+   The vh line is a fallback for browsers older than early 2022. */
 .hero-section-height {
   height: calc(100vh - 4.25rem);
-  height: calc(100dvh - 4.25rem);
+  height: calc(100svh - 4.25rem);
 }
 .hero-wordmark-logo { width: 48px; height: 48px; }
 .hero-wordmark-text { font-size: 20px; }
@@ -247,6 +261,20 @@
 @media (min-width: 1024px) {
   .hero-section-height {
     height: calc(100vh - 3.75rem);
-    height: calc(100dvh - 3.75rem);
+    height: calc(100svh - 3.75rem);
   }
+}
+
+/* Full-viewport hero utilities used by inner pages (products, solutions, about,
+   etc). Same reasoning as .hero-section-height: svh stays constant across
+   Chrome mobile URL-bar toggle animations, so no layout thrash mid-scroll.
+   These replace `min-h-[calc(100vh-3.75rem)]` / `-4rem` Tailwind arbitrary
+   values so we get the vh→svh fallback pattern in one place. */
+.min-h-hero-page {
+  min-height: calc(100vh - 3.75rem);
+  min-height: calc(100svh - 3.75rem);
+}
+.min-h-hero-page-lg {
+  min-height: calc(100vh - 4rem);
+  min-height: calc(100svh - 4rem);
 }

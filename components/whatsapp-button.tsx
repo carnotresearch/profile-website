@@ -9,7 +9,16 @@ export function WhatsAppButton() {
   const [hovered, setHovered] = useState(false)
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center justify-end gap-3">
+    <div
+      className="fixed bottom-6 right-6 z-50 flex items-center justify-end gap-3"
+      style={{
+        // Promote to its own compositor layer so Chrome mobile can reposition
+        // this fixed element on the GPU (during URL-bar toggle animation)
+        // without a main-thread paint that would compete with scroll.
+        transform: "translate3d(0, 0, 0)",
+        willChange: "transform",
+      }}
+    >
       {/* Tooltip — slides in from right */}
       <div
         className={`

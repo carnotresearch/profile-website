@@ -206,7 +206,7 @@ export function OnPremAIContent() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#0b1929] min-h-[calc(100vh-4rem)] flex flex-col justify-center pt-16 pb-[7.5rem]">
+      <section className="relative overflow-hidden bg-[#0b1929] min-h-hero-page-lg flex flex-col justify-center pt-16 pb-[7.5rem]">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.06]"
           style={{
