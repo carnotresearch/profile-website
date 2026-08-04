@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const B = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 
@@ -21,8 +21,22 @@ export function IcarKnoSlideshow({ className = "", interval = 3500 }: IcarKnoSli
   const [current, setCurrent] = useState(0)
   const [prev, setPrev] = useState<number | null>(null)
   const [animating, setAnimating] = useState(false)
+  const rootRef = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+
+  // Only observe once — start ticking when the slideshow enters the viewport
+  // and stop when it leaves. Prevents a background setInterval from re-rendering
+  // (and painting cross-fading images) while the user is scrolling elsewhere.
+  useEffect(() => {
+    const el = rootRef.current
+    if (!el) return
+    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0 })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
 
   useEffect(() => {
+    if (!visible) return
     const timer = setInterval(() => {
       setCurrent((c) => {
         setPrev(c)
@@ -31,7 +45,7 @@ export function IcarKnoSlideshow({ className = "", interval = 3500 }: IcarKnoSli
       })
     }, interval)
     return () => clearInterval(timer)
-  }, [interval])
+  }, [interval, visible])
 
   useEffect(() => {
     if (!animating) return
@@ -40,7 +54,7 @@ export function IcarKnoSlideshow({ className = "", interval = 3500 }: IcarKnoSli
   }, [animating])
 
   return (
-    <div className={`relative overflow-hidden ${className}`}>
+    <div ref={rootRef} className={`relative overflow-hidden ${className}`}>
       {prev !== null && (
         <img
           key={`prev-${prev}`}

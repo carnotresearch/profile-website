@@ -93,16 +93,18 @@
   }
 }
 
+/* Note: previously animated `filter: blur(3px → 0)` which forced per-frame
+   re-rasterization of every animated char/element — expensive on mobile GPUs
+   and jank-prone if the user scrolls during hero reveal. Opacity + transform
+   are composited on the GPU and run without touching layout/paint. */
 @keyframes wordReveal {
   from {
     opacity: 0;
     transform: translateY(20px);
-    filter: blur(3px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0px);
   }
 }
 

@@ -60,18 +60,32 @@ function CurvedCarousel() {
   const [active, setActive] = useState(0)
   const total   = clients.length
   const [paused, setPaused] = useState(false)
+  const [inViewport, setInViewport] = useState(false)
+  const rootRef = useRef<HTMLDivElement>(null)
 
   const prev = useCallback(() => setActive(a => (a - 1 + total) % total), [total])
   const next = useCallback(() => setActive(a => (a + 1) % total), [total])
 
+  // Pause autoplay when the carousel is off-screen. Each tick re-renders
+  // Framer Motion transforms on up to 5 cards + the active-name AnimatePresence,
+  // which competes with scroll compositing on mobile.
   useEffect(() => {
-    if (paused) return
+    const el = rootRef.current
+    if (!el) return
+    const io = new IntersectionObserver(([e]) => setInViewport(e.isIntersecting), { threshold: 0 })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (paused || !inViewport) return
     const id = setInterval(next, 3200)
     return () => clearInterval(id)
-  }, [next, paused])
+  }, [next, paused, inViewport])
 
   return (
     <div
+      ref={rootRef}
       className="select-none"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}

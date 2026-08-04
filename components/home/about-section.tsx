@@ -38,18 +38,24 @@ export function AboutSection() {
   const [current, setCurrent] = useState(0)
   const sectionRef = useRef<HTMLElement>(null)
   const [visible, setVisible] = useState(false)
+  const [inViewport, setInViewport] = useState(false)
 
+  // Only cycle images while the section is on-screen. Running a re-render
+  // every 4s while the user is scrolling somewhere else forces unnecessary
+  // paints and competes with scroll compositing on mobile.
   useEffect(() => {
+    if (!inViewport) return
     const id = setInterval(() => setCurrent((c) => (c + 1) % images.length), 4000)
     return () => clearInterval(id)
-  }, [])
+  }, [inViewport])
 
   useEffect(() => {
     const el = sectionRef.current
     if (!el) return
     const ob = new IntersectionObserver(
       ([e]) => {
-        if (e.isIntersecting) { setVisible(true); ob.unobserve(el) }
+        setInViewport(e.isIntersecting)
+        if (e.isIntersecting) setVisible(true)  // one-way flag for reveal
       },
       { threshold: 0.1 }
     )
@@ -72,7 +78,7 @@ export function AboutSection() {
 
           {/* Left — image slideshow */}
           <div className="relative order-2 lg:order-1">
-            <div className="pointer-events-none absolute -inset-4 rounded-3xl bg-blue-50/50 blur-2xl" />
+            <div className="pointer-events-none absolute -inset-4 rounded-3xl bg-blue-50/50 blur-2xl hidden sm:block" />
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 shadow-xl">
               {images.map((img, i) => (
                 // eslint-disable-next-line @next/next/no-img-element

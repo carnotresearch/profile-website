@@ -77,8 +77,14 @@ function AntigravityCanvas({ startDelay = 0 }: { startDelay?: number }) {
       targetY = e.clientY - r.top
     }
     const onLeave = () => { targetX = W / 2; targetY = H / 2 }
-    window.addEventListener("mousemove", onMove)
-    window.addEventListener("mouseleave", onLeave)
+
+    // Mousemove is desktop-only (mobile has no pointer that tracks the canvas).
+    // Skipping it on touch devices avoids a global window listener firing during scroll.
+    const isTouch = typeof matchMedia !== "undefined" && matchMedia("(pointer: coarse)").matches
+    if (!isTouch) {
+      window.addEventListener("mousemove", onMove)
+      window.addEventListener("mouseleave", onLeave)
+    }
 
     const ro = new ResizeObserver(() => { resize(); onInit() })
     ro.observe(canvas)
@@ -89,8 +95,10 @@ function AntigravityCanvas({ startDelay = 0 }: { startDelay?: number }) {
     const bY = Array.from({ length: ALPHA_BUCKETS }, () => new Float32Array(MAX_PTS))
     const bN = new Int32Array(ALPHA_BUCKETS)
 
-    let raf: number
+    let raf: number | undefined
     let startAt = 0
+    let visible = true
+    let running = false
 
     const draw = () => {
       const elapsed = (performance.now() - startAt) / 1000
@@ -147,21 +155,49 @@ function AntigravityCanvas({ startDelay = 0 }: { startDelay?: number }) {
         ctx.fill()
       }
 
+      if (visible) raf = requestAnimationFrame(draw)
+      else running = false
+    }
+
+    const start = () => {
+      if (running) return
+      running = true
+      if (startAt === 0) startAt = performance.now()
       raf = requestAnimationFrame(draw)
     }
+    const stop = () => {
+      running = false
+      if (raf !== undefined) { cancelAnimationFrame(raf); raf = undefined }
+    }
+
+    // Pause the rAF loop when the canvas leaves the viewport. On mobile the
+    // hero is off-screen after one flick, and continuing to run 2000-particle
+    // frames on the main thread starves scroll compositing → visible jank.
+    const io = new IntersectionObserver(
+      ([e]) => {
+        visible = e.isIntersecting
+        if (visible) start()
+        else stop()
+      },
+      { threshold: 0 }
+    )
+    io.observe(canvas)
 
     // Use setTimeout so we never burn rAF frames while idle
     const preWarm = Math.max(0, startDelay - 0.3) * 1000
     const timer = setTimeout(() => {
       startAt = performance.now()
-      raf = requestAnimationFrame(draw)
+      if (visible) start()
     }, preWarm)
 
     return () => {
       clearTimeout(timer)
-      cancelAnimationFrame(raf)
-      window.removeEventListener("mousemove", onMove)
-      window.removeEventListener("mouseleave", onLeave)
+      stop()
+      io.disconnect()
+      if (!isTouch) {
+        window.removeEventListener("mousemove", onMove)
+        window.removeEventListener("mouseleave", onLeave)
+      }
       ro.disconnect()
     }
   }, [startDelay])
