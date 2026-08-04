@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const BAR_HEIGHTS = [55, 80, 40, 90, 65, 75, 50, 85, 60, 70, 45, 88]
 
@@ -48,22 +48,50 @@ export function VideoWithSkeleton({
   ariaLabel?: string
 }) {
   const [loaded, setLoaded] = useState(false)
+  const [shouldLoad, setShouldLoad] = useState(false)
+  const wrapRef = useRef<HTMLDivElement>(null)
+
+  // Lazy-load: don't attach the video src (and don't download bytes) until
+  // the placeholder scrolls near the viewport. Without this, all use-case
+  // videos on the page (~50 MB total) start downloading on page load and
+  // saturate the connection, making the page feel slow.
+  useEffect(() => {
+    const el = wrapRef.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setShouldLoad(true)
+          io.disconnect()
+        }
+      },
+      // Start loading a bit before the video enters view so it's ready when
+      // the user gets there — but not so early that off-screen videos are
+      // still downloading during initial page paint.
+      { rootMargin: "400px 0px" }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
 
   return (
-    <div className="relative">
+    <div ref={wrapRef} className="relative">
       {!loaded && (
         <VerticalLinesSkeleton className={skeletonClassName || "w-full aspect-video"} />
       )}
-      <video
-        src={src}
-        autoPlay
-        muted
-        loop
-        playsInline
-        aria-label={ariaLabel}
-        onLoadedData={() => setLoaded(true)}
-        className={`${className} ${loaded ? "" : "absolute inset-0 opacity-0 pointer-events-none"}`}
-      />
+      {shouldLoad && (
+        <video
+          src={src}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label={ariaLabel}
+          onLoadedData={() => setLoaded(true)}
+          className={`${className} ${loaded ? "" : "absolute inset-0 opacity-0 pointer-events-none"}`}
+        />
+      )}
     </div>
   )
 }

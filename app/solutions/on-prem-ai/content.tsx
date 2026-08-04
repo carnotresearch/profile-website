@@ -206,35 +206,35 @@ export function OnPremAIContent() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#0b1929] min-h-hero-page-lg flex flex-col justify-center pt-16 pb-[7.5rem]">
+      <section className="relative overflow-hidden bg-background min-h-hero-page-lg flex flex-col justify-center pt-16 pb-[7.5rem]">
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.06]"
+          className="pointer-events-none absolute inset-0 opacity-[0.05]"
           style={{
-            backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,1) 1px, transparent 0)",
+            backgroundImage: "radial-gradient(circle at 1px 1px, rgba(15,23,42,1) 1px, transparent 0)",
             backgroundSize: "28px 28px",
           }}
         />
-        <div className="pointer-events-none absolute -top-32 -right-32 h-[500px] w-[500px] rounded-full bg-violet-600/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-32 -left-32 h-[400px] w-[400px] rounded-full bg-cyan-500/15 blur-3xl" />
+        <div className="pointer-events-none absolute -top-32 -right-32 h-[500px] w-[500px] rounded-full bg-violet-500/10 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-32 -left-32 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <FadeUp>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white/70">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-400" />
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-500" />
                 Secure Deployment
               </div>
             </FadeUp>
             <FadeUp delay={80}>
-              <h1 className="text-balance text-5xl font-bold tracking-tight text-white sm:text-6xl">
+              <h1 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl">
                 On-Premise &amp;{" "}
-                <span className="bg-gradient-to-r from-[#a78bfa] to-[#22d3ee] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-violet-600 to-cyan-600 bg-clip-text text-transparent">
                   Offline AI
                 </span>
               </h1>
             </FadeUp>
             <FadeUp delay={160}>
-              <p className="mt-6 text-pretty text-lg leading-relaxed text-slate-300">
+              <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground">
                 Fully sovereign AI systems for data-sensitive, regulated, and mission-critical environments.
                 Zero cloud dependency, complete infrastructure control, and compliance-ready by design.
               </p>
@@ -247,10 +247,7 @@ export function OnPremAIContent() {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button
-                  variant="outline" size="lg" asChild
-                  className="border-white/20 bg-transparent text-white hover:bg-white/10 hover:border-white/30"
-                >
+                <Button variant="outline" size="lg" asChild>
                   <Link href="/solutions">View All Solutions</Link>
                 </Button>
               </div>
@@ -421,20 +418,20 @@ export function OnPremAIContent() {
       </section>
 
       {/* Outcomes */}
-      <section className="relative overflow-hidden bg-[#0b1929] py-24 lg:py-32">
+      <section className="relative overflow-hidden bg-secondary/30 py-24 lg:py-32">
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.05]"
+          className="pointer-events-none absolute inset-0 opacity-[0.04]"
           style={{
-            backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,1) 1px, transparent 0)",
+            backgroundImage: "radial-gradient(circle at 1px 1px, rgba(15,23,42,1) 1px, transparent 0)",
             backgroundSize: "28px 28px",
           }}
         />
-        <div className="pointer-events-none absolute top-0 right-0 h-96 w-96 rounded-full bg-violet-600/20 blur-3xl" />
+        <div className="pointer-events-none absolute top-0 right-0 h-96 w-96 rounded-full bg-violet-500/10 blur-3xl" />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <FadeUp>
             <div className="mb-14 text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-accent">Results</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
                 What organizations achieve
               </h2>
             </div>
@@ -442,9 +439,9 @@ export function OnPremAIContent() {
           <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
             {outcomes.map((o, i) => (
               <FadeUp key={o.label} delay={i * 80}>
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-sm">
-                  <p className="text-2xl font-bold text-white">{o.stat}</p>
-                  <p className="mt-2 text-xs leading-snug text-slate-400">{o.label}</p>
+                <div className="rounded-2xl border border-border bg-card p-6 text-center shadow-sm">
+                  <p className="text-2xl font-bold text-foreground">{o.stat}</p>
+                  <p className="mt-2 text-xs leading-snug text-muted-foreground">{o.label}</p>
                 </div>
               </FadeUp>
             ))}
