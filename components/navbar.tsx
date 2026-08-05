@@ -133,7 +133,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full px-4 pt-3 pb-0">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-xl border border-gray-200 bg-white px-4 h-14 lg:h-12 shadow-sm lg:px-5">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-xl border border-gray-200/60 bg-white/70 backdrop-blur-md px-4 h-14 lg:h-12 shadow-sm lg:px-5">
 
         {/* ── Logo ── */}
         <Link href="/" className="flex items-center gap-2 flex-shrink-0" onClick={close}>

@@ -135,9 +135,9 @@ export function TheProblemSection() {
           <div>
             <FadeUp delay={60}>
               <h2 className="text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl">
-                Teams struggle to access trusted intelligence that works{" "}
+                Teams everywhere struggle to access trusted intelligence that works{" "}
                 <span className="text-teal-700">securely, reliably,</span>{" "}
-                and in context.
+                and in their context.
               </h2>
             </FadeUp>
 

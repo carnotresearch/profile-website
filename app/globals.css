@@ -230,10 +230,17 @@
    toggles. dvh would resize on every bar animation, which re-allocates the
    canvas backing buffer mid-scroll → visible jank exactly when the bar toggles.
    svh = the "small" viewport (bars visible height), stable across scroll.
-   The vh line is a fallback for browsers older than early 2022. */
+   The vh line is a fallback for browsers older than early 2022.
+
+   The negative margin-top + matching padding-top pulls the hero *up under* the
+   translucent navbar so the particle canvas is visible behind the nav — the
+   same effect as antigravity.google.com. Padding restores content position
+   inside the hero so text/CTAs still sit below the navbar visually. */
 .hero-section-height {
-  height: calc(100vh - 4.25rem);
-  height: calc(100svh - 4.25rem);
+  height: 100vh;
+  height: 100svh;
+  margin-top: -4.25rem;
+  padding-top: 4.25rem;
 }
 .hero-wordmark-logo { width: 48px; height: 48px; }
 .hero-wordmark-text { font-size: 20px; }
@@ -260,8 +267,8 @@
 }
 @media (min-width: 1024px) {
   .hero-section-height {
-    height: calc(100vh - 3.75rem);
-    height: calc(100svh - 3.75rem);
+    margin-top: -3.75rem;
+    padding-top: 3.75rem;
   }
 }
 

@@ -68,7 +68,8 @@ export function SolutionsSection() {
           </h2>
           <p className="mt-4 text-sm sm:text-base leading-relaxed text-muted-foreground">
             Our products are just three examples of what we build. icarKno™ creates
-            deployable AI systems across multiple domains, built from the ground up.
+            deployable AI systems across multiple domains, for organizations that need something
+            built from the ground up.
           </p>
         </div>
 
