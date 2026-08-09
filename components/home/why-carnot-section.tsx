@@ -10,7 +10,7 @@ const pillars = [
     icon: FlaskConical,
     eyebrow: "47+ Research Projects",
     title: "Research that ships as real products",
-    desc: "Our founders are active IIT Delhi professors. We don't publish and stop — every research breakthrough becomes production-grade software deployed and used by real organizations across India.",
+    desc: "Our founders are active IIT Delhi professors. We don't publish and stop. Every research breakthrough becomes production-grade software deployed and used by real organizations across India.",
     color: "#22d3ee",
     bg: "rgba(34,211,238,0.07)",
   },
@@ -18,7 +18,7 @@ const pillars = [
     icon: ShieldCheck,
     eyebrow: "100% On-Premise Available",
     title: "Data sovereignty for regulated sectors",
-    desc: "For government, defense, and enterprise clients who can't use the cloud — we deploy AI entirely within your own infrastructure. Air-gap capable, no external API calls, zero third-party data access.",
+    desc: "For government, defense, and enterprise clients who can't use the cloud, we deploy AI entirely within your own infrastructure. Air-gap capable, no external API calls, zero third-party data access.",
     color: "#60a5fa",
     bg: "rgba(96,165,250,0.07)",
   },
@@ -26,7 +26,7 @@ const pillars = [
     icon: Zap,
     eyebrow: "3 Products · 6 Domains",
     title: "Breadth across AI, vision & NLP",
-    desc: "We build across enterprise knowledge AI, computer vision, sports analytics, multilingual NLP, and public transit intelligence — not a one-trick company locked into a single AI trend.",
+    desc: "We build across enterprise knowledge AI, computer vision, sports analytics, multilingual NLP, and public transit intelligence, not a one-trick company locked into a single AI trend.",
     color: "#a78bfa",
     bg: "rgba(167,139,250,0.07)",
   },
@@ -104,7 +104,7 @@ export function WhyCarnotSection() {
             </span>
           </h2>
           <p className="mx-auto max-w-xl text-base leading-relaxed text-white/45">
-            Three things that set icarKno™ apart — from how we build, to who we build for,
+            Three things that set icarKno™ apart: from how we build, to who we build for,
             to the breadth of what we can deliver.
           </p>
         </motion.div>

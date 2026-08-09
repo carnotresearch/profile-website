@@ -77,15 +77,15 @@ export function IcarKnoShowcase() {
 
                 {/* Tagline */}
                 <p className="mt-2 text-base font-medium text-gray-400">
-                  Your institutional knowledge — searchable, citable, secure.
+                  Your institutional knowledge: searchable, citable, secure.
                 </p>
 
                 {/* Description */}
                 <p className="mt-3 text-sm leading-relaxed text-gray-500">
                   Deploy a conversational AI that knows everything in your organization.
                   Policies, reports, manuals, scanned documents. Ask in plain language,
-                  get answers with exact source citations. Runs 100% on your own servers —
-                  no internet required, no data leaves your environment.
+                  get answers with exact source citations. Runs 100% on your own servers,
+                  with no internet required and no data leaving your environment.
                 </p>
 
                 {/* Feature list — icon only, no chip backgrounds */}
@@ -107,7 +107,7 @@ export function IcarKnoShowcase() {
                   </Button>
                   <Link href="/contact"
                     className="inline-flex items-center gap-1 text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors">
-                    Discover the solution <ArrowUpRight className="h-3.5 w-3.5" />
+                    Contact us <ArrowUpRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
               </div>

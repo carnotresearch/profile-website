@@ -455,7 +455,7 @@ export function HeroSection() {
               whiteSpace: "nowrap",
             }}
           >
-            Discover the solution <ChevronRight className="h-4 w-4" />
+            Contact us <ChevronRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

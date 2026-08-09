@@ -11,7 +11,7 @@ import { StayConnectedSection }           from "@/components/home/stay-connected
 export const metadata: Metadata = {
   title: "icarKno™ | Knowledge AI built for India's toughest environments.",
   description:
-    "icarKno™ builds secure, on-premise AI for India's government, defense, and enterprise — knowledge management, computer vision, sports analytics, and NLP. Founded at IIT Delhi. CMMI Level 3 certified.",
+    "icarKno™ builds secure, on-premise AI for India's government, defense, and enterprise: knowledge management, computer vision, sports analytics, and NLP. Founded at IIT Delhi. CMMI Level 3 certified.",
   keywords: [
     "on-premise AI India",
     "enterprise AI solutions",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "icarKno™ | Knowledge AI built for India's toughest environments.",
     description:
-      "Secure AI that runs 100% on your own servers — knowledge management, computer vision, sports analytics, and NLP. Built at IIT Delhi.",
+      "Secure AI that runs 100% on your own servers: knowledge management, computer vision, sports analytics, and NLP. Built at IIT Delhi.",
     url: "https://carnotresearch.com",
     type: "website",
     images: [{ url: "https://carnotresearch.com/og-image.png", width: 1200, height: 630 }],

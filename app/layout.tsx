@@ -166,7 +166,7 @@ const websiteSchema = {
   "@type": "WebSite",
   name: "icarKno™",
   url: "https://carnotresearch.com",
-  description: "Enterprise AI solutions for government and enterprise — secure, on-premise, built by IIT researchers.",
+  description: "Enterprise AI solutions for government and enterprise: secure, on-premise, built by IIT researchers.",
   publisher: { "@type": "Organization", name: "icarKno™", "@id": "https://carnotresearch.com/#organization" },
   potentialAction: {
     "@type": "SearchAction",

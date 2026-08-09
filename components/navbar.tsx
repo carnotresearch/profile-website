@@ -342,7 +342,7 @@ export function Navbar() {
             href="/contact"
             className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors rounded-md hover:bg-gray-50"
           >
-            Discover the solution
+            Contact us
           </Link>
           <Link
             href="/products"
@@ -394,7 +394,7 @@ export function Navbar() {
                 onClick={close}
                 className="flex min-h-[44px] items-center justify-center rounded-md px-3 text-sm font-medium text-gray-700 hover:bg-gray-50"
               >
-                Discover the solution
+                Contact us
               </Link>
               <Link
                 href="/products"

@@ -23,7 +23,7 @@ const pillars = [
   {
     icon: Cpu,
     title: "Algorithmic-Level Solutions",
-    desc: "We engineer at the algorithm layer — not prompt wrappers or API glue.",
+    desc: "We engineer at the algorithm layer, not prompt wrappers or API glue.",
     iconColor: "text-cyan-600",
   },
   {

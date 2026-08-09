@@ -52,7 +52,7 @@ function ImageSlideshow({ images }: { images: string[] }) {
         <img
           key={i}
           src={`${B}${src}`}
-          alt={`icarKno™ — slide ${i + 1}`}
+          alt={`icarKno™ slide ${i + 1}`}
           className="absolute inset-0 h-full w-full object-cover transition-opacity duration-700"
           style={{ opacity: i === current ? 1 : 0 }}
         />
@@ -370,7 +370,7 @@ export function MissionVisionContent() {
                 </p>
                 <p>
                   We believe that while technology continues to evolve, its core principles
-                  remain constant — accessibility, trust, security, and responsible
+                  remain constant: accessibility, trust, security, and responsible
                   innovation. Our systems are designed to deliver structured intelligence
                   and real-time reasoning in secure on-premise and offline environments,
                   where sensitive data remains protected and never harvested.
@@ -401,7 +401,7 @@ export function MissionVisionContent() {
                   Our mission is to enable responsible, domain-specific AI adoption across
                   industries and governments. Whether it&apos;s powering public-facing
                   governance chatbots, automating knowledge from policy documents, or
-                  deploying enterprise RAG systems — we deliver AI that works on-ground,
+                  deploying enterprise RAG systems, we deliver AI that works on-ground,
                   at-scale, and in-context.
                 </p>
                 <p>
