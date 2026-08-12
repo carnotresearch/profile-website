@@ -132,8 +132,39 @@ export function Navbar() {
   const close = () => setMobileOpen(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full px-4 pt-3 pb-0">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-xl border border-gray-200/60 bg-white/70 backdrop-blur-md px-4 h-14 lg:h-12 shadow-sm lg:px-5">
+    <header className="cv-navbar sticky top-0 z-50 w-full px-4 pt-3 pb-0">
+      {/* Mobile-only Apple-style overrides: flatten the floating pill into a
+          full-width solid top bar extending up through the safe-area zone.
+          Header gets solid white bg + bottom border, inner nav strips its
+          pill styling. Desktop keeps the floating glass pill. Detailed
+          reasoning in CLAUDE-IOS.md in the playground repo. */}
+      <style>{`
+        .cv-navbar {
+          padding-top: calc(0.75rem + var(--safe-top));
+          padding-left: calc(1rem + var(--safe-left));
+          padding-right: calc(1rem + var(--safe-right));
+        }
+        @media (max-width: 1023px) {
+          .cv-navbar {
+            background: #ffffff;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+            padding-top: var(--safe-top);
+            padding-bottom: 8px;
+          }
+          .cv-navbar-inner {
+            max-width: 100% !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border-radius: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
+        }
+      `}</style>
+      <nav className="cv-navbar-inner mx-auto flex max-w-7xl items-center justify-between rounded-xl border border-gray-200/60 bg-white/70 backdrop-blur-md px-4 h-14 lg:h-12 shadow-sm lg:px-5">
 
         {/* ── Logo ── */}
         <Link href="/" className="flex items-center gap-2 flex-shrink-0" onClick={close}>

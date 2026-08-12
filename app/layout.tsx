@@ -93,6 +93,10 @@ export const viewport: Viewport = {
   maximumScale: 5,
   userScalable: true,
   viewportFit: "cover",
+  // Chrome Android — layout viewport resizes with virtual keyboard so
+  // fixed elements don't cover inputs. iOS ignores this (always
+  // resizes-visual) which is fine.
+  interactiveWidget: "resizes-content",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#f8f8f8" },
     { media: "(prefers-color-scheme: dark)", color: "#1a1a1a" },
@@ -210,6 +214,12 @@ export default function RootLayout({
         <Footer />
         <WhatsAppButton />
         <Analytics />
+        {/* iOS 26 Safari bottom URL bar tint anchor.
+            12 px strip poked 8 px past the viewport bottom, 4 px inside —
+            hidden behind Safari's transparent URL pill. Its background
+            drives the Liquid Glass toolbar tint (white). Scoped via
+            @supports (-webkit-touch-callout: none) to Safari only. */}
+        <div aria-hidden className="cv-safari-tint-bottom" />
       </body>
     </html>
   )

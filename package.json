@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "predev": "echo \"\\n  ➜ Network:  http://$(ipconfig getifaddr en0):3000\\n\"",
+    "dev": "next dev -H 0.0.0.0",
     "build": "rm -rf docs/dev && next build && touch docs/.nojekyll",
     "start": "next start",
     "lint": "eslint ."

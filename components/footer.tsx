@@ -36,7 +36,16 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-border bg-secondary">
+    <footer
+      className="border-t border-border bg-secondary"
+      style={{
+        // Safe-area padding so bottom / landscape notches don't clip the
+        // copyright and social links. Zero on non-notched devices.
+        paddingBottom: 'var(--safe-bottom)',
+        paddingLeft: 'var(--safe-left)',
+        paddingRight: 'var(--safe-right)',
+      }}
+    >
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid grid-cols-2 gap-6 sm:gap-8 md:grid-cols-4 lg:grid-cols-5">
           {/* Brand */}
