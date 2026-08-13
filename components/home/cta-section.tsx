@@ -24,7 +24,7 @@ function FadeUp({ children, delay = 0 }: { children: ReactNode; delay?: number }
 
 export function CtaSection() {
   return (
-    <section className="bg-background py-20 lg:py-28">
+    <section className="bg-background py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <FadeUp>
           <div className="relative overflow-hidden rounded-2xl border border-border bg-[#0b1929] px-8 py-14 text-center shadow-xl">

@@ -34,7 +34,7 @@ const marqueeItems = [...clients, ...clients]
 
 export function ClientsSection() {
   return (
-    <section className="bg-secondary/20 py-24 lg:py-32 overflow-hidden">
+    <section className="bg-secondary/20 py-16 sm:py-20 lg:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         <FadeUp>

@@ -223,7 +223,7 @@ function CurvedCarousel() {
 // ── Section ────────────────────────────────────────────────────────────────────
 export function TrustSection() {
   return (
-    <section className="cv-auto relative overflow-hidden bg-white py-20 lg:py-28">
+    <section className="cv-auto relative overflow-hidden bg-white py-14 sm:py-20 lg:py-28">
 
       {/* Blue spotlight — gives carousel area a premium glow */}
       <div

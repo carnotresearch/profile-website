@@ -67,7 +67,7 @@ const pillars = [
 
 export function ProblemSection() {
   return (
-    <section className="bg-secondary/30 py-20 lg:py-28">
+    <section className="bg-secondary/30 py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* Header */}

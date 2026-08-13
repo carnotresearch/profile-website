@@ -129,7 +129,7 @@ export function TheProblemSection() {
           </div>
         </FadeUp>
 
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
+        <div className="grid gap-5 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
 
           {/* ── Left: problem statement + cards ── */}
           <div>

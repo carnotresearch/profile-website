@@ -66,7 +66,7 @@ export function WhyCarnotSection() {
   const inView = useInView(headerRef, { once: true, margin: "-100px" })
 
   return (
-    <section className="relative overflow-hidden py-20 lg:py-28" style={{ background: "#080d1a" }}>
+    <section className="relative overflow-hidden py-14 sm:py-20 lg:py-28" style={{ background: "#080d1a" }}>
       {/* Grid */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
