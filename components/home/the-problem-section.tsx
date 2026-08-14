@@ -129,7 +129,7 @@ export function TheProblemSection() {
           </div>
         </FadeUp>
 
-        <div className="grid gap-5 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
+        <div className="grid gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
 
           {/* ── Left: problem statement + cards ── */}
           <div>
@@ -160,6 +160,14 @@ export function TheProblemSection() {
 
           {/* ── Right: sector cards ── */}
           <div className="space-y-2.5">
+            {/* Mobile-only section divider */}
+            <div className="flex items-center gap-3 py-3 lg:hidden">
+              <div className="h-px flex-1 bg-border" />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                Who we serve
+              </span>
+              <div className="h-px flex-1 bg-border" />
+            </div>
             {sectors.map((s, i) => (
               <FadeUp key={s.title} delay={80 + i * 55}>
                 <div className="group flex items-start gap-4 rounded-xl border border-border bg-card px-5 py-4 transition-all duration-200 hover:shadow-md sm:items-center">

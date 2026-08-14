@@ -251,7 +251,7 @@ export function EnterpriseRAGContent() {
   return (
     <>
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-background min-h-hero-page-lg flex flex-col justify-center pt-16 pb-[7.5rem]">
+      <section className="relative overflow-hidden bg-background min-h-hero-page-lg flex flex-col justify-center pt-16 pb-12 sm:pb-[7.5rem]">
         {/* Dot-grid overlay (dark dots on light bg) */}
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.05]"
@@ -268,37 +268,31 @@ export function EnterpriseRAGContent() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <FadeUp>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/50 bg-white/30 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-foreground backdrop-blur-sm">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
                 Enterprise Solutions
               </div>
-            </FadeUp>
 
-            <FadeUp delay={80}>
-              <h1 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl">
+              <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
                 Enterprise{" "}
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                   RAG Systems
                 </span>
               </h1>
-            </FadeUp>
 
-            <FadeUp delay={160}>
-              <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground">
+              <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
                 Governed AI responses powered by your organization's trusted
                 data. We design and deploy enterprise-grade
                 Retrieval-Augmented Generation systems that eliminate AI
                 hallucinations, improve knowledge access, and ensure
                 compliance-ready AI use in secure environments.
               </p>
-            </FadeUp>
 
-            <FadeUp delay={240}>
-              <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <div className="mt-8 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:justify-center">
                 <Button
                   size="lg"
                   asChild
-                  className="bg-primary text-white shadow-lg hover:bg-primary/90"
+                  className="w-full bg-primary text-white shadow-lg hover:bg-primary/90 sm:w-auto"
                 >
                   <Link href="/contact">
                     Request a Demo
@@ -309,6 +303,7 @@ export function EnterpriseRAGContent() {
                   variant="outline"
                   size="lg"
                   asChild
+                  className="w-full bg-transparent hover:bg-white/20 sm:w-auto"
                 >
                   <Link href="/solutions">View All Solutions</Link>
                 </Button>

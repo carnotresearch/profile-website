@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import { usePathname } from "next/navigation"
 
 const B = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react"
@@ -39,7 +40,7 @@ const mobileNav = [
       { name: "icarKno™", href: "/products/icarkno", sub: "Enterprise knowledge RAG" },
       { name: "BharGati™ AI", href: "/products/bhargati", sub: "Movement & performance" },
       { name: "SAATHI", href: "/products/saathi", sub: "Multilingual transport assistant" },
-      { name: "Request a Demo", href: "/contact", sub: "Talk to us about deployments" },
+      { name: "Request a Demo", href: "/contact", sub: "Talk to us about deployments", excludeActive: true },
     ],
   },
   {
@@ -82,45 +83,74 @@ const mobileNav = [
   },
 ]
 
-function MobileAccordion({ item, onClose }: { item: typeof mobileNav[0]; onClose: () => void }) {
-  const [open, setOpen] = useState(false)
+function MobileAccordion({ item, onClose, pathname }: { item: typeof mobileNav[0]; onClose: () => void; pathname: string }) {
+  const isGroupActive = item.items.some(
+    (sub) => !('external' in sub && sub.external) && !('excludeActive' in sub && sub.excludeActive) &&
+      (sub.href === pathname || pathname.startsWith(sub.href + "/"))
+  )
+  const [open, setOpen] = useState(isGroupActive)
 
   return (
     <div>
       <button
         onClick={() => setOpen(!open)}
-        className="flex min-h-[44px] w-full items-center justify-between rounded-md px-3 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+        className={`flex min-h-[44px] w-full items-center justify-between rounded-md px-3 py-3 text-sm font-medium transition-colors ${
+          isGroupActive
+            ? "bg-teal-50 text-teal-700 hover:bg-teal-50"
+            : "text-gray-700 hover:bg-gray-50"
+        }`}
       >
-        {item.name}
+        <span className="flex items-center gap-2">
+          {isGroupActive && (
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500" />
+          )}
+          {item.name}
+        </span>
         <ChevronDown
-          className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""} ${isGroupActive ? "text-teal-400" : "text-gray-400"}`}
         />
       </button>
       {open && (
         <div className="mt-1 ml-3 space-y-0.5 border-l border-gray-100 pl-3">
-          {item.items?.map((sub) => ('external' in sub && sub.external) ? (
-            <a
-              key={sub.name}
-              href={sub.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={onClose}
-              className="block rounded-md px-2.5 py-2.5 min-h-[44px] transition-colors hover:bg-gray-50"
-            >
-              <span className="text-sm font-medium text-gray-800">{sub.name}</span>
-              {sub.sub && <span className="mt-0.5 block text-xs text-gray-500">{sub.sub}</span>}
-            </a>
-          ) : (
-            <Link
-              key={sub.name}
-              href={sub.href}
-              onClick={onClose}
-              className="block rounded-md px-2.5 py-2.5 min-h-[44px] transition-colors hover:bg-gray-50"
-            >
-              <span className="text-sm font-medium text-gray-800">{sub.name}</span>
-              {sub.sub && <span className="mt-0.5 block text-xs text-gray-500">{sub.sub}</span>}
-            </Link>
-          ))}
+          {item.items?.map((sub) => {
+            const isActive = !('external' in sub && sub.external) &&
+              !('excludeActive' in sub && sub.excludeActive) &&
+              (sub.href === pathname || pathname.startsWith(sub.href + "/"))
+            return ('external' in sub && sub.external) ? (
+              <a
+                key={sub.name}
+                href={sub.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onClose}
+                className="block rounded-md px-2.5 py-2.5 min-h-[44px] transition-colors hover:bg-gray-50"
+              >
+                <span className="text-sm font-medium text-gray-800">{sub.name}</span>
+                {sub.sub && <span className="mt-0.5 block text-xs text-gray-500">{sub.sub}</span>}
+              </a>
+            ) : (
+              <Link
+                key={sub.name}
+                href={sub.href}
+                onClick={onClose}
+                className={`block rounded-md px-2.5 py-2.5 min-h-[44px] transition-colors ${
+                  isActive
+                    ? "bg-teal-50"
+                    : "hover:bg-gray-50"
+                }`}
+              >
+                <span className={`flex items-center gap-1.5 text-sm font-medium ${isActive ? "text-teal-700" : "text-gray-800"}`}>
+                  {isActive && <span className="h-1 w-1 shrink-0 rounded-full bg-teal-500" />}
+                  {sub.name}
+                </span>
+                {sub.sub && (
+                  <span className={`mt-0.5 block text-xs ${isActive ? "text-teal-500/80" : "text-gray-500"}`}>
+                    {sub.sub}
+                  </span>
+                )}
+              </Link>
+            )
+          })}
         </div>
       )}
     </div>
@@ -130,6 +160,7 @@ function MobileAccordion({ item, onClose }: { item: typeof mobileNav[0]; onClose
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const close = () => setMobileOpen(false)
+  const pathname = usePathname()
 
   return (
     <header className="cv-navbar sticky top-0 z-50 w-full px-4 pt-3 pb-0">
@@ -414,7 +445,7 @@ export function Navbar() {
                   {item.name}
                 </a>
               ) : (
-                <MobileAccordion key={item.name} item={item} onClose={close} />
+                <MobileAccordion key={item.name} item={item} onClose={close} pathname={pathname} />
               )
             )}
 
