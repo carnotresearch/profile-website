@@ -4,6 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useRef } from "react"
 import { ChevronRight } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 const B = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 
@@ -262,9 +263,37 @@ function AntigravityCanvas({ startDelay = 0 }: { startDelay?: number }) {
 
 // ─── Word-by-word reveal ───────────────────────────────────────────────────────
 const CHAR_STAGGER = 0.015
+const WORD_STAGGER = 0.10
 const LETTER_REVEAL_DURATION = 0.45
 
+// Devanagari block U+0900–U+097F
+const hasDevanagari = (s: string) => /[ऀ-ॿ]/.test(s)
+
 function Words({ text, color, delay = 0 }: { text: string; color?: string; delay?: number }) {
+  // For Devanagari: animate word-by-word — wrapping individual chars in
+  // inline-block breaks conjuncts (ज्ञ) and matras (मि).
+  if (hasDevanagari(text)) {
+    const words = text.split(" ")
+    return (
+      <>
+        {words.map((word, wi) => (
+          <span
+            key={wi}
+            style={{
+              display: "inline-block",
+              color,
+              opacity: 0,
+              animation: "wordReveal 0.6s cubic-bezier(0.22,1,0.36,1) both",
+              animationDelay: `${delay + wi * WORD_STAGGER}s`,
+            }}
+          >
+            {wi < words.length - 1 ? word + "\u00A0" : word}
+          </span>
+        ))}
+      </>
+    )
+  }
+
   const letters = Array.from(text)
   // Group into word segments so mid-word line breaks don't occur on narrow screens
   const segments: Array<{ word: string; startIdx: number }> = []
@@ -312,10 +341,12 @@ function Words({ text, color, delay = 0 }: { text: string; color?: string; delay
 //   – two pill CTA buttons
 // ──────────────────────────────────────────────────────────────────────────────
 export function HeroSection() {
-  const line1Text = "Knowledge AI built for"
-  const line2LeadText = "India's toughest"
-  const line2AccentText = " environments."
-  const subText = "100% on-premise AI. Zero cloud dependency. Full data sovereignty."
+  const { tx } = useLanguage()
+  const h = tx.hero
+  const line1Text = h.line1
+  const line2LeadText = h.line2Lead
+  const line2AccentText = h.line2Accent
+  const subText = h.sub
 
   // Letter animations use a stagger; keep group timings continuous, then reveal logo/buttons after copy completes.
   const line1Start = 0.1
@@ -436,7 +467,7 @@ export function HeroSection() {
               boxShadow: "0 2px 14px rgba(15,23,42,0.20)",
             }}
           >
-            Explore icarKno™
+            {h.exploreBtn}
           </Link>
 
           {/* Secondary — teal outline */}
@@ -455,7 +486,7 @@ export function HeroSection() {
               whiteSpace: "nowrap",
             }}
           >
-            Contact us <ChevronRight className="h-4 w-4" />
+            {h.contactBtn} <ChevronRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

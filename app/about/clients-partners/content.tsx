@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState, useCallback, type ReactNode } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Building2, Handshake, FlaskConical, ChevronLeft, ChevronRight, ShieldCheck, Rocket, Users } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
+import type { ElementType } from "react"
 
 const B = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 
@@ -189,29 +191,12 @@ function CurvedCarousel() {
   )
 }
 
-// ── Why partner data ───────────────────────────────────────────────────────────
-const whyPartner = [
-  {
-    icon: FlaskConical,
-    iconBg: "bg-blue-50",
-    iconColor: "text-blue-600",
-    title: "Research Translated to Reality",
-    body: "We translate cutting-edge AI research into secure, real-world applications. Our strong academic foundation and practical deployment experience allow us to design systems that work reliably in complex, high-stakes situations.",
-  },
-  {
-    icon: ShieldCheck,
-    iconBg: "bg-emerald-50",
-    iconColor: "text-emerald-600",
-    title: "Security-First Deployments",
-    body: "We build on-premise, air-gapped AI setups tailored to specific operational needs, ensuring data protection, continuity, and seamless integration. From strategy to engineering to implementation, we deliver complete solutions.",
-  },
-  {
-    icon: Users,
-    iconBg: "bg-violet-50",
-    iconColor: "text-violet-600",
-    title: "Long-Term Partnership",
-    body: "Beyond technology, we serve as long-term partners. We work closely with institutions, leadership teams, and field operators to ensure every system is scalable, aligned with mission goals, and built for measurable impact.",
-  },
+// ── Why partner style-only data ────────────────────────────────────────────────
+type WhyMeta = { icon: ElementType; iconBg: string; iconColor: string }
+const whyPartnerMeta: WhyMeta[] = [
+  { icon: FlaskConical, iconBg: "bg-blue-50",   iconColor: "text-blue-600"   },
+  { icon: ShieldCheck,  iconBg: "bg-emerald-50", iconColor: "text-emerald-600" },
+  { icon: Users,        iconBg: "bg-violet-50",  iconColor: "text-violet-600"  },
 ]
 
 // ── Testimonials ───────────────────────────────────────────────────────────────
@@ -270,33 +255,19 @@ const testimonials = [
   },
 ]
 
-// ── Sectors ────────────────────────────────────────────────────────────────────
-const sectors = [
-  {
-    icon: Building2,
-    title: "Government & Defense",
-    description: "Secure AI systems for ministries, defense organizations, and public-sector institutions requiring data sovereignty and mission-critical reliability.",
-    iconBg: "bg-blue-50",
-    iconColor: "text-blue-600",
-  },
-  {
-    icon: Handshake,
-    title: "Enterprise & Industry",
-    description: "On-premise AI infrastructure for large enterprises, regulated industries, and organizations with strict compliance requirements.",
-    iconBg: "bg-green-50",
-    iconColor: "text-green-600",
-  },
-  {
-    icon: Rocket,
-    title: "Research & Innovation",
-    description: "Collaborative partnerships with leading academic institutions and R&D bodies, translating cutting-edge research into deployable, real-world systems.",
-    iconBg: "bg-violet-50",
-    iconColor: "text-violet-600",
-  },
+// ── Sectors style-only data ────────────────────────────────────────────────────
+type SectorMeta = { icon: ElementType; iconBg: string; iconColor: string }
+const sectorMeta: SectorMeta[] = [
+  { icon: Building2, iconBg: "bg-blue-50",   iconColor: "text-blue-600"   },
+  { icon: Handshake, iconBg: "bg-green-50",  iconColor: "text-green-600"  },
+  { icon: Rocket,    iconBg: "bg-violet-50", iconColor: "text-violet-600" },
 ]
 
 // ── Page ───────────────────────────────────────────────────────────────────────
 export function ClientsPartnersContent() {
+  const { tx } = useLanguage()
+  const cp = tx.clientsPartnersPage
+
   return (
     <>
       {/* ── Hero ── */}
@@ -308,20 +279,17 @@ export function ClientsPartnersContent() {
             <FadeUp delay={0}>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-gray-500">
                 <span className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" />
-                Clients &amp; Partners
+                {cp.hero.badge}
               </div>
             </FadeUp>
             <FadeUp delay={100}>
               <h1 className="text-balance text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
-                Trusted by National Institutions &amp; Global Organizations
+                {cp.hero.heading}
               </h1>
             </FadeUp>
             <FadeUp delay={200}>
               <p className="mt-6 text-pretty text-lg leading-relaxed text-gray-500">
-                icarKno™ works with top public institutions, global consulting firms, and
-                technology partners to create and implement secure, mission-critical AI systems
-                across governance, defense, disaster response, telecommunications, and digital
-                public infrastructure.
+                {cp.hero.desc}
               </p>
             </FadeUp>
           </div>
@@ -341,9 +309,9 @@ export function ClientsPartnersContent() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <FadeUp>
             <div className="mx-auto max-w-xl text-center mb-14">
-              <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">Our Clients</p>
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900">Trusted Sources</h2>
-              <p className="mt-3 text-sm text-gray-500">From government agencies to global consultancies</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">{cp.carousel.eyebrow}</p>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900">{cp.carousel.heading}</h2>
+              <p className="mt-3 text-sm text-gray-500">{cp.carousel.desc}</p>
             </div>
           </FadeUp>
         </div>
@@ -357,27 +325,15 @@ export function ClientsPartnersContent() {
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <FadeUp>
             <div className="text-center mb-10">
-              <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">About Our Partnerships</p>
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900">How We Collaborate</h2>
+              <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">{cp.overview.eyebrow}</p>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900">{cp.overview.heading}</h2>
             </div>
           </FadeUp>
           <FadeUp delay={100}>
             <div className="rounded-2xl border border-gray-100 bg-white px-8 py-10 shadow-sm space-y-5 text-base leading-relaxed text-gray-500">
-              <p>
-                Through our collaborations, we combine in-depth academic research, practical
-                operational knowledge, and strong engineering to deliver AI systems that function
-                well under pressure. Our partnerships span strategic advisory, full-stack deployment,
-                and ongoing operational support.
-              </p>
-              <p>
-                From working with defense organizations on classified intelligence analysis, to
-                supporting public transit agencies with multilingual AI assistants, each engagement
-                is shaped by the specific mission environment and constraints of the organization
-                we work with.
-              </p>
-              <p className="font-semibold text-gray-800">
-                Every solution we deliver is secure, scalable, and designed for real-world impact.
-              </p>
+              <p>{cp.overview.para1}</p>
+              <p>{cp.overview.para2}</p>
+              <p className="font-semibold text-gray-800">{cp.overview.closing}</p>
             </div>
           </FadeUp>
         </div>
@@ -388,23 +344,27 @@ export function ClientsPartnersContent() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeUp>
             <div className="mx-auto max-w-2xl text-center mb-14">
-              <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">Sectors We Serve</p>
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900">Building AI Across Critical Sectors</h2>
+              <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">{cp.sectors.eyebrow}</p>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900">{cp.sectors.heading}</h2>
             </div>
           </FadeUp>
           <div className="grid gap-8 sm:grid-cols-3">
-            {sectors.map((sector, i) => (
-              <FadeUp key={sector.title} delay={i * 100}>
-                <div className="group relative h-full overflow-hidden rounded-2xl border border-gray-100 bg-white p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-blue-100">
-                  <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-blue-600 via-blue-400 to-blue-100" />
-                  <div className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl ${sector.iconBg} transition-transform duration-300 group-hover:scale-110`}>
-                    <sector.icon className={`h-6 w-6 ${sector.iconColor}`} />
+            {cp.sectors.items.map((sector, i) => {
+              const m = sectorMeta[i]
+              const SIcon = m.icon
+              return (
+                <FadeUp key={i} delay={i * 100}>
+                  <div className="group relative h-full overflow-hidden rounded-2xl border border-gray-100 bg-white p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-blue-100">
+                    <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-blue-600 via-blue-400 to-blue-100" />
+                    <div className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl ${m.iconBg} transition-transform duration-300 group-hover:scale-110`}>
+                      <SIcon className={`h-6 w-6 ${m.iconColor}`} />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900">{sector.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-gray-500">{sector.description}</p>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900">{sector.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-500">{sector.description}</p>
-                </div>
-              </FadeUp>
-            ))}
+                </FadeUp>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -414,24 +374,28 @@ export function ClientsPartnersContent() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeUp>
             <div className="mx-auto max-w-2xl text-center mb-14">
-              <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">Why Partner with Us</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">{cp.whyPartner.eyebrow}</p>
               <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-                Why Organizations Choose icarKno™
+                {cp.whyPartner.heading}
               </h2>
             </div>
           </FadeUp>
           <div className="grid gap-6 sm:grid-cols-3">
-            {whyPartner.map((item, i) => (
-              <FadeUp key={item.title} delay={i * 100}>
-                <div className="group h-full rounded-2xl border border-gray-100 bg-white p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-blue-100">
-                  <div className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl ${item.iconBg} transition-transform duration-300 group-hover:scale-110`}>
-                    <item.icon className={`h-5 w-5 ${item.iconColor}`} />
+            {cp.whyPartner.items.map((item, i) => {
+              const m = whyPartnerMeta[i]
+              const WIcon = m.icon
+              return (
+                <FadeUp key={i} delay={i * 100}>
+                  <div className="group h-full rounded-2xl border border-gray-100 bg-white p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-blue-100">
+                    <div className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl ${m.iconBg} transition-transform duration-300 group-hover:scale-110`}>
+                      <WIcon className={`h-5 w-5 ${m.iconColor}`} />
+                    </div>
+                    <h3 className="text-base font-semibold text-gray-900">{item.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-gray-500">{item.body}</p>
                   </div>
-                  <h3 className="text-base font-semibold text-gray-900">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-500">{item.body}</p>
-                </div>
-              </FadeUp>
-            ))}
+                </FadeUp>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -441,9 +405,9 @@ export function ClientsPartnersContent() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeUp>
             <div className="mx-auto max-w-2xl text-center mb-14">
-              <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">Testimonials</p>
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900">What Our Partners Say</h2>
-              <p className="mt-3 text-sm text-gray-500">Voices from the institutions and organizations we work with</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">{cp.testimonials.eyebrow}</p>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900">{cp.testimonials.heading}</h2>
+              <p className="mt-3 text-sm text-gray-500">{cp.testimonials.desc}</p>
             </div>
           </FadeUp>
           <div className="grid gap-5 sm:grid-cols-2">

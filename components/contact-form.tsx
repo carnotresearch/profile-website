@@ -3,6 +3,7 @@
 import { useRef, useState } from "react"
 import ReCAPTCHA from "react-google-recaptcha"
 import { ArrowRight, Check, Loader2 } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 const API_ENDPOINT =
   "https://izwz05lqn1.execute-api.ap-south-1.amazonaws.com/default/sendMail"
@@ -23,6 +24,9 @@ const productOptions = ["icarKno™", "BharGati™ AI", "SAATHI", "Other"]
 type Status = "idle" | "sending" | "success" | "error"
 
 export function ContactForm() {
+  const { tx } = useLanguage()
+  const f = tx.contactPage.form
+
   const [status, setStatus] = useState<Status>("idle")
   const [errorMsg, setErrorMsg] = useState("")
   const recaptchaRef = useRef<ReCAPTCHA>(null)
@@ -33,7 +37,7 @@ export function ContactForm() {
 
     const recaptchaResponse = recaptchaRef.current?.getValue()
     if (!recaptchaResponse) {
-      setErrorMsg("Please complete the reCAPTCHA verification.")
+      setErrorMsg(f.captchaError)
       return
     }
 
@@ -93,7 +97,7 @@ export function ContactForm() {
         recaptchaRef.current?.reset()
       }
     } catch (error) {
-      setErrorMsg(error instanceof Error ? error.message : "Network error. Please try again.")
+      setErrorMsg(error instanceof Error ? error.message : f.networkError)
       setStatus("error")
       recaptchaRef.current?.reset()
     }
@@ -105,10 +109,8 @@ export function ContactForm() {
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-50 ring-4 ring-green-100">
           <Check className="h-6 w-6 text-green-600" />
         </div>
-        <h3 className="mt-4 text-base font-semibold text-gray-900">Message sent!</h3>
-        <p className="mt-1.5 max-w-xs text-sm text-gray-500">
-          {"Thank you for reaching out. We'll get back to you within 24 hours."}
-        </p>
+        <h3 className="mt-4 text-base font-semibold text-gray-900">{f.successTitle}</h3>
+        <p className="mt-1.5 max-w-xs text-sm text-gray-500">{f.successDesc}</p>
       </div>
     )
   }
@@ -129,31 +131,31 @@ export function ContactForm() {
       <div className="grid grid-cols-2 gap-3">
         <div>
           <label htmlFor="cf-name" className="mb-1.5 block text-xs font-medium text-gray-600">
-            Name <span className="text-red-400">*</span>
+            {f.nameLabel} <span className="text-red-400">*</span>
           </label>
-          <input type="text" id="cf-name" name="name" required placeholder="Your name" className={inputClass} />
+          <input type="text" id="cf-name" name="name" required placeholder={f.namePlaceholder} className={inputClass} />
         </div>
         <div>
           <label htmlFor="cf-email" className="mb-1.5 block text-xs font-medium text-gray-600">
-            Work Email <span className="text-red-400">*</span>
+            {f.emailLabel} <span className="text-red-400">*</span>
           </label>
-          <input type="email" id="cf-email" name="email" required placeholder="you@company.com" className={inputClass} />
+          <input type="email" id="cf-email" name="email" required placeholder={f.emailPlaceholder} className={inputClass} />
         </div>
       </div>
 
       {/* Organization */}
       <div>
         <label htmlFor="cf-company" className="mb-1.5 block text-xs font-medium text-gray-600">
-          Organization
+          {f.orgLabel}
         </label>
-        <input type="text" id="cf-company" name="company" placeholder="Your organization" className={inputClass} />
+        <input type="text" id="cf-company" name="company" placeholder={f.orgPlaceholder} className={inputClass} />
       </div>
 
       {/* Services */}
       <div>
-        <label htmlFor="cf-service" className="mb-1.5 block text-xs font-medium text-gray-600">Services of Interest</label>
+        <label htmlFor="cf-service" className="mb-1.5 block text-xs font-medium text-gray-600">{f.servicesLabel}</label>
         <select id="cf-service" name="services" className={inputClass}>
-          <option value="">Select a service…</option>
+          <option value="">{f.selectServiceDefault}</option>
           {serviceOptions.map((o) => (
             <option key={o} value={o}>{o}</option>
           ))}
@@ -162,7 +164,7 @@ export function ContactForm() {
 
       {/* Products */}
       <div>
-        <label className="mb-1.5 block text-xs font-medium text-gray-600">Products of Interest</label>
+        <label className="mb-1.5 block text-xs font-medium text-gray-600">{f.productsLabel}</label>
         <div className="flex flex-wrap gap-1.5">
           {productOptions.map((o) => (
             <label key={o} className={chipClass}>
@@ -176,11 +178,11 @@ export function ContactForm() {
       {/* Message */}
       <div>
         <label htmlFor="cf-message" className="mb-1.5 block text-xs font-medium text-gray-600">
-          Message <span className="text-red-400">*</span>
+          {f.messageLabel} <span className="text-red-400">*</span>
         </label>
         <textarea
           id="cf-message" name="message" required rows={2}
-          placeholder="Tell us about your project or requirements…"
+          placeholder={f.messagePlaceholder}
           className={`${inputClass} resize-none`}
         />
       </div>
@@ -197,9 +199,9 @@ export function ContactForm() {
         className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 active:scale-[0.98] disabled:opacity-60 transition-all"
       >
         {status === "sending" ? (
-          <><Loader2 className="h-4 w-4 animate-spin" /> Sending…</>
+          <><Loader2 className="h-4 w-4 animate-spin" /> {f.sending}</>
         ) : (
-          <>Send Message <ArrowRight className="h-4 w-4" /></>
+          <>{f.sendBtn} <ArrowRight className="h-4 w-4" /></>
         )}
       </button>
 

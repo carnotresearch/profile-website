@@ -1,6 +1,12 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+/* Hindi / Devanagari font override */
+.lang-hi,
+.lang-hi * {
+  font-family: var(--font-devanagari), var(--font-inter), sans-serif;
+}
+
 /* Prevent Tailwind scanning build output — fixes corrupted-class CSS parse errors */
 @source not "../docs";
 @source not "../.next";

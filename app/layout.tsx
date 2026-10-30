@@ -1,14 +1,21 @@
 import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Noto_Sans_Devanagari } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { WhatsAppButton } from "@/components/whatsapp-button"
+import { LanguageProvider } from "@/lib/language-context"
 import "./globals.css"
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+})
+
+const devanagari = Noto_Sans_Devanagari({
+  subsets: ["devanagari"],
+  variable: "--font-devanagari",
+  weight: ["400", "500", "600", "700"],
 })
 
 export const metadata: Metadata = {
@@ -208,7 +215,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${devanagari.variable} font-sans antialiased`}>
+        <LanguageProvider>
         <Navbar />
         <main>{children}</main>
         <Footer />
@@ -220,6 +228,7 @@ export default function RootLayout({
             drives the Liquid Glass toolbar tint (white). Scoped via
             @supports (-webkit-touch-callout: none) to Safari only. */}
         <div aria-hidden className="cv-safari-tint-bottom" />
+        </LanguageProvider>
       </body>
     </html>
   )

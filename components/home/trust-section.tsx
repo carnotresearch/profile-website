@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Award, ShieldCheck, BadgeCheck, Building, ChevronLeft, ChevronRight } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 // basePath-aware static assets (next/image unoptimized skips basePath in export mode)
 const B = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
@@ -222,6 +223,9 @@ function CurvedCarousel() {
 
 // ── Section ────────────────────────────────────────────────────────────────────
 export function TrustSection() {
+  const { tx } = useLanguage()
+  const t = tx.trust
+
   return (
     <section className="cv-auto relative overflow-hidden bg-white py-14 sm:py-20 lg:py-28">
 
@@ -239,12 +243,12 @@ export function TrustSection() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <FadeUp>
           <div className="mb-14 text-center">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-teal-700">Trusted By</p>
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-teal-700">{t.eyebrow}</p>
             <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-              Organizations across India trust our work
+              {t.heading}
             </h2>
             <p className="mt-3 text-sm text-gray-500">
-              From national security agencies and IIT Delhi to global consultancies and enterprise teams
+              {t.sub}
             </p>
           </div>
         </FadeUp>
@@ -260,7 +264,7 @@ export function TrustSection() {
         <FadeUp delay={220}>
           <div className="mt-16 border-t border-gray-100 pt-10">
             <p className="mb-8 text-center text-[10px] font-semibold uppercase tracking-widest text-gray-400">
-              Certifications &amp; Compliance
+              {t.certLabel}
             </p>
             <div className="mx-auto flex max-w-xs flex-col gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
               {certifications.map((cert) => (

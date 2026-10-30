@@ -7,7 +7,6 @@ import {
   Database,
   Search,
   ShieldCheck,
-  Users,
   FileText,
   AlertTriangle,
   FolderOpen,
@@ -23,6 +22,7 @@ import {
   ChevronDown,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/lib/language-context"
 
 // ─── FadeUp utility ───────────────────────────────────────────────────────────
 function FadeUp({
@@ -91,163 +91,39 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   )
 }
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
-const painPoints = [
-  {
-    icon: AlertTriangle,
-    title: "AI Hallucinations",
-    desc: "Traditional language models can produce plausible but incorrect responses. This is dangerous in regulated industries where accuracy is non-negotiable.",
-    iconBg: "bg-red-50",
-    iconColor: "text-red-600",
-    border: "border-red-100",
-  },
-  {
-    icon: FolderOpen,
-    title: "Knowledge Silos",
-    desc: "Important documents, policies, and technical manuals are often scattered across disconnected systems, making unified AI access impossible.",
-    iconBg: "bg-amber-50",
-    iconColor: "text-amber-600",
-    border: "border-amber-100",
-  },
-  {
-    icon: Scale,
-    title: "Compliance & Governance",
-    desc: "Regulated sectors require traceable AI outputs and fine-grained access controls. Standard LLMs offer no built-in compliance layer.",
-    iconBg: "bg-blue-50",
-    iconColor: "text-blue-600",
-    border: "border-blue-100",
-  },
+// ─── Static icon/color data (position-indexed) ────────────────────────────────
+const painPointStyles = [
+  { icon: AlertTriangle, iconBg: "bg-red-50", iconColor: "text-red-600", border: "border-red-100" },
+  { icon: FolderOpen, iconBg: "bg-amber-50", iconColor: "text-amber-600", border: "border-amber-100" },
+  { icon: Scale, iconBg: "bg-blue-50", iconColor: "text-blue-600", border: "border-blue-100" },
 ]
 
-const architecture = [
-  {
-    icon: Database,
-    title: "Secure Data Ingestion",
-    desc: "Integrates with structured and unstructured sources: document repositories, internal knowledge bases, policy databases, and technical manuals.",
-    iconBg: "bg-violet-50",
-    iconColor: "text-violet-600",
-  },
-  {
-    icon: Search,
-    title: "Semantic Retrieval Layer",
-    desc: "Vector-based indexing and contextual search mechanisms ensure precise, meaning-aware information matching, not just keyword lookup.",
-    iconBg: "bg-cyan-50",
-    iconColor: "text-cyan-600",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Governed Response Generation",
-    desc: "Language models generate responses only from retrieved content, grounding every answer in verified organizational knowledge.",
-    iconBg: "bg-emerald-50",
-    iconColor: "text-emerald-600",
-  },
-  {
-    icon: Lock,
-    title: "Role-Based Access Control",
-    desc: "Users access only the data permitted by organizational policies. Sensitive knowledge stays within the right teams and departments.",
-    iconBg: "bg-orange-50",
-    iconColor: "text-orange-600",
-  },
-  {
-    icon: FileText,
-    title: "Audit Logging & Traceability",
-    desc: "Every response is traceable to its source documents, creating a full accountability trail for compliance and governance reviews.",
-    iconBg: "bg-indigo-50",
-    iconColor: "text-indigo-600",
-  },
+const architectureStyles = [
+  { icon: Database, iconBg: "bg-violet-50", iconColor: "text-violet-600" },
+  { icon: Search, iconBg: "bg-cyan-50", iconColor: "text-cyan-600" },
+  { icon: ShieldCheck, iconBg: "bg-emerald-50", iconColor: "text-emerald-600" },
+  { icon: Lock, iconBg: "bg-orange-50", iconColor: "text-orange-600" },
+  { icon: FileText, iconBg: "bg-indigo-50", iconColor: "text-indigo-600" },
 ]
 
-const deploymentModels = [
-  {
-    icon: Server,
-    title: "On-Premise Deployment",
-    desc: "Fully controlled infrastructure within organizational boundaries. Zero cloud dependency, ideal for air-gapped and defense environments.",
-    iconBg: "bg-violet-50",
-    iconColor: "text-violet-600",
-    accent: "#7c3aed",
-  },
-  {
-    icon: GitMerge,
-    title: "Hybrid Architecture",
-    desc: "Sensitive data stays on-premises while non-sensitive processing selectively uses cloud resources for scale and flexibility.",
-    iconBg: "bg-cyan-50",
-    iconColor: "text-cyan-600",
-    accent: "#06b6d4",
-  },
-  {
-    icon: Cloud,
-    title: "Private Cloud Environments",
-    desc: "Secure virtualized infrastructure with all the isolation benefits of on-premise and the operational convenience of cloud.",
-    iconBg: "bg-emerald-50",
-    iconColor: "text-emerald-600",
-    accent: "#059669",
-  },
+const deploymentStyles = [
+  { icon: Server, iconBg: "bg-violet-50", iconColor: "text-violet-600", accent: "#7c3aed" },
+  { icon: GitMerge, iconBg: "bg-cyan-50", iconColor: "text-cyan-600", accent: "#06b6d4" },
+  { icon: Cloud, iconBg: "bg-emerald-50", iconColor: "text-emerald-600", accent: "#059669" },
 ]
 
-const useCases = [
-  {
-    icon: Scale,
-    title: "Legal & Compliance Teams",
-    desc: "Instant access to policies, regulatory documents, and audit-ready references, with citations rather than summaries.",
-    iconBg: "bg-blue-50",
-    iconColor: "text-blue-600",
-  },
-  {
-    icon: BookOpen,
-    title: "Internal Knowledge Assistants",
-    desc: "AI-powered support for employees seeking technical or operational information from internal documentation.",
-    iconBg: "bg-violet-50",
-    iconColor: "text-violet-600",
-  },
-  {
-    icon: Landmark,
-    title: "Governance & Public Sector",
-    desc: "Secure document analysis and policy advisory support with traceable, source-backed responses.",
-    iconBg: "bg-cyan-50",
-    iconColor: "text-cyan-600",
-  },
-  {
-    icon: TrendingUp,
-    title: "Strategic & Research Units",
-    desc: "Context-aware document synthesis and knowledge mapping across large, multi-source research repositories.",
-    iconBg: "bg-emerald-50",
-    iconColor: "text-emerald-600",
-  },
-]
-
-const outcomes = [
-  { stat: "↓ 70%", label: "Document search time" },
-  { stat: "↑ High", label: "Decision accuracy" },
-  { stat: "↓ Low", label: "Compliance risk" },
-  { stat: "↑ Full", label: "Knowledge accessibility" },
-  { stat: "✓", label: "Controlled AI within security frameworks" },
-]
-
-const faqs = [
-  {
-    q: "How does RAG reduce AI hallucinations?",
-    a: "RAG systems retrieve relevant data before generating responses. This ensures outputs are based on verified sources rather than the model's pre-trained memory alone, grounding every answer in your organization's actual documents.",
-  },
-  {
-    q: "Can Enterprise RAG be deployed on-premise?",
-    a: "Yes. RAG architectures can be fully deployed in on-premise or air-gapped environments, depending on infrastructure requirements. icarKno™ specializes in exactly this kind of sovereign deployment.",
-  },
-  {
-    q: "Is Enterprise RAG secure?",
-    a: "When implemented correctly with role-based access control, encryption, and audit logging, RAG systems meet enterprise and government security standards. All responses are traceable to source documents.",
-  },
-  {
-    q: "What types of data can be used in a RAG system?",
-    a: "Structured databases, PDFs, knowledge bases, internal documents, policy repositories, and more can all be integrated. icarKno™ supports multimodal ingestion including scanned documents and audio transcripts.",
-  },
-  {
-    q: "How is Enterprise RAG different from a chatbot?",
-    a: "Traditional chatbots rely on predefined scripts or static models. Enterprise RAG systems dynamically retrieve relevant organizational data before generating contextual, source-cited responses, making them far more accurate and auditable.",
-  },
+const useCaseStyles = [
+  { icon: Scale, iconBg: "bg-blue-50", iconColor: "text-blue-600" },
+  { icon: BookOpen, iconBg: "bg-violet-50", iconColor: "text-violet-600" },
+  { icon: Landmark, iconBg: "bg-cyan-50", iconColor: "text-cyan-600" },
+  { icon: TrendingUp, iconBg: "bg-emerald-50", iconColor: "text-emerald-600" },
 ]
 
 // ─── Main Export ──────────────────────────────────────────────────────────────
 export function EnterpriseRAGContent() {
+  const { tx } = useLanguage()
+  const p = tx.enterpriseRAGPage
+
   return (
     <>
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
@@ -270,22 +146,18 @@ export function EnterpriseRAGContent() {
             <FadeUp>
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/50 bg-white/30 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-foreground backdrop-blur-sm">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-                Enterprise Solutions
+                {p.hero.badge}
               </div>
 
               <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                Enterprise{" "}
+                {p.hero.heading1}{" "}
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  RAG Systems
+                  {p.hero.headingAccent}
                 </span>
               </h1>
 
               <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
-                Governed AI responses powered by your organization's trusted
-                data. We design and deploy enterprise-grade
-                Retrieval-Augmented Generation systems that eliminate AI
-                hallucinations, improve knowledge access, and ensure
-                compliance-ready AI use in secure environments.
+                {p.hero.desc}
               </p>
 
               <div className="mt-8 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:justify-center">
@@ -295,7 +167,7 @@ export function EnterpriseRAGContent() {
                   className="w-full bg-primary text-white shadow-lg hover:bg-primary/90 sm:w-auto"
                 >
                   <Link href="/contact">
-                    Request a Demo
+                    {p.hero.demoBtn}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -305,7 +177,7 @@ export function EnterpriseRAGContent() {
                   asChild
                   className="w-full bg-transparent hover:bg-white/20 sm:w-auto"
                 >
-                  <Link href="/solutions">View All Solutions</Link>
+                  <Link href="/solutions">{p.viewAllBtn}</Link>
                 </Button>
               </div>
             </FadeUp>
@@ -321,16 +193,13 @@ export function EnterpriseRAGContent() {
             <div>
               <FadeUp>
                 <p className="text-sm font-semibold uppercase tracking-wider text-accent">
-                  The Technology
+                  {p.ragSection.eyebrow}
                 </p>
                 <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                  What is Retrieval-Augmented Generation?
+                  {p.ragSection.heading}
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                  RAG is an AI architecture with two core stages working
-                  in sequence. Unlike standard AI that depends solely on
-                  pre-trained knowledge, RAG provides responses that are
-                  relevant, current, and linked to reliable sources.
+                  {p.ragSection.intro}
                 </p>
               </FadeUp>
 
@@ -342,12 +211,10 @@ export function EnterpriseRAGContent() {
                     </div>
                     <div>
                       <p className="font-semibold text-foreground">
-                        Information Retrieval
+                        {p.ragSection.stage1Title}
                       </p>
                       <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                        Relevant content is fetched from your trusted enterprise
-                        data sources, including documents, knowledge bases, and policy
-                        repositories, using semantic vector search.
+                        {p.ragSection.stage1Desc}
                       </p>
                     </div>
                   </div>
@@ -360,12 +227,10 @@ export function EnterpriseRAGContent() {
                     </div>
                     <div>
                       <p className="font-semibold text-foreground">
-                        Response Generation
+                        {p.ragSection.stage2Title}
                       </p>
                       <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                        A language model synthesizes answers using only the
-                        retrieved information, with citations, so every
-                        response is grounded, accurate, and traceable.
+                        {p.ragSection.stage2Desc}
                       </p>
                     </div>
                   </div>
@@ -375,15 +240,10 @@ export function EnterpriseRAGContent() {
               <FadeUp delay={260}>
                 <div className="mt-8 rounded-xl border border-border bg-secondary/30 p-5">
                   <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-foreground">
-                    For businesses, this means
+                    {p.ragSection.businessMeansLabel}
                   </p>
                   <ul className="flex flex-col gap-2">
-                    {[
-                      "Reduced chances of false information",
-                      "Better factual accuracy with source citations",
-                      "Managed, role-based knowledge access",
-                      "Compliance-ready, auditable AI outputs",
-                    ].map((item) => (
+                    {p.ragSection.businessMeansItems.map((item) => (
                       <li key={item} className="flex items-start gap-2.5">
                         <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                         <span className="text-sm text-muted-foreground">
@@ -400,24 +260,24 @@ export function EnterpriseRAGContent() {
             <FadeUp delay={120} className="lg:pl-8">
               <div className="rounded-2xl border border-border bg-card p-8 shadow-sm">
                 <p className="mb-6 text-center text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  How RAG Works
+                  {p.ragSection.diagramTitle}
                 </p>
                 <div className="flex flex-col items-center gap-3">
                   {/* Step 1 */}
                   <div className="w-full rounded-xl border border-violet-200 bg-violet-50 px-5 py-4 text-center">
                     <Database className="mx-auto mb-1.5 h-5 w-5 text-violet-600" />
                     <p className="text-sm font-semibold text-violet-900">
-                      Enterprise Data Sources
+                      {p.ragSection.diagramStep1Title}
                     </p>
                     <p className="mt-0.5 text-xs text-violet-600">
-                      PDFs, manuals, policies, knowledge bases
+                      {p.ragSection.diagramStep1Sub}
                     </p>
                   </div>
 
                   <div className="flex flex-col items-center gap-1">
                     <div className="h-6 w-px bg-border" />
                     <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
-                      Semantic Search
+                      {p.ragSection.diagramConn1}
                     </span>
                     <div className="h-6 w-px bg-border" />
                   </div>
@@ -426,17 +286,17 @@ export function EnterpriseRAGContent() {
                   <div className="w-full rounded-xl border border-cyan-200 bg-cyan-50 px-5 py-4 text-center">
                     <Search className="mx-auto mb-1.5 h-5 w-5 text-cyan-600" />
                     <p className="text-sm font-semibold text-cyan-900">
-                      Retrieval Layer
+                      {p.ragSection.diagramStep2Title}
                     </p>
                     <p className="mt-0.5 text-xs text-cyan-600">
-                      Vector indexing · Contextual matching
+                      {p.ragSection.diagramStep2Sub}
                     </p>
                   </div>
 
                   <div className="flex flex-col items-center gap-1">
                     <div className="h-6 w-px bg-border" />
                     <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
-                      Retrieved Context
+                      {p.ragSection.diagramConn2}
                     </span>
                     <div className="h-6 w-px bg-border" />
                   </div>
@@ -445,17 +305,17 @@ export function EnterpriseRAGContent() {
                   <div className="w-full rounded-xl border border-emerald-200 bg-emerald-50 px-5 py-4 text-center">
                     <Layers className="mx-auto mb-1.5 h-5 w-5 text-emerald-600" />
                     <p className="text-sm font-semibold text-emerald-900">
-                      Language Model
+                      {p.ragSection.diagramStep3Title}
                     </p>
                     <p className="mt-0.5 text-xs text-emerald-600">
-                      On-premise LLM · Governed generation
+                      {p.ragSection.diagramStep3Sub}
                     </p>
                   </div>
 
                   <div className="flex flex-col items-center gap-1">
                     <div className="h-6 w-px bg-border" />
                     <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
-                      Cited Answer
+                      {p.ragSection.diagramConn3}
                     </span>
                     <div className="h-6 w-px bg-border" />
                   </div>
@@ -464,10 +324,10 @@ export function EnterpriseRAGContent() {
                   <div className="w-full rounded-xl border border-border bg-secondary/60 px-5 py-4 text-center">
                     <ShieldCheck className="mx-auto mb-1.5 h-5 w-5 text-foreground" />
                     <p className="text-sm font-semibold text-foreground">
-                      Verified, Cited Response
+                      {p.ragSection.diagramOutputTitle}
                     </p>
                     <p className="mt-0.5 text-xs text-muted-foreground">
-                      Traceable · Accurate · Compliant
+                      {p.ragSection.diagramOutputSub}
                     </p>
                   </div>
                 </div>
@@ -483,48 +343,49 @@ export function EnterpriseRAGContent() {
           <FadeUp>
             <div className="mb-14 text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-accent">
-                The Problem
+                {p.painPoints.eyebrow}
               </p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                Why enterprises need RAG
+                {p.painPoints.heading}
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-                As organizations adopt AI assistants and decision-support tools,
-                critical risks emerge that standard LLMs cannot address.
+                {p.painPoints.desc}
               </p>
             </div>
           </FadeUp>
 
           <div className="grid gap-6 sm:grid-cols-3">
-            {painPoints.map((p, i) => (
-              <FadeUp key={p.title} delay={i * 120}>
-                <div
-                  className={`group relative h-full overflow-hidden rounded-2xl border ${p.border} bg-card p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl`}
-                >
-                  {/* Top accent */}
-                  <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-current to-transparent opacity-0 group-hover:opacity-30 transition-opacity" />
+            {p.painPoints.items.map((item, i) => {
+              const s = painPointStyles[i]
+              return (
+                <FadeUp key={item.title} delay={i * 120}>
                   <div
-                    className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl ${p.iconBg}`}
+                    className={`group relative h-full overflow-hidden rounded-2xl border ${s.border} bg-card p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl`}
                   >
-                    <p.icon className={`h-5 w-5 ${p.iconColor}`} />
+                    {/* Top accent */}
+                    <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-current to-transparent opacity-0 group-hover:opacity-30 transition-opacity" />
+                    <div
+                      className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl ${s.iconBg}`}
+                    >
+                      <s.icon className={`h-5 w-5 ${s.iconColor}`} />
+                    </div>
+                    <h3 className="text-base font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {item.desc}
+                    </p>
                   </div>
-                  <h3 className="text-base font-semibold text-foreground">
-                    {p.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {p.desc}
-                  </p>
-                </div>
-              </FadeUp>
-            ))}
+                </FadeUp>
+              )
+            })}
           </div>
 
           <FadeUp delay={400}>
             <p className="mt-10 text-center text-sm text-muted-foreground">
-              Enterprise RAG systems tackle these issues by grounding AI
-              responses in{" "}
+              {p.painPoints.tailNote}{" "}
               <span className="font-medium text-foreground">
-                verified, controlled knowledge repositories.
+                {p.painPoints.tailNoteHighlight}
               </span>
             </p>
           </FadeUp>
@@ -537,38 +398,40 @@ export function EnterpriseRAGContent() {
           <FadeUp>
             <div className="mb-14 text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-accent">
-                Our Approach
+                {p.architecture.eyebrow}
               </p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                Enterprise RAG architecture
+                {p.architecture.heading}
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-                Built for security, scalability, and performance across the full
-                knowledge lifecycle.
+                {p.architecture.desc}
               </p>
             </div>
           </FadeUp>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {architecture.map((item, i) => (
-              <FadeUp key={item.title} delay={i * 90}>
-                <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
-                  {/* Gradient top stripe */}
-                  <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-primary/60 via-accent/60 to-transparent" />
-                  <div
-                    className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl ${item.iconBg}`}
-                  >
-                    <item.icon className={`h-5 w-5 ${item.iconColor}`} />
+            {p.architecture.items.map((item, i) => {
+              const s = architectureStyles[i]
+              return (
+                <FadeUp key={item.title} delay={i * 90}>
+                  <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+                    {/* Gradient top stripe */}
+                    <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-primary/60 via-accent/60 to-transparent" />
+                    <div
+                      className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl ${s.iconBg}`}
+                    >
+                      <s.icon className={`h-5 w-5 ${s.iconColor}`} />
+                    </div>
+                    <h3 className="text-base font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {item.desc}
+                    </p>
                   </div>
-                  <h3 className="text-base font-semibold text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {item.desc}
-                  </p>
-                </div>
-              </FadeUp>
-            ))}
+                </FadeUp>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -579,42 +442,44 @@ export function EnterpriseRAGContent() {
           <FadeUp>
             <div className="mb-14 text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-accent">
-                Deployment
+                {p.deployment.eyebrow}
               </p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                Flexible deployment models
+                {p.deployment.heading}
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-                We support multiple enterprise configurations based on your
-                security posture and operational requirements.
+                {p.deployment.desc}
               </p>
             </div>
           </FadeUp>
 
           <div className="grid gap-6 sm:grid-cols-3">
-            {deploymentModels.map((model, i) => (
-              <FadeUp key={model.title} delay={i * 120}>
-                <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
-                  <div
-                    className="absolute inset-x-0 top-0 h-[2px]"
-                    style={{
-                      background: `linear-gradient(to right, ${model.accent}, transparent)`,
-                    }}
-                  />
-                  <div
-                    className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl ${model.iconBg}`}
-                  >
-                    <model.icon className={`h-6 w-6 ${model.iconColor}`} />
+            {p.deployment.models.map((model, i) => {
+              const s = deploymentStyles[i]
+              return (
+                <FadeUp key={model.title} delay={i * 120}>
+                  <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+                    <div
+                      className="absolute inset-x-0 top-0 h-[2px]"
+                      style={{
+                        background: `linear-gradient(to right, ${s.accent}, transparent)`,
+                      }}
+                    />
+                    <div
+                      className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl ${s.iconBg}`}
+                    >
+                      <s.icon className={`h-6 w-6 ${s.iconColor}`} />
+                    </div>
+                    <h3 className="text-base font-semibold text-foreground">
+                      {model.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {model.desc}
+                    </p>
                   </div>
-                  <h3 className="text-base font-semibold text-foreground">
-                    {model.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {model.desc}
-                  </p>
-                </div>
-              </FadeUp>
-            ))}
+                </FadeUp>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -625,38 +490,40 @@ export function EnterpriseRAGContent() {
           <FadeUp>
             <div className="mb-14 text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-accent">
-                Applications
+                {p.useCases.eyebrow}
               </p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                Enterprise use cases
+                {p.useCases.heading}
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-                RAG systems are already transforming how organizations manage and
-                act on institutional knowledge.
+                {p.useCases.desc}
               </p>
             </div>
           </FadeUp>
 
           <div className="grid gap-5 sm:grid-cols-2">
-            {useCases.map((uc, i) => (
-              <FadeUp key={uc.title} delay={i * 100}>
-                <div className="flex items-start gap-5 rounded-2xl border border-border bg-card p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                  <div
-                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${uc.iconBg}`}
-                  >
-                    <uc.icon className={`h-5 w-5 ${uc.iconColor}`} />
+            {p.useCases.items.map((uc, i) => {
+              const s = useCaseStyles[i]
+              return (
+                <FadeUp key={uc.title} delay={i * 100}>
+                  <div className="flex items-start gap-5 rounded-2xl border border-border bg-card p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <div
+                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${s.iconBg}`}
+                    >
+                      <s.icon className={`h-5 w-5 ${s.iconColor}`} />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-semibold text-foreground">
+                        {uc.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                        {uc.desc}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground">
-                      {uc.title}
-                    </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                      {uc.desc}
-                    </p>
-                  </div>
-                </div>
-              </FadeUp>
-            ))}
+                </FadeUp>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -677,16 +544,16 @@ export function EnterpriseRAGContent() {
           <FadeUp>
             <div className="mb-14 text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-accent">
-                Results
+                {p.outcomes.eyebrow}
               </p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                What organizations achieve
+                {p.outcomes.heading}
               </h2>
             </div>
           </FadeUp>
 
           <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
-            {outcomes.map((o, i) => (
+            {p.outcomes.items.map((o, i) => (
               <FadeUp key={o.label} delay={i * 80}>
                 <div className="rounded-2xl border border-border bg-card p-6 text-center shadow-sm">
                   <p className="text-2xl font-bold text-foreground">{o.stat}</p>
@@ -706,14 +573,14 @@ export function EnterpriseRAGContent() {
           <FadeUp>
             <div className="mb-12 text-center">
               <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                FAQ
+                {p.faq.heading}
               </h2>
             </div>
           </FadeUp>
 
           <FadeUp delay={100}>
             <div className="rounded-2xl border border-border bg-card px-7 py-2 shadow-sm">
-              {faqs.map((faq) => (
+              {p.faq.items.map((faq) => (
                 <FAQItem key={faq.q} q={faq.q} a={faq.a} />
               ))}
             </div>

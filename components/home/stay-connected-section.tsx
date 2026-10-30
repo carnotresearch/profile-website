@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { useLanguage } from "@/lib/language-context"
 
 function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -21,13 +22,15 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export function StayConnectedSection() {
+  const { tx } = useLanguage()
+
   return (
     <section className="cv-auto bg-background py-10 sm:py-14">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <FadeUp>
           <div className="text-center">
             <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-600">
-              Stay Connected
+              {tx.stayConnected.eyebrow}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               {/* LinkedIn */}

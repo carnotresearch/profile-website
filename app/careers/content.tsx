@@ -4,6 +4,7 @@ import { useRef, useState } from "react"
 import ReCAPTCHA from "react-google-recaptcha"
 import { Briefcase, GraduationCap, ArrowRight, Check, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/lib/language-context"
 
 const API_ENDPOINT =
   "https://izwz05lqn1.execute-api.ap-south-1.amazonaws.com/default/sendMail"
@@ -26,6 +27,9 @@ function isValidGoogleDriveLink(url: string): boolean {
 }
 
 export function CareersContent() {
+  const { tx } = useLanguage()
+  const c = tx.careersPage
+
   const [positionType, setPositionType] = useState<PositionType>("")
   const [status, setStatus] = useState<Status>("idle")
   const [notification, setNotification] = useState<{ msg: string; type: "success" | "error" } | null>(null)
@@ -53,7 +57,7 @@ export function CareersContent() {
     // Check reCAPTCHA
     const recaptchaResponse = recaptchaRef.current?.getValue()
     if (!recaptchaResponse) {
-      showNotification("Please complete the reCAPTCHA verification.", "error")
+      showNotification(c.form.captchaError, "error")
       return
     }
 
@@ -69,13 +73,13 @@ export function CareersContent() {
 
     // Validate required fields
     if (!name || !email || !experience || !coverLetter || !resumeLink) {
-      showNotification("Please fill all required fields and provide your resume Google Drive link.", "error")
+      showNotification(c.form.fillError, "error")
       return
     }
 
     // Validate Google Drive link
     if (!isValidGoogleDriveLink(resumeLink)) {
-      showNotification("Please provide a valid Google Drive link to your resume.", "error")
+      showNotification(c.form.driveError, "error")
       return
     }
 
@@ -113,17 +117,17 @@ Resume Google Drive Link: ${resumeLink}`
       })
 
       if (response.ok) {
-        showNotification("Application submitted successfully! We'll be in touch soon.", "success")
+        showNotification(c.form.successMsg, "success")
         setStatus("success")
         form.reset()
         recaptchaRef.current?.reset()
       } else {
-        showNotification("Application submission failed. Please try again.", "error")
+        showNotification(c.form.serverError, "error")
         setStatus("idle")
         recaptchaRef.current?.reset()
       }
     } catch (error) {
-      showNotification("Network error occurred: " + (error instanceof Error ? error.message : "Unknown error"), "error")
+      showNotification(c.form.serverError + (error instanceof Error ? " " + error.message : ""), "error")
       setStatus("idle")
       recaptchaRef.current?.reset()
     }
@@ -138,14 +142,17 @@ Resume Google Drive Link: ${resumeLink}`
       <section className="bg-secondary/30 py-14 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center mb-14">
-            <p className="text-sm font-medium tracking-wider text-accent uppercase">Careers</p>
+            <p className="text-sm font-medium tracking-wider text-accent uppercase">{c.hero.eyebrow}</p>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Work with us
+              {c.hero.heading}
             </h1>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              Join our team of AI researchers and engineers. Contribute to cutting-edge projects
-              while advancing your career.
+              {c.hero.desc}
             </p>
+          </div>
+
+          <div className="mx-auto max-w-3xl text-center mb-10">
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground">{c.openRoles.heading}</h2>
           </div>
 
           <div className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-2">
@@ -155,10 +162,9 @@ Resume Google Drive Link: ${resumeLink}`
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 transition-transform duration-300 group-hover:scale-110">
                 <Briefcase className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-lg font-semibold text-foreground">Full-Time Positions</h3>
+              <h3 className="text-lg font-semibold text-foreground">{c.openRoles.jobTitle}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                If you have the drive to make a difference leveraging Deep Tech and want to be
-                part of a fine team, we want to hear from you.
+                {c.openRoles.jobDesc}
               </p>
               <Button
                 className="mt-6"
@@ -166,7 +172,7 @@ Resume Google Drive Link: ${resumeLink}`
                 size="sm"
                 onClick={() => handleApply("Job Position")}
               >
-                Apply Now
+                {c.openRoles.jobBtn}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -177,10 +183,9 @@ Resume Google Drive Link: ${resumeLink}`
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-50 transition-transform duration-300 group-hover:scale-110">
                 <GraduationCap className="h-6 w-6 text-orange-600" />
               </div>
-              <h3 className="text-lg font-semibold text-foreground">Internships</h3>
+              <h3 className="text-lg font-semibold text-foreground">{c.openRoles.internTitle}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Passionate student eager to dive into Deep Tech? Gain hands-on experience with
-                cutting-edge AI research on our team.
+                {c.openRoles.internDesc}
               </p>
               <Button
                 className="mt-6"
@@ -188,7 +193,7 @@ Resume Google Drive Link: ${resumeLink}`
                 size="sm"
                 onClick={() => handleApply("Internship")}
               >
-                Apply Now
+                {c.openRoles.internBtn}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -202,10 +207,10 @@ Resume Google Drive Link: ${resumeLink}`
           <div className="mx-auto max-w-2xl px-6 lg:px-8">
             <div className="mb-8 text-center">
               <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                Apply for {positionType === "Job Position" ? "Full-Time Position" : "Internship"}
+                {c.form.heading}
               </h2>
               <p className="mt-3 text-sm text-muted-foreground">
-                Fill in the details below. We&apos;ll get back to you within 3–5 business days.
+                {c.form.subtitle}
               </p>
             </div>
 
@@ -233,15 +238,15 @@ Resume Google Drive Link: ${resumeLink}`
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label htmlFor="applicant-name" className="mb-1.5 block text-sm font-medium text-foreground">
-                    Full Name <span className="text-destructive">*</span>
+                    {c.form.nameLabel} <span className="text-destructive">*</span>
                   </label>
-                  <input id="applicant-name" type="text" required placeholder="Your full name" className={inputClass} />
+                  <input id="applicant-name" type="text" required placeholder={c.form.namePlaceholder} className={inputClass} />
                 </div>
                 <div>
                   <label htmlFor="applicant-email" className="mb-1.5 block text-sm font-medium text-foreground">
-                    Email <span className="text-destructive">*</span>
+                    {c.form.emailLabel} <span className="text-destructive">*</span>
                   </label>
-                  <input id="applicant-email" type="email" required placeholder="you@example.com" className={inputClass} />
+                  <input id="applicant-email" type="email" required placeholder={c.form.emailPlaceholder} className={inputClass} />
                 </div>
               </div>
 
@@ -249,16 +254,16 @@ Resume Google Drive Link: ${resumeLink}`
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label htmlFor="applicant-phone" className="mb-1.5 block text-sm font-medium text-foreground">
-                    Phone <span className="text-muted-foreground text-xs">(optional)</span>
+                    {c.form.phoneLabel} <span className="text-muted-foreground text-xs">{c.form.phoneOptional}</span>
                   </label>
-                  <input id="applicant-phone" type="tel" placeholder="+91 98765 43210" className={inputClass} />
+                  <input id="applicant-phone" type="tel" placeholder={c.form.phonePlaceholder} className={inputClass} />
                 </div>
                 <div>
                   <label htmlFor="experience-level" className="mb-1.5 block text-sm font-medium text-foreground">
-                    Experience Level <span className="text-destructive">*</span>
+                    {c.form.experienceLabel} <span className="text-destructive">*</span>
                   </label>
                   <select id="experience-level" required className={inputClass}>
-                    <option value="">Select level</option>
+                    <option value="">{c.form.selectDefault}</option>
                     <option value="Fresher (0 years)">Fresher (0 years)</option>
                     <option value="Junior (1–2 years)">Junior (1–2 years)</option>
                     <option value="Mid (3–5 years)">Mid (3–5 years)</option>
@@ -271,7 +276,7 @@ Resume Google Drive Link: ${resumeLink}`
               {/* Resume Drive Link */}
               <div>
                 <label htmlFor="resume-drive-link" className="mb-1.5 block text-sm font-medium text-foreground">
-                  Resume (Google Drive link) <span className="text-destructive">*</span>
+                  {c.form.resumeLabel} <span className="text-destructive">*</span>
                 </label>
                 <input
                   id="resume-drive-link"
@@ -281,20 +286,20 @@ Resume Google Drive Link: ${resumeLink}`
                   className={inputClass}
                 />
                 <p className="mt-1 text-xs text-muted-foreground">
-                  Share your resume via Google Drive with &quot;Anyone with the link&quot; access.
+                  {c.form.resumeHelp}
                 </p>
               </div>
 
               {/* Cover Letter */}
               <div>
                 <label htmlFor="cover-letter" className="mb-1.5 block text-sm font-medium text-foreground">
-                  Cover Letter <span className="text-destructive">*</span>
+                  {c.form.coverLetterLabel} <span className="text-destructive">*</span>
                 </label>
                 <textarea
                   id="cover-letter"
                   required
                   rows={5}
-                  placeholder="Tell us why you want to join icarKno™ and what you'll bring to the team..."
+                  placeholder={c.form.coverLetterPlaceholder}
                   className={inputClass}
                 />
               </div>
@@ -314,11 +319,11 @@ Resume Google Drive Link: ${resumeLink}`
                 {status === "sending" ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Submitting…
+                    {c.form.sending}
                   </>
                 ) : (
                   <>
-                    Submit Application
+                    {c.form.submitBtn}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </>
                 )}

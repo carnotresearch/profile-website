@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { ArrowRight, FlaskConical, Cpu, Lightbulb } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 const B = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 
@@ -13,28 +14,12 @@ const images = [
   { src: `${B}/assets/company/who-we-are/forth.jpg`, alt: "icarKno™" },
 ]
 
-const pillars = [
-  {
-    icon: FlaskConical,
-    title: "Research-Led Development",
-    desc: "Every product originates from peer-reviewed research at IIT Delhi labs.",
-    iconColor: "text-orange-500",
-  },
-  {
-    icon: Cpu,
-    title: "Algorithmic-Level Solutions",
-    desc: "We engineer at the algorithm layer, not prompt wrappers or API glue.",
-    iconColor: "text-cyan-600",
-  },
-  {
-    icon: Lightbulb,
-    title: "Patented Innovations",
-    desc: "Proprietary IP underpins our systems, delivering defensible technical moats.",
-    iconColor: "text-emerald-600",
-  },
-]
+const pillarIcons = [FlaskConical, Cpu, Lightbulb]
+const pillarColors = ["text-orange-500", "text-cyan-600", "text-emerald-600"]
 
 export function AboutSection() {
+  const { tx } = useLanguage()
+  const a = tx.about
   const [current, setCurrent] = useState(0)
   const sectionRef = useRef<HTMLElement>(null)
   const [visible, setVisible] = useState(false)
@@ -112,42 +97,42 @@ export function AboutSection() {
           {/* Right — text */}
           <div className="order-1 lg:order-2">
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-700">
-              Our Story
+              {a.eyebrow}
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              From IIT Delhi labs to{" "}
-              <span className="text-teal-700">real-world AI deployment</span>
+              {a.heading1}{" "}
+              <span className="text-teal-700">{a.headingAccent}</span>
             </h2>
 
             <p className="mt-5 text-sm sm:text-base leading-relaxed text-gray-600">
-              icarKno™ was founded by IIT Delhi professors and scientists who saw a critical
-              gap: India&apos;s government, defense, and enterprise organizations needed AI that
-              worked entirely inside their own walls: secure, offline, and fully under their control.
+              {a.para1}
             </p>
             <p className="mt-4 text-sm sm:text-base leading-relaxed text-gray-600">
-              We don&apos;t just advise. We build and ship. Our products are operational
-              today: icarKno™ runs inside government networks, BharGati™ AI coaches
-              elite athletes, and SAATHI guides Delhi commuters in 22+ languages.
+              {a.para2}
             </p>
 
             {/* Differentiator pillars */}
             <div className="mt-6 flex flex-col divide-y divide-gray-100">
-              {pillars.map(({ icon: Icon, title, desc, iconColor }) => (
-                <div key={title} className="flex items-start gap-3 py-3.5">
-                  <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${iconColor}`} />
-                  <div>
-                    <p className="text-sm font-semibold text-slate-800">{title}</p>
-                    <p className="mt-0.5 text-sm leading-relaxed text-gray-600">{desc}</p>
+              {a.pillars.map((pillar, i) => {
+                const Icon = pillarIcons[i]
+                const color = pillarColors[i]
+                return (
+                  <div key={pillar.title} className="flex items-start gap-3 py-3.5">
+                    <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${color}`} />
+                    <div>
+                      <p className="text-sm font-semibold text-slate-800">{pillar.title}</p>
+                      <p className="mt-0.5 text-sm leading-relaxed text-gray-600">{pillar.desc}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
 
             <Link
               href="/about/team"
               className="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-teal-800"
             >
-              Meet the team
+              {a.meetTeam}
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

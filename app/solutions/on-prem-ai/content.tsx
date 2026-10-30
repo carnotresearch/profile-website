@@ -28,6 +28,7 @@ import {
   ChevronDown,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/lib/language-context"
 
 function FadeUp({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -68,141 +69,37 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   )
 }
 
-const drivers = [
-  {
-    icon: ShieldCheck,
-    title: "Data Sovereignty Requirements",
-    desc: "Sensitive information must stay within controlled infrastructure with no exposure to third-party systems.",
-    iconBg: "bg-violet-50", iconColor: "text-violet-600", border: "border-violet-100",
-  },
-  {
-    icon: Scale,
-    title: "Regulatory & Compliance Mandates",
-    desc: "Industries like defense, finance, and government need strict access rules and comprehensive audit trails.",
-    iconBg: "bg-blue-50", iconColor: "text-blue-600", border: "border-blue-100",
-  },
-  {
-    icon: WifiOff,
-    title: "Air-Gapped Environments",
-    desc: "Some deployments cannot depend on internet connectivity due to operational or security requirements.",
-    iconBg: "bg-amber-50", iconColor: "text-amber-600", border: "border-amber-100",
-  },
-  {
-    icon: Zap,
-    title: "Latency & Reliability",
-    desc: "Real-time systems need low-latency AI inference without depending on cloud availability or bandwidth.",
-    iconBg: "bg-emerald-50", iconColor: "text-emerald-600", border: "border-emerald-100",
-  },
-  {
-    icon: SlidersHorizontal,
-    title: "Infrastructure Control",
-    desc: "Organizations need full control over model updates, access policies, and system configuration.",
-    iconBg: "bg-cyan-50", iconColor: "text-cyan-600", border: "border-cyan-100",
-  },
+// ─── Static icon/color data (position-indexed) ────────────────────────────────
+const driverStyles = [
+  { icon: ShieldCheck, iconBg: "bg-violet-50", iconColor: "text-violet-600", border: "border-violet-100" },
+  { icon: Scale, iconBg: "bg-blue-50", iconColor: "text-blue-600", border: "border-blue-100" },
+  { icon: WifiOff, iconBg: "bg-amber-50", iconColor: "text-amber-600", border: "border-amber-100" },
+  { icon: Zap, iconBg: "bg-emerald-50", iconColor: "text-emerald-600", border: "border-emerald-100" },
+  { icon: SlidersHorizontal, iconBg: "bg-cyan-50", iconColor: "text-cyan-600", border: "border-cyan-100" },
 ]
 
-const capabilities = [
-  {
-    icon: Cpu,
-    title: "Offline LLM Deployment",
-    desc: "Deploy and run large language models entirely within internal systems, without internet access.",
-    iconBg: "bg-violet-50", iconColor: "text-violet-600",
-  },
-  {
-    icon: Layers,
-    title: "Multimodal AI Systems",
-    desc: "Process text, voice, and visual input in fully secure, on-premise settings.",
-    iconBg: "bg-cyan-50", iconColor: "text-cyan-600",
-  },
-  {
-    icon: Boxes,
-    title: "Containerized Architecture",
-    desc: "Secure deployment with containerization for isolation, portability, and reproducibility.",
-    iconBg: "bg-emerald-50", iconColor: "text-emerald-600",
-  },
-  {
-    icon: Wrench,
-    title: "Custom Model Fine-Tuning",
-    desc: "AI models tailored to fit specific operational workflows, domain vocabulary, and compliance needs.",
-    iconBg: "bg-orange-50", iconColor: "text-orange-600",
-  },
-  {
-    icon: Workflow,
-    title: "Scalable Infrastructure",
-    desc: "Support from edge devices to enterprise servers and clustered environments.",
-    iconBg: "bg-indigo-50", iconColor: "text-indigo-600",
-  },
+const capabilityStyles = [
+  { icon: Cpu, iconBg: "bg-violet-50", iconColor: "text-violet-600" },
+  { icon: Layers, iconBg: "bg-cyan-50", iconColor: "text-cyan-600" },
+  { icon: Boxes, iconBg: "bg-emerald-50", iconColor: "text-emerald-600" },
+  { icon: Wrench, iconBg: "bg-orange-50", iconColor: "text-orange-600" },
+  { icon: Workflow, iconBg: "bg-indigo-50", iconColor: "text-indigo-600" },
 ]
 
-const deploymentModels = [
-  {
-    icon: Server,
-    title: "Fully Air-Gapped Deployment",
-    desc: "AI systems operate completely offline within isolated networks. No external connectivity required.",
-    iconBg: "bg-violet-50", iconColor: "text-violet-600", accent: "#7c3aed",
-  },
-  {
-    icon: GitMerge,
-    title: "Private Data Center",
-    desc: "Deployed as part of the existing enterprise infrastructure for seamless integration.",
-    iconBg: "bg-cyan-50", iconColor: "text-cyan-600", accent: "#06b6d4",
-  },
-  {
-    icon: Cloud,
-    title: "Edge AI Deployment",
-    desc: "Localized AI processing for real-time settings with constrained compute and connectivity.",
-    iconBg: "bg-emerald-50", iconColor: "text-emerald-600", accent: "#059669",
-  },
+const deploymentStyles = [
+  { icon: Server, iconBg: "bg-violet-50", iconColor: "text-violet-600", accent: "#7c3aed" },
+  { icon: GitMerge, iconBg: "bg-cyan-50", iconColor: "text-cyan-600", accent: "#06b6d4" },
+  { icon: Cloud, iconBg: "bg-emerald-50", iconColor: "text-emerald-600", accent: "#059669" },
 ]
 
-const environments = [
-  { icon: Landmark, title: "Government", text: "Ministries and public sector agencies." },
-  { icon: Shield, title: "Defense", text: "Defense and strategic organizations." },
-  { icon: PiggyBank, title: "Finance", text: "Financial institutions with regulated data." },
-  { icon: HeartPulse, title: "Healthcare", text: "Healthcare systems managing sensitive records." },
-  { icon: Factory, title: "Critical Infrastructure", text: "Infrastructure operators requiring isolation." },
-]
+const environmentIcons = [Landmark, Shield, PiggyBank, HeartPulse, Factory]
 
-const applications = [
-  { icon: FileText, text: "Secure document intelligence and search" },
-  { icon: Search, text: "Sensitive data analysis and classification" },
-  { icon: MessagesSquare, text: "Offline conversational AI systems" },
-  { icon: Workflow, text: "Mission-critical workflow automation" },
-  { icon: ShieldCheck, text: "Internal decision-support systems" },
-]
-
-const outcomes = [
-  { stat: "100%", label: "Data stays on-premise" },
-  { stat: "Zero", label: "Cloud dependency" },
-  { stat: "Air-gap", label: "Compatible deployments" },
-  { stat: "Full", label: "Regulatory compliance" },
-  { stat: "✓", label: "Controlled AI within security frameworks" },
-]
-
-const faqs = [
-  {
-    q: "Can AI function completely without internet connectivity?",
-    a: "Yes. With the right setup, large language models and multimodal AI systems can operate entirely offline. By hosting models, data pipelines, and retrieval systems in controlled environments, organizations can enable full AI functionality without external network access.",
-  },
-  {
-    q: "What hardware is needed for on-prem AI deployment?",
-    a: "Hardware needs depend on the model size, inference load, and operational complexity. Deployments can range from high-performance GPU servers in enterprise data centers to optimized edge devices for local processing.",
-  },
-  {
-    q: "Is on-prem AI more secure than cloud AI?",
-    a: "On-premise AI offers more control over infrastructure, access policies, and data management. By keeping data within internal networks and implementing strict role-based access controls, organizations can lower exposure risks and better meet regulatory requirements.",
-  },
-  {
-    q: "Can on-prem AI scale across multiple departments?",
-    a: "Yes. On-prem AI systems can be set up for distributed deployment across departments, facilities, or regional offices with centralized governance and security standards.",
-  },
-  {
-    q: "How does on-prem AI ensure compliance?",
-    a: "Compliance is upheld through role-based access control, audit logging, encrypted data pipelines, and network isolation. These measures help organizations meet regulatory requirements while maintaining transparency in AI operations.",
-  },
-]
+const applicationIcons = [FileText, Search, MessagesSquare, Workflow, ShieldCheck]
 
 export function OnPremAIContent() {
+  const { tx } = useLanguage()
+  const p = tx.onPremAIPage
+
   return (
     <>
       {/* Hero */}
@@ -222,30 +119,29 @@ export function OnPremAIContent() {
             <FadeUp>
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/50 bg-white/30 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-foreground backdrop-blur-sm">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-500" />
-                Secure Deployment
+                {p.hero.badge}
               </div>
 
               <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                On-Premise &amp;{" "}
+                {p.hero.heading1}{" "}
                 <span className="bg-gradient-to-r from-violet-600 to-cyan-600 bg-clip-text text-transparent">
-                  Offline AI
+                  {p.hero.headingAccent}
                 </span>
               </h1>
 
               <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
-                Fully sovereign AI systems for data-sensitive, regulated, and mission-critical environments.
-                Zero cloud dependency, complete infrastructure control, and compliance-ready by design.
+                {p.hero.desc}
               </p>
 
               <div className="mt-8 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:justify-center">
                 <Button size="lg" asChild className="w-full bg-primary text-white shadow-lg hover:bg-primary/90 sm:w-auto">
                   <Link href="/contact">
-                    Discuss This Solution
+                    {p.hero.discussBtn}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild className="w-full bg-transparent hover:bg-white/20 sm:w-auto">
-                  <Link href="/solutions">View All Solutions</Link>
+                  <Link href="/solutions">{p.hero.viewAllBtn}</Link>
                 </Button>
               </div>
             </FadeUp>
@@ -258,32 +154,35 @@ export function OnPremAIContent() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeUp>
             <div className="mb-14 text-center">
-              <p className="text-sm font-semibold uppercase tracking-wider text-accent">The Problem</p>
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent">{p.drivers.eyebrow}</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                Why organizations move to on-premise AI
+                {p.drivers.heading}
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-                As AI adoption grows, cloud-based systems create critical gaps in security, compliance, and control.
+                {p.drivers.desc}
               </p>
             </div>
           </FadeUp>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {drivers.map((d, i) => (
-              <FadeUp key={d.title} delay={i * 100}>
-                <div className={`group relative h-full overflow-hidden rounded-2xl border ${d.border} bg-card p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl`}>
-                  <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-current to-transparent opacity-0 group-hover:opacity-30 transition-opacity" />
-                  <div className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl ${d.iconBg}`}>
-                    <d.icon className={`h-5 w-5 ${d.iconColor}`} />
+            {p.drivers.items.map((d, i) => {
+              const s = driverStyles[i]
+              return (
+                <FadeUp key={d.title} delay={i * 100}>
+                  <div className={`group relative h-full overflow-hidden rounded-2xl border ${s.border} bg-card p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl`}>
+                    <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-current to-transparent opacity-0 group-hover:opacity-30 transition-opacity" />
+                    <div className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl ${s.iconBg}`}>
+                      <s.icon className={`h-5 w-5 ${s.iconColor}`} />
+                    </div>
+                    <h3 className="text-base font-semibold text-foreground">{d.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.desc}</p>
                   </div>
-                  <h3 className="text-base font-semibold text-foreground">{d.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.desc}</p>
-                </div>
-              </FadeUp>
-            ))}
+                </FadeUp>
+              )
+            })}
           </div>
           <FadeUp delay={600}>
             <p className="mt-10 text-center text-sm text-muted-foreground">
-              On-premise AI deployment keeps your intelligence within your perimeter,{" "}
+              {p.drivers.outro.split("completely under your control.")[0]}
               <span className="font-medium text-foreground">completely under your control.</span>
             </p>
           </FadeUp>
@@ -295,28 +194,31 @@ export function OnPremAIContent() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeUp>
             <div className="mb-14 text-center">
-              <p className="text-sm font-semibold uppercase tracking-wider text-accent">Our Approach</p>
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent">{p.capabilities.eyebrow}</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                On-premise AI capabilities
+                {p.capabilities.heading}
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-                Secure, modular AI infrastructure that works reliably without outside connectivity or support.
+                {p.capabilities.desc}
               </p>
             </div>
           </FadeUp>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {capabilities.map((c, i) => (
-              <FadeUp key={c.title} delay={i * 90}>
-                <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
-                  <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-primary/60 via-accent/60 to-transparent" />
-                  <div className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl ${c.iconBg}`}>
-                    <c.icon className={`h-5 w-5 ${c.iconColor}`} />
+            {p.capabilities.items.map((c, i) => {
+              const s = capabilityStyles[i]
+              return (
+                <FadeUp key={c.title} delay={i * 90}>
+                  <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+                    <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-primary/60 via-accent/60 to-transparent" />
+                    <div className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl ${s.iconBg}`}>
+                      <s.icon className={`h-5 w-5 ${s.iconColor}`} />
+                    </div>
+                    <h3 className="text-base font-semibold text-foreground">{c.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
                   </div>
-                  <h3 className="text-base font-semibold text-foreground">{c.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
-                </div>
-              </FadeUp>
-            ))}
+                </FadeUp>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -326,31 +228,34 @@ export function OnPremAIContent() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeUp>
             <div className="mb-14 text-center">
-              <p className="text-sm font-semibold uppercase tracking-wider text-accent">Deployment</p>
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent">{p.deployment.eyebrow}</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                Flexible deployment models
+                {p.deployment.heading}
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-                We support multiple infrastructure configurations based on your security posture and operational needs.
+                {p.deployment.desc}
               </p>
             </div>
           </FadeUp>
           <div className="grid gap-6 sm:grid-cols-3">
-            {deploymentModels.map((m, i) => (
-              <FadeUp key={m.title} delay={i * 120}>
-                <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
-                  <div
-                    className="absolute inset-x-0 top-0 h-[2px]"
-                    style={{ background: `linear-gradient(to right, ${m.accent}, transparent)` }}
-                  />
-                  <div className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl ${m.iconBg}`}>
-                    <m.icon className={`h-6 w-6 ${m.iconColor}`} />
+            {p.deployment.models.map((m, i) => {
+              const s = deploymentStyles[i]
+              return (
+                <FadeUp key={m.title} delay={i * 120}>
+                  <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+                    <div
+                      className="absolute inset-x-0 top-0 h-[2px]"
+                      style={{ background: `linear-gradient(to right, ${s.accent}, transparent)` }}
+                    />
+                    <div className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl ${s.iconBg}`}>
+                      <s.icon className={`h-6 w-6 ${s.iconColor}`} />
+                    </div>
+                    <h3 className="text-base font-semibold text-foreground">{m.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.desc}</p>
                   </div>
-                  <h3 className="text-base font-semibold text-foreground">{m.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.desc}</p>
-                </div>
-              </FadeUp>
-            ))}
+                </FadeUp>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -361,51 +266,56 @@ export function OnPremAIContent() {
           <div className="grid items-start gap-16 lg:grid-cols-2">
             <div>
               <FadeUp>
-                <p className="text-sm font-semibold uppercase tracking-wider text-accent">Who We Serve</p>
+                <p className="text-sm font-semibold uppercase tracking-wider text-accent">{p.environments.eyebrow}</p>
                 <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                  Deployment environments
+                  {p.environments.heading}
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                  Our on-premise AI solutions are purpose-built for regulated and high-security sectors.
-                  Each deployment is customized to meet operational requirements.
+                  {p.environments.desc}
                 </p>
               </FadeUp>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {environments.map((e, i) => (
-                  <FadeUp key={e.title} delay={i * 80}>
-                    <div className="flex items-center gap-3 rounded-xl border border-border bg-card p-5">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-violet-50">
-                        <e.icon className="h-5 w-5 text-violet-600" />
+                {p.environments.items.map((e, i) => {
+                  const Icon = environmentIcons[i]
+                  return (
+                    <FadeUp key={e.title} delay={i * 80}>
+                      <div className="flex items-center gap-3 rounded-xl border border-border bg-card p-5">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-violet-50">
+                          <Icon className="h-5 w-5 text-violet-600" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-foreground">{e.title}</p>
+                          <p className="mt-0.5 text-xs text-muted-foreground">{e.text}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-sm font-semibold text-foreground">{e.title}</p>
-                        <p className="mt-0.5 text-xs text-muted-foreground">{e.text}</p>
-                      </div>
-                    </div>
-                  </FadeUp>
-                ))}
+                    </FadeUp>
+                  )
+                })}
               </div>
             </div>
 
             <FadeUp delay={120}>
               <div>
-                <p className="text-sm font-semibold uppercase tracking-wider text-accent">Applications</p>
+                <p className="text-sm font-semibold uppercase tracking-wider text-accent">{p.applications.eyebrow}</p>
                 <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                  Real-world use cases
+                  {p.applications.heading}
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                  On-premise AI systems are already supporting mission-critical workflows across sectors.
+                  {p.applications.desc}
                 </p>
                 <div className="mt-8 rounded-2xl border border-border bg-card p-7 shadow-sm">
                   <ul className="flex flex-col gap-4">
-                    {applications.map((a) => (
-                      <li key={a.text} className="flex items-start gap-4">
-                        <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-cyan-50">
-                          <a.icon className="h-4 w-4 text-cyan-600" />
-                        </div>
-                        <span className="text-sm leading-relaxed text-muted-foreground">{a.text}</span>
-                      </li>
-                    ))}
+                    {p.applications.items.map((text, i) => {
+                      const Icon = applicationIcons[i]
+                      return (
+                        <li key={text} className="flex items-start gap-4">
+                          <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-cyan-50">
+                            <Icon className="h-4 w-4 text-cyan-600" />
+                          </div>
+                          <span className="text-sm leading-relaxed text-muted-foreground">{text}</span>
+                        </li>
+                      )
+                    })}
                   </ul>
                 </div>
               </div>
@@ -427,14 +337,14 @@ export function OnPremAIContent() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <FadeUp>
             <div className="mb-14 text-center">
-              <p className="text-sm font-semibold uppercase tracking-wider text-accent">Results</p>
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent">{p.outcomes.eyebrow}</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                What organizations achieve
+                {p.outcomes.heading}
               </h2>
             </div>
           </FadeUp>
           <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
-            {outcomes.map((o, i) => (
+            {p.outcomes.items.map((o, i) => (
               <FadeUp key={o.label} delay={i * 80}>
                 <div className="rounded-2xl border border-border bg-card p-6 text-center shadow-sm">
                   <p className="text-2xl font-bold text-foreground">{o.stat}</p>
@@ -452,13 +362,13 @@ export function OnPremAIContent() {
           <FadeUp>
             <div className="mb-12 text-center">
               <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                FAQ
+                {p.faq.heading}
               </h2>
             </div>
           </FadeUp>
           <FadeUp delay={100}>
             <div className="rounded-2xl border border-border bg-card px-7 py-2 shadow-sm">
-              {faqs.map((faq) => (
+              {p.faq.items.map((faq) => (
                 <FAQItem key={faq.q} q={faq.q} a={faq.a} />
               ))}
             </div>

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react"
 import Link from "next/link"
 import { ArrowRight, Quote } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/lib/language-context"
 
 const B = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 
@@ -29,8 +30,6 @@ function FadeUp({ children, delay = 0, className = "" }: {
   )
 }
 
-// ── Data ──────────────────────────────────────────────────────────────────────
-
 const founders = [
   {
     name: "Prof. Brejesh Lall",
@@ -38,11 +37,9 @@ const founders = [
     sub: "Senior Professor · IIT Delhi",
     photo: "Brejesh Sir.jpg",
     pos: "50% 15%",
-    // Notion-style colored tag
     tag: "Co-Founder",
     tagBg: "bg-blue-50",
     tagText: "text-blue-600",
-    // Colored icon accent (like Notion)
     iconBg: "bg-blue-50",
     iconColor: "text-blue-600",
     accentFrom: "from-blue-500",
@@ -103,16 +100,10 @@ const coreTeam = [
   },
 ]
 
-// ── Card — fixed height, horizontal layout ─────────────────────────────────────
-// Fixed h-52 ensures EVERY card is the same height regardless of content.
-// Photo fills the left panel completely via absolute positioning.
 function PersonCard({ person }: { person: typeof founders[0] }) {
   return (
     <article className="group relative flex min-h-[13rem] overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-gray-200">
-      {/* Notion-style colored top accent stripe */}
       <div className={`absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r ${person.accentFrom} ${person.accentTo}`} />
-
-      {/* Left: photo — fills full height of fixed card */}
       <div className="relative w-40 shrink-0 overflow-hidden bg-gray-100">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -122,22 +113,16 @@ function PersonCard({ person }: { person: typeof founders[0] }) {
           style={{ objectPosition: person.pos }}
         />
       </div>
-
-      {/* Right: content */}
       <div className="flex flex-1 flex-col justify-between p-5 pt-6 min-w-0">
         <div>
-          {/* Notion-style colored role tag */}
           <span className={`inline-block rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${person.tagBg} ${person.tagText}`}>
             {person.tag}
           </span>
-
           <h3 className="mt-2 font-bold leading-tight text-gray-900 text-sm sm:text-base">{person.name}</h3>
           <p className="mt-0.5 text-xs font-semibold text-gray-600">{person.role}</p>
           {person.sub && (
             <p className="mt-0.5 text-[10px] text-gray-400">{person.sub}</p>
           )}
-
-          {/* Credential pills — founders only */}
           {person.credentials.length > 0 && (
             <div className="mt-2 flex flex-wrap gap-1">
               {person.credentials.map(c => (
@@ -146,18 +131,18 @@ function PersonCard({ person }: { person: typeof founders[0] }) {
             </div>
           )}
         </div>
-
         <p className="text-[11px] leading-relaxed text-gray-400">{person.bio}</p>
       </div>
     </article>
   )
 }
 
-// ── Page ─────────────────────────────────────────────────────────────────────
 export function TeamContent() {
+  const { tx } = useLanguage()
+  const t = tx.teamPage
+
   return (
     <>
-      {/* ── Hero — exact same pattern as every other page ── */}
       <section className="relative overflow-hidden bg-white min-h-hero-page-lg flex flex-col justify-center pt-16 pb-[7.5rem]">
         <div className="pointer-events-none absolute -top-40 -right-20 h-96 w-96 rounded-full bg-blue-50 blur-3xl opacity-60" />
         <div className="pointer-events-none absolute -bottom-40 -left-20 h-96 w-96 rounded-full bg-cyan-50 blur-3xl opacity-60" />
@@ -166,38 +151,35 @@ export function TeamContent() {
             <FadeUp>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-gray-500">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-500" />
-                Leadership Team
+                {t.hero.badge}
               </div>
             </FadeUp>
             <FadeUp delay={100}>
               <h1 className="text-balance text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
-                The minds behind{" "}
-                <span className="text-blue-600">icarKno™</span>
+                {t.hero.heading1}{" "}
+                <span className="text-blue-600">{t.hero.headingAccent}</span>
               </h1>
             </FadeUp>
             <FadeUp delay={200}>
               <p className="mt-6 text-pretty text-lg leading-relaxed text-gray-500">
-                Professors, military scientists, and engineers from India&apos;s premier institutions,
-                building secure, mission-critical AI infrastructure.
+                {t.hero.desc}
               </p>
             </FadeUp>
           </div>
         </div>
       </section>
 
-      {/* ── Founding Leadership — bg-gray-50 (alternates with white hero above) ── */}
       <section className="bg-gray-50 py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeUp>
             <div className="mb-10 flex items-center gap-4">
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-blue-600">Founding Leadership</p>
-                <h2 className="mt-1 text-2xl font-bold tracking-tight text-gray-900">Co-Founders</h2>
+                <p className="text-xs font-bold uppercase tracking-widest text-blue-600">{t.founders.eyebrow}</p>
+                <h2 className="mt-1 text-2xl font-bold tracking-tight text-gray-900">{t.founders.heading}</h2>
               </div>
               <div className="ml-4 h-px flex-1 bg-gray-200" />
             </div>
           </FadeUp>
-
           <div className="grid gap-4 sm:grid-cols-2">
             {founders.map((f, i) => (
               <FadeUp key={f.name} delay={i * 100}>
@@ -208,19 +190,17 @@ export function TeamContent() {
         </div>
       </section>
 
-      {/* ── Core Team — bg-white (alternates back) ── */}
       <section className="bg-white py-14 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeUp>
             <div className="mb-10 flex items-center gap-4">
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-blue-600">Core Team</p>
-                <h2 className="mt-1 text-2xl font-bold tracking-tight text-gray-900">Builders & Strategists</h2>
+                <p className="text-xs font-bold uppercase tracking-widest text-blue-600">{t.coreTeam.eyebrow}</p>
+                <h2 className="mt-1 text-2xl font-bold tracking-tight text-gray-900">{t.coreTeam.heading}</h2>
               </div>
               <div className="ml-4 h-px flex-1 bg-gray-200" />
             </div>
           </FadeUp>
-
           <div className="grid gap-4 sm:grid-cols-2">
             {coreTeam.map((m, i) => (
               <FadeUp key={m.name} delay={i * 100}>
@@ -231,22 +211,19 @@ export function TeamContent() {
         </div>
       </section>
 
-      {/* ── Pull quote — bg-gray-50 (alternates again, same max-w-7xl) ── */}
       <section className="bg-gray-50 py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeUp>
             <div className="mx-auto max-w-3xl rounded-2xl border border-gray-100 bg-white p-10 text-center shadow-sm">
               <Quote className="mx-auto mb-4 h-7 w-7 text-gray-300" />
               <blockquote className="text-lg font-medium italic leading-relaxed text-gray-800 sm:text-xl">
-                &ldquo;We are building AI not as a feature layer, but as foundational
-                infrastructure for institutions that demand security, control,
-                and long-term reliability.&rdquo;
+                &ldquo;{t.quote.text}&rdquo;
               </blockquote>
               <div className="mt-5 flex items-center justify-center gap-3">
                 <div className="h-px w-8 bg-gray-200" />
                 <div>
                   <p className="text-sm font-semibold text-gray-900">Prof. Brejesh Lall &amp; Col. (Dr.) Amit Oberoi</p>
-                  <p className="text-xs text-gray-400 mt-0.5">Co-Founders, icarKno™</p>
+                  <p className="text-xs text-gray-400 mt-0.5">{t.quote.attribution}</p>
                 </div>
                 <div className="h-px w-8 bg-gray-200" />
               </div>
@@ -255,23 +232,21 @@ export function TeamContent() {
         </div>
       </section>
 
-      {/* ── Join CTA — standard dark navy used on every other page ── */}
       <section className="bg-[#0b2149] py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeUp>
             <div className="mx-auto max-w-2xl text-center">
-              <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-blue-400">Join the Team</p>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-blue-400">{t.cta.eyebrow}</p>
               <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                Build the future of institutional AI
+                {t.cta.heading}
               </h2>
               <p className="mt-4 text-base leading-relaxed text-slate-300">
-                Growing our team of AI researchers, engineers, and domain experts passionate
-                about secure, high-impact AI for government and enterprise.
+                {t.cta.desc}
               </p>
               <div className="mt-8 flex justify-center">
                 <Button variant="outline" size="lg" asChild
                   className="border-white/20 bg-transparent text-white hover:bg-white/10 hover:border-white/40">
-                  <Link href="/about">Learn About Us <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                  <Link href="/about">{t.cta.btn} <ArrowRight className="ml-2 h-4 w-4" /></Link>
                 </Button>
               </div>
             </div>

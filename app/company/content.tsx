@@ -7,6 +7,7 @@ import {
   BadgeCheck,
   Building,
 } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 function FadeUp({
   children,
@@ -98,6 +99,9 @@ const clients = [
 ]
 
 export function CompanyContent() {
+  const { tx } = useLanguage()
+  const c = tx.companyPage
+
   return (
     <>
       {/* ── Certifications ───────────────────────────────────────── */}
@@ -106,14 +110,13 @@ export function CompanyContent() {
           <FadeUp>
             <div className="mx-auto max-w-2xl text-center mb-14">
               <p className="text-sm font-medium tracking-wider text-accent uppercase">
-                Certifications
+                {c.certifications.eyebrow}
               </p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground">
-                Globally recognized standards
+                {c.certifications.heading}
               </h2>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Quality, security, and reliability backed by globally recognised
-                certifications for mission-critical deployments.
+                {c.certifications.desc}
               </p>
             </div>
           </FadeUp>
@@ -146,14 +149,13 @@ export function CompanyContent() {
           <FadeUp>
             <div className="mx-auto max-w-2xl text-center mb-14">
               <p className="text-sm font-medium tracking-wider text-accent uppercase">
-                Partners
+                {c.partners.eyebrow}
               </p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground">
-                Our Clients & Partners
+                {c.partners.heading}
               </h2>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Working alongside leading public-sector institutions and global
-                organizations to accelerate AI-driven governance.
+                {c.partners.desc}
               </p>
             </div>
           </FadeUp>

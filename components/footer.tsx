@@ -1,4 +1,7 @@
+"use client"
+
 import Link from "next/link"
+import { useLanguage } from "@/lib/language-context"
 
 const B = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 
@@ -8,39 +11,39 @@ function renderName(name: string) {
   return <>{before}<sup className="text-[0.8em]">™</sup>{after ?? ""}</>
 }
 
-const footerLinks = {
-  Products: [
-    { name: "icarKno™", href: "/products/icarkno" },
-    { name: "BharGati™ AI", href: "/products/bhargati" },
-    { name: "SAATHI", href: "/products/saathi" },
-  ],
-  Solutions: [
-    { name: "AI for Government", href: "/solutions#government" },
-    { name: "Enterprise Knowledge AI", href: "/solutions/enterprise-rag" },
-    { name: "On-Premise & Offline AI", href: "/solutions/on-prem-ai" },
-  ],
-  Company: [
-    { name: "About Us", href: "/about" },
-    { name: "Research", href: "/company/resources" },
-    { name: "Blog", href: "https://carnotresearch.medium.com/", external: true },
-    { name: "Careers", href: "/careers" },
-    { name: "Contact", href: "/contact" },
-  ],
-  "Trust & Partnerships": [
-    { name: "Certifications", href: "/company#certifications" },
-    { name: "Partners", href: "/company#partners" },
-  ],
-}
-
 export function Footer() {
+  const { tx } = useLanguage()
+  const f = tx.footer
   const currentYear = new Date().getFullYear()
+
+  const footerLinks = {
+    [f.products]: [
+      { name: "icarKno™", href: "/products/icarkno" },
+      { name: "BharGati™ AI", href: "/products/bhargati" },
+      { name: "SAATHI", href: "/products/saathi" },
+    ],
+    [f.solutions]: [
+      { name: f.aiForGovt, href: "/solutions#government" },
+      { name: f.enterpriseKnowledge, href: "/solutions/enterprise-rag" },
+      { name: f.onPremOffline, href: "/solutions/on-prem-ai" },
+    ],
+    [f.company]: [
+      { name: f.aboutUs, href: "/about" },
+      { name: f.research, href: "/company/resources" },
+      { name: f.blog, href: "https://carnotresearch.medium.com/", external: true },
+      { name: f.careers, href: "/careers" },
+      { name: f.contact, href: "/contact" },
+    ],
+    [f.trust]: [
+      { name: f.certifications, href: "/company#certifications" },
+      { name: f.partners, href: "/company#partners" },
+    ],
+  }
 
   return (
     <footer
       className="border-t border-border bg-secondary"
       style={{
-        // Safe-area padding so bottom / landscape notches don't clip the
-        // copyright and social links. Zero on non-notched devices.
         paddingBottom: 'var(--safe-bottom)',
         paddingLeft: 'var(--safe-left)',
         paddingRight: 'var(--safe-right)',
@@ -62,8 +65,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Deep-tech AI company building production-grade Generative AI, NLP,
-              and Computer Vision systems for government and enterprise.
+              {f.desc}
             </p>
             <address className="mt-4 not-italic text-sm text-muted-foreground space-y-1">
               <p>2-A-2B, Research and Innovation Park</p>
@@ -156,28 +158,28 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
           <p className="text-xs text-muted-foreground text-center md:text-left">
-            © {currentYear} Carnot Research Pvt. Ltd. All rights reserved.
+            © {currentYear} Carnot Research Pvt. Ltd. {f.copyright}
           </p>
           <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
             <Link
               href="/privacy"
               className="text-xs text-muted-foreground hover:text-primary transition-colors duration-200"
             >
-              Privacy Policy
+              {f.privacy}
             </Link>
             <span className="text-border">|</span>
             <Link
               href="/terms"
               className="text-xs text-muted-foreground hover:text-primary transition-colors duration-200"
             >
-              Terms of Service
+              {f.terms}
             </Link>
             <span className="text-border">|</span>
             <Link
               href="/site-map"
               className="text-xs text-muted-foreground hover:text-primary transition-colors duration-200"
             >
-              Sitemap
+              {f.sitemap}
             </Link>
           </nav>
         </div>

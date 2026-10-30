@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import { usePathname } from "next/navigation"
+import { useLanguage } from "@/lib/language-context"
 
 const B = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react"
@@ -22,68 +23,74 @@ const dropTitle = "font-medium"
 const dropSub = "mt-0.5 block text-xs font-normal text-gray-400"
 const dropSection = "text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-2"
 
-// Mobile nav structure
-const mobileNav = [
-  {
-    name: "About",
-    items: [
-      { name: "Overview", href: "/about", sub: "Who we are" },
-      { name: "Mission & Vision", href: "/about/mission-vision", sub: "Where we're headed" },
-      { name: "Team", href: "/about/team", sub: "Researchers and engineers" },
-      { name: "Clients & Partners", href: "/about/clients-partners", sub: "Who we collaborate with" },
-    ],
-  },
-  {
-    name: "Products",
-    items: [
-      { name: "All Products", href: "/products", sub: "Overview of icarKno™ AI platforms" },
-      { name: "icarKno™", href: "/products/icarkno", sub: "Enterprise knowledge RAG" },
-      { name: "BharGati™ AI", href: "/products/bhargati", sub: "Movement & performance" },
-      { name: "SAATHI", href: "/products/saathi", sub: "Multilingual transport assistant" },
-      { name: "Request a Demo", href: "/contact", sub: "Talk to us about deployments", excludeActive: true },
-    ],
-  },
-  {
-    name: "Solutions",
-    items: [
-      { name: "Solutions Hub", href: "/solutions", sub: "Map AI to your business" },
-      { name: "Enterprise RAG", href: "/solutions/enterprise-rag", sub: "Governed retrieval-augmented AI" },
-      { name: "On-Prem AI", href: "/solutions/on-prem-ai", sub: "Secure, compliant deployments" },
-      { name: "AI in Sports", href: "/solutions/ai-in-sports", sub: "Biomechanics & performance" },
-    ],
-  },
-  {
-    name: "Company",
-    items: [
-      { name: "Guides", href: "/company/guides", sub: "Step-by-step AI workflows" },
-      { name: "Research", href: "/company/resources", sub: "Research & case studies" },
-      { name: "Contact", href: "/contact", sub: "Get in touch with us" },
-    ],
-  },
-  {
-    name: "Open Source",
-    items: [
-      { name: "Evaluation", href: "https://github.com/carnotresearch/on-premise-rag-evaluation-pipeline", sub: "RAG evaluation framework", external: true },
-      { name: "CR Sparse", href: "https://github.com/carnotresearch/cr-sparse", sub: "Sparse signal processing", external: true },
-      { name: "CR Wavelets", href: "https://github.com/carnotresearch/cr-wavelets", sub: "Wavelet transforms library", external: true },
-      { name: "CR Nimble", href: "https://github.com/carnotresearch/cr-nimble", sub: "Lightweight numerical tools", external: true },
-    ],
-  },
-  {
-    name: "Blog",
-    items: [
-      { name: "Blog", href: "https://carnotresearch.medium.com/", sub: "Carnot Research on Medium", external: true },
-    ],
-  },
-  {
-    name: "Playground",
-    items: [
-      { name: "Playground", href: "https://playground.carnotresearch.com/#/", sub: "Explore Carnot AI live", external: true },
-    ],
-  },
-]
+function useMobileNav() {
+  const { tx } = useLanguage()
+  const n = tx.nav
+  return [
+    {
+      name: n.about,
+      items: [
+        { name: n.aboutOverview, href: "/about", sub: n.mobileAboutSub },
+        { name: n.aboutMission, href: "/about/mission-vision", sub: n.mobileAboutMissionSub },
+        { name: n.aboutTeam, href: "/about/team", sub: n.mobileAboutTeamSub },
+        { name: n.aboutClients, href: "/about/clients-partners", sub: n.mobileAboutClientsSub },
+      ],
+    },
+    {
+      name: n.products,
+      items: [
+        { name: n.allProducts, href: "/products", sub: n.mobileAllProductsSub },
+        { name: "icarKno™", href: "/products/icarkno", sub: n.icarknoSub },
+        { name: "BharGati™ AI", href: "/products/bhargati", sub: n.bhargatiSub },
+        { name: "SAATHI", href: "/products/saathi", sub: n.saathiSub },
+        { name: n.requestDemo, href: "/contact", sub: n.requestDemoSub, excludeActive: true },
+      ],
+    },
+    {
+      name: n.solutions,
+      items: [
+        { name: n.solutionsHub, href: "/solutions", sub: n.mobileSolutionsHubSub },
+        { name: n.enterpriseRAG, href: "/solutions/enterprise-rag", sub: n.mobileEnterpriseRAGSub },
+        { name: n.onPremAI, href: "/solutions/on-prem-ai", sub: n.mobileOnPremAISub },
+        { name: n.aiInSports, href: "/solutions/ai-in-sports", sub: n.mobileAiInSportsSub },
+      ],
+    },
+    {
+      name: n.company,
+      items: [
+        { name: n.guides, href: "/company/guides", sub: n.mobileGuidesSub },
+        { name: n.research, href: "/company/resources", sub: n.mobileResearchSub },
+        { name: n.contact, href: "/contact", sub: n.mobileContactSub },
+      ],
+    },
+    {
+      name: n.openSource,
+      items: [
+        { name: n.evaluation, href: "https://github.com/carnotresearch/on-premise-rag-evaluation-pipeline", sub: n.evaluationSub, external: true },
+        { name: n.crSparse, href: "https://github.com/carnotresearch/cr-sparse", sub: n.crSparseSub, external: true },
+        { name: n.crWavelets, href: "https://github.com/carnotresearch/cr-wavelets", sub: n.crWaveletsSub, external: true },
+        { name: n.crNimble, href: "https://github.com/carnotresearch/cr-nimble", sub: n.crNimbleSub, external: true },
+      ],
+    },
+    {
+      name: n.blog,
+      items: [
+        { name: n.blog, href: "https://carnotresearch.medium.com/", sub: n.blogSub, external: true },
+      ],
+    },
+    {
+      name: n.playground,
+      items: [
+        { name: n.playground, href: "https://playground.carnotresearch.com/#/", sub: n.playgroundSub, external: true },
+      ],
+    },
+  ]
+}
 
-function MobileAccordion({ item, onClose, pathname }: { item: typeof mobileNav[0]; onClose: () => void; pathname: string }) {
+type MobileNavItem = { name: string; href: string; sub: string; external?: boolean; excludeActive?: boolean }
+type MobileNavGroup = { name: string; items: MobileNavItem[] }
+
+function MobileAccordion({ item, onClose, pathname }: { item: MobileNavGroup; onClose: () => void; pathname: string }) {
   const isGroupActive = item.items.some(
     (sub) => !('external' in sub && sub.external) && !('excludeActive' in sub && sub.excludeActive) &&
       (sub.href === pathname || pathname.startsWith(sub.href + "/"))
@@ -161,6 +168,9 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const close = () => setMobileOpen(false)
   const pathname = usePathname()
+  const { lang, setLang, tx } = useLanguage()
+  const n = tx.nav
+  const mobileNav = useMobileNav()
 
   return (
     <header className="cv-navbar sticky top-0 z-50 w-full px-4 pt-3 pb-0">
@@ -218,29 +228,29 @@ export function Navbar() {
               {/* About */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="h-8 gap-1 rounded-md px-3 text-sm font-medium text-gray-600 bg-transparent hover:bg-gray-50 hover:text-gray-900 data-[state=open]:bg-gray-50 data-[state=open]:text-gray-900 transition-colors">
-                  About
+                  {n.about}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="bg-white rounded-xl border border-gray-100 shadow-lg md:w-[580px]">
                     <div className="grid grid-cols-3 gap-6 px-5 py-5">
                       <div>
-                        <p className={dropSection}>Company</p>
+                        <p className={dropSection}>{n.aboutCompany}</p>
                         <ul className="space-y-0.5">
-                          <li><NavigationMenuLink asChild><Link href="/about" className={dropLink}><span className={dropTitle}>Overview</span><span className={dropSub}>Who we are and what we do</span></Link></NavigationMenuLink></li>
-                          <li><NavigationMenuLink asChild><Link href="/about/mission-vision" className={dropLink}><span className={dropTitle}>Mission &amp; Vision</span><span className={dropSub}>Where we&apos;re headed</span></Link></NavigationMenuLink></li>
-                          <li><NavigationMenuLink asChild><Link href="/about/team" className={dropLink}><span className={dropTitle}>Team</span><span className={dropSub}>Researchers and engineers</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/about" className={dropLink}><span className={dropTitle}>{n.aboutOverview}</span><span className={dropSub}>{n.aboutOverviewSub}</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/about/mission-vision" className={dropLink}><span className={dropTitle}>{n.aboutMission}</span><span className={dropSub}>{n.aboutMissionSub}</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/about/team" className={dropLink}><span className={dropTitle}>{n.aboutTeam}</span><span className={dropSub}>{n.aboutTeamSub}</span></Link></NavigationMenuLink></li>
                         </ul>
                       </div>
                       <div>
-                        <p className={dropSection}>Ecosystem</p>
+                        <p className={dropSection}>{n.aboutEcosystem}</p>
                         <ul className="space-y-0.5">
-                          <li><NavigationMenuLink asChild><Link href="/about/clients-partners" className={dropLink}><span className={dropTitle}>Clients &amp; Partners</span><span className={dropSub}>Who we collaborate with</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/about/clients-partners" className={dropLink}><span className={dropTitle}>{n.aboutClients}</span><span className={dropSub}>{n.aboutClientsSub}</span></Link></NavigationMenuLink></li>
                         </ul>
                       </div>
                       <div>
-                        <p className={dropSection}>Work with us</p>
+                        <p className={dropSection}>{n.aboutWorkWithUs}</p>
                         <ul className="space-y-0.5">
-                          <li><NavigationMenuLink asChild><Link href="/careers" className={dropLink}><span className={dropTitle}>Join our team</span><span className={dropSub}>Explore open roles</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/careers" className={dropLink}><span className={dropTitle}>{n.joinTeam}</span><span className={dropSub}>{n.joinTeamSub}</span></Link></NavigationMenuLink></li>
                         </ul>
                       </div>
                     </div>
@@ -251,24 +261,24 @@ export function Navbar() {
               {/* Products */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="h-8 gap-1 rounded-md px-3 text-sm font-medium text-gray-600 bg-transparent hover:bg-gray-50 hover:text-gray-900 data-[state=open]:bg-gray-50 data-[state=open]:text-gray-900 transition-colors">
-                  Products
+                  {n.products}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="bg-white rounded-xl border border-gray-100 shadow-lg md:w-[420px]">
                     <div className="grid grid-cols-2 gap-6 px-5 py-5">
                       <div>
-                        <p className={dropSection}>Browse</p>
+                        <p className={dropSection}>{n.browse}</p>
                         <ul className="space-y-0.5">
-                          <li><NavigationMenuLink asChild><Link href="/products" className={dropLink}><span className={dropTitle}>All products</span><span className={dropSub}>Overview of icarKno™ AI platforms</span></Link></NavigationMenuLink></li>
-                          <li><NavigationMenuLink asChild><Link href="/products/icarkno" className={dropLink}><span className={dropTitle}>icarKno™</span><span className={dropSub}>Enterprise knowledge RAG</span></Link></NavigationMenuLink></li>
-                          <li><NavigationMenuLink asChild><Link href="/products/bhargati" className={dropLink}><span className={dropTitle}>BharGati™ AI</span><span className={dropSub}>Movement & performance</span></Link></NavigationMenuLink></li>
-                          <li><NavigationMenuLink asChild><Link href="/products/saathi" className={dropLink}><span className={dropTitle}>SAATHI</span><span className={dropSub}>Multilingual transport assistant</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/products" className={dropLink}><span className={dropTitle}>{n.allProducts}</span><span className={dropSub}>{n.allProductsSub}</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/products/icarkno" className={dropLink}><span className={dropTitle}>icarKno™</span><span className={dropSub}>{n.icarknoSub}</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/products/bhargati" className={dropLink}><span className={dropTitle}>BharGati™ AI</span><span className={dropSub}>{n.bhargatiSub}</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/products/saathi" className={dropLink}><span className={dropTitle}>SAATHI</span><span className={dropSub}>{n.saathiSub}</span></Link></NavigationMenuLink></li>
                         </ul>
                       </div>
                       <div>
-                        <p className={dropSection}>Get started</p>
+                        <p className={dropSection}>{n.getStarted}</p>
                         <ul className="space-y-0.5">
-                          <li><NavigationMenuLink asChild><Link href="/contact" className={dropLink}><span className={dropTitle}>Request a demo</span><span className={dropSub}>Talk to us about deployments</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/contact" className={dropLink}><span className={dropTitle}>{n.requestDemo}</span><span className={dropSub}>{n.requestDemoSub}</span></Link></NavigationMenuLink></li>
                         </ul>
                       </div>
                     </div>
@@ -279,28 +289,28 @@ export function Navbar() {
               {/* Solutions */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="h-8 gap-1 rounded-md px-3 text-sm font-medium text-gray-600 bg-transparent hover:bg-gray-50 hover:text-gray-900 data-[state=open]:bg-gray-50 data-[state=open]:text-gray-900 transition-colors">
-                  Solutions
+                  {n.solutions}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="bg-white rounded-xl border border-gray-100 shadow-lg md:w-[580px]">
                     <div className="grid grid-cols-3 gap-6 px-5 py-5">
                       <div>
-                        <p className={dropSection}>Overview</p>
+                        <p className={dropSection}>{n.overviewLabel}</p>
                         <ul className="space-y-0.5">
-                          <li><NavigationMenuLink asChild><Link href="/solutions" className={dropLink}><span className={dropTitle}>Solutions hub</span><span className={dropSub}>Map AI to your business</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/solutions" className={dropLink}><span className={dropTitle}>{n.solutionsHub}</span><span className={dropSub}>{n.solutionsHubSub}</span></Link></NavigationMenuLink></li>
                         </ul>
                       </div>
                       <div>
-                        <p className={dropSection}>Enterprise AI</p>
+                        <p className={dropSection}>{n.enterpriseAI}</p>
                         <ul className="space-y-0.5">
-                          <li><NavigationMenuLink asChild><Link href="/solutions/enterprise-rag" className={dropLink}><span className={dropTitle}>Enterprise RAG</span><span className={dropSub}>Governed retrieval-augmented AI</span></Link></NavigationMenuLink></li>
-                          <li><NavigationMenuLink asChild><Link href="/solutions/on-prem-ai" className={dropLink}><span className={dropTitle}>On-prem AI</span><span className={dropSub}>Secure, compliant deployments</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/solutions/enterprise-rag" className={dropLink}><span className={dropTitle}>{n.enterpriseRAG}</span><span className={dropSub}>{n.enterpriseRAGSub}</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/solutions/on-prem-ai" className={dropLink}><span className={dropTitle}>{n.onPremAI}</span><span className={dropSub}>{n.onPremAISub}</span></Link></NavigationMenuLink></li>
                         </ul>
                       </div>
                       <div>
-                        <p className={dropSection}>Applied AI</p>
+                        <p className={dropSection}>{n.appliedAI}</p>
                         <ul className="space-y-0.5">
-                          <li><NavigationMenuLink asChild><Link href="/solutions/ai-in-sports" className={dropLink}><span className={dropTitle}>AI in sports</span><span className={dropSub}>Biomechanics &amp; performance</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/solutions/ai-in-sports" className={dropLink}><span className={dropTitle}>{n.aiInSports}</span><span className={dropSub}>{n.aiInSportsSub}</span></Link></NavigationMenuLink></li>
                         </ul>
                       </div>
                     </div>
@@ -311,22 +321,22 @@ export function Navbar() {
               {/* Company */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="h-8 gap-1 rounded-md px-3 text-sm font-medium text-gray-600 bg-transparent hover:bg-gray-50 hover:text-gray-900 data-[state=open]:bg-gray-50 data-[state=open]:text-gray-900 transition-colors">
-                  Company
+                  {n.company}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="bg-white rounded-xl border border-gray-100 shadow-lg md:w-[320px]">
                     <div className="grid grid-cols-2 gap-6 px-5 py-5">
                       <div>
-                        <p className={dropSection}>Learn</p>
+                        <p className={dropSection}>{n.learn}</p>
                         <ul className="space-y-0.5">
-                          <li><NavigationMenuLink asChild><Link href="/company/guides" className={dropLink}><span className={dropTitle}>Guides</span><span className={dropSub}>Step-by-step AI workflows</span></Link></NavigationMenuLink></li>
-                          <li><NavigationMenuLink asChild><Link href="/company/resources" className={dropLink}><span className={dropTitle}>Research</span><span className={dropSub}>Research &amp; case studies</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/company/guides" className={dropLink}><span className={dropTitle}>{n.guides}</span><span className={dropSub}>{n.guidesSub}</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/company/resources" className={dropLink}><span className={dropTitle}>{n.research}</span><span className={dropSub}>{n.researchSub}</span></Link></NavigationMenuLink></li>
                         </ul>
                       </div>
                       <div>
-                        <p className={dropSection}>Connect</p>
+                        <p className={dropSection}>{n.connect}</p>
                         <ul className="space-y-0.5">
-                          <li><NavigationMenuLink asChild><Link href="/contact" className={dropLink}><span className={dropTitle}>Contact</span><span className={dropSub}>Get in touch with us</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/contact" className={dropLink}><span className={dropTitle}>{n.contact}</span><span className={dropSub}>{n.contactSub}</span></Link></NavigationMenuLink></li>
                         </ul>
                       </div>
                     </div>
@@ -338,7 +348,7 @@ export function Navbar() {
               {/* Open Source */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="h-8 gap-1 rounded-md px-3 text-sm font-medium text-gray-600 bg-transparent hover:bg-gray-50 hover:text-gray-900 data-[state=open]:bg-gray-50 data-[state=open]:text-gray-900 transition-colors">
-                  Open Source
+                  {n.openSource}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="bg-white rounded-xl border border-gray-100 shadow-lg md:w-[260px]">
@@ -346,26 +356,26 @@ export function Navbar() {
                       <ul className="space-y-0.5">
                         <li>
                           <a href="https://github.com/carnotresearch/on-premise-rag-evaluation-pipeline" target="_blank" rel="noopener noreferrer" className={dropLink}>
-                            <span className={dropTitle}>Evaluation</span>
-                            <span className={dropSub}>RAG evaluation framework</span>
+                            <span className={dropTitle}>{n.evaluation}</span>
+                            <span className={dropSub}>{n.evaluationSub}</span>
                           </a>
                         </li>
                         <li>
                           <a href="https://github.com/carnotresearch/cr-sparse" target="_blank" rel="noopener noreferrer" className={dropLink}>
-                            <span className={dropTitle}>CR Sparse</span>
-                            <span className={dropSub}>Sparse signal processing</span>
+                            <span className={dropTitle}>{n.crSparse}</span>
+                            <span className={dropSub}>{n.crSparseSub}</span>
                           </a>
                         </li>
                         <li>
                           <a href="https://github.com/carnotresearch/cr-wavelets" target="_blank" rel="noopener noreferrer" className={dropLink}>
-                            <span className={dropTitle}>CR Wavelets</span>
-                            <span className={dropSub}>Wavelet transforms library</span>
+                            <span className={dropTitle}>{n.crWavelets}</span>
+                            <span className={dropSub}>{n.crWaveletsSub}</span>
                           </a>
                         </li>
                         <li>
                           <a href="https://github.com/carnotresearch/cr-nimble" target="_blank" rel="noopener noreferrer" className={dropLink}>
-                            <span className={dropTitle}>CR Nimble</span>
-                            <span className={dropSub}>Lightweight numerical tools</span>
+                            <span className={dropTitle}>{n.crNimble}</span>
+                            <span className={dropSub}>{n.crNimbleSub}</span>
                           </a>
                         </li>
                       </ul>
@@ -385,7 +395,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="h-8 inline-flex items-center gap-1 rounded-md px-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
             >
-              Blog
+              {n.blog}
             </a>
             <a
               href="https://playground.carnotresearch.com/#/"
@@ -393,24 +403,32 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="h-8 inline-flex items-center gap-1 rounded-md px-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
             >
-              Playground
+              {n.playground}
             </a>
           </div>
         </div>
 
         {/* ── Right CTAs ── */}
         <div className="hidden lg:flex items-center gap-1">
+          {/* Language toggle */}
+          <button
+            onClick={() => setLang(lang === "en" ? "hi" : "en")}
+            className="px-2.5 py-1 text-xs font-semibold rounded-md border border-gray-200 text-gray-600 hover:border-teal-400 hover:text-teal-700 transition-colors"
+            aria-label="Toggle language"
+          >
+            {lang === "en" ? "हि" : "EN"}
+          </button>
           <Link
             href="/contact"
             className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors rounded-md hover:bg-gray-50"
           >
-            Contact us
+            {n.contactUs}
           </Link>
           <Link
             href="/products"
             className="inline-flex items-center gap-1.5 rounded-md bg-gray-900 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-gray-800 transition-colors"
           >
-            Get Started
+            {n.getStartedCta}
             <span className="flex h-4 w-4 items-center justify-center rounded-sm bg-white/15">
               <ArrowRight className="h-2.5 w-2.5" />
             </span>
@@ -451,19 +469,25 @@ export function Navbar() {
 
             {/* CTAs */}
             <div className="mt-3 flex flex-col gap-2 border-t border-gray-100 pt-3">
+              <button
+                onClick={() => setLang(lang === "en" ? "hi" : "en")}
+                className="flex min-h-[44px] items-center justify-center gap-2 rounded-md border border-gray-200 px-3 text-sm font-semibold text-gray-600 hover:border-teal-400 hover:text-teal-700 transition-colors"
+              >
+                {lang === "en" ? "हिंदी में देखें" : "View in English"}
+              </button>
               <Link
                 href="/contact"
                 onClick={close}
                 className="flex min-h-[44px] items-center justify-center rounded-md px-3 text-sm font-medium text-gray-700 hover:bg-gray-50"
               >
-                Contact us
+                {n.contactUs}
               </Link>
               <Link
                 href="/products"
                 onClick={close}
                 className="flex min-h-[44px] items-center justify-center gap-1.5 rounded-md bg-gray-900 px-3 text-sm font-medium text-white hover:bg-gray-800"
               >
-                Get Started
+                {n.getStartedCta}
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
