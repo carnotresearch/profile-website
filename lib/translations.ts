@@ -61,12 +61,21 @@ const translations = {
       blogSub: "Carnot Research on Medium",
       playground: "Playground",
       playgroundSub: "Explore Carnot AI live",
+      resources: "Resources",
+      linkedin: "LinkedIn",
+      linkedinSub: "Follow us on LinkedIn",
+      youtube: "YouTube",
+      youtubeSub: "Watch our videos",
+      twitter: "X (Twitter)",
+      twitterSub: "Follow us on X",
       contactUs: "Contact us",
       getStartedCta: "Get Started",
       mobileAboutSub: "Who we are",
       mobileAboutMissionSub: "Where we're headed",
       mobileAboutTeamSub: "Researchers and engineers",
       mobileAboutClientsSub: "Who we collaborate with",
+      mobileAboutResearchSub: "Research & case studies",
+      mobileAboutGuidesSub: "Step-by-step AI workflows",
       mobileAllProductsSub: "Overview of icarKno™ AI platforms",
       mobileSolutionsHubSub: "Map AI to your business",
       mobileEnterpriseRAGSub: "Governed retrieval-augmented AI",
@@ -85,7 +94,7 @@ const translations = {
       contactBtn: "Contact us",
     },
     weAre: {
-      eyebrow: "We are icarKno™",
+      eyebrow: "We are Carnot Research",
       heading: "Everything About Us",
       desc: "We build practical AI systems for mission-critical environments where reliability, adaptability, and data control are non-negotiable.",
       accuracy: "Accuracy & Trust",
@@ -93,10 +102,10 @@ const translations = {
         "We build AI systems that prioritize correctness over convenience. Our solutions are designed with guardrails, domain adaptation, and verifiable outputs, ensuring reliability in high-stakes environments.",
       adaptive: "Adaptive & Customizable Systems",
       adaptiveDesc:
-        "Every organization is different. Your AI should be too. We design highly customizable, domain-specific systems that evolve with your needs across industries and use cases.",
+        "Every organization is different. Your AI system should be too. We design highly customizable, domain-specific systems that evolve with your needs across industries and use cases.",
       secure: "Secure & Real-World Ready Systems",
       secureDesc:
-        "Real-world environments are unpredictable. Your AI should be designed for them. We build secure, on-premise systems that ensure full data control and perform reliably even in low-connectivity and high-risk conditions.",
+        "Real-world environments are unpredictable. Your AI system should be designed for them. We build secure, on-premise systems that ensure full data control and perform reliably even in low-connectivity and high-risk conditions.",
     },
     problem: {
       eyebrow: "The problem",
@@ -107,7 +116,7 @@ const translations = {
       problems: [
         {
           title: "Connectivity & infrastructure gaps",
-          desc: "AI fails in remote or air-gapped areas.",
+          desc: "AI fails in remote or air-gapped areas, where internet isn't available.",
         },
         {
           title: "Data security & sovereignty risks",
@@ -199,7 +208,7 @@ const translations = {
     solutions: {
       eyebrow: "What We Build",
       heading: "Deployable AI Systems",
-      desc: "Our products are just three examples of what we build. icarKno™ creates deployable AI systems across multiple domains, for organizations that need something built from the ground up.",
+      desc: "Our products are just three examples of what we build. Carnot Research creates deployable AI systems across multiple domains, for organizations that need something built from the ground up.",
       viewAll: "View all solutions",
       capabilities: [
         {
@@ -239,7 +248,7 @@ const translations = {
       heading1: "From IIT Delhi labs to",
       headingAccent: "real-world AI deployment",
       para1:
-        "icarKno™ was founded by IIT Delhi professors and scientists who saw a critical gap: India's government, defense, and enterprise organizations needed AI that worked entirely inside their own walls: secure, offline, and fully under their control.",
+        "Carnot Research was founded by IIT Delhi professors and scientists who saw a critical gap: India's government, defense, and enterprise organizations needed AI that worked entirely inside their own walls: secure, offline, and fully under their control.",
       para2:
         "We don't just advise. We build and ship. Our products are operational today: icarKno™ runs inside government networks, BharGati™ AI coaches elite athletes, and SAATHI guides Delhi commuters in 22+ languages.",
       pillars: [
@@ -355,9 +364,9 @@ const translations = {
         heading: "FAQ",
         items: [
           { q: "How does RAG reduce AI hallucinations?", a: "RAG systems retrieve relevant data before generating responses. This ensures outputs are based on verified sources rather than the model's pre-trained memory alone, grounding every answer in your organization's actual documents." },
-          { q: "Can Enterprise RAG be deployed on-premise?", a: "Yes. RAG architectures can be fully deployed in on-premise or air-gapped environments, depending on infrastructure requirements. icarKno™ specializes in exactly this kind of sovereign deployment." },
+          { q: "Can Enterprise RAG be deployed on-premise?", a: "Yes. RAG architectures can be fully deployed in on-premise or air-gapped environments, depending on infrastructure requirements. Carnot Research specializes in exactly this kind of sovereign deployment." },
           { q: "Is Enterprise RAG secure?", a: "When implemented correctly with role-based access control, encryption, and audit logging, RAG systems meet enterprise and government security standards. All responses are traceable to source documents." },
-          { q: "What types of data can be used in a RAG system?", a: "Structured databases, PDFs, knowledge bases, internal documents, policy repositories, and more can all be integrated. icarKno™ supports multimodal ingestion including scanned documents and audio transcripts." },
+          { q: "What types of data can be used in a RAG system?", a: "Structured databases, PDFs, knowledge bases, internal documents, policy repositories, and more can all be integrated. Carnot Research supports multimodal ingestion including scanned documents and audio transcripts." },
           { q: "How is Enterprise RAG different from a chatbot?", a: "Traditional chatbots rely on predefined scripts or static models. Enterprise RAG systems dynamically retrieve relevant organizational data before generating contextual, source-cited responses, making them far more accurate and auditable." },
         ],
       },
@@ -722,14 +731,14 @@ const translations = {
     aboutPage: {
       hero: {
         badge: "About",
-        heading: "About icarKno™",
-        para1: "icarKno™ is an applied artificial intelligence company building secure, domain-aligned AI infrastructure for government, defense, and enterprise environments.",
+        heading: "About Carnot Research",
+        para1: "Carnot Research is an applied artificial intelligence company building secure, domain-aligned AI infrastructure for government, defense, and enterprise environments.",
         para2: "We operate where intelligence must be controlled, contextual, and dependable, transforming advanced AI research into operational systems designed for high-stakes decision environments.",
       },
       whoWeAre: {
         eyebrow: "Who We Are",
         heading: "A research-driven AI company focused on institutional intelligence",
-        para1: "icarKno™ is a research-driven AI company focused on institutional intelligence systems. Our team includes artificial intelligence researchers, system architects, and deployment engineers committed to building long-term AI infrastructure rather than short-term experimental tools.",
+        para1: "Carnot Research is a research-driven AI company founded at IIT Delhi by Prof. Brejesh Lall and Dr. Amit Oberoi, focused on institutional intelligence systems. Our team includes artificial intelligence researchers, system architects, and deployment engineers committed to building long-term AI infrastructure rather than short-term experimental tools.",
         para2: "We partner with organizations that require:",
         bullets: [
           "Secure and governed AI systems",
@@ -754,7 +763,7 @@ const translations = {
         eyebrow: "Why We Exist",
         heading: "Modern artificial intelligence is advancing rapidly.",
         para1: "Most platforms, however, are built for general-purpose cloud environments. Institutions operating in sensitive and mission-critical domains require a higher standard of AI infrastructure: one defined by control, reliability, contextual depth, and long-term stability.",
-        highlight: "icarKno™ exists to meet that need.",
+        highlight: "Carnot Research exists to meet that need.",
         para2: "We believe artificial intelligence must function as trusted institutional infrastructure, secure by design, aligned with operational realities, and built to support human decision-making at scale.",
         quote: "Our commitment is to deliver enterprise AI systems that strengthen institutional capability across India and beyond.",
       },
@@ -772,7 +781,7 @@ const translations = {
         desc: "Building trustworthy AI infrastructure that serves institutions, governments, and enterprises across India and beyond.",
       },
       opening: {
-        para1: "icarKno™ was founded to connect advanced artificial intelligence research with real-world use. In critical situations, intelligence must be secure, reliable, and immediately accessible without relying on weak connections or outside infrastructure.",
+        para1: "Carnot Research was founded to connect advanced artificial intelligence research with real-world use. In critical situations, intelligence must be secure, reliable, and immediately accessible without relying on weak connections or outside infrastructure.",
         para2: "We design and deploy on-premise, domain-specific AI systems that work where it matters most: in the field, within government institutions, in secure environments, and across high-stakes decision-making areas.",
         para3: "Our efforts combine thorough academic research, solid engineering, and practical operational knowledge to deliver AI systems that function well under pressure.",
       },
@@ -780,9 +789,9 @@ const translations = {
         eyebrow: "Our Vision",
         heading: "Secure Access to Knowledge, for Everyone",
         quote: "\"To provide the world with secure access to knowledge in an ethical and responsible manner with complete control retained by the user.\"",
-        para1: "Our vision is to build secure, contextual, and intelligent systems for real-world mission environments. At icarKno™, we believe AI should enhance human decision-making while ensuring privacy, security, and complete user control over data.",
+        para1: "Our vision is to build secure, contextual, and intelligent systems for real-world mission environments. At Carnot Research, we believe AI should enhance human decision-making while ensuring privacy, security, and complete user control over data.",
         para2: "We believe that while technology continues to evolve, its core principles remain constant: accessibility, trust, security, and responsible innovation. Our systems are designed to deliver structured intelligence and real-time reasoning in secure on-premise and offline environments, where sensitive data remains protected and never harvested.",
-        para3: "Through deep-tech research and ethical AI engineering, icarKno™ is building trusted AI infrastructure for scalable and responsible adoption across India and beyond.",
+        para3: "Through deep-tech research and ethical AI engineering, Carnot Research is building trusted AI infrastructure for scalable and responsible adoption across India and beyond.",
       },
       mission: {
         eyebrow: "Our Mission",
@@ -892,12 +901,12 @@ const translations = {
         phoneOptional: "(optional)",
         selectDefault: "Select level",
         resumeHelp: "Share your resume via Google Drive with \"Anyone with the link\" access.",
-        coverLetterPlaceholder: "Tell us why you want to join icarKno™ and what you'll bring to the team...",
+        coverLetterPlaceholder: "Tell us why you want to join Carnot Research and what you'll bring to the team...",
         namePlaceholder: "Your full name",
         emailPlaceholder: "you@example.com",
         phonePlaceholder: "+91 98765 43210",
         experienceLabel: "Experience Level",
-        coverLetterLabel: "Cover Letter / Why icarKno™?",
+        coverLetterLabel: "Cover Letter / Why Carnot Research?",
         resumeLabel: "Resume (Google Drive Link)",
         submitBtn: "Submit Application",
         sending: "Sending...",
@@ -912,7 +921,7 @@ const translations = {
       hero: {
         badge: "Research",
         heading: "Research Articles",
-        desc: "Applied research from icarKno™ covering computer vision, edge AI, motion analysis, and production deployment, grounded in real engineering experience.",
+        desc: "Applied research from Carnot Research covering computer vision, edge AI, motion analysis, and production deployment, grounded in real engineering experience.",
       },
       keyFindings: "Key Findings",
       outcome: "Outcome:",
@@ -949,7 +958,7 @@ const translations = {
       },
       cta: {
         heading: "Collaborate with us on research",
-        desc: "Partner with icarKno™ for managed, deployable research that converts into scalable tools and IP.",
+        desc: "Partner with Carnot Research for managed, deployable research that converts into scalable tools and IP.",
         btn: "Get in Touch",
       },
     },
@@ -957,7 +966,7 @@ const translations = {
       hero: {
         badge: "Blog",
         heading: "Insights & Research",
-        desc: "Thought leadership, technical deep dives, and research updates from the icarKno™ team.",
+        desc: "Thought leadership, technical deep dives, and research updates from the Carnot Research team.",
       },
       readMore: "Read more",
     },
@@ -965,7 +974,7 @@ const translations = {
       hero: {
         badge: "Clients & Partners",
         heading: "Trusted by National Institutions & Global Organizations",
-        desc: "icarKno™ works with top public institutions, global consulting firms, and technology partners to create and implement secure, mission-critical AI systems across governance, defense, disaster response, telecommunications, and digital public infrastructure.",
+        desc: "Carnot Research works with top public institutions, global consulting firms, and technology partners to create and implement secure, mission-critical AI systems across governance, defense, disaster response, telecommunications, and digital public infrastructure.",
       },
       carousel: {
         eyebrow: "Our Clients",
@@ -990,7 +999,7 @@ const translations = {
       },
       whyPartner: {
         eyebrow: "Why Partner with Us",
-        heading: "Why Organizations Choose icarKno™",
+        heading: "Why Organizations Choose Carnot Research",
         items: [
           { title: "Research Translated to Reality", body: "We translate cutting-edge AI research into secure, real-world applications. Our strong academic foundation and practical deployment experience allow us to design systems that work reliably in complex, high-stakes situations." },
           { title: "Security-First Deployments", body: "We build on-premise, air-gapped AI setups tailored to specific operational needs, ensuring data protection, continuity, and seamless integration. From strategy to engineering to implementation, we deliver complete solutions." },
@@ -1007,7 +1016,7 @@ const translations = {
       hero: {
         badge: "Leadership Team",
         heading1: "The minds behind",
-        headingAccent: "icarKno™",
+        headingAccent: "Carnot Research",
         desc: "Professors, military scientists, and engineers from India's premier institutions, building secure, mission-critical AI infrastructure.",
       },
       founders: {
@@ -1020,7 +1029,7 @@ const translations = {
       },
       quote: {
         text: "We are building AI not as a feature layer, but as foundational infrastructure for institutions that demand security, control, and long-term reliability.",
-        attribution: "Co-Founders, icarKno™",
+        attribution: "Co-Founders, Carnot Research",
       },
       cta: {
         eyebrow: "Join the Team",
@@ -1033,7 +1042,7 @@ const translations = {
       hero: {
         badge: "News & Updates",
         heading: "Latest News & Updates",
-        desc: "Stay updated with the latest events, announcements, and press coverage from icarKno™.",
+        desc: "Stay updated with the latest events, announcements, and press coverage from Carnot Research.",
       },
       timeline: {
         eyebrow: "Timeline",
@@ -1048,12 +1057,12 @@ const translations = {
         {
           type: "Award",
           title: "Transport Stack Open Innovation Challenge Winner",
-          description: "icarKno™ won the Transport Stack Open Innovation Challenge for project SAATHI, a hyper-personalized multilingual AI agent for conversational travel assistance.",
+          description: "Carnot Research won the Transport Stack Open Innovation Challenge for project SAATHI, a hyper-personalized multilingual AI agent for conversational travel assistance.",
         },
         {
           type: "News",
           title: "CMMI Level 3 Certification Achieved",
-          description: "icarKno™ achieves CMMI Maturity Level 3 certification, demonstrating commitment to process excellence and quality in AI system development.",
+          description: "Carnot Research achieves CMMI Maturity Level 3 certification, demonstrating commitment to process excellence and quality in AI system development.",
         },
         {
           type: "News",
@@ -1066,7 +1075,7 @@ const translations = {
       hero: {
         heading: "Practical",
         headingAccent: "AI Guides",
-        desc: "Practical insights from actual development, research, and engineering workflows used at icarKno™. These guides help teams plan, build, and deploy AI systems effectively, without unnecessary complexity.",
+        desc: "Practical insights from actual development, research, and engineering workflows used at Carnot Research. These guides help teams plan, build, and deploy AI systems effectively, without unnecessary complexity.",
       },
       index: {
         eyebrow: "All Guides",
@@ -1649,7 +1658,7 @@ const translations = {
       eyebrow: "Stay Connected",
     },
     footer: {
-      desc: "Deep-tech AI company building production-grade Generative AI, NLP, and Computer Vision systems for government and enterprise.",
+      desc: "Deep-tech AI company building production-grade Generative AI, NLP, Computer Vision, SLMs, AI Red Teaming, and Edge Intelligence solutions for government and enterprise.",
       products: "Products",
       solutions: "Solutions",
       company: "Company",
@@ -1731,12 +1740,21 @@ const translations = {
       blogSub: "Medium पर Carnot Research",
       playground: "प्लेग्राउंड",
       playgroundSub: "Carnot AI लाइव देखें",
+      resources: "संसाधन",
+      linkedin: "LinkedIn",
+      linkedinSub: "LinkedIn पर फ़ॉलो करें",
+      youtube: "YouTube",
+      youtubeSub: "हमारे वीडियो देखें",
+      twitter: "X (Twitter)",
+      twitterSub: "X पर फ़ॉलो करें",
       contactUs: "संपर्क करें",
       getStartedCta: "शुरू करें",
       mobileAboutSub: "हम कौन हैं",
       mobileAboutMissionSub: "हम कहाँ जा रहे हैं",
       mobileAboutTeamSub: "शोधकर्ता और इंजीनियर",
       mobileAboutClientsSub: "हम किसके साथ सहयोग करते हैं",
+      mobileAboutResearchSub: "अनुसंधान और केस स्टडी",
+      mobileAboutGuidesSub: "चरण-दर-चरण AI वर्कफ़्लो",
       mobileAllProductsSub: "icarKno™ AI प्लेटफ़ॉर्म का अवलोकन",
       mobileSolutionsHubSub: "AI को अपने व्यवसाय से जोड़ें",
       mobileEnterpriseRAGSub: "शासित पुनर्प्राप्ति-वर्धित AI",
@@ -1755,7 +1773,7 @@ const translations = {
       contactBtn: "संपर्क करें",
     },
     weAre: {
-      eyebrow: "हम हैं icarKno™",
+      eyebrow: "हम हैं Carnot Research",
       heading: "हमारे बारे में सब कुछ",
       desc: "हम मिशन-क्रिटिकल वातावरणों के लिए व्यावहारिक AI सिस्टम बनाते हैं जहां विश्वसनीयता, अनुकूलता और डेटा नियंत्रण अनिवार्य है।",
       accuracy: "सटीकता और विश्वास",
@@ -1763,7 +1781,7 @@ const translations = {
         "हम AI सिस्टम बनाते हैं जो सुविधा पर सटीकता को प्राथमिकता देते हैं। हमारे समाधान गार्डरेल, डोमेन अनुकूलन और सत्यापन योग्य आउटपुट के साथ डिज़ाइन किए गए हैं, जो उच्च-जोखिम वाले वातावरण में विश्वसनीयता सुनिश्चित करते हैं।",
       adaptive: "अनुकूलनीय और अनुकूलन योग्य सिस्टम",
       adaptiveDesc:
-        "हर संगठन अलग है। आपका AI भी होना चाहिए। हम उच्च अनुकूलनीय, डोमेन-विशिष्ट सिस्टम डिज़ाइन करते हैं जो उद्योगों और उपयोग के मामलों में आपकी ज़रूरतों के साथ विकसित होते हैं।",
+        "हर संगठन अलग है। आपका AI सिस्टम भी होना चाहिए। हम उच्च अनुकूलनीय, डोमेन-विशिष्ट सिस्टम डिज़ाइन करते हैं जो उद्योगों और उपयोग के मामलों में आपकी ज़रूरतों के साथ विकसित होते हैं।",
       secure: "सुरक्षित और वास्तविक दुनिया के लिए तैयार सिस्टम",
       secureDesc:
         "वास्तविक दुनिया का वातावरण अप्रत्याशित है। आपका AI उनके लिए बना होना चाहिए। हम सुरक्षित, ऑन-प्रिमाइज़ सिस्टम बनाते हैं जो पूर्ण डेटा नियंत्रण सुनिश्चित करते हैं।",
@@ -1777,7 +1795,7 @@ const translations = {
       problems: [
         {
           title: "कनेक्टिविटी और इंफ्रास्ट्रक्चर की कमी",
-          desc: "दूरदराज या एयर-गैप्ड क्षेत्रों में AI विफल हो जाता है।",
+          desc: "दूरदराज या एयर-गैप्ड क्षेत्रों में AI विफल हो जाता है, जहाँ इंटरनेट उपलब्ध नहीं होता।",
         },
         {
           title: "डेटा सुरक्षा और संप्रभुता जोखिम",
@@ -1869,7 +1887,7 @@ const translations = {
     solutions: {
       eyebrow: "हम क्या बनाते हैं",
       heading: "तैनाती योग्य AI सिस्टम",
-      desc: "हमारे उत्पाद सिर्फ तीन उदाहरण हैं जो हम बनाते हैं। icarKno™ कई डोमेन में तैनाती योग्य AI सिस्टम बनाता है, उन संगठनों के लिए जिन्हें शुरू से कुछ बनाने की ज़रूरत है।",
+      desc: "हमारे उत्पाद सिर्फ तीन उदाहरण हैं जो हम बनाते हैं। Carnot Research कई डोमेन में तैनाती योग्य AI सिस्टम बनाता है, उन संगठनों के लिए जिन्हें शुरू से कुछ बनाने की ज़रूरत है।",
       viewAll: "सभी समाधान देखें",
       capabilities: [
         {
@@ -1909,7 +1927,7 @@ const translations = {
       heading1: "IIT दिल्ली प्रयोगशालाओं से",
       headingAccent: "वास्तविक दुनिया में AI तैनाती",
       para1:
-        "icarKno™ की स्थापना IIT दिल्ली के प्रोफेसरों और वैज्ञानिकों द्वारा की गई थी जिन्होंने एक महत्वपूर्ण कमी देखी: भारत की सरकार, रक्षा और उद्यम संगठनों को ऐसे AI की ज़रूरत थी जो पूरी तरह उनकी अपनी दीवारों के अंदर काम करे: सुरक्षित, ऑफलाइन और पूरी तरह उनके नियंत्रण में।",
+        "Carnot Research की स्थापना IIT दिल्ली के प्रोफेसरों और वैज्ञानिकों द्वारा की गई थी जिन्होंने एक महत्वपूर्ण कमी देखी: भारत की सरकार, रक्षा और उद्यम संगठनों को ऐसे AI की ज़रूरत थी जो पूरी तरह उनकी अपनी दीवारों के अंदर काम करे: सुरक्षित, ऑफलाइन और पूरी तरह उनके नियंत्रण में।",
       para2:
         "हम सिर्फ सलाह नहीं देते। हम बनाते हैं और शिप करते हैं। हमारे उत्पाद आज काम कर रहे हैं: icarKno™ सरकारी नेटवर्क के अंदर चलता है, BharGati™ AI कुलीन एथलीटों को कोच करता है, और SAATHI 22+ भाषाओं में दिल्ली यात्रियों का मार्गदर्शन करता है।",
       pillars: [
@@ -2025,9 +2043,9 @@ const translations = {
         heading: "अक्सर पूछे जाने वाले प्रश्न",
         items: [
           { q: "RAG AI भ्रम को कैसे कम करता है?", a: "RAG सिस्टम प्रतिक्रियाएं उत्पन्न करने से पहले प्रासंगिक डेटा पुनर्प्राप्त करते हैं। यह सुनिश्चित करता है कि आउटपुट केवल मॉडल की पूर्व-प्रशिक्षित मेमोरी के बजाय सत्यापित स्रोतों पर आधारित हो।" },
-          { q: "क्या एंटरप्राइज़ RAG ऑन-प्रिमाइज़ तैनात किया जा सकता है?", a: "हाँ। RAG आर्किटेक्चर इंफ्रास्ट्रक्चर आवश्यकताओं के आधार पर ऑन-प्रिमाइज़ या एयर-गैप्ड वातावरण में पूरी तरह तैनात किए जा सकते हैं। icarKno™ इस प्रकार की संप्रभु तैनाती में विशेषज्ञ है।" },
+          { q: "क्या एंटरप्राइज़ RAG ऑन-प्रिमाइज़ तैनात किया जा सकता है?", a: "हाँ। RAG आर्किटेक्चर इंफ्रास्ट्रक्चर आवश्यकताओं के आधार पर ऑन-प्रिमाइज़ या एयर-गैप्ड वातावरण में पूरी तरह तैनात किए जा सकते हैं। Carnot Research इस प्रकार की संप्रभु तैनाती में विशेषज्ञ है।" },
           { q: "क्या एंटरप्राइज़ RAG सुरक्षित है?", a: "जब भूमिका-आधारित पहुंच नियंत्रण, एन्क्रिप्शन और ऑडिट लॉगिंग के साथ सही ढंग से लागू किया जाए, तो RAG सिस्टम एंटरप्राइज़ और सरकारी सुरक्षा मानकों को पूरा करते हैं।" },
-          { q: "RAG सिस्टम में किस प्रकार के डेटा का उपयोग किया जा सकता है?", a: "संरचित डेटाबेस, PDF, नॉलेज बेस, आंतरिक दस्तावेज़, नीति रिपॉजिटरी और अधिक को एकीकृत किया जा सकता है। icarKno™ स्कैन किए गए दस्तावेज़ों और ऑडियो ट्रांसक्रिप्ट सहित मल्टीमोडल अंतर्ग्रहण का समर्थन करता है।" },
+          { q: "RAG सिस्टम में किस प्रकार के डेटा का उपयोग किया जा सकता है?", a: "संरचित डेटाबेस, PDF, नॉलेज बेस, आंतरिक दस्तावेज़, नीति रिपॉजिटरी और अधिक को एकीकृत किया जा सकता है। Carnot Research स्कैन किए गए दस्तावेज़ों और ऑडियो ट्रांसक्रिप्ट सहित मल्टीमोडल अंतर्ग्रहण का समर्थन करता है।" },
           { q: "एंटरप्राइज़ RAG एक चैटबॉट से कैसे अलग है?", a: "पारंपरिक चैटबॉट पूर्वनिर्धारित स्क्रिप्ट या स्थिर मॉडल पर निर्भर करते हैं। एंटरप्राइज़ RAG सिस्टम संदर्भात्मक, स्रोत-उद्धृत प्रतिक्रियाएं उत्पन्न करने से पहले गतिशील रूप से प्रासंगिक संगठनात्मक डेटा पुनर्प्राप्त करते हैं।" },
         ],
       },
@@ -2392,14 +2410,14 @@ const translations = {
     aboutPage: {
       hero: {
         badge: "परिचय",
-        heading: "icarKno™ के बारे में",
-        para1: "icarKno™ एक अनुप्रयुक्त कृत्रिम बुद्धिमत्ता कंपनी है जो सरकार, रक्षा और उद्यम वातावरण के लिए सुरक्षित, डोमेन-संरेखित AI इंफ्रास्ट्रक्चर बना रही है।",
+        heading: "Carnot Research के बारे में",
+        para1: "Carnot Research एक अनुप्रयुक्त कृत्रिम बुद्धिमत्ता कंपनी है जो सरकार, रक्षा और उद्यम वातावरण के लिए सुरक्षित, डोमेन-संरेखित AI इंफ्रास्ट्रक्चर बना रही है।",
         para2: "हम वहां काम करते हैं जहां खुफिया जानकारी नियंत्रित, संदर्भात्मक और विश्वसनीय होनी चाहिए, उन्नत AI अनुसंधान को उच्च-जोखिम निर्णय वातावरण के लिए डिज़ाइन किए गए परिचालन प्रणालियों में बदलते हैं।",
       },
       whoWeAre: {
         eyebrow: "हम कौन हैं",
         heading: "संस्थागत बुद्धिमत्ता पर केंद्रित एक अनुसंधान-चालित AI कंपनी",
-        para1: "icarKno™ एक अनुसंधान-चालित AI कंपनी है जो संस्थागत बुद्धिमत्ता प्रणालियों पर केंद्रित है। हमारी टीम में कृत्रिम बुद्धिमत्ता शोधकर्ता, सिस्टम आर्किटेक्ट और तैनाती इंजीनियर शामिल हैं जो अल्पकालिक प्रयोगात्मक उपकरणों के बजाय दीर्घकालिक AI इंफ्रास्ट्रक्चर बनाने के लिए प्रतिबद्ध हैं।",
+        para1: "Carnot Research IIT दिल्ली में Prof. Brejesh Lall और Dr. Amit Oberoi द्वारा स्थापित एक अनुसंधान-चालित AI कंपनी है, जो संस्थागत बुद्धिमत्ता प्रणालियों पर केंद्रित है। हमारी टीम में कृत्रिम बुद्धिमत्ता शोधकर्ता, सिस्टम आर्किटेक्ट और तैनाती इंजीनियर शामिल हैं जो अल्पकालिक प्रयोगात्मक उपकरणों के बजाय दीर्घकालिक AI इंफ्रास्ट्रक्चर बनाने के लिए प्रतिबद्ध हैं।",
         para2: "हम उन संगठनों के साथ भागीदारी करते हैं जिन्हें आवश्यकता है:",
         bullets: [
           "सुरक्षित और शासित AI सिस्टम",
@@ -2424,7 +2442,7 @@ const translations = {
         eyebrow: "हम क्यों हैं",
         heading: "आधुनिक कृत्रिम बुद्धिमत्ता तेज़ी से आगे बढ़ रही है।",
         para1: "हालांकि, अधिकांश प्लेटफ़ॉर्म सामान्य-उद्देश्य क्लाउड वातावरण के लिए बनाए गए हैं। संवेदनशील और मिशन-क्रिटिकल डोमेन में काम करने वाले संस्थानों को AI इंफ्रास्ट्रक्चर के उच्च मानक की आवश्यकता है: नियंत्रण, विश्वसनीयता, संदर्भात्मक गहराई और दीर्घकालिक स्थिरता द्वारा परिभाषित।",
-        highlight: "icarKno™ उस जरूरत को पूरा करने के लिए अस्तित्व में है।",
+        highlight: "Carnot Research उस जरूरत को पूरा करने के लिए अस्तित्व में है।",
         para2: "हम मानते हैं कि कृत्रिम बुद्धिमत्ता को विश्वसनीय संस्थागत इंफ्रास्ट्रक्चर के रूप में काम करना चाहिए, डिज़ाइन द्वारा सुरक्षित, परिचालन वास्तविकताओं के अनुरूप और बड़े पैमाने पर मानव निर्णय-निर्माण का समर्थन करने के लिए बनाया गया।",
         quote: "हमारी प्रतिबद्धता भारत और उससे परे संस्थागत क्षमता को मजबूत करने वाले एंटरप्राइज़ AI सिस्टम प्रदान करना है।",
       },
@@ -2442,7 +2460,7 @@ const translations = {
         desc: "भारत और उससे परे संस्थानों, सरकारों और उद्यमों की सेवा करने वाला विश्वसनीय AI इंफ्रास्ट्रक्चर बनाना।",
       },
       opening: {
-        para1: "icarKno™ की स्थापना उन्नत कृत्रिम बुद्धिमत्ता अनुसंधान को वास्तविक दुनिया के उपयोग से जोड़ने के लिए की गई थी। महत्वपूर्ण स्थितियों में, खुफिया जानकारी सुरक्षित, विश्वसनीय और तुरंत सुलभ होनी चाहिए, बिना कमज़ोर कनेक्शन या बाहरी इंफ्रास्ट्रक्चर पर निर्भर रहे।",
+        para1: "Carnot Research की स्थापना उन्नत कृत्रिम बुद्धिमत्ता अनुसंधान को वास्तविक दुनिया के उपयोग से जोड़ने के लिए की गई थी। महत्वपूर्ण स्थितियों में, खुफिया जानकारी सुरक्षित, विश्वसनीय और तुरंत सुलभ होनी चाहिए, बिना कमज़ोर कनेक्शन या बाहरी इंफ्रास्ट्रक्चर पर निर्भर रहे।",
         para2: "हम ऑन-प्रिमाइज़, डोमेन-विशिष्ट AI सिस्टम डिज़ाइन और तैनात करते हैं जो सबसे महत्वपूर्ण स्थानों पर काम करते हैं: क्षेत्र में, सरकारी संस्थानों के भीतर, सुरक्षित वातावरण में और उच्च-जोखिम निर्णय-निर्माण क्षेत्रों में।",
         para3: "हमारे प्रयास गहन शैक्षणिक अनुसंधान, ठोस इंजीनियरिंग और व्यावहारिक परिचालन ज्ञान को मिलाकर AI सिस्टम प्रदान करते हैं जो दबाव में अच्छा काम करते हैं।",
       },
@@ -2450,9 +2468,9 @@ const translations = {
         eyebrow: "हमारा विज़न",
         heading: "सभी के लिए ज्ञान तक सुरक्षित पहुंच",
         quote: "\"दुनिया को नैतिक और जिम्मेदार तरीके से ज्ञान तक सुरक्षित पहुंच प्रदान करना, उपयोगकर्ता द्वारा पूर्ण नियंत्रण बनाए रखना।\"",
-        para1: "हमारा विज़न वास्तविक दुनिया के मिशन वातावरण के लिए सुरक्षित, संदर्भात्मक और बुद्धिमान प्रणालियां बनाना है। icarKno™ में, हम मानते हैं कि AI को गोपनीयता, सुरक्षा और डेटा पर उपयोगकर्ता के पूर्ण नियंत्रण को सुनिश्चित करते हुए मानव निर्णय-निर्माण को बढ़ाना चाहिए।",
+        para1: "हमारा विज़न वास्तविक दुनिया के मिशन वातावरण के लिए सुरक्षित, संदर्भात्मक और बुद्धिमान प्रणालियां बनाना है। Carnot Research में, हम मानते हैं कि AI को गोपनीयता, सुरक्षा और डेटा पर उपयोगकर्ता के पूर्ण नियंत्रण को सुनिश्चित करते हुए मानव निर्णय-निर्माण को बढ़ाना चाहिए।",
         para2: "हम मानते हैं कि प्रौद्योगिकी विकसित होती रहती है, लेकिन इसके मूल सिद्धांत स्थिर रहते हैं: सुलभता, विश्वास, सुरक्षा और जिम्मेदार नवाचार। हमारे सिस्टम सुरक्षित ऑन-प्रिमाइज़ और ऑफलाइन वातावरण में संरचित खुफिया जानकारी और वास्तविक समय तर्क प्रदान करने के लिए डिज़ाइन किए गए हैं।",
-        para3: "डीप-टेक अनुसंधान और नैतिक AI इंजीनियरिंग के माध्यम से, icarKno™ भारत और उससे परे स्केलेबल और जिम्मेदार AI अपनाने के लिए विश्वसनीय AI इंफ्रास्ट्रक्चर बना रहा है।",
+        para3: "डीप-टेक अनुसंधान और नैतिक AI इंजीनियरिंग के माध्यम से, Carnot Research भारत और उससे परे स्केलेबल और जिम्मेदार AI अपनाने के लिए विश्वसनीय AI इंफ्रास्ट्रक्चर बना रहा है।",
       },
       mission: {
         eyebrow: "हमारा मिशन",
@@ -2562,12 +2580,12 @@ const translations = {
         phoneOptional: "(वैकल्पिक)",
         selectDefault: "स्तर चुनें",
         resumeHelp: "अपना रेज़्यूमे Google Drive के माध्यम से \"लिंक वाले किसी भी व्यक्ति\" एक्सेस के साथ साझा करें।",
-        coverLetterPlaceholder: "बताएं कि आप icarKno™ में क्यों शामिल होना चाहते हैं और आप टीम में क्या लाएंगे...",
+        coverLetterPlaceholder: "बताएं कि आप Carnot Research में क्यों शामिल होना चाहते हैं और आप टीम में क्या लाएंगे...",
         namePlaceholder: "आपका पूरा नाम",
         emailPlaceholder: "you@example.com",
         phonePlaceholder: "+91 98765 43210",
         experienceLabel: "अनुभव स्तर",
-        coverLetterLabel: "कवर लेटर / icarKno™ क्यों?",
+        coverLetterLabel: "कवर लेटर / Carnot Research क्यों?",
         resumeLabel: "रेज़्यूमे (Google Drive लिंक)",
         submitBtn: "आवेदन जमा करें",
         sending: "भेजा जा रहा है...",
@@ -2582,7 +2600,7 @@ const translations = {
       hero: {
         badge: "अनुसंधान",
         heading: "शोध लेख",
-        desc: "icarKno™ का व्यावहारिक शोध जिसमें कंप्यूटर विज़न, एज AI, गति विश्लेषण और उत्पादन तैनाती शामिल है।",
+        desc: "Carnot Research का व्यावहारिक शोध जिसमें कंप्यूटर विज़न, एज AI, गति विश्लेषण और उत्पादन तैनाती शामिल है।",
       },
       keyFindings: "मुख्य निष्कर्ष",
       outcome: "परिणाम:",
@@ -2619,7 +2637,7 @@ const translations = {
       },
       cta: {
         heading: "अनुसंधान पर हमारे साथ सहयोग करें",
-        desc: "icarKno™ के साथ प्रबंधित, तैनात योग्य अनुसंधान के लिए साझेदारी करें जो स्केलेबल उपकरणों और IP में परिवर्तित होता है।",
+        desc: "Carnot Research के साथ प्रबंधित, तैनात योग्य अनुसंधान के लिए साझेदारी करें जो स्केलेबल उपकरणों और IP में परिवर्तित होता है।",
         btn: "संपर्क करें",
       },
     },
@@ -2627,7 +2645,7 @@ const translations = {
       hero: {
         badge: "ब्लॉग",
         heading: "अंतर्दृष्टि और अनुसंधान",
-        desc: "icarKno™ टीम से विचार नेतृत्व, तकनीकी गहन विश्लेषण और अनुसंधान अपडेट।",
+        desc: "Carnot Research टीम से विचार नेतृत्व, तकनीकी गहन विश्लेषण और अनुसंधान अपडेट।",
       },
       readMore: "और पढ़ें",
     },
@@ -2635,7 +2653,7 @@ const translations = {
       hero: {
         badge: "ग्राहक और भागीदार",
         heading: "राष्ट्रीय संस्थाओं और वैश्विक संगठनों द्वारा विश्वसनीय",
-        desc: "icarKno™ शासन, रक्षा, आपदा प्रतिक्रिया, दूरसंचार और डिजिटल सार्वजनिक अवसंरचना में सुरक्षित AI प्रणालियाँ बनाने के लिए शीर्ष सार्वजनिक संस्थानों, वैश्विक परामर्श फर्मों और प्रौद्योगिकी भागीदारों के साथ काम करती है।",
+        desc: "Carnot Research शासन, रक्षा, आपदा प्रतिक्रिया, दूरसंचार और डिजिटल सार्वजनिक अवसंरचना में सुरक्षित AI प्रणालियाँ बनाने के लिए शीर्ष सार्वजनिक संस्थानों, वैश्विक परामर्श फर्मों और प्रौद्योगिकी भागीदारों के साथ काम करती है।",
       },
       carousel: {
         eyebrow: "हमारे ग्राहक",
@@ -2660,7 +2678,7 @@ const translations = {
       },
       whyPartner: {
         eyebrow: "हमारे साथ भागीदारी क्यों करें",
-        heading: "संगठन icarKno™ को क्यों चुनते हैं",
+        heading: "संगठन Carnot Research को क्यों चुनते हैं",
         items: [
           { title: "अनुसंधान को वास्तविकता में बदलना", body: "हम अत्याधुनिक AI अनुसंधान को सुरक्षित, वास्तविक अनुप्रयोगों में बदलते हैं। हमारी मजबूत शैक्षणिक नींव और व्यावहारिक तैनाती अनुभव हमें जटिल, उच्च-दांव वाली स्थितियों में विश्वसनीय रूप से काम करने वाली प्रणालियाँ डिजाइन करने में सक्षम बनाता है।" },
           { title: "सुरक्षा-प्रथम तैनाती", body: "हम विशिष्ट परिचालन आवश्यकताओं के अनुसार ऑन-प्रिमाइज़, एयर-गैप्ड AI सेटअप बनाते हैं, डेटा सुरक्षा, निरंतरता और निर्बाध एकीकरण सुनिश्चित करते हुए।" },
@@ -2677,7 +2695,7 @@ const translations = {
       hero: {
         badge: "नेतृत्व टीम",
         heading1: "इनके दिमाग में बना है",
-        headingAccent: "icarKno™",
+        headingAccent: "Carnot Research",
         desc: "भारत के प्रमुख संस्थानों के प्रोफेसर, सैन्य वैज्ञानिक और इंजीनियर, सुरक्षित और मिशन-क्रिटिकल AI अवसंरचना बना रहे हैं।",
       },
       founders: {
@@ -2690,7 +2708,7 @@ const translations = {
       },
       quote: {
         text: "हम AI को एक फीचर लेयर के रूप में नहीं, बल्कि उन संस्थाओं के लिए मूलभूत अवसंरचना के रूप में बना रहे हैं जो सुरक्षा, नियंत्रण और दीर्घकालिक विश्वसनीयता की मांग करती हैं।",
-        attribution: "सह-संस्थापक, icarKno™",
+        attribution: "सह-संस्थापक, Carnot Research",
       },
       cta: {
         eyebrow: "टीम में शामिल हों",
@@ -2703,7 +2721,7 @@ const translations = {
       hero: {
         badge: "समाचार और अपडेट",
         heading: "नवीनतम समाचार और अपडेट",
-        desc: "icarKno™ की नवीनतम घटनाओं, घोषणाओं और मीडिया कवरेज के साथ अपडेट रहें।",
+        desc: "Carnot Research की नवीनतम घटनाओं, घोषणाओं और मीडिया कवरेज के साथ अपडेट रहें।",
       },
       timeline: {
         eyebrow: "समयरेखा",
@@ -2718,12 +2736,12 @@ const translations = {
         {
           type: "पुरस्कार",
           title: "ट्रांसपोर्ट स्टैक ओपन इनोवेशन चैलेंज विजेता",
-          description: "icarKno™ ने प्रोजेक्ट SAATHI के लिए ट्रांसपोर्ट स्टैक ओपन इनोवेशन चैलेंज जीता, जो यात्रा सहायता के लिए एक बहुभाषी AI एजेंट है।",
+          description: "Carnot Research ने प्रोजेक्ट SAATHI के लिए ट्रांसपोर्ट स्टैक ओपन इनोवेशन चैलेंज जीता, जो यात्रा सहायता के लिए एक बहुभाषी AI एजेंट है।",
         },
         {
           type: "समाचार",
           title: "CMMI स्तर 3 प्रमाणन प्राप्त",
-          description: "icarKno™ ने CMMI परिपक्वता स्तर 3 प्रमाणन हासिल किया, जो AI प्रणाली विकास में प्रक्रिया उत्कृष्टता के प्रति प्रतिबद्धता दर्शाता है।",
+          description: "Carnot Research ने CMMI परिपक्वता स्तर 3 प्रमाणन हासिल किया, जो AI प्रणाली विकास में प्रक्रिया उत्कृष्टता के प्रति प्रतिबद्धता दर्शाता है।",
         },
         {
           type: "समाचार",
@@ -2736,7 +2754,7 @@ const translations = {
       hero: {
         heading: "व्यावहारिक",
         headingAccent: "AI गाइड",
-        desc: "icarKno™ में वास्तविक विकास, अनुसंधान और इंजीनियरिंग वर्कफ़्लो से व्यावहारिक अंतर्दृष्टि। ये गाइड टीमों को अनावश्यक जटिलता के बिना AI सिस्टम की योजना बनाने, बनाने और तैनात करने में प्रभावी ढंग से मदद करती हैं।",
+        desc: "Carnot Research में वास्तविक विकास, अनुसंधान और इंजीनियरिंग वर्कफ़्लो से व्यावहारिक अंतर्दृष्टि। ये गाइड टीमों को अनावश्यक जटिलता के बिना AI सिस्टम की योजना बनाने, बनाने और तैनात करने में प्रभावी ढंग से मदद करती हैं।",
       },
       index: {
         eyebrow: "सभी गाइड",
@@ -3319,7 +3337,7 @@ const translations = {
       eyebrow: "जुड़े रहें",
     },
     footer: {
-      desc: "सरकार और उद्यम के लिए प्रोडक्शन-ग्रेड जनरेटिव AI, NLP और कंप्यूटर विज़न सिस्टम बनाने वाली डीप-टेक AI कंपनी।",
+      desc: "सरकार और उद्यम के लिए प्रोडक्शन-ग्रेड जनरेटिव AI, NLP, कंप्यूटर विज़न, SLMs, AI Red Teaming और Edge Intelligence समाधान बनाने वाली डीप-टेक AI कंपनी।",
       products: "उत्पाद",
       solutions: "समाधान",
       company: "कंपनी",

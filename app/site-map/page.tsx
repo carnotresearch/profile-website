@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Sitemap | icarKno™",
-  description: "Sitemap of all pages on icarKno™ website",
+  title: "Sitemap | Carnot Research",
+  description: "Sitemap of all pages on Carnot Research website",
   robots: {
     index: false,
   },
@@ -65,7 +65,7 @@ export default function SitemapPage() {
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
         <h1 className="mb-2 text-4xl font-bold text-foreground">Sitemap</h1>
         <p className="mb-12 text-muted-foreground">
-          Navigate through all pages and resources on icarKno™
+          Navigate through all pages and resources on Carnot Research
         </p>
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">

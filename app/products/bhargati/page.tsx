@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { BharGatiContent } from "./content"
 
 export const metadata: Metadata = {
-  title: "BharGati™ | Movement & Performance Intelligence | icarKno™",
+  title: "BharGati™ | Movement & Performance Intelligence | Carnot Research",
   description:
     "AI-driven movement and performance intelligence using computer vision and biomechanical analytics. Lab-quality insights in real-world sports science and rehabilitation settings.",
   openGraph: {
@@ -38,7 +38,7 @@ const softwareSchema = {
   ],
   provider: {
     "@type": "Organization",
-    name: "icarKno™",
+    name: "Carnot Research",
     url: "https://carnotresearch.com",
     "@id": "https://carnotresearch.com/#organization",
   },

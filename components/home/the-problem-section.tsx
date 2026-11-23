@@ -105,8 +105,8 @@ export function TheProblemSection() {
 
           {/* ── Right: sector cards ── */}
           <div className="space-y-2.5">
-            {/* Mobile-only section divider */}
-            <div className="flex items-center gap-3 py-3 lg:hidden">
+            {/* Section divider */}
+            <div className="flex items-center gap-3 py-3">
               <div className="h-px flex-1 bg-border" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                 {p.whoWeServe}

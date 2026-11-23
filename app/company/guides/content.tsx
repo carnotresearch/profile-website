@@ -129,7 +129,7 @@ export function GuidesContent() {
             <FadeUp>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white/70">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-                icarKno™
+                Carnot Research
               </div>
             </FadeUp>
             <FadeUp delay={80}>

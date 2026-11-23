@@ -20,15 +20,15 @@ const devanagari = Noto_Sans_Devanagari({
 
 export const metadata: Metadata = {
   title: {
-    default: "icarKno™ | Knowledge AI built for India's toughest environments.",
-    template: "%s | icarKno™ - Knowledge AI Platform",
+    default: "Carnot Research | Knowledge AI built for India's toughest environments.",
+    template: "%s | Carnot Research - Knowledge AI Platform",
   },
   description:
-    "icarKno™ delivers production-grade on-premise generative AI, NLP, and computer vision solutions for government and enterprise. Secure, scalable AI infrastructure built by IIT researchers.",
-  applicationName: "icarKno™",
-  authors: [{ name: "icarKno™", url: "https://carnotresearch.com" }],
-  creator: "icarKno™",
-  publisher: "icarKno™",
+    "Carnot Research delivers production-grade on-premise generative AI, NLP, and computer vision solutions for government and enterprise. Secure, scalable AI infrastructure built by IIT researchers.",
+  applicationName: "Carnot Research",
+  authors: [{ name: "Carnot Research", url: "https://carnotresearch.com" }],
+  creator: "Carnot Research",
+  publisher: "Carnot Research",
   keywords: [
     "on-premise generative AI India",
     "enterprise AI solutions India",
@@ -65,8 +65,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://carnotresearch.com",
-    siteName: "icarKno™",
-    title: "icarKno™ | Knowledge AI built for India's toughest environments.",
+    siteName: "Carnot Research",
+    title: "Carnot Research | Knowledge AI built for India's toughest environments.",
     description:
       "Production-grade on-premise generative AI, NLP, and computer vision solutions for government and enterprise in India.",
     images: [
@@ -74,13 +74,13 @@ export const metadata: Metadata = {
         url: "https://carnotresearch.com/og-image.png",
         width: 1200,
         height: 630,
-        alt: "icarKno™ - Enterprise AI Solutions",
+        alt: "Carnot Research - Enterprise AI Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "icarKno™ | Knowledge AI built for India's toughest environments.",
+    title: "Carnot Research | Knowledge AI built for India's toughest environments.",
     description: "Secure, scalable AI infrastructure for government and enterprise.",
     creator: "@CarnotResearch",
     images: ["https://carnotresearch.com/og-image.png"],
@@ -114,7 +114,7 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": "https://carnotresearch.com/#organization",
-  name: "icarKno™",
+  name: "Carnot Research",
   legalName: "Carnot Research Private Limited",
   url: "https://carnotresearch.com",
   logo: {
@@ -175,10 +175,10 @@ const organizationSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "icarKno™",
+  name: "Carnot Research",
   url: "https://carnotresearch.com",
   description: "Enterprise AI solutions for government and enterprise: secure, on-premise, built by IIT researchers.",
-  publisher: { "@type": "Organization", name: "icarKno™", "@id": "https://carnotresearch.com/#organization" },
+  publisher: { "@type": "Organization", name: "Carnot Research", "@id": "https://carnotresearch.com/#organization" },
   potentialAction: {
     "@type": "SearchAction",
     target: {

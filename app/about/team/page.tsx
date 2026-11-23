@@ -4,9 +4,9 @@ import { TeamContent } from "./content"
 export const metadata: Metadata = {
   title: "Leadership Team: IIT Professors & AI Experts",
   description:
-    "Meet the leadership team at icarKno™: IIT Delhi professors, Army scientists, and AI engineers with 120+ years of combined experience building secure enterprise AI infrastructure for government and defense.",
+    "Meet the leadership team at Carnot Research: IIT Delhi professors, Army scientists, and AI engineers with 120+ years of combined experience building secure enterprise AI infrastructure for government and defense.",
   keywords: [
-    "icarKno™ team",
+    "Carnot Research team",
     "Prof Brejesh Lall IIT Delhi",
     "Amit Oberoi AI expert",
     "enterprise AI leadership India",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "defense AI experts India",
   ],
   openGraph: {
-    title: "Leadership Team: icarKno™",
+    title: "Leadership Team: Carnot Research",
     description:
       "IIT professors, Army scientists, and AI engineers with 120+ years of combined experience building secure enterprise AI for government and defense.",
     url: "https://carnotresearch.com/about/team",
@@ -41,7 +41,7 @@ const teamSchema = {
       affiliation: [
         {
           "@type": "Organization",
-          name: "icarKno™",
+          name: "Carnot Research",
           url: "https://carnotresearch.com",
         },
         {
@@ -73,7 +73,7 @@ const teamSchema = {
         "Former Indian Army officer with 25+ years of leadership in cybersecurity, AI, and defense technology. Contributor to ITU Study Group 12 on AI standards for 5G networks.",
       affiliation: {
         "@type": "Organization",
-        name: "icarKno™",
+        name: "Carnot Research",
         url: "https://carnotresearch.com",
       },
       knowsAbout: [
@@ -92,10 +92,10 @@ const teamSchema = {
       name: "Dr. Kanica Sachdev",
       jobTitle: "Head R&D and Chief Operating Officer",
       description:
-        "Deep-tech strategist driving AI, data, and cybersecurity innovation across government, defense, and digital transformation programs at icarKno™.",
+        "Deep-tech strategist driving AI, data, and cybersecurity innovation across government, defense, and digital transformation programs at Carnot Research.",
       affiliation: {
         "@type": "Organization",
-        name: "icarKno™",
+        name: "Carnot Research",
         url: "https://carnotresearch.com",
       },
       url: "https://carnotresearch.com/about/team",

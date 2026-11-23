@@ -95,7 +95,7 @@ export function WhyCarnotSection() {
           transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
           <span className="mb-4 inline-block rounded-full border border-cyan-500/20 bg-cyan-500/8 px-4 py-1.5 text-xs font-medium text-cyan-400">
-            Why icarKno™
+            Why Carnot Research
           </span>
           <h2 className="mb-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
             What makes us{" "}
@@ -104,7 +104,7 @@ export function WhyCarnotSection() {
             </span>
           </h2>
           <p className="mx-auto max-w-xl text-base leading-relaxed text-white/45">
-            Three things that set icarKno™ apart: from how we build, to who we build for,
+            Three things that set Carnot Research apart: from how we build, to who we build for,
             to the breadth of what we can deliver.
           </p>
         </motion.div>

@@ -2,11 +2,11 @@ import type { Metadata } from "next"
 import { GenAIConversationalAgentContent } from "./content"
 
 export const metadata: Metadata = {
-  title: "Generative AI Conversational Agent | GeM | icarKno™",
+  title: "Generative AI Conversational Agent | GeM | Carnot Research",
   description:
-    "Accurate on-premise, high-privacy, multilingual knowledge agent. From secure servers to the field's edge. Listed on GeM by icarKno™.",
+    "Accurate on-premise, high-privacy, multilingual knowledge agent. From secure servers to the field's edge. Listed on GeM by Carnot Research.",
   openGraph: {
-    title: "Generative AI Conversational Agent | icarKno™",
+    title: "Generative AI Conversational Agent | Carnot Research",
     description: "On-premise, high-privacy, multilingual generative AI agent. Secure deployments from server to edge. Listed on GeM.",
     url: "https://carnotresearch.com/products/gem/genai-conversational-agent",
   },

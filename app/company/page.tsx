@@ -2,11 +2,11 @@ import type { Metadata } from "next"
 import { CompanyContent } from "./content"
 
 export const metadata: Metadata = {
-  title: "Company | icarKno™",
+  title: "Company | Carnot Research",
   description:
-    "Learn about icarKno™, a deep-tech AI company founded by IIT professors and scientists building trustworthy AI for government and enterprise.",
+    "Learn about Carnot Research, a deep-tech AI company founded by IIT professors and scientists building trustworthy AI for government and enterprise.",
   openGraph: {
-    title: "About icarKno™ | Enterprise AI Company",
+    title: "About Carnot Research | Enterprise AI Company",
     description: "Deep-tech AI company founded by IIT professors and scientists building trustworthy AI for government and enterprise.",
     url: "https://carnotresearch.com/company",
   },
@@ -16,13 +16,13 @@ export const metadata: Metadata = {
 const aboutPageSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  name: "About icarKno™",
+  name: "About Carnot Research",
   url: "https://carnotresearch.com/company",
-  description: "Learn about icarKno™, a deep-tech AI company founded by IIT professors and scientists building trustworthy AI for government and enterprise.",
+  description: "Learn about Carnot Research, a deep-tech AI company founded by IIT professors and scientists building trustworthy AI for government and enterprise.",
   about: {
     "@type": "Organization",
     "@id": "https://carnotresearch.com/#organization",
-    name: "icarKno™",
+    name: "Carnot Research",
     legalName: "Carnot Research Private Limited",
     foundingDate: "2020",
     foundingLocation: "New Delhi, India",

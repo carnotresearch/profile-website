@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { SaathiContent } from "./content"
 
 export const metadata: Metadata = {
-  title: "SAATHI | Delhi Public Transport AI Assistant | icarKno™",
+  title: "SAATHI | Delhi Public Transport AI Assistant | Carnot Research",
   description:
     "SAATHI is an award-winning multilingual AI assistant for Delhi public transport. Plan metro and bus journeys, check fares, timings, and get emergency help by voice or text in English, Hindi, or any regional language.",
   keywords: [
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "multilingual AI chatbot",
     "Delhi metro AI",
     "bus route planner AI",
-    "icarKno™ SAATHI",
+    "Carnot Research SAATHI",
     "JICA BCG FITT award",
     "voice AI Hindi",
   ],
@@ -49,7 +49,7 @@ const softwareSchema = {
   ],
   provider: {
     "@type": "Organization",
-    name: "icarKno™",
+    name: "Carnot Research",
     url: "https://carnotresearch.com",
     "@id": "https://carnotresearch.com/#organization",
   },

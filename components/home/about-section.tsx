@@ -8,10 +8,10 @@ import { useLanguage } from "@/lib/language-context"
 const B = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 
 const images = [
-  { src: `${B}/assets/company/who-we-are/first%20.jpeg`, alt: "icarKno™" },
-  { src: `${B}/assets/company/who-we-are/second.jpg`, alt: "icarKno™ lab work" },
-  { src: `${B}/assets/company/who-we-are/third.jpeg`, alt: "icarKno™ team" },
-  { src: `${B}/assets/company/who-we-are/forth.jpg`, alt: "icarKno™" },
+  { src: `${B}/assets/company/who-we-are/first%20.jpeg`, alt: "Carnot Research" },
+  { src: `${B}/assets/company/who-we-are/second.jpg`, alt: "Carnot Research lab work" },
+  { src: `${B}/assets/company/who-we-are/third.jpeg`, alt: "Carnot Research team" },
+  { src: `${B}/assets/company/who-we-are/forth.jpg`, alt: "Carnot Research" },
 ]
 
 const pillarIcons = [FlaskConical, Cpu, Lightbulb]
@@ -64,7 +64,10 @@ export function AboutSection() {
           {/* Left — image slideshow */}
           <div className="relative order-2 lg:order-1">
             <div className="pointer-events-none absolute -inset-4 rounded-3xl bg-blue-50/50 blur-2xl" />
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 shadow-xl">
+            <div
+              className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 shadow-xl cursor-pointer"
+              onClick={() => setCurrent((c) => (c + 1) % images.length)}
+            >
               {images.map((img, i) => (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img

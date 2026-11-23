@@ -53,7 +53,7 @@ function ImageSlideshow({ images }: { images: string[] }) {
         <img
           key={i}
           src={`${B}${src}`}
-          alt={`icarKno™ slide ${i + 1}`}
+          alt={`Carnot Research slide ${i + 1}`}
           className="absolute inset-0 h-full w-full object-cover transition-opacity duration-700"
           style={{ opacity: i === current ? 1 : 0 }}
         />

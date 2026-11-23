@@ -138,7 +138,7 @@ export function ContactContent() {
             {/* Right — Google Map */}
             <div className="overflow-hidden rounded-2xl border border-border shadow-sm">
               <iframe
-                title="icarKno™ - IIT Delhi"
+                title="Carnot Research - IIT Delhi"
                 src="https://maps.google.com/maps?q=Research+and+Innovation+Park+IIT+Delhi&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"

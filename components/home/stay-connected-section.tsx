@@ -91,6 +91,19 @@ export function StayConnectedSection() {
                   <path d="M21.6 10.4C21.4 9.6 20.7 9 19.9 8.8C18.5 8.5 14 8.5 14 8.5C14 8.5 9.5 8.5 8.1 8.8C7.3 9 6.6 9.6 6.4 10.4C6.1 11.8 6.1 14 6.1 14C6.1 14 6.1 16.2 6.4 17.6C6.6 18.4 7.3 19 8.1 19.2C9.5 19.5 14 19.5 14 19.5C14 19.5 18.5 19.5 19.9 19.2C20.7 19 21.4 18.4 21.6 17.6C21.9 16.2 21.9 14 21.9 14C21.9 14 21.9 11.8 21.6 10.4ZM12.2 16.5V11.5L16.6 14L12.2 16.5Z" fill="#FF0000"/>
                 </svg>
               </a>
+
+              {/* X (Twitter) */}
+              <a
+                href="https://x.com/Carnot_Research"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on X"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-gray-100 text-gray-900 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-200 hover:shadow-md"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L2.25 2.25h6.063l4.253 5.622 4.906-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" fill="#000000"/>
+                </svg>
+              </a>
             </div>
           </div>
         </FadeUp>

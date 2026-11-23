@@ -2,12 +2,12 @@ import type { Metadata } from "next"
 import { ContactContent } from "./content"
 
 export const metadata: Metadata = {
-  title: "Contact | icarKno™",
+  title: "Contact | Carnot Research",
   description:
-    "Get in touch with icarKno™. Book an enterprise demo, discuss AI solutions, or explore partnership opportunities.",
+    "Get in touch with Carnot Research. Book an enterprise demo, discuss AI solutions, or explore partnership opportunities.",
   openGraph: {
-    title: "Contact icarKno™ | Enterprise AI Solutions",
-    description: "Get in touch with icarKno™. Book an enterprise demo, discuss AI solutions, or explore partnership opportunities.",
+    title: "Contact Carnot Research | Enterprise AI Solutions",
+    description: "Get in touch with Carnot Research. Book an enterprise demo, discuss AI solutions, or explore partnership opportunities.",
     url: "https://carnotresearch.com/contact",
   },
   alternates: { canonical: "https://carnotresearch.com/contact" },
@@ -16,13 +16,13 @@ export const metadata: Metadata = {
 const contactPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  name: "Contact icarKno™",
+  name: "Contact Carnot Research",
   url: "https://carnotresearch.com/contact",
-  description: "Get in touch with icarKno™. Book an enterprise demo, discuss AI solutions, or explore partnership opportunities.",
+  description: "Get in touch with Carnot Research. Book an enterprise demo, discuss AI solutions, or explore partnership opportunities.",
   mainEntity: {
     "@type": "Organization",
     "@id": "https://carnotresearch.com/#organization",
-    name: "icarKno™",
+    name: "Carnot Research",
     contactPoint: [
       {
         "@type": "ContactPoint",

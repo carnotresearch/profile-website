@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { OnPremAIContent } from "./content"
 
 export const metadata: Metadata = {
-  title: "On-Premise & Offline AI Deployment | icarKno™",
+  title: "On-Premise & Offline AI Deployment | Carnot Research",
   description:
     "Secure AI systems designed for data-sensitive, regulated, and mission-critical environments. Fully on-premise and offline AI deployment for data sovereignty, control, and compliance.",
   openGraph: {

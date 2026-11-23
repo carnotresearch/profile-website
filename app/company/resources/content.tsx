@@ -97,12 +97,12 @@ const tagColors: Record<string, string> = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "AI Research Articles: icarKno™",
-  description: "Applied AI research from icarKno™ covering pose detection, real-time vision systems, edge deployment, and production challenges.",
+  name: "AI Research Articles: Carnot Research",
+  description: "Applied AI research from Carnot Research covering pose detection, real-time vision systems, edge deployment, and production challenges.",
   itemListElement: articles.map((a, i) => ({
     "@type": "ListItem",
     position: i + 1,
-    item: { "@type": "Article", name: a.title, description: a.summary, author: { "@type": "Organization", name: "icarKno™" } },
+    item: { "@type": "Article", name: a.title, description: a.summary, author: { "@type": "Organization", name: "Carnot Research" } },
   })),
 }
 

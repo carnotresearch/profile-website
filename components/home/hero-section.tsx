@@ -386,7 +386,7 @@ export function HeroSection() {
         >
           <Image
             src={`${B}/assets/logo/carnot-logo.png`}
-            alt="icarKno™ logo"
+            alt="Carnot Research logo"
             width={64}
             height={64}
             priority
@@ -394,7 +394,7 @@ export function HeroSection() {
             style={{ objectFit: "contain" }}
           />
           <span className="hero-wordmark-text" style={{ fontWeight: 600, color: "#0f172a", letterSpacing: "-0.01em" }}>
-            icarKno™
+            Carnot Research
           </span>
         </div>
 

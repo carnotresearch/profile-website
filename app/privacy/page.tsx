@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | icarKno™",
+  title: "Privacy Policy | Carnot Research",
   description:
-    "Privacy policy for icarKno™. Learn how we collect, use, and protect your data.",
+    "Privacy policy for Carnot Research. Learn how we collect, use, and protect your data.",
   robots: {
     index: true,
     follow: true,
@@ -74,7 +74,7 @@ export default function PrivacyPolicy() {
             <h2 className="text-2xl font-semibold text-foreground">
               Use of Data
             </h2>
-            <p>icarKno™ uses the collected data for various purposes:</p>
+            <p>Carnot Research uses the collected data for various purposes:</p>
             <ul className="list-inside list-disc space-y-2">
               <li>To provide and maintain our Service</li>
               <li>To notify you about changes to our Service</li>

@@ -34,6 +34,8 @@ function useMobileNav() {
         { name: n.aboutMission, href: "/about/mission-vision", sub: n.mobileAboutMissionSub },
         { name: n.aboutTeam, href: "/about/team", sub: n.mobileAboutTeamSub },
         { name: n.aboutClients, href: "/about/clients-partners", sub: n.mobileAboutClientsSub },
+        { name: n.research, href: "/company/resources", sub: n.mobileAboutResearchSub },
+        { name: n.guides, href: "/company/guides", sub: n.mobileAboutGuidesSub },
       ],
     },
     {
@@ -53,19 +55,6 @@ function useMobileNav() {
         { name: n.enterpriseRAG, href: "/solutions/enterprise-rag", sub: n.mobileEnterpriseRAGSub },
         { name: n.onPremAI, href: "/solutions/on-prem-ai", sub: n.mobileOnPremAISub },
         { name: n.aiInSports, href: "/solutions/ai-in-sports", sub: n.mobileAiInSportsSub },
-      ],
-    },
-    {
-      name: n.company,
-      items: [
-        { name: n.guides, href: "/company/guides", sub: n.mobileGuidesSub },
-        { name: n.research, href: "/company/resources", sub: n.mobileResearchSub },
-        { name: n.contact, href: "/contact", sub: n.mobileContactSub },
-      ],
-    },
-    {
-      name: n.openSource,
-      items: [
         { name: n.evaluation, href: "https://github.com/carnotresearch/on-premise-rag-evaluation-pipeline", sub: n.evaluationSub, external: true },
         { name: n.crSparse, href: "https://github.com/carnotresearch/cr-sparse", sub: n.crSparseSub, external: true },
         { name: n.crWavelets, href: "https://github.com/carnotresearch/cr-wavelets", sub: n.crWaveletsSub, external: true },
@@ -73,14 +62,12 @@ function useMobileNav() {
       ],
     },
     {
-      name: n.blog,
+      name: n.resources,
       items: [
         { name: n.blog, href: "https://carnotresearch.medium.com/", sub: n.blogSub, external: true },
-      ],
-    },
-    {
-      name: n.playground,
-      items: [
+        { name: n.linkedin, href: "https://www.linkedin.com/company/carnot-research-pvt-ltd/posts/?feedView=all", sub: n.linkedinSub, external: true },
+        { name: n.youtube, href: "https://www.youtube.com/@CarnotResearch", sub: n.youtubeSub, external: true },
+        { name: n.twitter, href: "https://x.com/Carnot_Research", sub: n.twitterSub, external: true },
         { name: n.playground, href: "https://playground.carnotresearch.com/#/", sub: n.playgroundSub, external: true },
       ],
     },
@@ -212,11 +199,11 @@ export function Navbar() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={`${B}/assets/logo/carnot-logo.png`}
-            alt="icarKno™"
+            alt="Carnot Research logo"
             className="h-10 w-auto object-contain"
           />
           <span className="text-sm font-semibold tracking-tight text-gray-900">
-            icarKno™
+            Carnot Research
           </span>
         </Link>
 
@@ -242,14 +229,16 @@ export function Navbar() {
                         </ul>
                       </div>
                       <div>
-                        <p className={dropSection}>{n.aboutEcosystem}</p>
+                        <p className={dropSection}>{n.learn}</p>
                         <ul className="space-y-0.5">
-                          <li><NavigationMenuLink asChild><Link href="/about/clients-partners" className={dropLink}><span className={dropTitle}>{n.aboutClients}</span><span className={dropSub}>{n.aboutClientsSub}</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/company/resources" className={dropLink}><span className={dropTitle}>{n.research}</span><span className={dropSub}>{n.researchSub}</span></Link></NavigationMenuLink></li>
+                          <li><NavigationMenuLink asChild><Link href="/company/guides" className={dropLink}><span className={dropTitle}>{n.guides}</span><span className={dropSub}>{n.guidesSub}</span></Link></NavigationMenuLink></li>
                         </ul>
                       </div>
                       <div>
-                        <p className={dropSection}>{n.aboutWorkWithUs}</p>
+                        <p className={dropSection}>{n.aboutEcosystem}</p>
                         <ul className="space-y-0.5">
+                          <li><NavigationMenuLink asChild><Link href="/about/clients-partners" className={dropLink}><span className={dropTitle}>{n.aboutClients}</span><span className={dropSub}>{n.aboutClientsSub}</span></Link></NavigationMenuLink></li>
                           <li><NavigationMenuLink asChild><Link href="/careers" className={dropLink}><span className={dropTitle}>{n.joinTeam}</span><span className={dropSub}>{n.joinTeamSub}</span></Link></NavigationMenuLink></li>
                         </ul>
                       </div>
@@ -292,90 +281,88 @@ export function Navbar() {
                   {n.solutions}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="bg-white rounded-xl border border-gray-100 shadow-lg md:w-[580px]">
-                    <div className="grid grid-cols-3 gap-6 px-5 py-5">
-                      <div>
-                        <p className={dropSection}>{n.overviewLabel}</p>
-                        <ul className="space-y-0.5">
-                          <li><NavigationMenuLink asChild><Link href="/solutions" className={dropLink}><span className={dropTitle}>{n.solutionsHub}</span><span className={dropSub}>{n.solutionsHubSub}</span></Link></NavigationMenuLink></li>
-                        </ul>
-                      </div>
+                  <div className="bg-white rounded-xl border border-gray-100 shadow-lg md:w-[520px]">
+                    <div className="grid grid-cols-2 gap-6 px-5 py-5">
                       <div>
                         <p className={dropSection}>{n.enterpriseAI}</p>
                         <ul className="space-y-0.5">
+                          <li><NavigationMenuLink asChild><Link href="/solutions" className={dropLink}><span className={dropTitle}>{n.solutionsHub}</span><span className={dropSub}>{n.solutionsHubSub}</span></Link></NavigationMenuLink></li>
                           <li><NavigationMenuLink asChild><Link href="/solutions/enterprise-rag" className={dropLink}><span className={dropTitle}>{n.enterpriseRAG}</span><span className={dropSub}>{n.enterpriseRAGSub}</span></Link></NavigationMenuLink></li>
                           <li><NavigationMenuLink asChild><Link href="/solutions/on-prem-ai" className={dropLink}><span className={dropTitle}>{n.onPremAI}</span><span className={dropSub}>{n.onPremAISub}</span></Link></NavigationMenuLink></li>
-                        </ul>
-                      </div>
-                      <div>
-                        <p className={dropSection}>{n.appliedAI}</p>
-                        <ul className="space-y-0.5">
                           <li><NavigationMenuLink asChild><Link href="/solutions/ai-in-sports" className={dropLink}><span className={dropTitle}>{n.aiInSports}</span><span className={dropSub}>{n.aiInSportsSub}</span></Link></NavigationMenuLink></li>
                         </ul>
                       </div>
+                      <div>
+                        <p className={dropSection}>{n.openSource}</p>
+                        <ul className="space-y-0.5">
+                          <li>
+                            <a href="https://github.com/carnotresearch/on-premise-rag-evaluation-pipeline" target="_blank" rel="noopener noreferrer" className={dropLink}>
+                              <span className={dropTitle}>{n.evaluation}</span>
+                              <span className={dropSub}>{n.evaluationSub}</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://github.com/carnotresearch/cr-sparse" target="_blank" rel="noopener noreferrer" className={dropLink}>
+                              <span className={dropTitle}>{n.crSparse}</span>
+                              <span className={dropSub}>{n.crSparseSub}</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://github.com/carnotresearch/cr-wavelets" target="_blank" rel="noopener noreferrer" className={dropLink}>
+                              <span className={dropTitle}>{n.crWavelets}</span>
+                              <span className={dropSub}>{n.crWaveletsSub}</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://github.com/carnotresearch/cr-nimble" target="_blank" rel="noopener noreferrer" className={dropLink}>
+                              <span className={dropTitle}>{n.crNimble}</span>
+                              <span className={dropSub}>{n.crNimbleSub}</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              {/* Company */}
+              {/* Resources */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="h-8 gap-1 rounded-md px-3 text-sm font-medium text-gray-600 bg-transparent hover:bg-gray-50 hover:text-gray-900 data-[state=open]:bg-gray-50 data-[state=open]:text-gray-900 transition-colors">
-                  {n.company}
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="bg-white rounded-xl border border-gray-100 shadow-lg md:w-[320px]">
-                    <div className="grid grid-cols-2 gap-6 px-5 py-5">
-                      <div>
-                        <p className={dropSection}>{n.learn}</p>
-                        <ul className="space-y-0.5">
-                          <li><NavigationMenuLink asChild><Link href="/company/guides" className={dropLink}><span className={dropTitle}>{n.guides}</span><span className={dropSub}>{n.guidesSub}</span></Link></NavigationMenuLink></li>
-                          <li><NavigationMenuLink asChild><Link href="/company/resources" className={dropLink}><span className={dropTitle}>{n.research}</span><span className={dropSub}>{n.researchSub}</span></Link></NavigationMenuLink></li>
-                        </ul>
-                      </div>
-                      <div>
-                        <p className={dropSection}>{n.connect}</p>
-                        <ul className="space-y-0.5">
-                          <li><NavigationMenuLink asChild><Link href="/contact" className={dropLink}><span className={dropTitle}>{n.contact}</span><span className={dropSub}>{n.contactSub}</span></Link></NavigationMenuLink></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-
-              {/* Open Source */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="h-8 gap-1 rounded-md px-3 text-sm font-medium text-gray-600 bg-transparent hover:bg-gray-50 hover:text-gray-900 data-[state=open]:bg-gray-50 data-[state=open]:text-gray-900 transition-colors">
-                  {n.openSource}
+                  {n.resources}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="bg-white rounded-xl border border-gray-100 shadow-lg md:w-[260px]">
                     <div className="px-5 py-5">
                       <ul className="space-y-0.5">
                         <li>
-                          <a href="https://github.com/carnotresearch/on-premise-rag-evaluation-pipeline" target="_blank" rel="noopener noreferrer" className={dropLink}>
-                            <span className={dropTitle}>{n.evaluation}</span>
-                            <span className={dropSub}>{n.evaluationSub}</span>
+                          <a href="https://carnotresearch.medium.com/" target="_blank" rel="noopener noreferrer" className={dropLink}>
+                            <span className={dropTitle}>{n.blog}</span>
+                            <span className={dropSub}>{n.blogSub}</span>
                           </a>
                         </li>
                         <li>
-                          <a href="https://github.com/carnotresearch/cr-sparse" target="_blank" rel="noopener noreferrer" className={dropLink}>
-                            <span className={dropTitle}>{n.crSparse}</span>
-                            <span className={dropSub}>{n.crSparseSub}</span>
+                          <a href="https://www.linkedin.com/company/carnot-research-pvt-ltd/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className={dropLink}>
+                            <span className={dropTitle}>{n.linkedin}</span>
+                            <span className={dropSub}>{n.linkedinSub}</span>
                           </a>
                         </li>
                         <li>
-                          <a href="https://github.com/carnotresearch/cr-wavelets" target="_blank" rel="noopener noreferrer" className={dropLink}>
-                            <span className={dropTitle}>{n.crWavelets}</span>
-                            <span className={dropSub}>{n.crWaveletsSub}</span>
+                          <a href="https://www.youtube.com/@CarnotResearch" target="_blank" rel="noopener noreferrer" className={dropLink}>
+                            <span className={dropTitle}>{n.youtube}</span>
+                            <span className={dropSub}>{n.youtubeSub}</span>
                           </a>
                         </li>
                         <li>
-                          <a href="https://github.com/carnotresearch/cr-nimble" target="_blank" rel="noopener noreferrer" className={dropLink}>
-                            <span className={dropTitle}>{n.crNimble}</span>
-                            <span className={dropSub}>{n.crNimbleSub}</span>
+                          <a href="https://x.com/Carnot_Research" target="_blank" rel="noopener noreferrer" className={dropLink}>
+                            <span className={dropTitle}>{n.twitter}</span>
+                            <span className={dropSub}>{n.twitterSub}</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://playground.carnotresearch.com/#/" target="_blank" rel="noopener noreferrer" className={dropLink}>
+                            <span className={dropTitle}>{n.playground}</span>
+                            <span className={dropSub}>{n.playgroundSub}</span>
                           </a>
                         </li>
                       </ul>
@@ -386,26 +373,6 @@ export function Navbar() {
 
             </NavigationMenuList>
           </NavigationMenu>
-
-          {/* Direct links */}
-          <div className="flex items-center gap-0.5 ml-1">
-            <a
-              href="https://carnotresearch.medium.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-8 inline-flex items-center gap-1 rounded-md px-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
-            >
-              {n.blog}
-            </a>
-            <a
-              href="https://playground.carnotresearch.com/#/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-8 inline-flex items-center gap-1 rounded-md px-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
-            >
-              {n.playground}
-            </a>
-          </div>
         </div>
 
         {/* ── Right CTAs ── */}

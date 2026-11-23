@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 import { ProductsContent } from "./content"
 
 export const metadata: Metadata = {
-  title: "AI Products | icarKno™, BharGati™ AI, SAATHI | icarKno™",
+  title: "AI Products | icarKno™, BharGati™ AI, SAATHI | Carnot Research",
   description:
-    "Explore icarKno™'s enterprise-grade AI products: icarKno™ (enterprise knowledge RAG), BharGati™ AI (transport analytics), and SAATHI (multilingual assistant). Secure on-premise GenAI, NLP, and Computer Vision platforms for government and enterprise.",
+    "Explore Carnot Research's enterprise-grade AI products: icarKno™ (enterprise knowledge RAG), BharGati™ AI (transport analytics), and SAATHI (multilingual assistant). Secure on-premise GenAI, NLP, and Computer Vision platforms for government and enterprise.",
   keywords: [
     "enterprise AI products",
     "generative AI platform",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "NLP platform India",
   ],
   openGraph: {
-    title: "AI Products - icarKno™",
+    title: "AI Products - Carnot Research",
     description: "Production-grade AI products for government and enterprise",
     url: "https://carnotresearch.com/products",
   },

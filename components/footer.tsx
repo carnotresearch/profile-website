@@ -57,11 +57,11 @@ export function Footer() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={`${B}/assets/logo/carnot-logo.png`}
-                alt="icarKno™"
+                alt="Carnot Research logo"
                 className="h-8 w-auto object-contain"
               />
               <span className="text-sm font-semibold tracking-tight text-foreground">
-                {renderName("icarKno™")}
+                Carnot Research
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
@@ -86,7 +86,7 @@ export function Footer() {
                 href="https://www.linkedin.com/company/carnot-research-pvt-ltd/posts/?feedView=all"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="icarKno™ on LinkedIn"
+                aria-label="Carnot Research on LinkedIn"
                 className="transition-opacity hover:opacity-80"
               >
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -100,7 +100,7 @@ export function Footer() {
                 href="https://www.youtube.com/@CarnotResearch"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="icarKno™ on YouTube"
+                aria-label="Carnot Research on YouTube"
                 className="transition-opacity hover:opacity-80"
               >
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -114,12 +114,26 @@ export function Footer() {
                 href="https://carnotresearch.medium.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="icarKno™ on Medium"
+                aria-label="Carnot Research on Medium"
                 className="transition-opacity hover:opacity-80"
               >
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="28" height="28" rx="6" fill="#000000"/>
                   <path d="M8.5 10.2L6.5 8.3V8H12.3L16.8 17.6L20.7 8H26.2V8.3L24.5 9.9C24.4 10 24.3 10.2 24.35 10.4V18.6C24.3 18.8 24.4 19 24.5 19.1L26.1 20.7V21H18.1V20.7L19.8 19.1C19.95 18.95 19.95 18.9 19.95 18.6V12.4L15.4 20.95H14.9L9.65 12.4V18C9.6 18.4 9.75 18.8 10.05 19.05L12.25 21.6V21.9H6V21.6L8.2 19.05C8.5 18.8 8.65 18.4 8.6 18V11.2C8.65 10.9 8.55 10.6 8.35 10.4L8.5 10.2Z" fill="white" transform="scale(0.82) translate(2, 2)"/>
+                </svg>
+              </a>
+
+              {/* X (Twitter) */}
+              <a
+                href="https://x.com/Carnot_Research"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Carnot Research on X"
+                className="transition-opacity hover:opacity-80"
+              >
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="28" height="28" rx="6" fill="#000000"/>
+                  <path d="M19.244 7.25h2.308l-5.04 5.76 5.927 7.74H17.17l-3.286-4.34-3.76 4.34H7.818l5.39-6.21L7.25 7.25h4.344l2.97 3.924 3.68-3.924Zm-.81 12.1h1.279L9.808 8.556H8.428L18.434 19.35Z" fill="white"/>
                 </svg>
               </a>
             </div>

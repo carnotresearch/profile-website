@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Terms of Service | icarKno™",
+  title: "Terms of Service | Carnot Research",
   description:
-    "Terms of Service for icarKno™. Read our terms and conditions.",
+    "Terms of Service for Carnot Research. Read our terms and conditions.",
   robots: {
     index: true,
     follow: true,
@@ -44,7 +44,7 @@ export default function TermsOfService() {
             </h2>
             <p>
               Permission is granted to temporarily download one copy of the
-              materials (information or software) on icarKno™'s Service
+              materials (information or software) on Carnot Research's Service
               for personal, non-commercial transitory viewing only. This is the
               grant of a license, not a transfer of title, and under this
               license you may not:
@@ -79,8 +79,8 @@ export default function TermsOfService() {
               Disclaimer
             </h2>
             <p>
-              The materials on icarKno™'s Service are provided on an
-              'as is' basis. icarKno™ makes no warranties, expressed or
+              The materials on Carnot Research's Service are provided on an
+              'as is' basis. Carnot Research makes no warranties, expressed or
               implied, and hereby disclaims and negates all other warranties
               including, without limitation, implied warranties or conditions
               of merchantability, fitness for a particular purpose, or
@@ -94,11 +94,11 @@ export default function TermsOfService() {
               Limitations
             </h2>
             <p>
-              In no event shall icarKno™ or its suppliers be liable for
+              In no event shall Carnot Research or its suppliers be liable for
               any damages (including, without limitation, damages for loss of
               data or profit, or due to business interruption) arising out of
-              the use or inability to use the materials on icarKno™'s Service,
-              even if icarKno™ or an icarKno™ authorized
+              the use or inability to use the materials on Carnot Research's Service,
+              even if Carnot Research or a Carnot Research authorized
               representative has been notified orally or in writing of the
               possibility of such damage.
             </p>
@@ -109,10 +109,10 @@ export default function TermsOfService() {
               Accuracy of Materials
             </h2>
             <p>
-              The materials appearing on icarKno™'s Service could include
-              technical, typographical, or photographic errors. icarKno™
+              The materials appearing on Carnot Research's Service could include
+              technical, typographical, or photographic errors. Carnot Research
               does not warrant that any of the materials on its Service are
-              accurate, complete, or current. icarKno™ may make changes
+              accurate, complete, or current. Carnot Research may make changes
               to the materials contained on its Service at any time without
               notice.
             </p>
@@ -121,10 +121,10 @@ export default function TermsOfService() {
           <section>
             <h2 className="text-2xl font-semibold text-foreground">Links</h2>
             <p>
-              icarKno™ has not reviewed all of the sites linked to its
+              Carnot Research has not reviewed all of the sites linked to its
               Service and is not responsible for the contents of any such linked
               site. The inclusion of any link does not imply endorsement by
-              icarKno™ of the site. Use of any such linked website is at
+              Carnot Research of the site. Use of any such linked website is at
               the user's own risk.
             </p>
           </section>
@@ -134,7 +134,7 @@ export default function TermsOfService() {
               Modifications
             </h2>
             <p>
-              icarKno™ may revise these Terms of Service for its Service
+              Carnot Research may revise these Terms of Service for its Service
               at any time without notice. By using this Service, you are
               agreeing to be bound by the then current version of these Terms
               of Service.
